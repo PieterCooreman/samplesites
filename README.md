@@ -1,1 +1,1 @@
-pietercooreman.github.io/samplesites/cotswolds
+https://pietercooreman.github.io/samplesites/cotswolds
