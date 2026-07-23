@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drie Dagen door de Cotswolds — Pieter &amp; Hilde · juli 2026</title>
+<meta name="description" content="Fotoreisverslag van een 3-daagse trip door de Cotswolds: Cirencester, Bibury, Bourton-on-the-Water, The Slaughters, Stow-on-the-Wold, Broadway Tower, Cotswold Lavender en Castle Combe. Met interactieve kaart en praktische tips.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+/* ══════════════════════════ Design tokens ══════════════════════════ */
+:root{
+  --cream:        #FBF7EF;
+  --cream-dark:   #F2EADA;
+  --sand:         #E7DBC3;
+  --honey:        #C89B5A;
+  --honey-deep:   #96712F;
+  --honey-light:  #EBD9B8;
+  --sage:         #5A7350;
+  --sage-deep:    #3A4F33;
+  --sage-light:   #8CA57F;
+  --lavender:     #8B7BB5;
+  --lavender-deep:#5F5288;
+  --terracotta:   #B85C38;
+  --ink:          #2C2820;
+  --ink-soft:     #5D5546;
+  --line:         #DFD3B8;
+  --grad-warm:    linear-gradient(120deg, var(--honey) 0%, var(--terracotta) 100%);
+  --grad-hero:    linear-gradient(160deg, rgba(30,28,20,.72) 0%, rgba(58,79,51,.38) 45%, rgba(30,28,20,.78) 100%);
+  --shadow-s:     0 4px 14px rgba(44,40,32,.08);
+  --shadow-m:     0 12px 34px rgba(44,40,32,.14);
+  --shadow-l:     0 24px 60px rgba(44,40,32,.22);
+  --r:            18px;
+  --d1: var(--honey-deep);
+  --d2: var(--sage-deep);
+  --d3: var(--lavender-deep);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:84px;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.15;}
+img{display:block;max-width:100%;}
+::selection{background:var(--honey);color:#fff;}
+
+/* ══════════════════════════ Scroll progress ══════════════════════════ */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:12000;
+  background:linear-gradient(90deg,var(--honey),var(--terracotta),var(--lavender));
+}
+
+/* ══════════════════════════ Navbar ══════════════════════════ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:11000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem clamp(1.2rem,4vw,3rem);
+  transition:background .45s ease, padding .45s ease, box-shadow .45s ease;
+}
+.nav.scrolled{
+  background:rgba(34,31,24,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:.65rem clamp(1.2rem,4vw,3rem);
+  box-shadow:0 6px 30px rgba(0,0,0,.25);
+}
+.brand{
+  font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;
+  color:var(--honey-light);text-decoration:none;letter-spacing:.04em;
+  display:flex;align-items:center;gap:.55rem;
+}
+.brand svg{width:26px;height:26px;flex:none;}
+.nav-links{display:flex;gap:1.9rem;list-style:none;align-items:center;}
+.nav-links a{
+  color:#E9E1CF;text-decoration:none;font-size:.86rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;position:relative;
+  transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;
+  background:var(--grad-warm);border-radius:2px;
+  transition:width .35s cubic-bezier(.4,0,.2,1);
+}
+.nav-links a:hover,.nav-links a.active{color:var(--honey);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.burger{
+  display:none;background:none;border:0;cursor:pointer;z-index:11002;
+  flex-direction:column;gap:6px;padding:8px;
+}
+.burger span{width:27px;height:2px;background:var(--honey-light);border-radius:2px;transition:.35s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(6px,6px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+@media(max-width:860px){
+  .burger{display:flex;}
+  .nav-links{
+    position:fixed;top:0;right:-100%;height:100dvh;width:min(78vw,330px);
+    flex-direction:column;justify-content:center;gap:1.9rem;
+    background:rgba(34,31,24,.97);backdrop-filter:blur(18px);
+    transition:right .45s cubic-bezier(.4,0,.2,1);
+  }
+  .nav-links.open{right:0;}
+  .nav-links a{font-size:1.05rem;}
+}
+
+/* ══════════════════════════ Hero ══════════════════════════ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;background:var(--ink);
+}
+.hero-bg{
+  position:absolute;inset:-4%;
+  background:url('images/20260716_123209-EDIT.jpg') center 62%/cover no-repeat;
+  animation:kenburns 26s ease-in-out infinite alternate;
+}
+@keyframes kenburns{from{transform:scale(1) translateY(0);}to{transform:scale(1.12) translateY(-1.5%);}}
+.hero-veil{position:absolute;inset:0;background:var(--grad-hero);}
+.hero-grain{
+  position:absolute;inset:0;opacity:.35;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+}
+.hero-inner{position:relative;z-index:2;padding:7rem 1.4rem 5rem;max-width:900px;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.8rem;
+  font-size:.82rem;letter-spacing:.32em;text-transform:uppercase;font-weight:600;
+  color:var(--honey-light);
+  animation:fadeDown 1.1s .2s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:44px;height:1px;background:var(--honey);}
+.hero h1{
+  font-size:clamp(2.7rem,8vw,5.6rem);color:#FDF9F0;margin:1.3rem 0 1.4rem;
+  font-weight:500;letter-spacing:-.015em;
+  animation:fadeUp 1.2s .45s cubic-bezier(.22,1,.36,1) both;
+}
+.hero h1 em{
+  font-style:italic;font-weight:600;
+  background:linear-gradient(100deg,#EFC983,#D98E5B 55%,#C7A7E8);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-lead{
+  max-width:620px;margin:0 auto;color:#EDE6D4;font-size:clamp(1rem,2vw,1.16rem);
+  font-weight:300;
+  animation:fadeUp 1.2s .7s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-cta{
+  margin-top:2.6rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 1.2s .95s cubic-bezier(.22,1,.36,1) both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.95rem 2.1rem;border-radius:60px;text-decoration:none;
+  font-size:.9rem;font-weight:600;letter-spacing:.05em;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.btn-solid{background:var(--grad-warm);color:#fff;box-shadow:0 10px 26px rgba(184,92,56,.4);}
+.btn-ghost{border:1.5px solid rgba(253,249,240,.55);color:#FDF9F0;backdrop-filter:blur(4px);}
+.btn:hover{transform:translateY(-3px) scale(1.02);}
+.btn-solid:hover{box-shadow:0 16px 34px rgba(184,92,56,.55);}
+.btn-ghost:hover{background:rgba(253,249,240,.12);}
+.btn-solid::after{
+  content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);transition:left .6s;
+}
+.btn-solid:hover::after{left:130%;}
+
+.hero-stats{
+  position:relative;z-index:2;display:flex;gap:clamp(1.6rem,5vw,4.5rem);
+  justify-content:center;flex-wrap:wrap;padding:0 1rem 3.4rem;
+  animation:fadeUp 1.2s 1.15s cubic-bezier(.22,1,.36,1) both;
+}
+.stat{text-align:center;color:#F5EFDF;}
+.stat b{
+  display:block;font-family:'Fraunces',serif;font-size:clamp(1.9rem,4vw,2.7rem);
+  font-weight:500;color:var(--honey-light);line-height:1;
+}
+.stat span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;}
+.scroll-hint{
+  position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:3;
+  width:26px;height:44px;border:1.5px solid rgba(253,249,240,.6);border-radius:16px;
+}
+.scroll-hint::before{
+  content:'';position:absolute;top:8px;left:50%;width:4px;height:9px;margin-left:-2px;
+  border-radius:4px;background:var(--honey-light);
+  animation:wheel 1.9s ease-in-out infinite;
+}
+@keyframes wheel{0%{opacity:1;transform:translateY(0);}70%{opacity:0;transform:translateY(15px);}100%{opacity:0;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(34px);}to{opacity:1;transform:none;}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-22px);}to{opacity:1;transform:none;}}
+
+/* ══════════════════════════ Marquee ══════════════════════════ */
+.marquee{
+  background:var(--sage-deep);color:var(--cream);overflow:hidden;white-space:nowrap;
+  padding:.85rem 0;font-family:'Fraunces',serif;font-size:.98rem;letter-spacing:.08em;
+}
+.marquee-track{display:inline-block;animation:marquee 38s linear infinite;}
+.marquee span{margin:0 1.6rem;opacity:.9;}
+.marquee i{font-style:normal;color:var(--honey);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══════════════════════════ Sections ══════════════════════════ */
+.section{padding:clamp(4rem,9vw,7.5rem) clamp(1.2rem,5vw,3rem);}
+.wrap{max-width:1180px;margin:0 auto;}
+.kicker{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--terracotta);margin-bottom:1rem;
+}
+.kicker::before{content:'';width:36px;height:2px;background:var(--grad-warm);border-radius:2px;}
+.section h2{font-size:clamp(1.9rem,4.4vw,3rem);font-weight:500;margin-bottom:1.1rem;letter-spacing:-.01em;}
+.section h2 em{font-style:italic;color:var(--terracotta);}
+.sub{color:var(--ink-soft);max-width:680px;font-size:1.04rem;}
+
+/* ══════════════════════════ Intro ══════════════════════════ */
+.intro{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-dark) 100%);}
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:2.6rem;}
+@media(max-width:900px){.intro-grid{grid-template-columns:1fr;}}
+.intro-text p{margin-bottom:1.15rem;color:var(--ink-soft);}
+.intro-text strong{color:var(--ink);}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.9rem;}
+.fact{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:1.1rem 1.2rem;box-shadow:var(--shadow-s);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+}
+.fact:hover{transform:translateY(-5px);box-shadow:var(--shadow-m);}
+.fact b{font-family:'Fraunces',serif;font-size:1.35rem;color:var(--honey-deep);display:block;}
+.fact span{font-size:.83rem;color:var(--ink-soft);}
+.intro-collage{position:relative;min-height:460px;}
+.intro-collage img{
+  position:absolute;border-radius:var(--r);object-fit:cover;box-shadow:var(--shadow-m);
+  border:6px solid #fff;transition:transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .5s, z-index 0s;
+}
+.intro-collage img:hover{transform:scale(1.05) rotate(0deg)!important;z-index:5;box-shadow:var(--shadow-l);}
+.ic-1{width:62%;height:58%;top:0;left:0;transform:rotate(-2.5deg);}
+.ic-2{width:52%;height:48%;top:24%;right:0;transform:rotate(2deg);z-index:2;}
+.ic-3{width:56%;height:40%;bottom:0;left:8%;transform:rotate(-1deg);z-index:3;}
+@media(max-width:900px){.intro-collage{min-height:380px;}}
+
+/* ══════════════════════════ Kaart ══════════════════════════ */
+.map-section{background:var(--sage-deep);color:var(--cream);}
+.map-section .kicker{color:var(--honey-light);}
+.map-section .kicker::before{background:var(--honey);}
+.map-section h2{color:#FDF9F0;}
+.map-section .sub{color:#D9D2BE;}
+.legend{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.8rem 0 1.3rem;}
+.leg-btn{
+  border:1.5px solid rgba(253,249,240,.35);background:transparent;color:var(--cream);
+  padding:.55rem 1.25rem;border-radius:40px;font-size:.85rem;font-weight:600;
+  cursor:pointer;display:inline-flex;align-items:center;gap:.55rem;
+  font-family:'Inter',sans-serif;letter-spacing:.03em;
+  transition:all .3s;
+}
+.leg-btn .dot{width:11px;height:11px;border-radius:50%;}
+.leg-btn:hover{transform:translateY(-2px);background:rgba(253,249,240,.1);}
+.leg-btn.on{background:rgba(253,249,240,.16);border-color:var(--honey);}
+#map{
+  height:min(70vh,560px);border-radius:22px;box-shadow:var(--shadow-l);
+  border:5px solid rgba(253,249,240,.14);z-index:1;
+}
+.pin{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;border-radius:50% 50% 50% 4px;transform:rotate(-45deg);
+  color:#fff;font-weight:700;font-family:'Inter',sans-serif;font-size:.82rem;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.85);
+}
+.pin > span{transform:rotate(45deg);}
+.leaflet-popup-content-wrapper{border-radius:14px;font-family:'Inter',sans-serif;box-shadow:var(--shadow-m);}
+.leaflet-popup-content{margin:0;width:230px!important;}
+.pop img{width:100%;height:120px;object-fit:cover;border-radius:14px 14px 0 0;}
+.pop .pt{padding:.7rem .9rem .85rem;}
+.pop b{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--ink);}
+.pop small{display:block;color:var(--ink-soft);line-height:1.45;margin-top:.2rem;}
+.pop .tag{
+  display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;border-radius:20px;padding:.14rem .6rem;margin-bottom:.4rem;
+}
+.route-table{width:100%;border-collapse:collapse;margin-top:2.4rem;font-size:.94rem;}
+.route-table th{
+  text-align:left;font-family:'Fraunces',serif;font-weight:600;font-size:1rem;
+  padding:.8rem .7rem;border-bottom:2px solid rgba(253,249,240,.35);color:var(--honey-light);
+}
+.route-table td{padding:.8rem .7rem;border-bottom:1px solid rgba(253,249,240,.15);color:#E7E0CC;vertical-align:top;}
+.route-table tr{transition:background .25s;}
+.route-table tbody tr:hover{background:rgba(253,249,240,.07);}
+.day-chip{
+  display:inline-block;padding:.15rem .7rem;border-radius:20px;color:#fff;
+  font-weight:700;font-size:.78rem;white-space:nowrap;
+}
+
+/* ══════════════════════════ Dag-secties ══════════════════════════ */
+.day-section{position:relative;}
+.day-section.alt{background:var(--cream-dark);}
+.day-head{display:flex;align-items:flex-end;gap:1.6rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.day-num{
+  font-family:'Fraunces',serif;font-size:clamp(4.2rem,10vw,6.5rem);font-weight:300;line-height:.85;
+  background:var(--grad-warm);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.day-section[data-day="2"] .day-num{background:linear-gradient(120deg,var(--sage),var(--sage-deep));-webkit-background-clip:text;background-clip:text;}
+.day-section[data-day="3"] .day-num{background:linear-gradient(120deg,var(--lavender),var(--lavender-deep));-webkit-background-clip:text;background-clip:text;}
+.day-date{
+  font-size:.8rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);
+  margin-bottom:.4rem;display:block;
+}
+.day-route{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-soft);font-size:1.06rem;margin:.7rem 0 0;}
+
+.day-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);margin-top:3rem;align-items:start;}
+@media(max-width:950px){.day-grid{grid-template-columns:1fr;}}
+
+/* Tijdlijn */
+.timeline{position:relative;padding-left:2rem;}
+.timeline::before{
+  content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:repeating-linear-gradient(to bottom,var(--honey) 0 7px,transparent 7px 13px);
+}
+.stop{position:relative;padding-bottom:1.9rem;}
+.stop:last-child{padding-bottom:0;}
+.stop::before{
+  content:'';position:absolute;left:-2rem;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--terracotta);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--terracotta);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.day-section.alt .stop::before{border-color:var(--cream-dark);}
+.stop:hover::before{transform:scale(1.35);}
+.stop time{
+  font-family:'Fraunces',serif;font-weight:600;color:var(--terracotta);
+  font-size:.92rem;letter-spacing:.04em;margin-right:.55rem;
+}
+.stop h4{display:inline;font-size:1.14rem;font-weight:600;}
+.stop p{margin-top:.45rem;color:var(--ink-soft);font-size:.95rem;}
+.stop .tip{
+  display:block;margin-top:.7rem;font-size:.84rem;color:var(--sage-deep);
+  background:rgba(90,115,80,.1);border-left:3px solid var(--sage);
+  padding:.55rem .9rem;border-radius:0 10px 10px 0;
+}
+
+/* Fotogalerij */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:118px;gap:12px;}
+@media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:105px;}}
+.ph{
+  position:relative;overflow:hidden;border-radius:14px;cursor:zoom-in;
+  box-shadow:var(--shadow-s);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
+}
+.ph:hover{transform:translateY(-5px);box-shadow:var(--shadow-m);z-index:2;}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1);}
+.ph:hover img{transform:scale(1.09);}
+.ph figcaption{
+  position:absolute;inset:auto 0 0 0;padding:1.6rem .8rem .6rem;
+  background:linear-gradient(180deg,transparent,rgba(25,22,16,.82));
+  color:#F7F1E2;font-size:.74rem;line-height:1.35;font-weight:500;
+  opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;
+}
+.ph:hover figcaption{opacity:1;transform:none;}
+.ph.w2{grid-column:span 2;}
+.ph.h2{grid-row:span 2;}
+@media(max-width:600px){.ph.w2{grid-column:span 2;}.ph.h2{grid-row:span 2;}}
+
+/* Quote-banden */
+.quote-band{
+  position:relative;padding:clamp(5rem,12vw,9rem) 1.4rem;text-align:center;color:#FDF9F0;
+  background-attachment:fixed;background-size:cover;background-position:center;
+}
+@media(max-width:900px){.quote-band{background-attachment:scroll;}}
+.quote-band::before{content:'';position:absolute;inset:0;background:rgba(30,27,19,.55);}
+.quote-band blockquote{
+  position:relative;font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.4rem,3.6vw,2.3rem);max-width:840px;margin:0 auto;line-height:1.4;
+}
+.quote-band cite{
+  position:relative;display:block;margin-top:1.4rem;font-style:normal;font-size:.85rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--honey-light);
+}
+
+/* ══════════════════════════ Tips ══════════════════════════ */
+.tips{background:linear-gradient(180deg,var(--cream) 0%,#F4EDDD 100%);}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem;margin-top:2.8rem;}
+.tip-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:1.7rem 1.6rem;box-shadow:var(--shadow-s);position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+}
+.tip-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--grad-warm);transform:scaleX(0);transform-origin:left;
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+.tip-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-m);}
+.tip-card:hover::before{transform:scaleX(1);}
+.tip-icon{
+  width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--honey-light),#F8EFDC);margin-bottom:1.1rem;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.tip-card:hover .tip-icon{transform:rotate(-8deg) scale(1.1);}
+.tip-icon svg{width:26px;height:26px;stroke:var(--honey-deep);}
+.tip-card h3{font-size:1.16rem;margin-bottom:.5rem;}
+.tip-card p{font-size:.92rem;color:var(--ink-soft);}
+.tip-card p b{color:var(--ink);}
+
+/* ══════════════════════════ Footer ══════════════════════════ */
+footer{
+  background:#22201A;color:#B9B09A;text-align:center;
+  padding:4rem 1.4rem 2.6rem;position:relative;overflow:hidden;
+}
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--honey),var(--terracotta),var(--lavender),var(--sage));
+}
+footer .f-title{font-family:'Fraunces',serif;font-size:1.7rem;color:#F3ECD9;font-style:italic;margin-bottom:.7rem;}
+footer p{font-size:.86rem;max-width:520px;margin:0 auto 1.6rem;}
+footer .f-line{width:70px;height:1px;background:var(--honey);margin:1.6rem auto;opacity:.6;}
+footer small{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.65;}
+
+/* ══════════════════════════ Lightbox ══════════════════════════ */
+.lb{
+  position:fixed;inset:0;z-index:13000;background:rgba(20,18,13,.94);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  opacity:0;pointer-events:none;transition:opacity .35s;
+  backdrop-filter:blur(6px);
+}
+.lb.open{opacity:1;pointer-events:auto;}
+.lb img{
+  max-width:90vw;max-height:78vh;border-radius:10px;box-shadow:var(--shadow-l);
+  animation:lbIn .4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes lbIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:none;}}
+.lb-cap{
+  color:#EFE8D5;font-size:.92rem;margin-top:1.1rem;max-width:720px;text-align:center;
+  padding:0 1.4rem;font-family:'Fraunces',serif;font-style:italic;
+}
+.lb-count{color:#9d947e;font-size:.75rem;letter-spacing:.2em;margin-top:.5rem;}
+.lb button{
+  position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+  color:#F3ECD9;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:1.25rem;
+  display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s;
+}
+.lb button:hover{background:rgba(255,255,255,.2);transform:scale(1.08);}
+.lb-close{top:1.2rem;right:1.2rem;}
+.lb-prev{left:1.2rem;top:50%;transform:translateY(-50%);}
+.lb-next{right:1.2rem;top:50%;transform:translateY(-50%);}
+.lb-prev:hover{transform:translateY(-50%) scale(1.08);}
+.lb-next:hover{transform:translateY(-50%) scale(1.08);}
+@media(max-width:640px){.lb-prev{left:.5rem;}.lb-next{right:.5rem;}}
+
+/* Terug naar boven */
+#toTop{
+  position:fixed;bottom:1.6rem;right:1.6rem;z-index:10000;width:50px;height:50px;
+  border-radius:50%;border:0;cursor:pointer;background:var(--grad-warm);color:#fff;
+  font-size:1.15rem;box-shadow:var(--shadow-m);
+  opacity:0;pointer-events:none;transform:translateY(14px);
+  transition:opacity .35s,transform .35s;
+  display:flex;align-items:center;justify-content:center;
+}
+#toTop.show{opacity:1;pointer-events:auto;transform:none;}
+#toTop:hover{transform:translateY(-4px);}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ═════════ NAV ═════════ -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#EBD9B8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/></svg>
+    De Cotswolds
+  </a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#intro">Over</a></li>
+    <li><a href="#kaart">Route &amp; kaart</a></li>
+    <li><a href="#dag1">Dag 1</a></li>
+    <li><a href="#dag2">Dag 2</a></li>
+    <li><a href="#dag3">Dag 3</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+</nav>
+
+<!-- ═════════ HERO ═════════ -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-grain"></div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;min-height:100svh;justify-content:center;width:100%;">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Pieter &amp; Hilde · 14 – 17 juli 2026</span>
+      <h1>Drie dagen door<br>de <em>Cotswolds</em></h1>
+      <p class="hero-lead">Honingkleurige dorpen, kabbelende riviertjes, lavendelvelden in bloei en 32 eigen foto's — een reisverslag én leidraad door het mooiste stukje Engeland.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#kaart">Bekijk de route
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.5-2.5v-13L9 7l6-2.5L20.5 7v13L15 17.5 9 20zM9 7v13M15 4.5v13"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#dag1">Start bij dag 1</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b data-count="3">0</b><span>dagen</span></div>
+      <div class="stat"><b data-count="9">0</b><span>dorpen &amp; plekken</span></div>
+      <div class="stat"><b data-count="32">0</b><span>eigen foto's</span></div>
+      <div class="stat"><b data-count="160">0</b><span>km onderweg</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"></div>
+</header>
+
+<!-- ═════════ MARQUEE ═════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Cirencester <i>·</i></span><span>Bibury <i>·</i></span><span>Bourton-on-the-Water <i>·</i></span><span>Upper Slaughter <i>·</i></span><span>Lower Slaughter <i>·</i></span><span>Stow-on-the-Wold <i>·</i></span><span>Broadway Tower <i>·</i></span><span>Snowshill Lavender <i>·</i></span><span>Castle Combe <i>·</i></span>
+    <span>Cirencester <i>·</i></span><span>Bibury <i>·</i></span><span>Bourton-on-the-Water <i>·</i></span><span>Upper Slaughter <i>·</i></span><span>Lower Slaughter <i>·</i></span><span>Stow-on-the-Wold <i>·</i></span><span>Broadway Tower <i>·</i></span><span>Snowshill Lavender <i>·</i></span><span>Castle Combe <i>·</i></span>
+  </div>
+</div>
+
+<!-- ═════════ INTRO ═════════ -->
+<section class="section intro" id="intro">
+  <div class="wrap">
+    <span class="kicker" data-aos="fade-up">Area of Outstanding Natural Beauty</span>
+    <h2 data-aos="fade-up" data-aos-delay="80">Engeland zoals je het <em>droomt</em></h2>
+    <div class="intro-grid">
+      <div class="intro-text" data-aos="fade-up" data-aos-delay="150">
+        <p>De Cotswolds is een golvend heuvellandschap van ruim <strong>2.000 km²</strong>, verspreid over vijf graafschappen. Alles is er gebouwd uit dezelfde <strong>honingkleurige kalksteen</strong> — van wevershuisjes uit de 14e eeuw tot statige "wool churches", betaald met de rijkdom van de middeleeuwse wolhandel.</p>
+        <p>Wij verkenden het gebied drie dagen lang vanuit <strong>Cirencester</strong>, de "hoofdstad van de Cotswolds" en ooit de op één na grootste Romeinse stad van Brittannië. Vandaaruit reden we langs de beroemdste dorpen van het noorden — én daalden we af naar het zuiden, naar Castle Combe.</p>
+        <p>Deze site bundelt onze foto's, de route en alle praktische lessen die we onderweg leerden. Gebruik hem gerust als leidraad voor je eigen trip.</p>
+        <div class="facts">
+          <div class="fact"><b>~2.038 km²</b><span>National Landscape (AONB) sinds 1966</span></div>
+          <div class="fact"><b>Jura-kalksteen</b><span>de "honing" in elke gevel</span></div>
+          <div class="fact"><b>Cotswold Way</b><span>164 km wandelpad over de escarpment</span></div>
+          <div class="fact"><b>Juli</b><span>lavendel op z'n mooist bij Snowshill</span></div>
+        </div>
+      </div>
+      <div class="intro-collage" data-aos="zoom-in-up" data-aos-delay="200">
+        <img class="ic-1" src="images/20260714_111402-EDIT-EDIT.jpg" alt="Arlington Row in Bibury met beekje en wevershuisjes" loading="lazy">
+        <img class="ic-2" src="images/20260715_180439.jpg" alt="Lavendelrijen bij Cotswold Lavender, Snowshill" loading="lazy">
+        <img class="ic-3" src="images/1S0A2255.jpg" alt="Laag stenen boogbruggetje over de River Windrush in Bourton-on-the-Water" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ KAART ═════════ -->
+<section class="section map-section" id="kaart">
+  <div class="wrap">
+    <span class="kicker" data-aos="fade-up">Interactieve kaart</span>
+    <h2 data-aos="fade-up" data-aos-delay="80">De route in <em style="color:var(--honey-light)">drie dagen</em></h2>
+    <p class="sub" data-aos="fade-up" data-aos-delay="140">Cirencester als uitvalsbasis. Klik op een speld voor foto en uitleg, of filter per dag. De lijnen tonen de dagroutes (schematisch — de échte binnenweggetjes zijn nóg mooier).</p>
+    <div class="legend" data-aos="fade-up" data-aos-delay="200">
+      <button class="leg-btn on" data-day="all"><span class="dot" style="background:linear-gradient(120deg,#C89B5A,#8B7BB5)"></span>Alles</button>
+      <button class="leg-btn" data-day="1"><span class="dot" style="background:#C89B5A"></span>Dag 1 · Cirencester &amp; Bibury</button>
+      <button class="leg-btn" data-day="2"><span class="dot" style="background:#8CA57F"></span>Dag 2 · De grote noordlus</button>
+      <button class="leg-btn" data-day="3"><span class="dot" style="background:#A995D6"></span>Dag 3 · Castle Combe</button>
+    </div>
+    <div id="map" data-aos="zoom-in" data-aos-delay="120"></div>
+
+    <table class="route-table" data-aos="fade-up">
+      <thead><tr><th>Dag</th><th>Route</th><th>Hoogtepunten</th><th>Rijafstand</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="day-chip" style="background:#96712F">Dag 1</span></td>
+          <td>Cirencester → Bibury</td>
+          <td>Landgoedwandeling, Massey's Cottage, parochiekerk, Arlington Row &amp; Rack Isle</td>
+          <td>±30 km</td>
+        </tr>
+        <tr>
+          <td><span class="day-chip" style="background:#3A4F33">Dag 2</span></td>
+          <td>Bourton → The Slaughters → Stow → Broadway Tower → Snowshill</td>
+          <td>Windrush-bruggetjes, Wardens' Way, yew-deur van St Edward's, escarpment, lavendel bij zonsondergang</td>
+          <td>±80 km</td>
+        </tr>
+        <tr>
+          <td><span class="day-chip" style="background:#5F5288">Dag 3</span></td>
+          <td>Cirencester → Castle Combe → Cirencester</td>
+          <td>"Mooiste dorp van Engeland": The Street, Bybrook, St Andrew's — afscheid bij gouden avondlicht</td>
+          <td>±90 km</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═════════ DAG 1 ═════════ -->
+<section class="section day-section" id="dag1" data-day="1">
+  <div class="wrap">
+    <div class="day-head" data-aos="fade-up">
+      <span class="day-num">01</span>
+      <div>
+        <span class="day-date">Dinsdag 14 juli</span>
+        <h2>Cirencester &amp; <em>Bibury</em></h2>
+      </div>
+    </div>
+    <p class="day-route" data-aos="fade-up" data-aos-delay="80">Rustig landen in de "hoofdstad van de Cotswolds", daarna meteen de allergrootste klassieker: Arlington Row.</p>
+
+    <div class="day-grid">
+      <div class="timeline" data-aos="fade-right" data-aos-delay="120">
+        <div class="stop">
+          <time>09:45</time><h4>Ochtendwandeling rond Cirencester</h4>
+          <p>Vanuit onze uitvalsbasis het veld in: uitzicht over een vallei met hooibalen en een landhuis tussen de bomen, en een schaduwrijke weide vol zwartkopschapen en lammeren onder de bomen.</p>
+        </div>
+        <div class="stop">
+          <time>10:20</time><h4>Cottages &amp; dorpskerk</h4>
+          <p>Onderweg passeer je 17e-eeuwse cottages met steile stenen daken en hanging baskets — zoals "Massey's Cottage" — en een kerkje met kantelen-toren en blauw-gouden klok.</p>
+        </div>
+        <div class="stop">
+          <time>11:15</time><h4>Bibury — Arlington Row</h4>
+          <p>Vijftien minuten rijden. William Morris noemde Bibury "het mooiste dorp van Engeland". De 14e-eeuwse wevershuisjes van Arlington Row, aan het beekje langs Rack Isle, zijn misschien wel de meest gefotografeerde straat van het land — en worden nog steeds bewoond.</p>
+          <span class="tip">Tip: parkeer bij de lay-by tegenover de Bibury Trout Farm — vol tegen 9:30 in het seizoen. Loop via het voetpad terug naar de Row en houd het stil: er wonen mensen.</span>
+        </div>
+        <div class="stop">
+          <time>12:30</time><h4>Coln-vallei &amp; parkland</h4>
+          <p>Boven het dorp opent het landschap zich: droog zomergras, boomrijen langs houten hekken en een grote lucht. Ideaal om de drukte even te ontlopen.</p>
+        </div>
+      </div>
+
+      <div class="gallery" data-aos="fade-up" data-aos-delay="150">
+        <figure class="ph w2 h2" data-cap="Arlington Row, Bibury — de iconische rij 14e-eeuwse wevershuisjes langs het beekje bij Rack Isle. Ooit een monastiek wolpakhuis, in de 17e eeuw verbouwd tot woningen.">
+          <img src="images/20260714_111402-EDIT-EDIT.jpg" alt="Arlington Row in Bibury" loading="lazy">
+          <figcaption>Arlington Row, Bibury</figcaption>
+        </figure>
+        <figure class="ph w2" data-cap="Arlington Row van dichtbij: steile stenen daken, klimrozen rond de deuren en het grindpad dat langs de huisjes omhoog kronkelt.">
+          <img src="images/20260714_111450-EDIT.jpg" alt="Arlington Row close-up met klimrozen" loading="lazy">
+          <figcaption>Klimrozen langs de Row</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Uitzicht over de vallei bij Cirencester: gemaaide velden met hooibalen, grazend vee en een Cotswold-landhuis verscholen tussen de bomen.">
+          <img src="images/20260714_100227.jpg" alt="Vallei met hooibalen en landhuis bij Cirencester" loading="lazy">
+          <figcaption>Vallei met hooibalen</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Zwartkopschapen en lammeren rusten in de schaduw van oude bomen, in een weide net buiten Cirencester.">
+          <img src="images/20260714_100735.jpg" alt="Schapen in de schaduw onder bomen" loading="lazy">
+          <figcaption>Schapen in de ochtendschaduw</figcaption>
+        </figure>
+        <figure class="ph w2" data-cap="Massey's Cottage: een dubbel 17e-eeuws huisje met steile stenen dakpannen, dakkapellen, hoge schoorstenen en bloembakken achter een laag droogstapelmuurtje.">
+          <img src="images/20260714_102024-EDIT.jpg" alt="Massey's Cottage met stenen dak en bloemen" loading="lazy">
+          <figcaption>Massey's Cottage</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="Parochiekerk met gekanteelde toren, blauw-gouden klok en windvaan, omringd door een kerkhof met rozen en taxussen — gezien tijdens de ochtendwandeling.">
+          <img src="images/20260714_103429.jpg" alt="Kerktoren met klok en kerkhof" loading="lazy">
+          <figcaption>Kerkje met klokkentoren</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Parkland boven de Coln-vallei bij Bibury: zomerdroog gras, een rij ronde boomkruinen langs een houten hek en stapelwolken.">
+          <img src="images/20260714_113043.jpg" alt="Parkland met bomenrij en blauwe lucht" loading="lazy">
+          <figcaption>Parkland in de Coln-vallei</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ QUOTE 1 ═════════ -->
+<section class="quote-band" style="background-image:url('images/20260715_173848-EDIT.jpg')">
+  <blockquote data-aos="zoom-in">"The most beautiful village in England."</blockquote>
+  <cite data-aos="fade-up" data-aos-delay="150">William Morris over Bibury, 1876</cite>
+</section>
+
+<!-- ═════════ DAG 2 ═════════ -->
+<section class="section day-section alt" id="dag2" data-day="2">
+  <div class="wrap">
+    <div class="day-head" data-aos="fade-up">
+      <span class="day-num">02</span>
+      <div>
+        <span class="day-date">Woensdag 15 juli</span>
+        <h2>De grote <em>noordlus</em></h2>
+      </div>
+    </div>
+    <p class="day-route" data-aos="fade-up" data-aos-delay="80">Bourton-on-the-Water → Upper &amp; Lower Slaughter → Stow-on-the-Wold → Broadway Tower → Cotswold Lavender. Onze langste en rijkste dag.</p>
+
+    <div class="day-grid">
+      <div class="timeline" data-aos="fade-right" data-aos-delay="120">
+        <div class="stop">
+          <time>10:00</time><h4>Bourton-on-the-Water</h4>
+          <p>Het "Venetië van de Cotswolds": vijf lage stenen boogbruggen over de glasheldere River Windrush. Bij de parkeerplaats stond een juweel van een oldtimer: het bordeauxrode Morris-busje van "Cotswold Ice Creams".</p>
+          <span class="tip">Tip: parkeer op Rissington Road of Station Road en wees er vóór 10:00 — dit is het drukste dorp van de Cotswolds.</span>
+        </div>
+        <div class="stop">
+          <time>11:50</time><h4>Upper Slaughter</h4>
+          <p>Voorbij het chique Lords of the Manor Hotel ligt het kerkje van St Peter met een tijdloos kerkhof vol verweerde, met korstmos begroeide zerken en uitzicht over de velden.</p>
+        </div>
+        <div class="stop">
+          <time>12:30</time><h4>Wardens' Way naar Lower Slaughter</h4>
+          <p>De mooiste wandeling van de trip (±1,6 km): langs de River Eye, tussen weilanden en kattenstaart in bloei, naar de oude watermolen en de cottages van Lower Slaughter. Sluit af bij de spitse toren van St Mary's.</p>
+          <span class="tip">Wandeltip uit de reisgids: volg de bordjes "Wardens' Way" stroomopwaarts — vlak, makkelijk en 30–40 minuten puur genieten.</span>
+        </div>
+        <div class="stop">
+          <time>14:30</time><h4>Stow-on-the-Wold</h4>
+          <p>Marktstadje vol antiekzaken. Op Church Street poseerden een crème Range Rover van "Grove England" en een gitzwarte Austin A40 alsof het 1950 was. Achter de kerk: de beroemde noorderdeur van St Edward's, geflankeerd door twee eeuwenoude taxusbomen — de "Tolkien-deur".</p>
+        </div>
+        <div class="stop">
+          <time>17:30</time><h4>Broadway Tower</h4>
+          <p>Een 18e-eeuwse folly van goudkleurige steen op het hoogste punt van de escarpment (312 m). Bij helder weer zie je tot zestien graafschappen ver; het avondlicht over de Vale of Evesham is onwerkelijk mooi.</p>
+        </div>
+        <div class="stop">
+          <time>18:00</time><h4>Cotswold Lavender, Snowshill</h4>
+          <p>Afsluiter in paars: eindeloze lavendelrijen in het gouden avondlicht, met de geur die je nog dagen bijblijft. In juli staat het veld op z'n piek.</p>
+          <span class="tip">Tip: ga vroeg of — zoals wij — na 17:00. Midden op de dag is het lavendelveld in juli erg populair.</span>
+        </div>
+      </div>
+
+      <div class="gallery" data-aos="fade-up" data-aos-delay="150">
+        <figure class="ph w2" data-cap="De Coronation Bridge (met koninklijk cijfer 'E II R') — een van de vijf lage boogbruggen over de River Windrush in Bourton-on-the-Water.">
+          <img src="images/1S0A2255.jpg" alt="Stenen boogbrug over de River Windrush, Bourton-on-the-Water" loading="lazy">
+          <figcaption>Windrush-brug, Bourton</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Het bordeauxrode Morris Minor-busje van 'Cotswold Ice Creams — Bourton-on-the-Water Tel 629', geparkeerd voor een droogstapelmuur.">
+          <img src="images/20260715_100649.jpg" alt="Vintage Morris ijsjesbusje van Cotswold Ice Creams" loading="lazy">
+          <figcaption>Het ijsjesbusje van Bourton</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Lords of the Manor Hotel, Upper Slaughter — 17e-eeuws landhuis-hotel met gevels vol klimgroen en een oprijlaan tussen strak geknipte haagjes.">
+          <img src="images/20260715_115220.jpg" alt="Lords of the Manor Hotel, Upper Slaughter" loading="lazy">
+          <figcaption>Lords of the Manor</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Het kerkhof van St Peter's, Upper Slaughter: verweerde, met korstmos begroeide grafstenen in hoog zomergras, met de akkers op de achtergrond.">
+          <img src="images/20260715_115514-EDIT.jpg" alt="Kerkhof van Upper Slaughter met oude grafstenen" loading="lazy">
+          <figcaption>Kerkhof St Peter's</figcaption>
+        </figure>
+        <figure class="ph" data-cap="St Peter's Church, Upper Slaughter — goudkleurige parochiekerk met gekanteelde klokkentoren tegen een diepblauwe julilucht.">
+          <img src="images/20260715_115828.jpg" alt="St Peter's Church, Upper Slaughter" loading="lazy">
+          <figcaption>St Peter's, Upper Slaughter</figcaption>
+        </figure>
+        <figure class="ph w2" data-cap="De River Eye bij Lower Slaughter, met paarse kattenstaart (purple loosestrife) op de oever en de honingkleurige cottages erachter.">
+          <img src="images/20260715_122910.jpg" alt="River Eye met paarse kattenstaart, Lower Slaughter" loading="lazy">
+          <figcaption>River Eye, Lower Slaughter</figcaption>
+        </figure>
+        <figure class="ph w2 h2" data-cap="Lower Slaughter op z'n best: cottages met gotisch erkerraam (het oude schoolgebouw), lavendel in bloei en het riviertje als spiegel.">
+          <img src="images/20260715_123748.jpg" alt="Cottages langs de River Eye in Lower Slaughter" loading="lazy">
+          <figcaption>Langs de Eye, Lower Slaughter</figcaption>
+        </figure>
+        <figure class="ph" data-cap="De klimop-overgroeide binnenkoer van The Slaughters Country Inn (voorheen Washbourne Court) in Lower Slaughter, met staddle stones en lavendel.">
+          <img src="images/20260715_123857.jpg" alt="The Slaughters Country Inn met klimop" loading="lazy">
+          <figcaption>Slaughters Country Inn</figcaption>
+        </figure>
+        <figure class="ph" data-cap="De slanke Victoriaanse spits van St Mary's Church, Lower Slaughter, boven een kerkhof met taxus en zomerdroog gras.">
+          <img src="images/20260715_125453.jpg" alt="St Mary's Church met spitse toren, Lower Slaughter" loading="lazy">
+          <figcaption>St Mary's, Lower Slaughter</figcaption>
+        </figure>
+        <figure class="ph" data-cap="De oude watermolen (The Old Mill) van Lower Slaughter aan de River Eye, met zijn karakteristieke waterrad tegen de honingstenen muur.">
+          <img src="images/1S0A2268.jpg" alt="Watermolen met waterrad, Lower Slaughter" loading="lazy">
+          <figcaption>The Old Mill</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Cottages met steile stenen daken langs de River Eye in Lower Slaughter, met een oever vol rode valeriaan en wilde bloemen.">
+          <img src="images/1S0A2273.jpg" alt="Cottages met wilde bloemen langs het riviertje" loading="lazy">
+          <figcaption>Wilde oever, Lower Slaughter</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Church Street, Stow-on-the-Wold: een crème klassieke Range Rover van 'Grove England' voor de wisteria-gevel, naast Tara Antiques.">
+          <img src="images/20260715_143723.jpg" alt="Klassieke Range Rover voor Grove England, Stow" loading="lazy">
+          <figcaption>Grove England, Stow</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Een glanzend zwarte Austin A40 Devon (nummerplaat GMO 623) langs de stoep in Stow-on-the-Wold — alsof de jaren '50 nooit weggingen.">
+          <img src="images/20260715_143743.jpg" alt="Zwarte Austin A40 oldtimer in Stow-on-the-Wold" loading="lazy">
+          <figcaption>Austin A40, Stow</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="De beroemde noorderdeur van St Edward's Church, Stow-on-the-Wold: een beslagen houten deur geklemd tussen twee eeuwenoude taxusstammen — naar verluidt inspiratie voor Tolkiens Deuren van Durin.">
+          <img src="images/20260715_144100.jpg" alt="Yew-deur van St Edward's Church, Stow-on-the-Wold" loading="lazy">
+          <figcaption>De yew-deur van St Edward's</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="Broadway Tower (1798), de Saksisch geïnspireerde folly van James Wyatt op het op één na hoogste punt van de Cotswolds — 312 meter, uitzicht tot 16 graafschappen.">
+          <img src="images/20260715_173344-EDIT.jpg" alt="Broadway Tower in avondlicht" loading="lazy">
+          <figcaption>Broadway Tower</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Golvend, hobbelig weidelandschap op de escarpment bij Broadway — oude steengroeve-terrassen met knoopkruid en meidoorn in avondlicht.">
+          <img src="images/20260715_173916.jpg" alt="Golvend weidelandschap op de Cotswold escarpment" loading="lazy">
+          <figcaption>Escarpment bij Broadway</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Het informatiebord van Cotswold Lavender (Broadway, est. 1999) met plattegrond van het veld, de distilleerderij en de wandelpaden.">
+          <img src="images/20260715_180417.jpg" alt="Informatiebord Cotswold Lavender" loading="lazy">
+          <figcaption>Cotswold Lavender, Snowshill</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="Diep-paarse lavendelrijen lopen samen richting de boerderijgebouwen van Cotswold Lavender — gouden avondlicht, 18:04 uur.">
+          <img src="images/20260715_180439.jpg" alt="Convergerende lavendelrijen in avondlicht" loading="lazy">
+          <figcaption>Lavendelrijen in goud licht</figcaption>
+        </figure>
+        <figure class="ph w2" data-cap="Eindeloze lavendelrijen onder een enorme avondlucht bij Snowshill, met gele akkers en bomenrijen aan de horizon.">
+          <img src="images/20260715_181433.jpg" alt="Weids lavendelveld onder blauwe lucht" loading="lazy">
+          <figcaption>Lavendel tot de horizon</figcaption>
+        </figure>
+        <figure class="ph" data-cap="Lavendel in de voorgrond, een witte boerderij en het lappendeken-landschap van de Cotswolds erachter — laag, warm avondlicht.">
+          <img src="images/1S0A2287.jpg" alt="Lavendelveld met boerderij en heuvellandschap" loading="lazy">
+          <figcaption>Avond boven Snowshill</figcaption>
+        </figure>
+        <figure class="ph w2" data-cap="Zicht over de droogstapelmuur bij Broadway Tower: een pad slingert door goudgeel grasland richting de nevelige Vale of Evesham.">
+          <img src="images/20260715_173848-EDIT.jpg" alt="Uitzicht over droogstapelmuur richting Vale of Evesham" loading="lazy">
+          <figcaption>Vale of Evesham</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ QUOTE 2 ═════════ -->
+<section class="quote-band" style="background-image:url('images/20260715_181433.jpg')">
+  <blockquote data-aos="zoom-in">Het geheim van de Cotswolds? Vroeg op pad, laat terug — en het gouden uur cadeau.</blockquote>
+  <cite data-aos="fade-up" data-aos-delay="150">Les van dag twee</cite>
+</section>
+
+<!-- ═════════ DAG 3 ═════════ -->
+<section class="section day-section" id="dag3" data-day="3">
+  <div class="wrap">
+    <div class="day-head" data-aos="fade-up">
+      <span class="day-num">03</span>
+      <div>
+        <span class="day-date">Donderdag 16 juli</span>
+        <h2>Castle Combe &amp; <em>afscheid</em></h2>
+      </div>
+    </div>
+    <p class="day-route" data-aos="fade-up" data-aos-delay="80">Naar het uiterste zuiden van de Cotswolds, naar het dorp dat steevast "prettiest village in England" wordt genoemd — en een gouden afscheidsavond in Cirencester.</p>
+
+    <div class="day-grid">
+      <div class="timeline" data-aos="fade-right" data-aos-delay="120">
+        <div class="stop">
+          <time>11:15</time><h4>Rijden naar Wiltshire</h4>
+          <p>±45 minuten door glooiend landschap. Castle Combe heeft geen moderne gebouwen en zelfs geen lantaarnpalen — daarom is het zo'n geliefd filmdecor (War Horse, Downton Abbey, Stardust).</p>
+          <span class="tip">Tip: parkeer op de gratis parking bovenaan het dorp (B4039) en wandel 10 minuten naar beneden. Beneden parkeren is onbegonnen werk.</span>
+        </div>
+        <div class="stop">
+          <time>12:15</time><h4>St Andrew's Church</h4>
+          <p>Eerst het kerkje met zijn pinakels en spits, verscholen achter een weelderig, licht overwoekerd kerkhof met varens en oude tomben.</p>
+        </div>
+        <div class="stop">
+          <time>12:30</time><h4>The Street &amp; de Bybrook</h4>
+          <p>Dan hét uitzicht: de bocht van The Street langs de Bybrook, met de rode voordeur, klimrozen en wisteria — waarschijnlijk het meest gefotografeerde dorpsgezicht van Engeland. Wij hadden het even helemaal voor onszelf.</p>
+        </div>
+        <div class="stop">
+          <time>12:40</time><h4>Wevershuisjes</h4>
+          <p>De middeleeuwse rij wevershuisjes met loodglas-in-stijlen ramen en beslagen deuren — Castle Combe was ooit een bloeiend wolstadje met eigen markt (het marktkruis staat er nog).</p>
+        </div>
+        <div class="stop">
+          <time>Avond (17 juli)</time><h4>Gouden afscheid in Cirencester</h4>
+          <p>Op onze laatste avond kleurde de laagstaande zon de rijk versierde "wool church" van St John the Baptist diep goud — het perfecte slotbeeld van drie dagen honingkleurige steen.</p>
+        </div>
+      </div>
+
+      <div class="gallery" data-aos="fade-up" data-aos-delay="150">
+        <figure class="ph w2 h2" data-cap="Castle Combe, The Street langs de Bybrook: honingstenen cottages, een rode voordeur met klimroos en waterlelies in het riviertje — het klassieke 'mooiste dorpsgezicht van Engeland'.">
+          <img src="images/20260716_123209-EDIT.jpg" alt="The Street en de Bybrook in Castle Combe" loading="lazy">
+          <figcaption>The Street, Castle Combe</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="De toren en spits van St Andrew's Church, Castle Combe, boven een weelderig kerkhof met varens, oude tomben en taxus.">
+          <img src="images/20260716_121920.jpg" alt="St Andrew's Church, Castle Combe" loading="lazy">
+          <figcaption>St Andrew's, Castle Combe</figcaption>
+        </figure>
+        <figure class="ph h2" data-cap="Middeleeuwse wevershuisjes langs The Street in Castle Combe: ramen met stenen stijlen, beslagen plankendeuren en een volstrekt lege straat.">
+          <img src="images/20260716_123649.jpg" alt="Middeleeuwse wevershuisjes in Castle Combe" loading="lazy">
+          <figcaption>Wevershuisjes, Castle Combe</figcaption>
+        </figure>
+        <figure class="ph w2 h2" data-cap="Afscheidsbeeld, 17 juli 20:00: de rijkversierde perpendicular-gotische 'wool church' van St John the Baptist in Cirencester gloeit in de avondzon.">
+          <img src="images/20260717_200030.jpg" alt="St John the Baptist Cirencester in gouden avondlicht" loading="lazy">
+          <figcaption>Gouden avond, Cirencester</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TIPS ═════════ -->
+<section class="section tips" id="tips">
+  <div class="wrap">
+    <span class="kicker" data-aos="fade-up">Goed om te weten</span>
+    <h2 data-aos="fade-up" data-aos-delay="80">Praktische tips <em>uit ervaring</em></h2>
+    <p class="sub" data-aos="fade-up" data-aos-delay="140">Onze eigen lessen, aangevuld met actueel advies van Cotswolds Tourism en lokale gidsen (2026).</p>
+
+    <div class="tips-grid">
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Timing is álles</h3>
+        <p>De honeypot-dorpen (Bibury, Bourton, Castle Combe) zijn het drukst tussen <b>11:00 en 15:00</b>. Kom vóór 9:30 of na 16:00 en je hebt ze bijna voor jezelf — met het mooiste licht op de honingsteen erbij.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="70">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1.5-4.5h9L18 17M7.5 12.5 9 8h6l1.5 4.5"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg></div>
+        <h3>Parkeren per dorp</h3>
+        <p><b>Castle Combe:</b> alléén de gratis parking bovenaan (B4039). <b>Bibury:</b> lay-by bij de Trout Farm, vol om 9:30. <b>Bourton:</b> Rissington Road of Station Road. Nooit op bermen of voor inritten parkeren.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="140">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M11 18.5h2"/></svg></div>
+        <h3>Apps &amp; muntjes</h3>
+        <p>Veel parkings werken met <b>RingGo</b> of <b>PayByPhone</b> — installeer ze en koppel je kaart vooraf, want het mobiele signaal in de valleien is berucht slecht. Houd ook een paar £1/£2-munten in het handschoenkastje.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c2.5-6 5-9 8-13 3 4 5.5 7 8 13"/><path d="M8 13.5c1.2 1 2.4 1.5 4 1.5s2.8-.5 4-1.5"/></svg></div>
+        <h3>Smalle wegen</h3>
+        <p>De laantjes tussen de dorpen zijn soms <b>anderhalve auto breed</b>, met droogstapelmuren strak ernaast. Huur een compacte wagen, rem vóór blinde bochten, onthoud passeerplekken en wees bereid even achteruit te rijden.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="70">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.5-2.5v-13L9 7l6-2.5L20.5 7v13L15 17.5 9 20zM9 7v13M15 4.5v13"/></svg></div>
+        <h3>Offline kaarten</h3>
+        <p>Download je kaarten, routes en boekingsbevestigingen <b>vooraf</b>. Buiten de stadjes valt het signaal vaak volledig weg — precies op het moment dat je navigatie nodig hebt.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="140">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5 5 12l-1 4.5L8.5 15l8.5-8.5a2.1 2.1 0 0 0-3-3z"/><path d="M12 20h8"/></svg></div>
+        <h3>Wandel tussen dorpen</h3>
+        <p>De mooiste ervaring is <b>te voet</b>: Bourton → The Slaughters (±5 km, vlak), Broadway → Snowshill (±3 km, klim) of een stuk Cotswold Way. Stevige schoenen mee — natte kalksteen is glad.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/></svg></div>
+        <h3>Beste reistijd</h3>
+        <p><b>Mei, juni en september</b> geven de beste balans tussen weer en drukte. Juli is piekseizoen — maar wél de maand van de lavendel bij Snowshill. Kies sowieso <b>midweek</b> boven het weekend.</p>
+      </div>
+      <div class="tip-card" data-aos="fade-up" data-aos-delay="70">
+        <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="10.5" r="2.4"/></svg></div>
+        <h3>Wees een goede gast</h3>
+        <p>Arlington Row en Castle Combe worden <b>bewoond</b>. Blijf op de paden, praat zacht bij de huizen, leun niet op muurtjes voor foto's en laat hekken zoals je ze vond. Max. 3–4 dorpen per dag — de Cotswolds beloont traagheid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer>
+  <div class="f-title">Tot ziens, Cotswolds</div>
+  <p>Drie dagen honingkleurige dorpen, kabbelende riviertjes en lavendel — vastgelegd in 32 foto's, juli 2026. Gebaseerd op de reisgids voor Pieter &amp; Hilde.</p>
+  <div class="f-line"></div>
+  <small>Cirencester · Bibury · Bourton · The Slaughters · Stow · Broadway · Snowshill · Castle Combe</small>
+</footer>
+
+<button id="toTop" aria-label="Terug naar boven">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ═════════ LIGHTBOX ═════════ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Fotoweergave">
+  <button class="lb-close" id="lbClose" aria-label="Sluiten">✕</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Vorige">‹</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-next" id="lbNext" aria-label="Volgende">›</button>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ── AOS ── */
+AOS.init({duration:850, easing:'ease-out-cubic', once:true, offset:80});
+
+/* ── Navbar / progress / to-top ── */
+const nav = document.getElementById('nav');
+const progress = document.getElementById('progress');
+const toTop = document.getElementById('toTop');
+const sections = [...document.querySelectorAll('section[id], header[id]')];
+const navAnchors = [...document.querySelectorAll('.nav-links a')];
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 60);
+  const h = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (y / h * 100) + '%';
+  toTop.classList.toggle('show', y > 700);
+
+  let current = '';
+  sections.forEach(s => { if (y >= s.offsetTop - 130) current = s.id; });
+  navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}, {passive:true});
+toTop.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+/* ── Mobiel menu ── */
+const burger = document.getElementById('burger');
+const links = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open'); links.classList.remove('open');
+}));
+
+/* ── Tellers in hero ── */
+const counters = document.querySelectorAll('[data-count]');
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = 1800;
+    (function tick(t){
+      const p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+    cObs.unobserve(el);
+  });
+}, {threshold:.6});
+counters.forEach(c => cObs.observe(c));
+
+/* ── Lightbox ── */
+const figures = [...document.querySelectorAll('.ph')];
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'),
+      lbCap = document.getElementById('lbCap'), lbCount = document.getElementById('lbCount');
+let idx = 0;
+function showLb(i){
+  idx = (i + figures.length) % figures.length;
+  const f = figures[idx], img = f.querySelector('img');
+  lbImg.src = img.src; lbImg.alt = img.alt;
+  lbCap.textContent = f.dataset.cap || img.alt;
+  lbCount.textContent = (idx + 1) + ' / ' + figures.length;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function hideLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+figures.forEach((f, i) => f.addEventListener('click', () => showLb(i)));
+document.getElementById('lbClose').addEventListener('click', hideLb);
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); showLb(idx - 1); });
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); showLb(idx + 1); });
+lb.addEventListener('click', e => { if (e.target === lb) hideLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') hideLb();
+  if (e.key === 'ArrowLeft') showLb(idx - 1);
+  if (e.key === 'ArrowRight') showLb(idx + 1);
+});
+
+/* ── Leaflet-kaart ── */
+const dayColors = {1:'#C89B5A', 2:'#8CA57F', 3:'#A995D6'};
+const dayNames  = {1:'Dag 1', 2:'Dag 2', 3:'Dag 3'};
+
+const stops = [
+  {d:1, n:1, name:'Cirencester', ll:[51.7191,-1.9683], img:'images/20260717_200030.jpg',
+   txt:'Uitvalsbasis. Romeins Corinium, marktplein en de prachtige wool church van St John the Baptist.'},
+  {d:1, n:2, name:'Bibury — Arlington Row', ll:[51.7607,-1.8340], img:'images/20260714_111402-EDIT-EDIT.jpg',
+   txt:'14e-eeuwse wevershuisjes aan de River Coln. Kom vóór 9:30 — parkeren bij de Trout Farm.'},
+  {d:2, n:1, name:'Bourton-on-the-Water', ll:[51.8523,-1.7546], img:'images/1S0A2255.jpg',
+   txt:'Het "Venetië van de Cotswolds": vijf lage boogbruggen over de Windrush.'},
+  {d:2, n:2, name:'Upper Slaughter', ll:[51.8731,-1.7756], img:'images/20260715_115828.jpg',
+   txt:'St Peter\u2019s Church en het Lords of the Manor Hotel. Start van de Wardens\u2019 Way.'},
+  {d:2, n:3, name:'Lower Slaughter', ll:[51.8697,-1.7654], img:'images/20260715_123748.jpg',
+   txt:'De oude watermolen en cottages langs de River Eye — misschien wel het idyllischste plekje.'},
+  {d:2, n:4, name:'Stow-on-the-Wold', ll:[51.9302,-1.7230], img:'images/20260715_144100.jpg',
+   txt:'Marktstadje vol antiek. Mis de yew-deur van St Edward\u2019s Church niet.'},
+  {d:2, n:5, name:'Broadway Tower', ll:[52.0244,-1.8358], img:'images/20260715_173344-EDIT.jpg',
+   txt:'Folly uit 1798 op 312 m — uitzicht over 16 graafschappen en de Vale of Evesham.'},
+  {d:2, n:6, name:'Cotswold Lavender', ll:[52.0009,-1.8556], img:'images/20260715_180439.jpg',
+   txt:'Lavendelvelden bij Snowshill, op hun piek in juli. Ga vroeg of na 17:00.'},
+  {d:3, n:1, name:'Castle Combe', ll:[51.4926,-2.2290], img:'images/20260716_123209-EDIT.jpg',
+   txt:'"Prettiest village in England." Parkeer bovenaan (B4039) en wandel naar beneden.'}
+];
+
+const routes = {
+  1:[[51.7191,-1.9683],[51.7607,-1.8340]],
+  2:[[51.7191,-1.9683],[51.8523,-1.7546],[51.8731,-1.7756],[51.8697,-1.7654],[51.9302,-1.7230],[52.0244,-1.8358],[52.0009,-1.8556],[51.7191,-1.9683]],
+  3:[[51.7191,-1.9683],[51.4926,-2.2290],[51.7191,-1.9683]]
+};
+
+const map = L.map('map', {scrollWheelZoom:false});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  maxZoom:18
+}).addTo(map);
+
+const layerGroups = {1:L.layerGroup(), 2:L.layerGroup(), 3:L.layerGroup()};
+
+Object.entries(routes).forEach(([d, pts]) => {
+  L.polyline(pts, {color:dayColors[d], weight:3.5, opacity:.85, dashArray:'8 9', lineCap:'round'}).addTo(layerGroups[d]);
+});
+
+stops.forEach(s => {
+  const icon = L.divIcon({
+    className:'', iconSize:[34,34], iconAnchor:[17,32], popupAnchor:[0,-30],
+    html:`<div class="pin" style="background:${dayColors[s.d]}"><span>${s.n}</span></div>`
+  });
+  L.marker(s.ll, {icon})
+    .bindPopup(`<div class="pop"><img src="${s.img}" alt="${s.name}" loading="lazy"><div class="pt"><span class="tag" style="background:${dayColors[s.d]}">${dayNames[s.d]}</span><b>${s.name}</b><small>${s.txt}</small></div></div>`)
+    .addTo(layerGroups[s.d]);
+});
+
+Object.values(layerGroups).forEach(g => g.addTo(map));
+map.fitBounds(L.latLngBounds(stops.map(s => s.ll)).pad(.12));
+
+/* Dag-filter */
+document.querySelectorAll('.leg-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.leg-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const day = btn.dataset.day;
+    Object.entries(layerGroups).forEach(([d, g]) => {
+      if (day === 'all' || day === d) map.addLayer(g); else map.removeLayer(g);
+    });
+    if (day === 'all') map.fitBounds(L.latLngBounds(stops.map(s => s.ll)).pad(.12));
+    else map.fitBounds(L.latLngBounds(stops.filter(s => s.d == day).map(s => s.ll)).pad(.25));
+  });
+});
+map.on('click', () => map.scrollWheelZoom.enable());
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotswolds — 5 dagen | Reisgids voor Pieter &amp; ...</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#C9A56B;
+    --stone-dark:#a9824a;
+    --hedge:#3E4C3A;
+    --hedge-light:#5c7157;
+    --parchment:#F6F0E2;
+    --parchment-dark:#ece3cd;
+    --ink:#2B2620;
+    --door:#A8462F;
+    --sky:#6C93A6;
+    --line:#d8cbab;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Libre Franklin', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:var(--door);}
+
+  /* ---------- Signpost signature element ---------- */
+  .signpost-nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--hedge);
+    color:var(--parchment);
+    padding:0;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+  }
+  .signpost-nav ul{
+    list-style:none; margin:0; padding:0;
+    display:flex; overflow-x:auto;
+  }
+  .signpost-nav li{ flex:0 0 auto; }
+  .signpost-nav a{
+    display:flex; align-items:center; gap:8px;
+    color:var(--parchment);
+    text-decoration:none;
+    font-family:'Fraunces', serif;
+    font-size:0.92rem;
+    padding:14px 20px;
+    border-right:1px solid rgba(246,240,226,0.15);
+    white-space:nowrap;
+    position:relative;
+  }
+  .signpost-nav a:hover{ background:rgba(246,240,226,0.08); }
+  .signpost-nav .arrow{
+    width:0; height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:10px solid var(--stone);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:90px 24px 70px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at top, rgba(255,255,255,0.5), transparent 60%),
+      linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--hedge-light);
+    font-size:1.05rem;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
+    margin:0 0 18px;
+    color:var(--hedge);
+    line-height:1.05;
+  }
+  .hero h1 em{ color:var(--door); font-style:normal; }
+  .hero p.lead{
+    max-width:640px; margin:0 auto;
+    font-size:1.15rem; color:#544c3d;
+  }
+  .fingerpost{
+    margin:40px auto 0; max-width:760px;
+  }
+
+  .stat-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:34px;
+    margin-top:44px;
+  }
+  .stat{ text-align:center; }
+  .stat b{
+    display:block; font-family:'Fraunces', serif; font-size:1.9rem; color:var(--hedge);
+  }
+  .stat span{ font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:#867c66;}
+
+  /* ---------- Day sections ---------- */
+  .day{
+    max-width:920px; margin:0 auto; padding:70px 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .day:nth-child(even){ background:rgba(255,255,255,0.35); }
+  .day-head{
+    display:flex; align-items:baseline; gap:22px; margin-bottom:6px;
+    flex-wrap:wrap;
+  }
+  .day-number{
+    font-family:'Fraunces', serif;
+    font-size:3.2rem; color:var(--stone-dark);
+    font-variant-numeric:oldstyle-nums;
+    line-height:1;
+  }
+  .day-head h2{ font-size:1.9rem; margin:0; color:var(--hedge); }
+  .day-sub{
+    font-style:italic; color:var(--hedge-light); margin:2px 0 30px 0;
+    font-family:'Fraunces', serif; font-size:1.05rem;
+  }
+
+  .timeline{ position:relative; padding-left:28px; margin-top:26px;}
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
+    background:repeating-linear-gradient(to bottom, var(--stone) 0 6px, transparent 6px 11px);
+  }
+  .stop{ position:relative; margin-bottom:30px; }
+  .stop::before{
+    content:""; position:absolute; left:-28px; top:5px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--door); border:2px solid var(--parchment); box-shadow:0 0 0 2px var(--door);
+  }
+  .stop .time{
+    font-family:'Fraunces', serif; font-weight:600; color:var(--door);
+    font-size:0.95rem; margin-right:10px;
+  }
+  .stop h3{ display:inline; font-size:1.18rem; margin:0; color:var(--ink); }
+  .stop p{ margin:8px 0 0; color:#4a4436; font-size:0.98rem; }
+  .stop .tip{
+    display:inline-block; margin-top:10px; font-size:0.85rem;
+    background:var(--parchment-dark); border-left:3px solid var(--stone-dark);
+    padding:7px 12px; color:#5c5340;
+  }
+
+  .maps-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px; margin:34px 0 10px;
+  }
+  .map-card{
+    border:1px solid var(--line); background:#fff; padding:10px;
+  }
+  .map-card iframe{ width:100%; height:210px; border:0; display:block; }
+  .map-card .cap{ font-size:0.82rem; padding:8px 4px 2px; color:var(--hedge-light); font-style:italic; font-family:'Fraunces',serif;}
+
+  .practical{
+    margin-top:28px; background:rgba(62,76,58,0.06);
+    border:1px dashed var(--hedge-light); padding:18px 20px;
+    font-size:0.92rem;
+  }
+  .practical b{ color:var(--hedge); }
+
+  /* ---------- Video section ---------- */
+  .videos{
+    max-width:920px; margin:0 auto; padding:70px 24px;
+  }
+  .videos h2{ color:var(--hedge); font-size:2rem; margin-bottom:6px; }
+  .videos .sub{ font-style:italic; color:var(--hedge-light); font-family:'Fraunces',serif; margin-bottom:30px;}
+  .video-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px;}
+  .video-card{ background:#fff; border:1px solid var(--line); padding:10px;}
+  .video-card iframe{ width:100%; aspect-ratio:16/9; border:0; display:block; }
+  .video-card .cap{ padding:10px 6px 2px; font-size:0.9rem; color:#544c3d;}
+
+  /* ---------- Route overview ---------- */
+  .overview{
+    max-width:920px; margin:0 auto; padding:60px 24px 90px;
+  }
+  .overview h2{ color:var(--hedge); font-size:2rem; }
+  table.route{ width:100%; border-collapse:collapse; margin-top:24px; font-size:0.95rem;}
+  table.route th{
+    text-align:left; font-family:'Fraunces',serif; font-weight:600;
+    border-bottom:2px solid var(--hedge); padding:10px 8px; color:var(--hedge);
+  }
+  table.route td{ padding:10px 8px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.route tr:hover td{ background:rgba(201,165,107,0.1);}
+
+  footer{
+    text-align:center; padding:40px 24px 60px;
+    color:#867c66; font-size:0.85rem;
+  }
+  footer .sheep{ margin-bottom:10px; opacity:0.7; }
+
+  @media (max-width:600px){
+    .day-number{ font-size:2.4rem; }
+    .hero{ padding:60px 18px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="signpost-nav">
+  <ul>
+    <li><a href="#dag1"><span class="arrow"></span>Dag 1 · Cirencester</a></li>
+    <li><a href="#dag2"><span class="arrow"></span>Dag 2 · Bibury &amp; de dorpen</a></li>
+    <li><a href="#dag3"><span class="arrow"></span>Dag 3 · Chipping Campden &amp; Broadway</a></li>
+    <li><a href="#dag4"><span class="arrow"></span>Dag 4 · Castle Combe</a></li>
+    <li><a href="#dag5"><span class="arrow"></span>Dag 5 · Thames-bron</a></li>
+    <li><a href="#overzicht"><span class="arrow"></span>Route-overzicht</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">Een reisgids voor twee</div>
+  <h1>5 dagen door de <em>Cotswolds</em></h1>
+  <p class="lead">Honingkleurige dorpen, Romeinse geschiedenis en glooiende heuvels — met Cirencester als uitvalsbasis. Op maat gemaakt voor jullie, gebaseerd op de mooiste plekken van dit 800 vierkante mijl grote gebied.</p>
+
+  <svg class="fingerpost" viewBox="0 0 760 90" width="100%" height="90" xmlns="http://www.w3.org/2000/svg">
+    <line x1="380" y1="10" x2="380" y2="85" stroke="#a9824a" stroke-width="6"/>
+    <g fill="#3E4C3A">
+      <polygon points="380,18 210,10 210,34 380,26"/>
+      <polygon points="380,34 550,26 550,50 380,42"/>
+      <polygon points="380,50 250,44 250,66 380,60"/>
+    </g>
+    <g font-family="Fraunces, serif" font-size="13" fill="#F6F0E2" font-weight="600">
+      <text x="225" y="27" text-anchor="start">CIRENCESTER</text>
+      <text x="395" y="43" text-anchor="start">BIBURY · BOURTON</text>
+      <text x="265" y="59" text-anchor="start">CASTLE COMBE</text>
+    </g>
+  </svg>
+
+  <div class="stat-row">
+    <div class="stat"><b>5</b><span>dagen</span></div>
+    <div class="stat"><b>2</b><span>reizigers</span></div>
+    <div class="stat"><b>~800 mi²</b><span>Area of Outstanding Natural Beauty</span></div>
+    <div class="stat"><b>5</b><span>graafschappen</span></div>
+  </div>
+</section>
+
+<!-- DAG 1 -->
+<section class="day" id="dag1">
+  <div class="day-head">
+    <span class="day-number">01</span>
+    <h2>Aankomst &amp; Cirencester zelf</h2>
+  </div>
+  <p class="day-sub">De "hoofdstad van de Cotswolds" — jullie uitvalsbasis, rustig verkend op de aankomstdag.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <span class="time">14:00</span><h3>Inchecken &amp; wandeling naar het centrum</h3>
+      <p>Laat de koffers vallen en wandel naar de Market Place. Cirencester was ooit de op één na grootste Romeinse stad van Groot-Brittannië (na Londen) — dat voel je nog steeds aan de opzet van de straten.</p>
+    </div>
+    <div class="stop">
+      <span class="time">15:00</span><h3>Cirencester Park</h3>
+      <p>Landgoed van de Earl en Countess Bathurst, met een van de mooiste landschapstuinen van Engeland. Open dagelijks 8:00–17:00 — dus vroeg op de middag inplannen. Hier is ook de oudste polo-club van het VK gevestigd.</p>
+      <span class="tip">Tip: als er een polowedstrijd is (meestal zondag 15:00), is de Thatched Bar bij de Clubhouse leuk voor een drankje.</span>
+    </div>
+    <div class="stop">
+      <span class="time">16:15</span><h3>Abbey Grounds, Norman Arch &amp; Romeinse Muur</h3>
+      <p>Wat rest van de Abdij van St. Mary (gewijd in 1176): de 12e-eeuwse Norman Arch, een stuk Romeinse stadsmuur en een rustig meertje. Een korte, mooie wandeling vlak bij het centrum.</p>
+    </div>
+    <div class="stop">
+      <span class="time">17:00</span><h3>Cirencester Lock-Up</h3>
+      <p>Een gerestaureerd 19e-eeuws cellenblok waar vroeger boeven werden vastgehouden. Gratis te bezoeken — de sleutel haal je op bij het museum of de receptie op Trinity Road.</p>
+    </div>
+    <div class="stop">
+      <span class="time">Avond</span><h3>Diner in het centrum</h3>
+      <p>Rustig avondje na de reis. Corinium Museum en New Brewery Arts (Victoriaanse brouwerij, nu galerij en ambachtswinkels, ma–za open) bewaren we voor de volgende ochtend als jullie nog tijd over hebben, of als alternatief voor dag 2.</p>
+    </div>
+  </div>
+
+  <div class="maps-row">
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Corinium+Museum,+Cirencester&output=embed" loading="lazy"></iframe><div class="cap">Corinium Museum</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Cirencester+Park&output=embed" loading="lazy"></iframe><div class="cap">Cirencester Park</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Abbey+Grounds+Cirencester&output=embed" loading="lazy"></iframe><div class="cap">Abbey Grounds &amp; Norman Arch</div></div>
+  </div>
+
+  <div class="practical"><b>Praktisch:</b> Cirencester Park sluit om 17:00 — plan die dus vóór de Abbey Grounds. Het museum en New Brewery Arts zijn gesloten op zondag.</div>
+</section>
+
+<!-- DAG 2 -->
+<section class="day" id="dag2">
+  <div class="day-head">
+    <span class="day-number">02</span>
+    <h2>Bibury, Bourton-on-the-Water &amp; The Slaughters</h2>
+  </div>
+  <p class="day-sub">De beroemdste "postcard villages" — vroeg vertrekken loont hier het meest.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <span class="time">08:00</span><h3>Bibury — Arlington Row</h3>
+      <p>±15 min rijden. William Morris noemde dit "het mooiste dorp van Engeland". De 14e-eeuwse wevershuisjes van Arlington Row zijn een van de meest gefotografeerde plekjes van het VK. Ga hier echt vroeg heen — tegen 10 uur stromen de bussen toe.</p>
+      <span class="tip">Tip: wandel ook langs de Bibury Trout Farm, een van de oudste van Engeland.</span>
+    </div>
+    <div class="stop">
+      <span class="time">10:00</span><h3>Bourton-on-the-Water</h3>
+      <p>±25 min rijden. De "Venetië van de Cotswolds", met lage bruggetjes over de River Windrush. Gezellig voor een koffie aan het water.</p>
+    </div>
+    <div class="stop">
+      <span class="time">12:00</span><h3>Lunch in Bourton</h3>
+      <p>Ruime keuze aan theehuizen en pubs rond de rivier.</p>
+    </div>
+    <div class="stop">
+      <span class="time">13:30</span><h3>Lower &amp; Upper Slaughter</h3>
+      <p>±10 min rijden. Twee van de meest idyllische dorpjes, verbonden door een rustig rivierpad. Lower Slaughter heeft een fraaie oude watermolen.</p>
+    </div>
+    <div class="stop">
+      <span class="time">15:30</span><h3>Stow-on-the-Wold</h3>
+      <p>±10 min rijden. Marktstadje met theehuizen en antiekzaken rond het plein — een fijne afsluiter, eventueel met diner hier voor jullie terugrijden.</p>
+    </div>
+  </div>
+
+  <div class="maps-row">
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Arlington+Row,+Bibury&output=embed" loading="lazy"></iframe><div class="cap">Arlington Row, Bibury</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Bourton-on-the-Water&output=embed" loading="lazy"></iframe><div class="cap">Bourton-on-the-Water</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Lower+Slaughter&output=embed" loading="lazy"></iframe><div class="cap">Lower Slaughter</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Stow-on-the-Wold&output=embed" loading="lazy"></iframe><div class="cap">Stow-on-the-Wold</div></div>
+  </div>
+
+  <div class="practical"><b>Praktisch:</b> parkeren in Bibury is beperkt — vroeg komen is de beste tip die overal terugkomt. Reken op zo'n 45–50 km rijden in totaal deze dag.</div>
+</section>
+
+<!-- DAG 3 -->
+<section class="day" id="dag3">
+  <div class="day-head">
+    <span class="day-number">03</span>
+    <h2>Chipping Campden, Broadway &amp; Cheltenham</h2>
+  </div>
+  <p class="day-sub">De noordelijke Cotswolds: de mooiste High Street van Engeland en een adembenemend uitzicht.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <span class="time">08:30</span><h3>Chipping Campden</h3>
+      <p>±40 min rijden. Marktstadje met oude herbergen, winkeltjes en onafhankelijke restaurantjes — geldt als een van de mooiste High Streets van Engeland.</p>
+    </div>
+    <div class="stop">
+      <span class="time">11:00</span><h3>Broadway</h3>
+      <p>±15 min rijden. De "Parel van de Cotswolds", met statige kastanjebomen en antiekwinkels langs de brede hoofdstraat.</p>
+    </div>
+    <div class="stop">
+      <span class="time">13:00</span><h3>Lunch in Broadway</h3>
+      <p>Volop keuze langs de hoofdstraat.</p>
+    </div>
+    <div class="stop">
+      <span class="time">14:00</span><h3>Broadway Tower</h3>
+      <p>±10 min rijden. Een 18e-eeuwse follytoren op een heuveltop met een van de beste uitzichten over de Cotswolds.</p>
+    </div>
+    <div class="stop">
+      <span class="time">16:00</span><h3>Cheltenham</h3>
+      <p>±30 min rijden. Regency-kuurstad en het "culturele hart" van de Cotswolds — een mooie wandeling langs de statige architectuur op de terugweg.</p>
+    </div>
+  </div>
+
+  <div class="maps-row">
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Chipping+Campden&output=embed" loading="lazy"></iframe><div class="cap">Chipping Campden</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Broadway,+Worcestershire&output=embed" loading="lazy"></iframe><div class="cap">Broadway</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Broadway+Tower&output=embed" loading="lazy"></iframe><div class="cap">Broadway Tower</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Cheltenham&output=embed" loading="lazy"></iframe><div class="cap">Cheltenham</div></div>
+  </div>
+
+  <div class="practical"><b>Praktisch:</b> valt jullie bezoek samen met het Cheltenham Festival? Boek dan absoluut ver op voorhand — de vraag naar overnachtingen is dan extreem hoog.</div>
+</section>
+
+<!-- DAG 4 -->
+<section class="day" id="dag4">
+  <div class="day-head">
+    <span class="day-number">04</span>
+    <h2>Castle Combe &amp; Westonbirt Arboretum</h2>
+  </div>
+  <p class="day-sub">De verste uitstap — het "mooiste dorp van Engeland" en een adempauze in de natuur.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <span class="time">08:00</span><h3>Castle Combe</h3>
+      <p>±45 min rijden (in Wiltshire). Vaak hét mooiste dorp van Engeland genoemd, en veelgebruikt filmdecor — geen moderne gebouwen of lantaarnpalen te zien. Kom écht vroeg voor het rustigst: het Bybrook-beekje, het oude marktkruis en de authentieke cottages.</p>
+    </div>
+    <div class="stop">
+      <span class="time">11:30</span><h3>Terug richting Tetbury</h3>
+      <p>±40 min rijden. Onderweg een mooie route door glooiend Wiltshire/Gloucestershire landschap.</p>
+    </div>
+    <div class="stop">
+      <span class="time">12:30</span><h3>Lunch in Tetbury</h3>
+      <p>Gezellig marktstadje, vlak bij Highgrove House (de tuinen van Koning Charles, nu van Prins William — enkel op afspraak/ticket te bezoeken).</p>
+    </div>
+    <div class="stop">
+      <span class="time">13:30</span><h3>Westonbirt Arboretum</h3>
+      <p>Een van de mooiste bomencollecties van het land, met rustige wandelpaden — heerlijk contrast na twee dagen dorpjes.</p>
+    </div>
+  </div>
+
+  <div class="maps-row">
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Castle+Combe&output=embed" loading="lazy"></iframe><div class="cap">Castle Combe</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Westonbirt+Arboretum&output=embed" loading="lazy"></iframe><div class="cap">Westonbirt Arboretum</div></div>
+  </div>
+
+  <div class="practical"><b>Praktisch:</b> dit is de langste rijdag (±90 min heen en terug voor Castle Combe alleen al). Wie liever wat rustiger aan doet, kan Castle Combe inruilen voor een extra ontspannen ochtend bij de Cotswold Water Park (150+ meren, kanoën/zeilen), dichter bij Cirencester.</div>
+</section>
+
+<!-- DAG 5 -->
+<section class="day" id="dag5">
+  <div class="day-head">
+    <span class="day-number">05</span>
+    <h2>Bron van de Thames &amp; vertrek</h2>
+  </div>
+  <p class="day-sub">Een rustige laatste ochtend, dicht bij Cirencester, voor het vertrek.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <span class="time">09:00</span><h3>Bron van de Thames, bij Kemble</h3>
+      <p>±10 min rijden. Een korte, rustige wandeling naar het officiële beginpunt van Engelands beroemdste rivier — een mooie, bijna symbolische afsluiter van de reis.</p>
+    </div>
+    <div class="stop">
+      <span class="time">10:30</span><h3>Cotswold Wildlife Park (Burford) of Cotswold Farm Park</h3>
+      <p>Kies wat bij jullie past: het Wildlife Park (Burford, ±30 min) voor een bredere dierentuin, of Cotswold Farm Park — gerund door Adam Henson — voor zeldzame Britse landbouwrassen.</p>
+    </div>
+    <div class="stop">
+      <span class="time">12:30</span><h3>Lunch &amp; terugreis</h3>
+      <p>Laatste lunch in Cirencester of onderweg, en dan richting jullie vertrekpunt.</p>
+    </div>
+  </div>
+
+  <div class="maps-row">
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Thames+Head,+Kemble&output=embed" loading="lazy"></iframe><div class="cap">Bron van de Thames</div></div>
+    <div class="map-card"><iframe src="https://www.google.com/maps?q=Cotswold+Wildlife+Park,+Burford&output=embed" loading="lazy"></iframe><div class="cap">Cotswold Wildlife Park</div></div>
+  </div>
+</section>
+
+<!-- VIDEO'S -->
+<section class="videos">
+  <h2>Sfeerbeelden</h2>
+  <p class="sub">Twee geverifieerde video's om de sfeer alvast te proeven.</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/ncQ7tWvp_gU" title="The Cotswolds: Quintessentially British" allowfullscreen loading="lazy"></iframe>
+      <div class="cap">The Cotswolds: Quintessentially British</div>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/_sYUAyNby00" title="The Cotswolds, England — Castle Combe, Bibury, Broadway, Bourton" allowfullscreen loading="lazy"></iframe>
+      <div class="cap">Langs Castle Combe, Bibury, Broadway &amp; Bourton-on-the-Water</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERZICHT -->
+<section class="overview" id="overzicht">
+  <h2>Route-overzicht</h2>
+  <table class="route">
+    <tr><th>Dag</th><th>Basis</th><th>Hoogtepunten</th><th>Rijafstand (indicatief)</th></tr>
+    <tr><td>1</td><td>Cirencester</td><td>Cirencester Park, Abbey Grounds, Lock-Up</td><td>te voet</td></tr>
+    <tr><td>2</td><td>Cirencester</td><td>Bibury, Bourton-on-the-Water, The Slaughters, Stow-on-the-Wold</td><td>±50 km</td></tr>
+    <tr><td>3</td><td>Cirencester</td><td>Chipping Campden, Broadway, Broadway Tower, Cheltenham</td><td>±95 km</td></tr>
+    <tr><td>4</td><td>Cirencester</td><td>Castle Combe, Tetbury, Westonbirt Arboretum</td><td>±110 km</td></tr>
+    <tr><td>5</td><td>Cirencester</td><td>Bron van de Thames, Wildlife/Farm Park</td><td>±40 km</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="sheep">🐑</div>
+  Op maat gemaakt aan de hand van de Cotswolds-reisgids &middot; bewaar deze pagina als leidraad voor onderweg
+</footer>
+
+</body>
+</html>

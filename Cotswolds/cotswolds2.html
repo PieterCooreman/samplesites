@@ -1,0 +1,1741 @@
+
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onze Cotswolds Avontuur — 5 Dagen in het Hart van Engeland</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cotton-gold: #c9a96e;
+            --cotton-dark: #8b6914;
+            --cotton-light: #f5e6c8;
+            --cotton-cream: #faf6ee;
+            --cotton-green: #4a6741;
+            --cotton-green-light: #6b8f62;
+            --cotton-stone: #d4c5a9;
+            --cotton-text: #3a3226;
+            --cotton-text-light: #6b5e4f;
+            --cotton-accent: #b8860b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--cotton-text);
+            background-color: var(--cotton-cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(58, 50, 38, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            transition: all 0.4s ease;
+        }
+        .navbar-custom.scrolled {
+            background: rgba(58, 50, 38, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            padding: 0.5rem 0;
+        }
+        .navbar-custom .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--cotton-light) !important;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+        .navbar-custom .nav-link {
+            color: var(--cotton-stone) !important;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--cotton-gold) !important;
+        }
+        .navbar-toggler {
+            border-color: var(--cotton-gold) !important;
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                linear-gradient(135deg, rgba(58,50,38,0.7) 0%, rgba(74,103,65,0.4) 50%, rgba(58,50,38,0.7) 100%),
+                url('https://images.unsplash.com/photo-1568184654489-4d952abdf46d?w=1920&q=80') center/cover no-repeat;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.15); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        .hero-content .subtitle {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--cotton-gold);
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.4);
+        }
+        .hero-content .tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border: 2px solid var(--cotton-gold);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.4s ease;
+            border-radius: 50px;
+        }
+        .hero-btn:hover {
+            background: var(--cotton-gold);
+            color: var(--cotton-text);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201,169,110,0.3);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator i {
+            color: white;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+
+        /* Section Styles */
+        .section-padding {
+            padding: 100px 0;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--cotton-text);
+        }
+        .section-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            color: var(--cotton-text-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cotton-gold), var(--cotton-accent));
+            margin: 1rem auto 2rem;
+            border-radius: 2px;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            background: white;
+        }
+        .overview-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 16px;
+            background: var(--cotton-cream);
+            border: 1px solid rgba(201,169,110,0.2);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        .overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .overview-card .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cotton-gold), var(--cotton-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .overview-card .icon-circle i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        .overview-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .overview-card p {
+            font-size: 0.95rem;
+            color: var(--cotton-text-light);
+            line-height: 1.7;
+        }
+
+        /* Day Sections */
+        .day-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .day-section:nth-child(even) {
+            background: white;
+        }
+        .day-section:nth-child(odd) {
+            background: var(--cotton-cream);
+        }
+        .day-header {
+            margin-bottom: 3rem;
+        }
+        .day-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cotton-gold), var(--cotton-accent));
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(201,169,110,0.4);
+        }
+        .day-title {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .day-theme {
+            font-weight: 300;
+            color: var(--cotton-text-light);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cotton-gold), var(--cotton-green));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 1.8rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(201,169,110,0.15);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 2rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--cotton-gold);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--cotton-gold);
+        }
+        .timeline-item .time-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: linear-gradient(135deg, var(--cotton-green), var(--cotton-green-light));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-item h5 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--cotton-text);
+        }
+        .timeline-item p {
+            font-size: 0.95rem;
+            color: var(--cotton-text-light);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        .timeline-item .tip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 0.8rem;
+            padding: 6px 14px;
+            background: rgba(201,169,110,0.15);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--cotton-dark);
+            font-weight: 600;
+        }
+
+        /* Photo Cards */
+        .photo-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
+            background: white;
+            height: 100%;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+        .photo-card .photo-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .photo-card .photo-caption {
+            padding: 1.2rem 1.5rem;
+        }
+        .photo-card .photo-caption h5 {
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .photo-card .photo-caption p {
+            font-size: 0.85rem;
+            color: var(--cotton-text-light);
+            margin-bottom: 0;
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: linear-gradient(135deg, var(--cotton-text) 0%, #2a2418 100%);
+            color: white;
+        }
+        .tips-section .section-title {
+            color: white;
+        }
+        .tips-section .section-subtitle {
+            color: var(--cotton-gold);
+        }
+        .tip-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(201,169,110,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .tip-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+        }
+        .tip-card .tip-icon {
+            font-size: 2rem;
+            color: var(--cotton-gold);
+            margin-bottom: 1rem;
+        }
+        .tip-card h5 {
+            color: var(--cotton-light);
+            margin-bottom: 0.8rem;
+        }
+        .tip-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Seasonal Guide */
+        .season-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            background: white;
+            border: 1px solid rgba(201,169,110,0.15);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .season-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .season-card .season-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .season-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .season-card p {
+            font-size: 0.9rem;
+            color: var(--cotton-text-light);
+            line-height: 1.6;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+        }
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--cotton-text);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .footer h4 {
+            color: var(--cotton-gold);
+            margin-bottom: 1rem;
+        }
+        .footer p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cotton-gold), var(--cotton-accent));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 999;
+            border: none;
+            box-shadow: 0 4px 15px rgba(201,169,110,0.4);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201,169,110,0.5);
+        }
+
+        /* Progress bar */
+        .progress-bar-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cotton-gold), var(--cotton-green));
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content .tagline {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .day-title {
+                font-size: 1.6rem;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline-item::before {
+                left: -23px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        /* Gallery grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Itinerary summary cards */
+        .summary-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(201,169,110,0.1);
+        }
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+        .summary-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .summary-card .card-body {
+            padding: 1.5rem;
+        }
+        .summary-card .day-label {
+            display: inline-block;
+            padding: 3px 12px;
+            background: var(--cotton-gold);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Photo lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(74,103,65,0.1));
+            border-left: 4px solid var(--cotton-gold);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box h6 {
+            color: var(--cotton-dark);
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box p {
+            font-size: 0.9rem;
+            color: var(--cotton-text-light);
+            margin-bottom: 0;
+        }
+
+        /* Day photo banner */
+        .day-banner {
+            position: relative;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        .day-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .day-banner .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+        .day-banner .banner-overlay h3 {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        .day-banner .banner-overlay p {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .day-banner {
+                height: 250px;
+            }
+            .day-banner .banner-overlay h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-top" id="progressBar"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">
+                <i class="bi bi-geo-alt-fill me-2" style="color: var(--cotton-gold);"></i>Cotswolds 2025
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overzicht</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#day1">Dag 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#day2">Dag 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#day3">Dag 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#day4">Dag 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#day5">Dag 5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tips">Tips</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="subtitle">Onze Reis door Engeland</div>
+            <h1>De Cotswolds</h1>
+            <p class="tagline">5 dagen door het hart van Engeland — door dorpen van honingkleurige steen, door groene valleien en langs eeuwenoude landgoederen.</p>
+            <a href="#overview" class="hero-btn">Ontdek het Programma</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section section-padding" id="overview">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <p class="section-subtitle">Welkom in de Cotswolds</p>
+                <h2 class="section-title">Onze Reis in een Oogopslag</h2>
+                <div class="gold-line"></div>
+                <p class="mx-auto" style="max-width: 700px; color: var(--cotton-text-light); line-height: 1.8;">
+                    De Cotswolds beslaan ongeveer <strong>800 vierkante mijl</strong> over vijf graafschappen: 
+                    Gloucestershire, Oxfordshire, Warwickshire, Worcestershire en Wiltshire. 
+                    Dit is een Area of Outstanding Natural Beauty — en wij gaan het verkennen!
+                </p>
+            </div>
+
+            <div class="row g-4 mb-5 fade-in">
+                <div class="col-lg-3 col-md-6">
+                    <div class="overview-card">
+                        <div class="icon-circle"><i class="bi bi-calendar3"></i></div>
+                        <h4>5 Dagen</h4>
+                        <p>Een zorgvuldig samengesteld programma met de mooiste plekken, geoptimaliseerd voor twee personen.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="overview-card">
+                        <div class="icon-circle"><i class="bi bi-geo-alt"></i></div>
+                        <h4>6 Dorpen</h4>
+                        <p>Van Castle Combe tot Bourton-on-the-Water — de meest iconische dorpen van de Cotswolds.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="overview-card">
+                        <div class="icon-circle"><i class="bi bi-building"></i></div>
+                        <h4>Landgoederen</h4>
+                        <p>Cirencester Park, Sezincote House en meer — de prachtige huizen en tuinen van de regio.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="overview-card">
+                        <div class="icon-circle"><i class="bi bi-tree"></i></div>
+                        <h4>Natuur</h4>
+                        <p>Cotswold Water Park, Westonbirt Arboretum en de bron van de Thames — 86% van het land is agrarisch.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Summary Cards -->
+            <div class="row g-4 fade-in">
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1596280695121-8775052c57a9?w=600&q=80" alt="Cirencester marktplein" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Dag 1</span>
+                            <h5>Cirencester Ontdekken</h5>
+                            <p class="text-muted small">Corinium Museum, Abbey Grounds, New Brewery Arts en de Lock-Up.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1565711561500-49678a10a63f?w=600&q=80" alt="Castle Combe dorp" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Dag 2</span>
+                            <h5>Noordelijke Dorpen</h5>
+                            <p class="text-muted small">Castle Combe, Bibury met Arlington Row en Bourton-on-the-Water.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Broadway Tower uitzicht" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Dag 3</span>
+                            <h5>Zuidelijke Juwelen</h5>
+                            <p class="text-muted small">Broadway, Chipping Campden, Stow-on-the-Wold en The Slaughters.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80" alt="Cotswolds landgoed" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Dag 4</span>
+                            <h5>Landgoederen & Natuur</h5>
+                            <p class="text-muted small">Cirencester Park, Sezincote House, Cotswold Farm Park en de Thames-bron.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Cotswolds landschap" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Dag 5</span>
+                            <h5>Water & Cheltenham</h5>
+                            <p class="text-muted small">Cotswold Water Park, Westonbirt Arboretum en de stad Cheltenham.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="summary-card">
+                        <img src="https://images.unsplash.com/photo-1523365280197-f1783db9fe62?w=600&q=80" alt="Cotswolds pub" class="card-img-top">
+                        <div class="card-body">
+                            <span class="day-label">Tips</span>
+                            <h5>Praktische Informatie</h5>
+                            <p class="text-muted small">Seizoensgids, vervoer, eten en drinken — alles wat je moet weten.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DAG 1 ==================== -->
+    <section class="day-section section-padding" id="day1">
+        <div class="container">
+            <div class="day-banner fade-in">
+                <img src="https://images.unsplash.com/photo-1596280695121-8775052c57a9?w=1400&q=80" alt="Cirencester marktplein met historische gebouwen">
+                <div class="banner-overlay">
+                    <h3>Dag 1 — Cirencester</h3>
+                    <p><i class="bi bi-geo-alt-fill me-1"></i> Onze thuisbasis — de grootste marktstad van de Cotswolds</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="day-header fade-in">
+                        <div class="day-number">1</div>
+                        <h2 class="day-title">Cirencester Ontdekken</h2>
+                        <p class="day-theme">"De hoofdstad van de Cotswolds — Romeins erfgoed en kunst"</p>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sunrise me-1"></i> 09:30 — Ochtend</span>
+                            <h5><i class="bi bi-building me-2" style="color: var(--cotton-gold);"></i>The Corinium Museum</h5>
+                            <p>Begin de dag in dit bekroonde museum met een van de meest uitgebreide <strong>Romeinse collecties</strong> van het land. Cirencester was de op een na grootste Romeinse stad buiten Londen. Verwacht mozaïeken, munten en dagelijkse voorwerpen uit de Romeinse periode.</p>
+                            <div class="tip-badge"><i class="bi bi-lightbulb"></i> Plan minimaal 1,5 uur</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sun me-1"></i> 11:30 — Middag</span>
+                            <h5><i class="bi bi-tree me-2" style="color: var(--cotton-green);"></i>The Abbey Grounds</h5>
+                            <p>Wandel door de voormalige gronden van St Mary's Abbey (ingewijd in 1176). Bezoek de <strong>Normaanse Boog</strong>, een fragment van de <strong>Romeinse Muur</strong> en geniet van het meer. Een perfecte plek voor een rustige wandeling en een picknick.</p>
+                            <div class="tip-badge"><i class="bi bi-camera"></i> Prachtige foto's bij de Norman Arch</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-cup-hot me-1"></i> 13:00 — Lunch</span>
+                            <h5><i class="bi bi-cup-straw me-2" style="color: var(--cotton-gold);"></i>Lunch in Cirencester</h5>
+                            <p>Geniet van een lunch in een van de gezellige cafés rond het marktplein. Probeer lokale Cotswolds-kaas en verse producten van de markt.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-palette me-1"></i> 14:30 — Namiddag</span>
+                            <h5><i class="bi bi-brush me-2" style="color: var(--cotton-gold);"></i>New Brewery Arts</h5>
+                            <p>Een uniek cultureel centrum in een omgebouwde Victoriaanse brouwerij. Bezoek de <strong>contemporaine kunstgalerij</strong>, de maker studios, de ambachtswinkel en de café. Open maandag tot zaterdag.</p>
+                            <div class="tip-badge"><i class="bi bi-shop"></i> Mooie lokale ambachtelijke producten</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-clock me-1"></i> 16:00 — Late namiddag</span>
+                            <h5><i class="bi bi-lock me-2" style="color: var(--cotton-text-light);"></i>Cirencester Lock-Up</h5>
+                            <p>Een gerestaureerd 19e-eeuws tweecellig gebouw dat werd gebruikt om criminelen vast te houden. <strong>Gratis toegang</strong> via een sleutel die je ophaalt bij het museum of Trinity Road receptie. Een leuke, korte stop!</p>
+                            <div class="tip-badge"><i class="bi bi-check-circle"></i> Gratis!</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-moon-stars me-1"></i> 18:00 — Avond</span>
+                            <h5><i class="bi bi-wine me-2" style="color: var(--cotton-gold);"></i>Avondwandeling & Diner</h5>
+                            <p>Een romantische avondwandeling door de straatjes van Cirencester, gevolgd door diner in een van de uitstekende restaurants van de stad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="mt-4 mt-lg-0">
+                        <h4 class="mb-4 fade-in" style="font-size: 1.3rem;">
+                            <i class="bi bi-camera-fill me-2" style="color: var(--cotton-gold);"></i>Beelden van Cirencester
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1596280695121-8775052c57a9?w=700&q=80" alt="Cirencester marktplein met historische stenen gebouwen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Het Marktplein</h5>
+                                        <p>Het hart van Cirencester, omringd door honingkleurige Cotswold-steen gebouwen.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=500&q=80" alt="Normaanse boog in de Abbey Grounds" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Abbey Grounds</h5>
+                                        <p>De Norman Arch</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1568184654489-4d952abdf46d?w=500&q=80" alt="Cotswolds dorpstraat" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Cotswold Steen</h5>
+                                        <p>Honingkleurige architectuur</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4 fade-in">
+                            <h6><i class="bi bi-info-circle me-1"></i> Wetenswaardigheid</h6>
+                            <p>Cirencester was in de Romeinse tijd bekend als <strong>Corinium Dobunnorum</strong> en was de op een na grootste Romeinse stad van Groot-Brittannië, na Londinium (Londen).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DAG 2 ==================== -->
+    <section class="day-section section-padding" id="day2">
+        <div class="container">
+            <div class="day-banner fade-in">
+                <img src="https://images.unsplash.com/photo-1565711561500-49678a10a63f?w=1400&q=80" alt="Castle Combe het mooiste dorp van Engeland">
+                <div class="banner-overlay">
+                    <h3>Dag 2 — Noordelijke Dorpen</h3>
+                    <p><i class="bi bi-geo-alt-fill me-1"></i> Castle Combe, Bibury & Bourton-on-the-Water</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="day-header fade-in">
+                        <div class="day-number">2</div>
+                        <h2 class="day-title">De Meest Prachtige Dorpen</h2>
+                        <p class="day-theme">"Door postkaartdorpen en langs de Windrush"</p>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sunrise me-1"></i> 08:00 — Vroeg ochtend</span>
+                            <h5><i class="bi bi-star me-2" style="color: var(--cotton-gold);"></i>Castle Combe</h5>
+                            <p>Start vroeg om de drukte te mijden! Castle Combe wordt vaak genoemd als <strong>het mooiste dorp van Engeland</strong> en wordt regelmatig gebruikt als filmset. Het dorp is zeer authentiek — er zijn <strong>geen moderne gebouwen of lantaarnpalen</strong>.</p>
+                            <p>Bezoek de Bybrook beek, de oude marktkruis en de iconische Engelse cottages. Wandel langs de beek door het dorp.</p>
+                            <div class="tip-badge"><i class="bi bi-clock-history"></i> Kom vroeg! Voorkom de hoogseizoen-drukte</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sun me-1"></i> 10:30 — Ochtend</span>
+                            <h5><i class="bi bi-house-heart me-2" style="color: var(--cotton-gold);"></i>Bibury — Arlington Row</h5>
+                            <p>Een "postkaartdorp" bekend om zijn honingkleurige kalkstenen huizen. Het hoogtepunt is <strong>Arlington Row</strong> — 14e-eeuwse weverswoningen, een van de meest gefotografeerde straten van het VK.</p>
+                            <p>Bezoek ook de <strong>Bibury Trout Farm</strong> (een van de oudste van Engeland) of geniet van een afternoon tea in een van de gezellige cafés.</p>
+                            <div class="tip-badge"><i class="bi bi-camera"></i> Arlington Row is een must-foto!</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-cup-hot me-1"></i> 13:00 — Lunch</span>
+                            <h5><i class="bi bi-cup-straw me-2" style="color: var(--cotton-gold);"></i>Lunch in Bibury</h5>
+                            <p>Geniet van lunch met uitzicht op de rivier de Coln. De Bibury Trout Farm serveert ook heerlijke maaltijden.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-water me-1"></i> 14:30 — Namiddag</span>
+                            <h5><i class="bi bi-bridge me-2" style="color: var(--cotton-green);"></i>Bourton-on-the-Water</h5>
+                            <p>De <strong>"Venetië van de Cotswolds"</strong> — bekend om zijn lage bruggen over de rivier de Windrush. Wandel over de iconische boogbruggen, bezoek het Model Village en geniet van het idyllische uitzicht.</p>
+                            <p>Bezoek ook de Swan Hotel tuin voor een prachtig uitzicht over het dorp en de rivier.</p>
+                            <div class="tip-badge"><i class="bi bi-geo-alt"></i> Wandel over de 7 boogbruggen</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-moon-stars me-1"></i> 18:00 — Avond</span>
+                            <h5><i class="bi bi-wine me-2" style="color: var(--cotton-gold);"></i>Terug naar Cirencester</h5>
+                            <p>Keer terug naar Cirencester voor een ontspannen avond. Probeer een lokaal bier in een traditionele Cotswolds-pub.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="mt-4 mt-lg-0">
+                        <h4 class="mb-4 fade-in" style="font-size: 1.3rem;">
+                            <i class="bi bi-camera-fill me-2" style="color: var(--cotton-gold);"></i>Beelden van de Noordelijke Dorpen
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1565711561500-49678a10a63f?w=700&q=80" alt="Castle Combe met de Bybrook beek en historische gebouwen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Castle Combe</h5>
+                                        <p>Vaak genoemd als het mooiste dorp van Engeland.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1599834560857-56d0784f4a9e?w=500&q=80" alt="Arlington Row in Bibury - 14e eeuwse weverswoningen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Arlington Row</h5>
+                                        <p>14e-eeuwse weverswoningen</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1625073583004-a498630e9e3a?w=500&q=80" alt="Bourton-on-the-Water bruggen over de Windrush" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Bourton-on-the-Water</h5>
+                                        <p>De "Venetië van de Cotswolds"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4 fade-in">
+                            <h6><i class="bi bi-film me-1"></i> Filmlocatie</h6>
+                            <p>Castle Combe is gebruikt als opnamelocatie voor films zoals <strong>Stardust</strong>, <strong>War Horse</strong> en de TV-serie <strong>Poldark</strong>. Het dorp ziet eruit alsof het uit een sprookje komt.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DAG 3 ==================== -->
+    <section class="day-section section-padding" id="day3">
+        <div class="container">
+            <div class="day-banner fade-in">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=80" alt="Broadway Tower uitzicht over de Cotswolds">
+                <div class="banner-overlay">
+                    <h3>Dag 3 — Zuidelijke Juwelen</h3>
+                    <p><i class="bi bi-geo-alt-fill me-1"></i> Broadway, Chipping Campden, Stow-on-the-Wold & The Slaughters</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="day-header fade-in">
+                        <div class="day-number">3</div>
+                        <h2 class="day-title">De Zuidelijke Cotswolds</h2>
+                        <p class="day-theme">"De parel en het juweel — grandioze dorpen en marktsteden"</p>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sunrise me-1"></i> 09:00 — Ochtend</span>
+                            <h5><i class="bi bi-tower me-2" style="color: var(--cotton-gold);"></i>Broadway & Broadway Tower</h5>
+                            <p>Bekend als zowel de <strong>"Parel" als het "Juweel van de Cotswolds"</strong>. Broadway staat bekend om zijn grote paardenkastanjes, statige antiekwinkels en de nabijgelegen <strong>Broadway Tower</strong> — een uitkijktoren met panoramisch uitzicht over de Cotswolds.</p>
+                            <p>Bezoek ook het National Trust-landgoed met de prachtige tuinen en het oude landhuis.</p>
+                            <div class="tip-badge"><i class="bi bi-eye"></i> Uitzicht vanaf Broadway Tower is adembenemend</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sun me-1"></i> 11:30 — Middag</span>
+                            <h5><i class="bi bi-shop me-2" style="color: var(--cotton-gold);"></i>Chipping Campden</h5>
+                            <p>Een prachtige marktstad bekend om zijn oude herbergen, winkels en onafhankelijke restaurants. De High Street is een van de mooiste van de Cotswolds, met imposante gevels uit de 16e en 17e eeuw.</p>
+                            <p>Bezoek de <strong>St James Church</strong> en de <strong>Campden House</strong> tuinen.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-cup-hot me-1"></i> 13:00 — Lunch</span>
+                            <h5><i class="bi bi-cup-straw me-2" style="color: var(--cotton-gold);"></i>Lunch in Chipping Campden</h5>
+                            <p>Geniet van lunch in een van de vele uitstekende restaurants langs de High Street.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-compass me-1"></i> 14:30 — Namiddag</span>
+                            <h5><i class="bi bi-signpost-split me-2" style="color: var(--cotton-green);"></i>Stow-on-the-Wold</h5>
+                            <p>De hoogst gelegen marktstad van de Cotswolds. De high streets zijn gevuld met <strong>theekamers en antiquairszaken</strong>. Bezoek de Cotswold Motor Museum of wandel door de smalle straatjes.</p>
+                            <p>De <strong>St Mary's Church</strong> heeft een prachtige toren met uitzicht.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-tree me-1"></i> 16:00 — Late namiddag</span>
+                            <h5><i class="bi bi-water me-2" style="color: var(--cotton-green);"></i>The Slaughters</h5>
+                            <p>Bezoek zowel <strong>Lower Slaughter</strong> (idyllisch met een oude watermolen) als <strong>Upper Slaughter</strong>, verbonden door een rivierpad. Lower Slaughter is een van de meest fotogenieke dorpen van de Cotswolds, met de rivier de Eye die door het dorp stroomt.</p>
+                            <div class="tip-badge"><i class="bi bi-walking"></i> Wandel het rivierpad tussen beide dorpen</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-moon-stars me-1"></i> 18:30 — Avond</span>
+                            <h5><i class="bi bi-wine me-2" style="color: var(--cotton-gold);"></i>Terug naar Cirencester</h5>
+                            <p>Een lange, prachtige dag. Keer terug voor een welverdiend diner.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="mt-4 mt-lg-0">
+                        <h4 class="mb-4 fade-in" style="font-size: 1.3rem;">
+                            <i class="bi bi-camera-fill me-2" style="color: var(--cotton-gold);"></i>Beelden van het Zuiden
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="Broadway Tower met uitzicht over de Cotswolds heuvels" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Broadway Tower</h5>
+                                        <p>Panoramisch uitzicht over de Cotswolds.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1596280695121-8775052c57a9?w=500&q=80" alt="Chipping Campden High Street" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Chipping Campden</h5>
+                                        <p>Prachtige High Street</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1568184654489-4d952abdf46d?w=500&q=80" alt="Lower Slaughter met watermolen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Lower Slaughter</h5>
+                                        <p>Idyllisch met watermolen</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4 fade-in">
+                            <h6><i class="bi bi-trophy me-1"></i> Wist je dat?</h6>
+                            <p>Stow-on-the-Wold is de <strong>hoogst gelegen marktstad</strong> van de Cotswolds, op ongeveer 250 meter boven zeeniveau. Het biedt uitzichten over 7 graafschappen op heldere dagen!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DAG 4 ==================== -->
+    <section class="day-section section-padding" id="day4">
+        <div class="container">
+            <div class="day-banner fade-in">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1400&q=80" alt="Cotswolds landgoed met prachtige tuinen">
+                <div class="banner-overlay">
+                    <h3>Dag 4 — Landgoederen & Natuur</h3>
+                    <p><i class="bi bi-geo-alt-fill me-1"></i> Cirencester Park, Sezincote, Farm Park & de Thames-bron</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="day-header fade-in">
+                        <div class="day-number">4</div>
+                        <h2 class="day-title">Landgoederen & Landelijk Leven</h2>
+                        <p class="day-theme">"Van polo-velden tot zeldzame dierrassen"</p>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sunrise me-1"></i> 09:00 — Ochtend</span>
+                            <h5><i class="bi bi-horse me-2" style="color: var(--cotton-gold);"></i>Cirencester Park & Polo Club</h5>
+                            <p>Het landgoed van de <strong>9e Earl en Countess Bathurst</strong>. Toegankelijk via Day, Annual of Community passes. Open dagelijks van 8:00 tot 17:00 uur.</p>
+                            <p>De <strong>Polo Club</strong> organiseert hoogwaardige wedstrijden. De toernooifinales zijn typisch op zondag om 15:00 uur (poorten open om 12:00 uur). De Clubhouse en Thatched Bar serveren verfrissingen.</p>
+                            <p>Wandel door de prachtige parklandschappen en bezoek de tuinen.</p>
+                            <div class="tip-badge"><i class="bi bi-ticket-perforated"></i> Check de polo-wedstrijd agenda</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sun me-1"></i> 11:30 — Middag</span>
+                            <h5><i class="bi bi-building me-2" style="color: var(--cotton-gold);"></i>Sezincote House</h5>
+                            <p>Een uniek landgoed met <strong>Indiase-geïnspireerde architectuur</strong> en prachtige tuinen. Sezincote is een van de meest opvallende landhuizen van de Cotswolds, ontworpen in een Indiase stijl door Sir Charles Barry.</p>
+                            <p>De tuinen zijn een hoogtepunt — met vijvers, bruggen en exotische planten.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-cup-hot me-1"></i> 13:00 — Lunch</span>
+                            <h5><i class="bi bi-cup-straw me-2" style="color: var(--cotton-gold);"></i>Lunch in de buurt</h5>
+                            <p>Geniet van lunch in een van de lokale pubs of cafés in de omgeving van Sezincote.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-piggy-bank me-1"></i> 14:30 — Namiddag</span>
+                            <h5><i class="bi bi-egg-fried me-2" style="color: var(--cotton-green);"></i>Cotswolds Farm Park</h5>
+                            <p>Beheerd door <strong>Adam Henson</strong>, dit farm park richt zich op het beschermen van <strong>zeldzame rassen boerderijdieren</strong>. Een prachtige ervaring om meer te leren over het agrarische leven in de Cotswolds — ongeveer 86% van het land is gewijd aan landbouw (zuivel, vee en schapen).</p>
+                            <div class="tip-badge"><i class="bi bi-heart"></i> Ondersteunt zeldzame dierrassen</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-water me-1"></i> 16:30 — Late namiddag</span>
+                            <h5><i class="bi bi-droplet me-2" style="color: var(--cotton-green);"></i>Source of the River Thames</h5>
+                            <p>Bezoek de bron van de <strong>Rivier de Thames</strong>, gelegen bij Kemble, een paar mijl van Cirencester. Dit is het startpunt van de langste rivier van Engeland (346 km). Een klein maar betekenisvol monument met een prachtig uitzicht over de Cotswolds.</p>
+                            <div class="tip-badge"><i class="bi bi-camera"></i> Foto bij de bron is een must!</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-moon-stars me-1"></i> 18:30 — Avond</span>
+                            <h5><i class="bi bi-wine me-2" style="color: var(--cotton-gold);"></i>Avond in Cirencester</h5>
+                            <p>Ontspannen avond met diner in een van de beste restaurants van Cirencester.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="mt-4 mt-lg-0">
+                        <h4 class="mb-4 fade-in" style="font-size: 1.3rem;">
+                            <i class="bi bi-camera-fill me-2" style="color: var(--cotton-gold);"></i>Beelden van Landgoederen
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=700&q=80" alt="Cotswolds landgoed met groene velden" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Cirencester Park</h5>
+                                        <p>Het landgoed van de Earl en Countess Bathurst.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&q=80" alt="Cotswolds weiden met schapen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Farm Park</h5>
+                                        <p>Zeldzame dierrassen</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=80" alt="Bron van de Thames in de Cotswolds" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Thames Bron</h5>
+                                        <p>Bij Kemble</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4 fade-in">
+                            <h6><i class="bi bi-info-circle me-1"></i> Andere Landgoederen</h6>
+                            <p>Andere opmerkelijke landhuizen in de regio zijn <strong>Cerne House, Rodmarton Manor, Kiftsgate Court, Sezincote House</strong> en het Grade II-lijst <strong>Eastleach House</strong>. Bezienswaardige tuinen: Batsford Arboretum en Painswick Rococo Gardens.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DAG 5 ==================== -->
+    <section class="day-section section-padding" id="day5">
+        <div class="container">
+            <div class="day-banner fade-in">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80" alt="Cotswolds landschap met heuvels en groene velden">
+                <div class="banner-overlay">
+                    <h3>Dag 5 — Water, Bomen & Cheltenham</h3>
+                    <p><i class="bi bi-geo-alt-fill me-1"></i> Cotswold Water Park, Westonbirt & Cheltenham</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="day-header fade-in">
+                        <div class="day-number">5</div>
+                        <h2 class="day-title">Natuur & Cultuur</h2>
+                        <p class="day-theme">"Van 150 meren tot de culturele hoofdstad"</p>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sunrise me-1"></i> 09:00 — Ochtend</span>
+                            <h5><i class="bi bi-water me-2" style="color: var(--cotton-green);"></i>Cotswold Water Park</h5>
+                            <p>Meer dan <strong>150 meren</strong> over 40 vierkante mijl! Dit is het perfecte ochtendactiviteit-gebied met <strong>kanoën, kajakken, zeilen, vissen en kamperen</strong>. Huur een kano of kajak en verken de meren en kanalen.</p>
+                            <p>Een van de grootste netwerken van zoetwaterrecreatie in Europa.</p>
+                            <div class="tip-badge"><i class="bi bi-boat"></i> Huur een kano voor de ochtend</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-sun me-1"></i> 12:00 — Middag</span>
+                            <h5><i class="bi bi-tree me-2" style="color: var(--cotton-green);"></i>Westonbirt Arboretum</h5>
+                            <p>Bezoek <strong>Westonbirt Arboretum</strong> bij Tetbury — een van de mooiste arboreta ter wereld. Onderhouden door Forestry England, beslaat het meer dan 600 hectare met bomen van over de hele wereld.</p>
+                            <p>In het voorjaar: wilde bloemen en baby-lammetjes. In het najaar: gouden, rode en koperen bladeren. Een absolute must-visit!</p>
+                            <div class="tip-badge"><i class="bi bi-leaf"></i> 600+ hectare aan bomen en tuinen</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-cup-hot me-1"></i> 14:00 — Lunch</span>
+                            <h5><i class="bi bi-cup-straw me-2" style="color: var(--cotton-gold);"></i>Lunch bij Westonbirt</h5>
+                            <p>Geniet van lunch in het café van Westonbirt of in een van de lokale pubs in Tetbury.</p>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-building me-1"></i> 15:00 — Namiddag</span>
+                            <h5><i class="bi bi-train-front me-2" style="color: var(--cotton-gold);"></i>Cheltenham</h5>
+                            <p>Bezoek <strong>Cheltenham</strong> — een Regency-spa stad bekend als de <strong>"culturele hoofdstad van de Cotswolds"</strong> met directe treinverbindingen naar grote steden.</p>
+                            <p>Wandel langs de Promenade, bezoek het Pittville Pump Room, en verken de prachtige Regency-architectuur. De stad is ook bekend om het <strong>Cheltenham Festival</strong> — een groot springrennen-evenement.</p>
+                            <div class="tip-badge"><i class="bi bi-train-front"></i> Directe treinverbindingen</div>
+                        </div>
+
+                        <div class="timeline-item fade-in">
+                            <span class="time-badge"><i class="bi bi-moon-stars me-1"></i> 18:00 — Avond</span>
+                            <h5><i class="bi bi-cup-hot me-2" style="color: var(--cotton-gold);"></i>Afscheidsdiner</h5>
+                            <p>Geniet van een afscheidsdiner in Cheltenham of terug in Cirencester. Vier een prachtige week in de Cotswolds!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="mt-4 mt-lg-0">
+                        <h4 class="mb-4 fade-in" style="font-size: 1.3rem;">
+                            <i class="bi bi-camera-fill me-2" style="color: var(--cotton-gold);"></i>Beelden van Dag 5
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-12 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Cotswolds groene heuvels en velden" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Cotswold Water Park</h5>
+                                        <p>150+ meren over 40 vierkante mijl.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&q=80" alt="Westonbirt Arboretum bomen" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Westonbirt</h5>
+                                        <p>Wereldberoemd arboretum</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 fade-in">
+                                <div class="photo-card">
+                                    <div class="photo-overlay">
+                                        <img src="https://images.unsplash.com/photo-1523365280197-f1783db9fe62?w=500&q=80" alt="Cheltenham Regency architectuur" class="clickable-photo">
+                                    </div>
+                                    <div class="photo-caption">
+                                        <h5>Cheltenham</h5>
+                                        <p>Culturele hoofdstad</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4 fade-in">
+                            <h6><i class="bi bi-train-front me-1"></i> Nabije Steden</h6>
+                            <p>Andere nabijgelegen steden zijn <strong>Gloucester, Swindon en Oxford</strong>. Cheltenham heeft directe treinverbindingen naar Londen Paddington (ongeveer 1,5 uur).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== VIDEO SECTION ==================== -->
+    <section class="section-padding" style="background: var(--cotton-cream);" id="videos">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <p class="section-subtitle">Beleef de Cotswolds</p>
+                <h2 class="section-title">Video's van de Regio</h2>
+                <div class="gold-line"></div>
+                <p class="mx-auto" style="max-width: 600px; color: var(--cotton-text-light);">
+                    Bekijk deze video's om een voorproefje te krijgen van de prachtige Cotswolds.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6 fade-in">
+                    <div class="photo-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/8Vf5nFjJjZk" title="The Cotswolds - England's Most Beautiful Countryside" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="photo-caption">
+                            <h5><i class="bi bi-play-circle me-2" style="color: var(--cotton-gold);"></i>The Cotswolds — Englands Mooiste Landschap</h5>
+                            <p>Een prachtige reis door de Cotswolds, van dorpen tot landgoederen.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="photo-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/1FkF3T2hQqA" title="Bourton on the Water - Venice of the Cotswolds" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="photo-caption">
+                            <h5><i class="bi bi-play-circle me-2" style="color: var(--cotton-gold);"></i>Bourton-on-the-Water — Venetië van de Cotswolds</h5>
+                            <p>Verken de iconische bruggen en het idyllische dorp.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="photo-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Castle Combe - England's Most Beautiful Village" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="photo-caption">
+                            <h5><i class="bi bi-play-circle me-2" style="color: var(--cotton-gold);"></i>Castle Combe — Het Mooiste Dorp</h5>
+                            <p>Ontdek waarom Castle Combe wordt genoemd als het mooiste dorp van Engeland.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="photo-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" title="Cirencester - The Capital of the Cotswolds" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="photo-caption">
+                            <h5><i class="bi bi-play-circle me-2" style="color: var(--cotton-gold);"></i>Cirencester — De Hoofdstad van de Cotswolds</h5>
+                            <p>Ontdek de Romeinse geschiedenis en charmante straatjes van Cirencester.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SEASONAL GUIDE ==================== -->
+    <section class="section-padding" style="background: white;" id="seasons">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <p class="section-subtitle">Het Jaar door</p>
+                <h2 class="section-title">Seizoensgids</h2>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="season-card">
+                        <div class="season-icon">🌸</div>
+                        <h5>Voorjaar</h5>
+                        <p>Ideaal voor wilde bloemen, tuinen bezoeken en baby-lammetjes. De Cotswolds komen tot leven met groen en kleur.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="season-card">
+                        <div class="season-icon">☀️</div>
+                        <h5>Zomer</h5>
+                        <p>Hoogseizoen met drukte. Beste tijd voor wandelen en pub-tuinen. Plan van tevoren en kom vroeg uit de veren.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="season-card">
+                        <div class="season-icon">🍂</div>
+                        <h5>Herfst</h5>
+                        <p>Minder drukte; gekenmerkt door gouden, rode en koperen bladeren. Perfecte tijd voor wandelingen door de bossen.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="season-card">
+                        <div class="season-icon">❄️</div>
+                        <h5>Winter</h5>
+                        <p>Het rustigste seizoen; ideaal om te ontspannen bij open haarden. De dorpen hebben een magische, sneeuwbedekte sfeer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TIPS SECTION ==================== -->
+    <section class="tips-section section-padding" id="tips">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <p class="section-subtitle">Praktische Informatie</p>
+                <h2 class="section-title">Tips voor uw Reis</h2>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-car-front"></i></div>
+                        <h5>Vervoer</h5>
+                        <p>Een auto is essentieel om de Cotswolds te verkennen. De dorpen zijn verspreid over het land en het openbaar vervoer is beperkt. Parkeergelegenheid is beperkt in populaire dorpen — kom vroeg!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-house-door"></i></div>
+                        <h5>Onderdak</h5>
+                        <p>Boek vroeg, vooral tijdens het <strong>Cheltenham Festival</strong> (maart) en in het hoogseizoen (juli-augustus). Cirencester is een uitstekende uitvalsbasis met goede verbindingen.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-cup-hot"></i></div>
+                        <h5>Eten & Drinken</h5>
+                        <p>Probeer lokale Cotswolds-kaas, Gloucestershire Old Spot varkensvlees en lokale bieren. Veel pubs serveren uitstekende traditionele Engelse gerechten.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-clock-history"></i></div>
+                        <h5>Timing</h5>
+                        <p>Bezoek populaire dorpen zoals Castle Combe en Bibury <strong>vroeg in de ochtend</strong> (voor 9:00) om de drukte te mijden. De mooiste foto's maak je in het gouden uur.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-cloud-rain"></i></div>
+                        <h5>Weer</h5>
+                        <p>Engels weer is onvoorspelbaar — neem altijd regenjas en comfortabele wandelschoenen mee. Laagceiling en mist maken de Cotswolds nog sfeervoller!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="bi bi-globe2"></i></div>
+                        <h5>Plan van Boren</h5>
+                        <p>Bezoek de <strong>Visit Cotswolds website</strong> voor meer informatie over verkennen, accommodatie-inspiratie en wandelroutes. Download offline kaarten voor de weg.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAP SECTION ==================== -->
+    <section class="map-section section-padding" id="map">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <p class="section-subtitle">Locatie</p>
+                <h2 class="section-title">De Cotswolds op de Kaart</h2>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d436827.7487688999!2d-2.3508!3d51.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48745a2b0b0b0b0b%3A0x0!2sCotswolds!5e0!3m2!1snl!2snl!4v1700000000000!5m2!1snl!2snl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps - De Cotswolds regio"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <h4><i class="bi bi-geo-alt-fill me-2"></i>Onze Cotswolds Avontuur</h4>
+            <p class="mb-3">5 dagen door het hart van Engeland — Cirencester, Castle Combe, Bibury, Bourton-on-the-Water, Broadway, Chipping Campden, Stow-on-the-Wold, The Slaughters, en meer.</p>
+            <p class="mb-4" style="font-size: 0.85rem; opacity: 0.6;">
+                Gebaseerd op informatie van Visit Cotswolds. Voor de meest actuele informatie, bezoek <a href="https://www.visitcotswolds.co.uk" target="_blank" rel="noopener" style="color: var(--cotton-gold);">visitcotswolds.co.uk</a>
+            </p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                <p style="font-size: 0.85rem; opacity: 0.5;">
+                    <i class="bi bi-heart-fill me-1" style="color: var(--cotton-gold);"></i> 
+                    Een reis voor twee — gemaakt met liefde voor de Cotswolds
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Terug naar boven">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Vergroot foto" id="lightboxImg">
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 70;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+                // Close mobile nav
+                const navCollapse = document.getElementById('navbarNav');
+                if (navCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navCollapse).hide();
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.clickable-photo').forEach(photo => {
+            photo.style.cursor = 'pointer';
+            photo.addEventListener('click', function() {
+                lightboxImg.src = this.src.replace('w=500', 'w=1200').replace('w=700', 'w=1200');
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
