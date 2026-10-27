@@ -1,0 +1,1075 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcline Studio – Minimalist Architecture Portfolio</title>
+    <meta name="description" content="Arcline Studio is a Copenhagen-based architecture practice focused on quiet spaces, intentional form, and timeless simplicity. Explore our selected works and get in touch.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --accent: #a67c52;
+            --accent-dark: #8c6640;
+            --dark: #1a1a1a;
+            --dark-soft: #2a2a2a;
+            --light: #faf9f7;
+            --muted: #6b6b6b;
+            --border-light: #e9e5df;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-display: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .navbar-brand,
+        .display-1, .display-2, .display-3, .display-4 {
+            font-family: var(--font-display);
+            font-weight: 500;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.75rem);
+            line-height: 1.1;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+        }
+
+        a {
+            color: var(--accent);
+            transition: color 0.25s ease, opacity 0.25s ease;
+        }
+
+        a:hover {
+            color: var(--accent-dark);
+        }
+
+        .text-accent {
+            color: var(--accent) !important;
+        }
+
+        .text-muted-custom {
+            color: var(--muted) !important;
+        }
+
+        .bg-light-custom {
+            background-color: var(--light);
+        }
+
+        .bg-dark-custom {
+            background-color: var(--dark);
+            color: #f5f3f0;
+        }
+
+        .bg-dark-custom h2,
+        .bg-dark-custom h3,
+        .bg-dark-custom .navbar-brand {
+            color: #f5f3f0;
+        }
+
+        .btn {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--accent-dark);
+            border-color: var(--accent-dark);
+            color: #fff;
+        }
+
+        .btn-outline-dark {
+            border-color: var(--dark);
+            color: var(--dark);
+            background: transparent;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--dark);
+            color: #fff;
+        }
+
+        .btn-outline-light {
+            border-color: rgba(255,255,255,0.7);
+            color: #fff;
+            background: transparent;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: var(--dark);
+        }
+
+        .navbar {
+            background-color: rgba(250, 249, 247, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 0.75rem 0;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            background-color: rgba(250, 249, 247, 0.97);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            letter-spacing: 0.02em;
+            color: var(--dark);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--dark-soft);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-left: 1.5rem;
+            transition: color 0.25s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            padding: 0.5rem 0 !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        section {
+            scroll-margin-top: 70px;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            color: #fff;
+            background-color: var(--dark);
+            padding: 8rem 0 5rem;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            color: #fff;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+        }
+
+        .hero .lead {
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            max-width: 560px;
+            font-size: 1.1rem;
+        }
+
+        .hero .btn {
+            margin-top: 0.5rem;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-gap {
+            padding: 6rem 0;
+        }
+
+        .section-gap-sm {
+            padding: 4rem 0;
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image {
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+
+        .project-card .card-image {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .project-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease, filter 0.7s ease;
+        }
+
+        .project-card:hover .card-image img {
+            transform: scale(1.06);
+            filter: brightness(0.95);
+        }
+
+        .project-card .card-body {
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .project-meta {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+
+        .process-step {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 2rem 1.5rem;
+            height: 100%;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .process-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border: 1px solid #d8d4ce;
+            background-color: #fff;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.15);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.4rem;
+            color: var(--accent);
+            padding-top: 0.2rem;
+        }
+
+        .footer {
+            background-color: var(--dark);
+            color: #bdbab5;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer a {
+            color: #d9d5cf;
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 2px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-caption {
+            color: #ddd;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            letter-spacing: 0.04em;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.25s ease;
+            z-index: 10;
+            padding: 0.5rem;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                background: rgba(250, 249, 247, 0.98);
+                padding: 1rem 1.5rem;
+                border-radius: 4px;
+                margin-top: 0.5rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                padding: 0.75rem 0 !important;
+            }
+
+            .hero {
+                padding-top: 7rem;
+                padding-bottom: 4rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.25rem, 10vw, 3.5rem);
+            }
+
+            .section-gap {
+                padding: 4rem 0;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .process-step {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero .lead {
+                font-size: 1rem;
+            }
+
+            .hero .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Accessibility: reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arcline Studio – Minimalist Architecture Portfolio">
+    <meta property="og:description" content="Arcline Studio is a Copenhagen-based architecture practice focused on quiet spaces, intentional form, and timeless simplicity. Explore our selected works and get in touch.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/f0cdlnb3u2v89jic/">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!--ID:2--><nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">Arcline Studio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+        <img class="hero-image" src="https://picsum.photos/seed/architect-hero/1920/1080" alt="Minimalist architectural interior with natural light and clean lines" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080?text=Architecture+Portfolio';">
+        <!--ID:3--><div class="hero-overlay"></div><!--/ID:3-->
+        <!--ID:4--><div class="container hero-content">
+            <div class="row">
+                <div class="col-lg-8 col-xl-7">
+                    <p class="eyebrow text-light">Architecture &amp; Interior Design</p>
+                    <h1 class="display-2">Quiet spaces, intentional form.</h1>
+                    <p class="lead mb-4">Arcline Studio designs residential and cultural spaces with a focus on natural light, honest materials, and timeless simplicity.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#work" class="btn btn-primary">View selected work</a>
+                        <a href="#contact" class="btn btn-outline-light">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ID:4-->
+    </header>
+
+    <!-- About -->
+    <!--ID:7--><section id="about" class="section-gap bg-light-custom">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!--ID:5--><div class="col-lg-6">
+                    <img class="about-image" src="https://picsum.photos/seed/architect-about/800/1000" alt="Portrait of the studio space with architectural models and drawings" onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=Studio+Space';">
+                </div><!--/ID:5-->
+                <!--ID:6--><div class="col-lg-6">
+                    <p class="eyebrow">About</p>
+                    <h2>A practice rooted in clarity.</h2>
+                    <p class="text-muted-custom fs-5 fw-light">Founded by Adrian Sterling in 2016, Arcline Studio is a small architecture practice based in Copenhagen. We believe that good architecture is not about excess, but about clarity - spaces that feel calm, function effortlessly, and age beautifully.</p>
+                    <p class="text-muted-custom">Our work spans private homes, galleries, and small cultural institutions. Each project begins with listening: to the site, the light, and the people who will inhabit it. We work closely with craftsmen and local communities to bring honest materials and refined details to life.</p>
+                    <div class="row mt-5 pt-3">
+                        <div class="col-4">
+                            <div class="stat-number">9</div>
+                            <div class="stat-label">Years practice</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-number">42</div>
+                            <div class="stat-label">Projects built</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Design awards</div>
+                        </div>
+                    </div>
+                </div><!--/ID:6-->
+            </div>
+        </div>
+    </section><!--/ID:7-->
+
+    <!-- Selected Works / Gallery -->
+    <!--ID:10--><section id="work" class="section-gap bg-white">
+        <div class="container">
+            <!--ID:8--><div class="row mb-5">
+                <div class="col-lg-7">
+                    <p class="eyebrow">Selected Work</p>
+                    <h2>Projects that speak softly.</h2>
+                </div>
+                <div class="col-lg-5 align-self-end text-lg-end">
+                    <p class="text-muted-custom mb-0">A selection of residential and cultural commissions. Click any project to enlarge.</p>
+                </div>
+            </div><!--/ID:8-->
+            <!--ID:9--><div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-harbor-house/1200/800" data-caption="Harbor House - Copenhagen, 2021 · Residential">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-harbor-house/600/400" alt="Harbor House exterior with large windows overlooking the water" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Harbor+House';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">Harbor House</h3>
+                            <div class="project-meta">
+                                <span>Copenhagen</span>
+                                <span>2021</span>
+                                <span>Residential</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-gable-gallery/1200/800" data-caption="The Gable Gallery - Oslo, 2019 · Cultural">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-gable-gallery/600/400" alt="Interior of a gallery with a pitched ceiling and natural skylights" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Gable+Gallery';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">The Gable Gallery</h3>
+                            <div class="project-meta">
+                                <span>Oslo</span>
+                                <span>2019</span>
+                                <span>Cultural</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-courtyard-pavilion/1200/800" data-caption="Courtyard Pavilion - Aarhus, 2022 · Public">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-courtyard-pavilion/600/400" alt="A minimal public pavilion in a landscaped courtyard" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Courtyard+Pavilion';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">Courtyard Pavilion</h3>
+                            <div class="project-meta">
+                                <span>Aarhus</span>
+                                <span>2022</span>
+                                <span>Public</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-nordic-apartments/1200/800" data-caption="Nordic Apartments - Stockholm, 2020 · Residential">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-nordic-apartments/600/400" alt="Exterior of Nordic apartments with wooden facade" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Nordic+Apartments';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">Nordic Apartments</h3>
+                            <div class="project-meta">
+                                <span>Stockholm</span>
+                                <span>2020</span>
+                                <span>Residential</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-stone-glass-house/1200/800" data-caption="Stone &amp; Glass House - Helsinki, 2018 · Residential">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-stone-glass-house/600/400" alt="Stone and glass house with minimalist geometry" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Stone+%26+Glass+House';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">Stone &amp; Glass House</h3>
+                            <div class="project-meta">
+                                <span>Helsinki</span>
+                                <span>2018</span>
+                                <span>Residential</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card" data-lightbox data-full="https://picsum.photos/seed/project-museum-wood/1200/800" data-caption="Museum of Wood - Bergen, 2023 · Cultural">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/project-museum-wood/600/400" alt="Museum interior featuring warm wooden surfaces" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Museum+of+Wood';">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="mb-2">Museum of Wood</h3>
+                            <div class="project-meta">
+                                <span>Bergen</span>
+                                <span>2023</span>
+                                <span>Cultural</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:9-->
+        </div>
+    </section><!--/ID:10-->
+
+    <!-- Process -->
+    <!--ID:13--><section id="process" class="section-gap bg-light-custom">
+        <div class="container">
+            <!--ID:11--><div class="row mb-5">
+                <div class="col-lg-8">
+                    <p class="eyebrow">Process</p>
+                    <h2>How we bring ideas to life.</h2>
+                </div>
+            </div><!--/ID:11-->
+            <!--ID:12--><div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-step">
+                        <div class="process-number">01</div>
+                        <h3>Listen</h3>
+                        <p class="text-muted-custom mb-0">We begin by understanding the site, the brief, and the people who will use the space.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-step">
+                        <div class="process-number">02</div>
+                        <h3>Sketch</h3>
+                        <p class="text-muted-custom mb-0">Ideas take shape through hand drawings, models, and early material studies.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-step">
+                        <div class="process-number">03</div>
+                        <h3>Refine</h3>
+                        <p class="text-muted-custom mb-0">We test daylight, circulation, and detail until the design feels inevitable.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="process-step">
+                        <div class="process-number">04</div>
+                        <h3>Build</h3>
+                        <p class="text-muted-custom mb-0">We collaborate closely with craftsmen to realize the work with precision and care.</p>
+                    </div>
+                </div>
+            </div><!--/ID:12-->
+        </div>
+    </section><!--/ID:13-->
+
+    <!-- Contact -->
+    <!--ID:16--><section id="contact" class="section-gap bg-white">
+        <div class="container">
+            <div class="row g-5">
+                <!--ID:14--><div class="col-lg-5">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Let's build something quiet.</h2>
+                    <p class="text-muted-custom">If you have a project in mind, we'd love to hear from you. We typically respond within two business days.</p>
+                    <div class="mt-4">
+                        <div class="contact-info-item">
+                            <i class="bi bi-envelope"></i>
+                            <div>
+                                <div class="fw-medium">Email</div>
+                                <a href="mailto:studio@arcline.example">studio@arcline.example</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="bi bi-telephone"></i>
+                            <div>
+                                <div class="fw-medium">Phone</div>
+                                <a href="tel:+4512345678">+45 12 34 56 78</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <div class="fw-medium">Studio</div>
+                                <span>Vestergade 12, 1456 Copenhagen, Denmark</span>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/ID:14-->
+                <!--ID:15--><div class="col-lg-7">
+                    <form id="contactForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" placeholder="Project type or question">
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Send message</button>
+                                <span id="formFeedback" class="ms-2 small text-success d-none">Thank you! Your message has been sent.</span>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--/ID:15-->
+            </div>
+        </div>
+    </section><!--/ID:16-->
+
+    <!-- Footer -->
+    <!--ID:19--><footer class="footer">
+        <div class="container">
+            <!--ID:17--><div class="row g-4">
+                <div class="col-md-6">
+                    <div class="navbar-brand text-white">Arcline Studio</div>
+                    <p class="small text-muted mb-3">Minimal architecture &amp; interior design. Copenhagen, Denmark.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+            </div><!--/ID:17-->
+            <hr class="border-secondary opacity-25 my-4">
+            <!--ID:18--><div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+                <span>&copy; 2026 Arcline Studio. All rights reserved.</span>
+                <div>
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
+                    <span class="mx-2">·</span>
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / Cookie settings</a>
+                </div>
+            </div><!--/ID:18-->
+        </div>
+    </footer><!--/ID:19-->
+
+    <!-- Lightbox overlay -->
+    <!--ID:20--><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project image lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+            <img id="lightboxImage" src="" alt="Enlarged project view">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div><!--/ID:20-->
+
+    <!-- Cookie notice modal -->
+    <!--ID:24--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 border-0 shadow">
+                <!--ID:21--><div class="modal-header border-0">
+                    <h5 class="modal-title" id="cookieModalLabel">Cookie preferences</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:21-->
+                <!--ID:22--><div class="modal-body">
+                    <p class="small text-muted mb-2">We use only necessary cookies to make this site work (functional / localStorage for your preferences). No tracking or marketing cookies are used.</p>
+                    <p class="small text-muted mb-0">You can change your choice anytime via the Cookies link in the footer.</p>
+                </div><!--/ID:22-->
+                <!--ID:23--><div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+                </div><!--/ID:23-->
+            </div>
+        </div>
+    </div><!--/ID:24-->
+
+    <!-- Privacy statement modal -->
+    <!--ID:28--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content rounded-0 border-0 shadow">
+                <!--ID:25--><div class="modal-header border-0">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy statement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:25-->
+                <!--ID:26--><div class="modal-body small">
+                    <p><strong>Data controller:</strong> Arcline Studio (fictional demo portfolio), contact via email <a href="mailto:studio@arcline.example">studio@arcline.example</a>.</p>
+                    <p><strong>What we collect:</strong> This is a demonstration website. If you use the contact form, you may provide your name, email address, and message. We do not store this information on a server in this demo; it is only processed locally in your browser and not transmitted.</p>
+                    <p><strong>Cookies &amp; local storage:</strong> The site uses localStorage to remember your cookie consent choice. No tracking or marketing cookies are used.</p>
+                    <p><strong>Purpose &amp; legal basis:</strong> The purpose of collecting form data (if submitted) is to respond to your inquiry, based on your consent. The purpose of localStorage is to remember your privacy settings, based on legitimate interest.</p>
+                    <p><strong>Retention:</strong> Since no personal data is stored on a backend, there is no retention period. Your browser may keep localStorage until you clear it.</p>
+                    <p><strong>Your rights:</strong> You may request access, correction, or deletion of your data at any time by contacting us. You may also manage cookie preferences via the footer link.</p>
+                    <p class="mb-0 text-muted">This is a fictional portfolio template. Adapt this text to your actual data processing if you deploy the site.</p>
+                </div><!--/ID:26-->
+                <!--ID:27--><div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div><!--/ID:27-->
+            </div>
+        </div>
+    </div><!--/ID:28-->
+
+    <!-- Bootstrap JS -->
+    <!--ID:29--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:29-->
+
+    <!-- Custom JS -->
+    <!--ID:30--><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            function handleScroll() {
+                if (navbar && window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else if (navbar) {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+
+            // Lightbox functionality
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const projectCards = document.querySelectorAll('[data-lightbox]');
+
+            function openLightbox(src, caption) {
+                if (!lightbox || !lightboxImage || !lightboxCaption) return;
+                lightboxImage.src = src;
+                lightboxImage.alt = caption || 'Project image enlarged';
+                lightboxCaption.textContent = caption || '';
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                if (!lightbox) return;
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+                lightboxImage.src = '';
+                lightboxCaption.textContent = '';
+            }
+
+            projectCards.forEach(function(card) {
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('click', function() {
+                    const full = card.getAttribute('data-full');
+                    const caption = card.getAttribute('data-caption');
+                    openLightbox(full, caption);
+                });
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const full = card.getAttribute('data-full');
+                        const caption = card.getAttribute('data-caption');
+                        openLightbox(full, caption);
+                    }
+                });
+            });
+
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', closeLightbox);
+            }
+            if (lightbox) {
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) closeLightbox();
+                });
+            }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
+                    closeLightbox();
+                }
+            });
+
+            // Contact form (demo only)
+            const contactForm = document.getElementById('contactForm');
+            const formFeedback = document.getElementById('formFeedback');
+            if (contactForm && formFeedback) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // simple validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    if (name && email && message) {
+                        formFeedback.classList.remove('d-none');
+                        contactForm.reset();
+                        setTimeout(function() {
+                            formFeedback.classList.add('d-none');
+                        }, 5000);
+                    } else {
+                        alert('Please fill in name, email, and message.');
+                    }
+                });
+            }
+
+            // Cookie consent: show modal once
+            try {
+                if (!localStorage.getItem('cookieConsent')) {
+                    const cookieModalEl = document.getElementById('cookieModal');
+                    if (cookieModalEl && window.bootstrap) {
+                        new bootstrap.Modal(cookieModalEl).show();
+                    }
+                }
+            } catch (e) {
+                // localStorage may be unavailable
+            }
+
+            const cookieAccept = document.getElementById('cookieAccept');
+            const cookieReject = document.getElementById('cookieReject');
+            const cookieModalEl = document.getElementById('cookieModal');
+
+            function hideCookieModal() {
+                if (cookieModalEl && window.bootstrap) {
+                    const inst = bootstrap.Modal.getInstance(cookieModalEl) || bootstrap.Modal.getOrCreateInstance(cookieModalEl);
+                    if (inst) inst.hide();
+                }
+            }
+
+            if (cookieAccept) {
+                cookieAccept.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'accepted'); } catch (e) {}
+                    hideCookieModal();
+                });
+            }
+
+            if (cookieReject) {
+                cookieReject.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'rejected'); } catch (e) {}
+                    hideCookieModal();
+                });
+            }
+
+            // Also handle close/backdrop dismissal to store 'dismissed'
+            if (cookieModalEl) {
+                cookieModalEl.addEventListener('hidden.bs.modal', function() {
+                    if (!localStorage.getItem('cookieConsent')) {
+                        try { localStorage.setItem('cookieConsent', 'dismissed'); } catch (e) {}
+                    }
+                });
+            }
+        });
+    </script><!--/ID:30-->
+</body>
+</html>

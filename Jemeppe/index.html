@@ -1,0 +1,973 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasteel van Jemeppe · Château d'Hargimont - Hotel &amp; Eventlocatie in Hargimont</title>
+<meta name="description" content="Kasteel van Jemepe (Château d'Hargimont) in Hargimont, deelgemeente van Marche-en-Famenne: meer dan 800 jaar geschiedenis - vandaag een intiem hotel en gedroomde evenementenlocatie in de Belgische Ardennen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<!--ID:1--><style>
+/* ============ Kasteel van Jemeppe - custom styles ============ */
+:root{
+  --paper:#f7f3ea;
+  --paper-2:#efe8d9;
+  --card:#fffdf8;
+  --night:#161a11;
+  --night-deep:#0f120b;
+  --ink:#252b1e;
+  --muted:#6d6753;
+  --gold:#ad8038;
+  --gold-deep:#8a6425;
+  --gold-soft:#cfa864;
+  --line:rgba(37,43,30,.16);
+  --font-d:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --font-b:'Jost','Segoe UI',Helvetica,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-b);letter-spacing:.01em;overflow-x:hidden}
+::selection{background:var(--gold-deep);color:#fff}
+h1,h2,h3,.modal-title{font-family:var(--font-d)}
+img{max-width:100%;height:auto}
+section[id]{scroll-margin-top:86px}
+:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:2px}
+.sec{padding-block:clamp(4rem,9vw,6.75rem)}
+.text-muted-warm{color:var(--muted)!important}
+
+/* Skip link */
+.skip-link{position:absolute;left:-999px;top:0;z-index:3000;background:var(--gold-deep);color:#fff;padding:.8rem 1.4rem;text-decoration:none;font-size:.9rem}
+.skip-link:focus{left:1rem;top:1rem;color:#fff}
+
+/* Ornament / kicker */
+.kicker{display:inline-block;font-size:.76rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;margin-bottom:1rem}
+.kicker::before{content:"✦";color:var(--gold);margin-right:.7rem}
+.on-dark .kicker{color:var(--gold-soft)}
+.ornament{display:flex;align-items:center;gap:1rem;max-width:260px;margin:0 auto 1.4rem}
+.ornament::before,.ornament::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold));opacity:.7}
+.ornament::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.on-dark .ornament::before{background:linear-gradient(90deg,transparent,var(--gold-soft))}
+
+/* Buttons */
+.btn-castle{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;background:var(--gold-deep);border:1px solid var(--gold-deep);color:#fff;font-family:var(--font-b);letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;font-weight:500;padding:.95rem 1.8rem;min-height:48px;border-radius:2px;transition:all .3s ease}
+.btn-castle:hover{background:#6f4e1c;border-color:#6f4e1c;color:#fff;transform:translateY(-2px);box-shadow:0 12px 26px rgba(95,68,20,.3)}
+.btn-ghost-light{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;font-family:var(--font-b);letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;font-weight:500;padding:.95rem 1.8rem;min-height:48px;border-radius:2px;transition:all .3s ease}
+.btn-ghost-light:hover{border-color:var(--gold-soft);color:var(--gold-soft);background:rgba(255,255,255,.06)}
+.btn-line{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--line);color:var(--ink);font-family:var(--font-b);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;font-weight:500;padding:.95rem 1.6rem;min-height:48px;border-radius:2px;transition:all .3s ease}
+.btn-line:hover{border-color:var(--gold);color:var(--gold-deep)}
+
+/* Grain texture */
+.grain::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");opacity:.14;mix-blend-mode:overlay;pointer-events:none}
+
+/* ============ Navbar ============ */
+.site-nav{transition:background .35s ease,box-shadow .35s ease,border-color .35s ease;border-bottom:1px solid transparent;background:linear-gradient(180deg,rgba(13,15,9,.62),rgba(13,15,9,0))}
+.site-nav.nav-scrolled{background:rgba(247,243,234,.96);backdrop-filter:blur(8px);box-shadow:0 8px 28px rgba(22,27,15,.1);border-color:var(--line)}
+.site-nav .navbar-brand{display:flex;align-items:center;gap:.8rem;color:#fff;text-decoration:none}
+.brand-crest{height:42px;width:auto;flex:none;color:var(--gold-soft)}
+.brand-text{line-height:1.05}
+.brand-name{font-family:var(--font-d);font-weight:600;font-size:1.18rem;letter-spacing:.03em;display:block}
+.brand-sub{display:block;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:.2rem}
+.site-nav .nav-link{color:rgba(255,255,255,.85);font-size:.79rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:.6rem 1rem;transition:color .25s}
+.site-nav .nav-link:hover{color:var(--gold-soft)}
+.navbar-toggler{border:1px solid rgba(255,255,255,.45);color:#fff;width:48px;height:44px;border-radius:3px;padding:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.navbar-toggler:focus{box-shadow:none}
+.btn-nav{background:var(--gold-deep);border:1px solid var(--gold-deep);color:#fff;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;padding:.65rem 1.25rem;min-height:44px;border-radius:3px;font-weight:500;transition:all .3s}
+.btn-nav:hover{background:#6f4e1c;color:#fff}
+@media (max-width:991.98px){
+  .site-nav .navbar-collapse{background:rgba(17,20,13,.97);margin:.8rem -1rem 1rem;padding:1.1rem 1.3rem;border-radius:10px}
+  .site-nav .navbar-collapse .nav-link{color:#efe9da}
+  .site-nav .navbar-collapse .btn-nav{width:100%;margin-top:.5rem}
+  .menu-open .navbar-brand{color:#fff}
+  .menu-open .brand-sub{color:rgba(255,255,255,.65)}
+  .menu-open .brand-crest{color:var(--gold-soft)}
+}
+@media (min-width:992px){
+  .site-nav.nav-scrolled .navbar-brand{color:var(--ink)}
+  .site-nav.nav-scrolled .brand-sub{color:var(--muted)}
+  .site-nav.nav-scrolled .brand-crest{color:var(--gold-deep)}
+  .site-nav.nav-scrolled .nav-link{color:#414836}
+  .site-nav.nav-scrolled .nav-link:hover{color:var(--gold-deep)}
+  .site-nav.nav-scrolled .navbar-toggler{border-color:var(--line);color:var(--ink)}
+}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--night)}
+@supports (min-height:100svh){.hero{min-height:100svh}}
+.hero-bg{position:absolute;left:0;right:0;top:-8%;height:120%;width:100%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06)}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,9,.72) 0%,rgba(13,15,9,.42) 46%,rgba(13,15,9,.9) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;padding-top:8rem;padding-bottom:6.5rem;text-align:center;color:#fff}
+.hero-eyebrow{font-size:.74rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold-soft);font-weight:500;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.7rem,8vw + .6rem,5.3rem);font-weight:600;line-height:1.04;margin:0 0 .9rem;color:#f6f1e3;overflow-wrap:anywhere}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero-fr{text-transform:uppercase;font-size:.82rem;letter-spacing:.4em;color:rgba(255,255,255,.7);margin-bottom:1.6rem}
+.hero-lead{max-width:640px;margin:0 auto 2.4rem;color:rgba(255,255,255,.84);font-weight:300;font-size:clamp(1.02rem,1.4vw,1.18rem);line-height:1.75}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+.hero-anim{opacity:0;transform:translateY(26px);animation:rise .95s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{to{opacity:1;transform:none}}
+.scroll-cue{position:absolute;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.55rem;color:rgba(255,255,255,.6)}
+.scroll-cue .mouse{width:24px;height:38px;border:1.5px solid rgba(255,255,255,.55);border-radius:13px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold-soft);animation:cue 1.9s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+.scroll-cue span{font-size:.64rem;letter-spacing:.34em;text-transform:uppercase}
+@media (max-height:580px){.scroll-cue{display:none}}
+
+/* ============ Village ============ */
+.section-title{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:600;line-height:1.12;color:#2b3122;overflow-wrap:anywhere}
+.lead-warm{color:var(--muted);font-weight:300;font-size:1.05rem;line-height:1.8}
+.collage{position:relative;padding-bottom:4.5rem}
+.photo{background:#fff;padding:9px;box-shadow:0 26px 60px rgba(32,37,20,.18);border-radius:3px}
+.photo img{display:block;width:100%;object-fit:cover;border-radius:2px}
+.frame-offset{position:relative;z-index:1}
+.frame-offset::before{content:"";position:absolute;top:-16px;left:-16px;width:100%;height:100%;border:1px solid var(--gold);opacity:.55;z-index:-1;border-radius:3px}
+.photo-small{position:absolute;right:-8px;bottom:0;width:52%;box-shadow:0 22px 46px rgba(32,37,20,.3)}
+@media (max-width:767.98px){.photo-small{position:relative;right:auto;margin-top:1.4rem;width:68%}.collage{padding-bottom:0}}
+.stat-row{display:flex;flex-wrap:wrap;gap:1.4rem 2.4rem;margin-top:2.4rem}
+.stat{border-left:1px solid var(--line);padding-left:1.1rem}
+.stat .num{font-family:var(--font-d);font-size:clamp(1.9rem,3vw,2.5rem);color:var(--gold-deep);line-height:1;font-weight:600}
+.stat .lbl{display:block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.45rem;max-width:180px}
+
+/* ============ History (dark) ============ */
+.history{background:var(--night);color:#eae4d3;position:relative;overflow:hidden}
+.history .section-title{color:#f3eddc}
+.history-crest{width:min(46vw,540px);height:auto;color:var(--gold-soft);opacity:.05;pointer-events:none;position:absolute;top:2rem;right:-5rem;z-index:0}
+.timeline{position:relative;max-width:1060px;margin:3.2rem auto 0;z-index:1}
+.timeline::before{content:"";position:absolute;top:6px;bottom:0;left:9px;width:2px;background:linear-gradient(180deg,rgba(207,168,100,.85),rgba(207,168,100,.04))}
+.tl-item{position:relative;padding:0 0 3rem 2.9rem}
+.tl-dot{position:absolute;top:.55rem;left:2.5px;width:14px;height:14px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 0 6px rgba(207,168,100,.16)}
+.tl-card{background:#1c2113;border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:1.5rem 1.6rem;transition:transform .35s ease,border-color .35s ease}
+.tl-card:hover{transform:translateY(-4px);border-color:rgba(207,168,100,.5)}
+.tl-icon{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(207,168,100,.5);color:var(--gold-soft);font-size:1.15rem;margin-bottom:1rem}
+.tl-period{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);font-weight:500}
+.tl-year{font-family:var(--font-d);font-size:clamp(1.75rem,2.6vw,2.3rem);line-height:1.05;color:#f6efdd;margin:.15rem 0 .45rem;font-weight:600}
+.tl-card h3{font-size:1.35rem;font-weight:600;color:#efe7d2;margin-bottom:.5rem}
+.tl-card p{color:#b9b3a0;font-size:.98rem;line-height:1.75;margin:0;font-weight:300}
+@media (min-width:992px){
+  .timeline::before{left:50%;transform:translateX(-50%)}
+  .tl-item{width:50%;padding:0 3.4rem 3.2rem 0}
+  .tl-item:nth-child(odd){text-align:right}
+  .tl-item:nth-child(odd) .tl-icon{margin-left:auto}
+  .tl-item:nth-child(even){margin-left:50%;padding:0 0 3.2rem 3.4rem;text-align:left}
+  .tl-dot{right:-8px;left:auto}
+  .tl-item:nth-child(odd) .tl-dot{left:auto;right:-8px}
+  .tl-item:nth-child(even) .tl-dot{right:auto;left:-8px}
+}
+
+/* ============ Beleving cards ============ */
+.exp-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;height:100%;transition:transform .4s ease,box-shadow .4s ease;display:flex;flex-direction:column}
+.exp-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(35,40,22,.15)}
+.exp-media{height:232px;overflow:hidden;position:relative;margin-bottom:0}
+.exp-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease}
+.exp-card:hover .exp-media img{transform:scale(1.06)}
+.exp-icon{position:absolute;left:1.4rem;bottom:-24px;z-index:2;width:50px;height:50px;border-radius:50%;background:var(--paper);border:1px solid rgba(173,128,56,.4);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 8px 18px rgba(30,35,20,.18)}
+.exp-body{padding:3rem 1.6rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.exp-body h3{font-size:1.45rem;font-weight:600;color:#2b3122;margin-bottom:.5rem}
+.exp-body p{color:var(--muted);font-size:.95rem;line-height:1.7;font-weight:300;flex:1}
+.exp-link{margin-top:1.1rem;color:var(--gold-deep);text-decoration:none;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:.45rem;width:fit-content}
+.exp-link i{transition:transform .3s ease}
+.exp-link:hover{color:#6f4e1c}
+.exp-link:hover i{transform:translateX(5px)}
+
+/* ============ Ribbon marquee ============ */
+.ribbon{background:var(--night-deep);border-block:1px solid rgba(255,255,255,.06);overflow:hidden;padding:.9rem 0}
+.ribbon-track{display:flex;width:max-content;animation:ribbonMove 32s linear infinite}
+.ribbon-group{display:flex;align-items:center;gap:3.4rem;padding-right:3.4rem;font-size:.78rem;letter-spacing:.34em;text-transform:uppercase;color:#b9b3a0;white-space:nowrap;font-weight:400}
+.rb-dot{color:var(--gold);font-style:normal;letter-spacing:0}
+@keyframes ribbonMove{to{transform:translateX(-50%)}}
+
+/* ============ Gallery ============ */
+.gallery-grid{column-count:1;column-gap:1.15rem}
+@media (min-width:576px){.gallery-grid{column-count:2}}
+@media (min-width:992px){.gallery-grid{column-count:3}}
+.g-item{display:block;width:100%;break-inside:avoid;margin-bottom:1.15rem;position:relative;border-radius:8px;overflow:hidden;padding:0;border:0;background:#d8d2c2;cursor:zoom-in;text-align:left}
+.g-media img{display:block;width:100%;transition:transform .6s ease,filter .6s ease}
+.g-item:hover .g-media img,.g-item:focus-visible .g-media img{transform:scale(1.05);filter:brightness(.82)}
+.g-cap{position:absolute;left:0;right:0;bottom:0;padding:3rem 1.1rem .95rem;background:linear-gradient(transparent,rgba(12,14,8,.8));color:#f3eede;font-size:.92rem;text-align:left;opacity:0;transform:translateY(10px);transition:all .4s ease}
+.g-item:hover .g-cap,.g-item:focus-visible .g-cap{opacity:1;transform:none}
+.g-zoom{position:absolute;top:.8rem;right:.8rem;width:36px;height:36px;border-radius:50%;background:rgba(12,14,8,.45);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:1.05rem;opacity:0;transition:opacity .3s ease}
+.g-item:hover .g-zoom,.g-item:focus-visible .g-zoom{opacity:1}
+
+/* ============ Praktisch ============ */
+.info-card,.form-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:clamp(1.6rem,3vw,2.5rem);box-shadow:0 14px 38px rgba(35,40,22,.07)}
+.info-card h3,.form-card h3{font-size:1.55rem;font-weight:600;color:#2b3122;margin-bottom:1.4rem}
+.contact-line{display:flex;gap:.95rem;align-items:flex-start;margin-bottom:1.15rem}
+.ci-icon{width:42px;height:42px;border-radius:50%;flex:none;background:rgba(173,128,56,.1);border:1px solid rgba(173,128,56,.35);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.contact-line .cl-lbl{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.contact-line .cl-val{font-size:1rem;color:#333a29}
+.contact-line a{text-decoration:none;color:#333a29;border-bottom:1px solid rgba(173,128,56,.4);transition:color .25s}
+.contact-line a:hover{color:var(--gold-deep)}
+.form-card label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem;font-weight:500}
+.form-card .form-control,.form-card .form-select{background:#fbf8f1;border-color:rgba(37,43,30,.2);border-radius:3px;font-family:var(--font-b);color:var(--ink)}
+.form-card .form-control:focus,.form-card .form-select:focus{background:#fff;border-color:var(--gold);box-shadow:0 0 0 .2rem rgba(173,128,56,.18)}
+
+/* ============ Footer ============ */
+.site-footer{background:var(--night-deep);color:#b9b3a0;padding-top:4.2rem;position:relative}
+.footer-crest{height:58px;width:auto;color:var(--gold-soft);margin-bottom:.9rem}
+.footer-brand{font-family:var(--font-d);font-size:1.5rem;font-weight:600;color:#f0ead9}
+.site-footer p,.site-footer li{font-size:.92rem;line-height:1.7;font-weight:300}
+.site-footer h4?{} /* (unused) */
+.footer-head{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#8f8a79;margin-bottom:1.1rem;font-weight:500}
+.site-footer ul li a{color:#b9b3a0;text-decoration:none;transition:color .25s,padding-left .25s;display:inline-block}
+.site-footer ul li a:hover{color:var(--gold-soft);padding-left:.3rem}
+.social-btn{display:inline-flex;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);align-items:center;justify-content:center;color:#cfc9b6;margin-right:.5rem;text-decoration:none;transition:all .3s}
+.social-btn:hover{border-color:var(--gold-soft);color:var(--gold-soft);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.09);margin-top:3.4rem;padding:1.3rem 0;font-size:.78rem}
+.footer-bottom .legal a{color:#cfc9b6;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);margin-left:.4rem;transition:color .25s}
+.footer-bottom .legal a:hover{color:var(--gold-soft)}
+
+/* ============ Modals ============ */
+.modal-content{border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.modal-header{border-bottom:1px solid var(--line)}
+.modal-title{font-family:var(--font-d);font-size:1.7rem;font-weight:600;color:#2b3122}
+.cookie-list{list-style:none;padding:0;margin:0}
+.cookie-list li{display:flex;gap:.8rem;padding:.85rem 0;border-bottom:1px dashed var(--line);font-size:.92rem;line-height:1.6}
+.cookie-list li:last-child{border-bottom:0}
+.cookie-list i{color:var(--gold-deep);margin-top:.2rem;font-size:1.05rem}
+
+/* ============ Lightbox ============ */
+.lightbox{position:fixed;inset:0;z-index:2100;display:none;align-items:center;justify-content:center;background:rgba(10,12,7,.94);padding:3.6rem 1rem}
+.lightbox.show{display:flex;animation:lbFade .28s ease}
+@keyframes lbFade{from{opacity:0}to{opacity:1}}
+.lb-figure{margin:0;text-align:center;max-width:100%}
+#lbImg{max-width:min(92vw,1150px);max-height:76vh;width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 34px 80px rgba(0,0,0,.55)}
+.lb-figure figcaption{color:#d9d3c2;font-size:.95rem;margin-top:1.1rem;letter-spacing:.04em}
+.lb-btn{position:absolute;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.07);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .25s}
+.lb-btn:hover{border-color:var(--gold-soft);color:var(--gold-soft);background:rgba(255,255,255,.14)}
+#lbClose{top:1.1rem;right:1.1rem}
+#lbPrev{left:1.1rem;top:50%;transform:translateY(-50%)}
+#lbNext{right:1.1rem;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;top:1.45rem;left:1.45rem;color:#cfc9b8;font-size:.82rem;letter-spacing:.24em}
+
+/* ============ Reveal on scroll ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .hero-anim,.reveal{opacity:1;transform:none}
+  .ribbon-track{animation:none}
+}
+/*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kasteel van Jemeppe · Château d'Hargimont - Hotel &amp; Eventlocatie in Hargimont">
+    <meta property="og:description" content="Kasteel van Jemepe (Château d'Hargimont) in Hargimont, deelgemeente van Marche-en-Famenne: meer dan 800 jaar geschiedenis - vandaag een intiem hotel en gedroomde evenementenlocatie in de Belgische Ardennen.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/qmdi0xftyswcl8o3/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/qmdi0xftyswcl8o3/img/2026-09-22T18-24-10_Hargimont_051030_7.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/qmdi0xftyswcl8o3/img/2026-09-22T18-24-10_Hargimont_051030_7.jpg">
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main">Direct naar de inhoud</a>
+
+<!-- ================= NAVBAR ================= -->
+<!--ID:2--><nav class="navbar navbar-expand-lg fixed-top site-nav grain" id="mainNav" aria-label="Hoofdnavigatie">
+  <div class="container">
+    <a class="navbar-brand" href="#top">
+      <svg class="brand-crest" viewBox="0 0 48 56" role="img" aria-hidden="true">
+        <path d="M24 3 L43 10 V29 C43 42 35 50.5 24 53.5 C13 50.5 5 42 5 29 V10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M16 21 v-5 h4 v3 h8 v-3 h4 v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M16 21 h16 v20 h-16 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M21.5 41 v-6 a2.5 2.5 0 0 1 5 0 v6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <circle cx="24" cy="27" r="1.5" fill="currentColor"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Kasteel van Jemeppe</span>
+        <span class="brand-sub">Château d'Hargimont · est. 12e eeuw</span>
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteMenu" aria-controls="siteMenu" aria-expanded="false" aria-label="Menü openen of sluiten">
+      <i class="bi bi-list" id="navToggleIcon"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="siteMenu">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#hargimont">Hargimont</a></li>
+        <li class="nav-item"><a class="nav-link" href="#geschiedenis">Geschiedenis</a></li>
+        <li class="nav-item"><a class="nav-link" href="#beleving">Beleving</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galerij">Galerij</a></li>
+        <li class="nav-item"><a class="nav-link d-none d-lg-inline-block" href="#praktisch">Praktisch</a></li>
+      </ul>
+      <a href="#praktisch" class="btn-nav text-decoration-none">Plan uw bezoek</a>
+    </div>
+  </div>
+</nav><!--/ID:2-->
+
+<main id="main" tabindex="-1">
+
+<!-- ================= HERO ================= -->
+<header class="hero grain" id="hero">
+  <!--ID:3--><div class="hero-bg" aria-hidden="true">
+    <img src="img/2026-09-22T18-24-10_Hargimont_051030_7.jpg" alt="" fetchpriority="high">
+  </div><!--/ID:3-->
+  <!--ID:4--><div class="hero-shade" aria-hidden="true"></div><!--/ID:4-->
+
+  <!--ID:5--><div class="container hero-content">
+    <p class="hero-eyebrow hero-anim" style="--d:.1s">Deelgemeente van Marche-en-Famenne · Provincie Luxemburg</p>
+    <h1 class="hero-anim" style="--d:.25s">Kasteel van&nbsp;<em>Jemeppe</em></h1>
+    <p class="hero-fr hero-anim" style="--d:.4s">Château d'Hargimont - Hargimont, België</p>
+    <p class="hero-lead hero-anim" style="--d:.55s">Al meer dan acht eeuwen torent het kasteel boven het dorp Hargimont uit. Wat begon als een middeleeuws verdedigingswerk tussen moerassen en de rivier Hedree, is vandaag een intiem hotel en gedroomde evenementenlocatie in het hart van de Ardennen.</p>
+    <div class="hero-cta hero-anim" style="--d:.7s">
+      <a href="#praktisch" class="btn-castle text-decoration-none"><i class="bi bi-calendar-heart me-1"></i>Plan uw bezoek</a>
+      <a href="#geschiedenis" class="btn-ghost-light text-decoration-none">Ontdek 800 jaar geschiedenis<i class="bi bi-arrow-down ms-1"></i></a>
+    </div>
+  </div><!--/ID:5-->
+
+  <!--ID:6--><div class="scroll-cue hero-anim" style="--d:1s" aria-hidden="true">
+    <span class="mouse"></span><span>Ontdek</span>
+  </div><!--/ID:6-->
+</header>
+
+<!-- ================= HARGIMONT (het dorp) ================= -->
+<!--ID:9--><section id="hargimont" class="sec" style="background:var(--paper)">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <!--ID:7--><div class="col-lg-6 reveal">
+        <span class="kicker">Het dorp</span>
+        <h2 class="section-title mb-4">Hargimont, een schattige hoek van de Ardennen</h2>
+        <p class="lead-warm mb-3">Hargimont is een dorp in de Belgische provincie Luxemburg en sinds 1977 een deelgemeente van de stad Marche-en-Famenne. Tot aan de gemeentelijke herindeling was het een zelfstandige gemeente - vandaag een rustig, landelijk dorp met enkele honderden inwoners, uitgestrekte velden en bosranden.</p>
+        <p class="lead-warm">Door het dorp stroomt de Hedree. Rond haar oevers en voormalige moerassen staat het meest opvallende bouwwerk van Hargimont: het kasteel van Jemeppe, waarvan de oorsprong teruggaat tot de middeleeuwen.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num">800+</span><span class="lbl">jaar kastelhistorie</span></div>
+          <div class="stat"><span class="num">1977</span><span class="lbl">gemeentelijke herindeling</span></div>
+          <div class="stat"><span class="num">5+2</span><span class="lbl">verdiepingen &amp; kelders van de oude donjon</span></div>
+        </div>
+      </div><!--/ID:7-->
+      <!--ID:8--><div class="col-lg-6 reveal" style="--d:.15s">
+        <div class="collage">
+          <figure class="photo frame-offset mb-0">
+            <img src="img/2026-09-22T18-24-08_20260922_112111.jpg" alt="De kastelomgeving in Hargimont" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';">
+          </figure>
+          <figure class="photo photo-small mb-0">
+            <img src="img/2026-09-22T18-24-08_20260922_112336.jpg" alt="Het Ardennische landschap bij Hargimont" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Hargimont';">
+          </figure>
+        </div>
+      </div><!--/ID:8-->
+    </div>
+  </div>
+</section><!--/ID:9-->
+
+<!-- ================= GESCHIEDENIS (timeline, dark) ================= -->
+<!--ID:12--><section id="geschiedenis" class="sec on-dark grain history" style="background:var(--night)">
+  <svg class="history-crest" viewBox="0 0 48 56" aria-hidden="true">
+    <path d="M24 3 L43 10 V29 C43 42 35 50.5 24 53.5 C13 50.5 5 42 5 29 V10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M16 21 v-5 h4 v3 h8 v-3 h4 v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M16 21 h16 v20 h-16 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M21.5 41 v-6 a2.5 2.5 0 0 1 5 0 v6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="24" cy="27" r="1.5" fill="currentColor"/>
+  </svg>
+
+  <div class="container position-relative">
+    <!--ID:10--><div class="text-center reveal">
+      <span class="kicker">Geschiedenis</span>
+      <h2 class="section-title mb-3">Van middeleeuws verdedigingswerk tot sterrenlocatie</h2>
+      <div class="ornament" aria-hidden="true"></div>
+      <p class="lead-warm mx-auto" style="max-width:640px;color:#b9b3a0">Negen hoofdstukken in meer dan acht eeuwen - van een bescheiden landhuis in het moeras tot een kasteel dat vandaag op de buis verschijnt.</p>
+    </div><!--/ID:10-->
+
+    <!--ID:11--><div class="timeline">
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-water" aria-hidden="true"></i></div>
+          <span class="tl-period">Middeleeuwen</span>
+          <p class="tl-year mb-2">Het landgoed in het moeras</p>
+          <h3>Een huis tussen water en riviervlakte</h3>
+          <p>In de middeleeuwen bestond het landhuis van Jemeppe slechts uit enkele gebouwen, omgeven door moerassen en de rivier Hedree. Het bood weinig bescherming tegen de heersende families van Namen en Luxemburg die sinds de twaalfde eeuw vochten over Durbuy en La Roche.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-bricks" aria-hidden="true"></i></div>
+          <span class="tl-period">± 1200</span>
+          <p class="tl-year mb-2">Een versterkt huis</p>
+          <h3>De eerste serieuze verdediging</h3>
+          <p>In het begin van de dertiende eeuw laat men een versterkt huis bouwen op het landgoed - de eerste echte bescherming tegen de ruziënde vorstelijke families.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-shield-fill" aria-hidden="true"></i></div>
+          <span class="tl-period">13e eeuw</span>
+          <p class="tl-year mb-2">De donjon van Jean d'Ochain</p>
+          <h3>Vijf verdiepingen, twee kelders, één deur</h3>
+          <p>Jean d'Ochain vervangt het versterkte huis door een donjon, beschermd met grachten. Oorspronkelijk had de toren vijf verdiepingen en twee kelders; toegang was enkel mogelijk via één enkele deur op de begane grond. De eerste twee verdiepingen dienden als woonruimtes, de bovenste twee - simpler van opbouw - werden gebruikt door het personeel, voor opslag en als schuilplaats voor de inwoners van het landgoed.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-ring-engaged" aria-hidden="true"></i></div>
+          <span class="tl-period">1616</span>
+          <p class="tl-year mb-2">Raes d'Ans breidt uit</p>
+          <h3>Van toren naar vierkant kasteel</h3>
+          <p>Catherine de Jemeppe, laatste erfgename van de familie d'Ochain, trouwt met Raes d'Ans, sieur de Velroux. Kort na het verwerven laat hij de versterkte toren uitbouwen tot een vierkant kasteel - ook de dubbele gracht en de hoeve dateren uit die periode.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-pencil-square" aria-hidden="true"></i></div>
+          <span class="tl-period">1739 – 1748</span>
+          <p class="tl-year mb-2">Licht in de vleugels</p>
+          <h3>Een modernisering in twee fasen</h3>
+          <p>De vleugels worden verder gemoderniseerd: onder andere meer ramen en ruimere vertrekken. Het kasteel krijgt een wat minder krijgsgestalte, zonder zijn verdedigende karakter te verlieren.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-house-heart" aria-hidden="true"></i></div>
+          <span class="tl-period">1838</span>
+          <p class="tl-year mb-2">Een nieuwe familie</p>
+          <h3>De overdracht aan Sauvage-Vercour</h3>
+          <p>Het kasteel komt in handen van de familie Sauvage-Vercour, die het landgoed nog meer dan een eeuw zal beheren en verder zal doen groeien.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-hammer" aria-hidden="true"></i></div>
+          <span class="tl-period">1865 – 1875</span>
+          <p class="tl-year mb-2">De renovatie van Adrien</p>
+          <h3>Zadeldaken, stenen bekroning en een steil donjon-dak</h3>
+          <p>Adrien de Sauvage-Vercour laat uitgebreide renovatiewerken uitvoeren. Opvallend zijn de toegevoegde zadeldaken aan de vleugels, de 'stenen bekroning' en het kenmerkende steile dak van de donjon - de silhouette die we vandaag kennen.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-star" aria-hidden="true"></i></div>
+          <span class="tl-period">2022</span>
+          <p class="tl-year mb-2">Een nieuwe ster in de Ardennen</p>
+          <h3>Hotel &amp; evenementenlocatie</h3>
+          <p>Ondernemer Sam Baro - bekend als eigenaar van voetbalclub KAA Gent, regionale televisiezender AVS en HR-bedrijf PLANET Group - koopt het kasteel. Het wordt een intiem hotel én evenementenlocatie.</p>
+        </article>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot" aria-hidden="true"></span>
+        <article class="tl-card h-100">
+          <div class="tl-icon"><i class="bi bi-broadcast" aria-hidden="true"></i></div>
+          <span class="tl-period">2024 – 2026</span>
+          <p class="tl-year mb-2">Op de buis</p>
+          <h3>Acht eeuwen geschiedenis, nu ook op tv</h3>
+          <p>In 2024 wordt hier het politieke televisieprogramma <em>Het conclaaf</em> opgenomen. In 2026 volgt seizoen zes van <em>De Verraders</em> op RTL 4 - met het kasteel als decor.</p>
+        </article>
+      </div>
+    </div><!--/ID:11-->
+  </div>
+</section><!--/ID:12-->
+
+<!-- ================= BELEVING ================= -->
+<!--ID:15--><section id="beleving" class="sec" style="background:var(--paper)">
+  <div class="container">
+    <!--ID:13--><div class="text-center reveal mb-5">
+      <span class="kicker">Vandaag</span>
+      <h2 class="section-title mb-3">Waar de geschiedenis tot leven komt</h2>
+      <div class="ornament" aria-hidden="true"></div>
+      <p class="lead-warm mx-auto" style="max-width:620px">Van intiem hotel tot groots evenement - het kasteel biedt een decor dat u nergens anders vindt, omringd door grachten, park en Ardennisch groen.</p>
+    </div><!--/ID:13-->
+
+    <!--ID:14--><div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.05s">
+        <article class="exp-card">
+          <div class="exp-media position-relative">
+            <img src="img/2026-09-22T18-24-10_Hargimont_050227_2.jpg" alt="Het kasteel van Jemeppe in de vroege ochtend" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Hotel';">
+            <span class="exp-icon"><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+          </div>
+          <div class="exp-body">
+            <h3>Overnachting &amp; hotel</h3>
+            <p>Slaap met de geschiedenis: rustige kamers en suites met uitzicht op het kasteelterrein, een warm ontbijt en de stilte van de Ardennen als wekker.</p>
+            <a class="exp-link" href="#praktisch">Meer weten<i class="bi bi-arrow-right-long"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.15s">
+        <article class="exp-card">
+          <div class="exp-media position-relative">
+            <img src="img/2026-09-22T18-24-10_IMG-20260922-WA0000.jpg" alt="Opstelling voor een feestelijke viering op het kasteelterrein" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Huwelijken';">
+            <span class="exp-icon"><i class="bi bi-heart" aria-hidden="true"></i></span>
+          </div>
+          <div class="exp-body">
+            <h3>Huwelijken &amp; feesten</h3>
+            <p>Zeg ja in een middeleeuws decor: van intieme ceremonies aan de gracht tot grootschalige vieringen voor familie, vrienden en collega's.</p>
+            <a class="exp-link" href="#praktisch">Meer weten<i class="bi bi-arrow-right-long"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.25s">
+        <article class="exp-card">
+          <div class="exp-media position-relative">
+            <img src="img/2026-09-22T18-24-10_IMG-20260922-WA0001.jpg" alt="Decor en ambiance voor een evenement in het kasteel" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Congres';">
+            <span class="exp-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+          </div>
+          <div class="exp-body">
+            <h3>Congres &amp; teamuitjes</h3>
+            <p>Vergaderzalen met donjon als achtergrond, teambuilding in park en grachtengordel - en een kader dat uw personeel nog jarenlang zal onthouden.</p>
+            <a class="exp-link" href="#praktisch">Meer weten<i class="bi bi-arrow-right-long"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.35s">
+        <article class="exp-card">
+          <div class="exp-media position-relative">
+            <img src="img/2026-09-22T18-24-10_IMG-20260922-WA0002.jpg" alt="Voorbereiding voor een tv-opname op locatie" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Opnames';">
+            <span class="exp-icon"><i class="bi bi-camera-reels" aria-hidden="true"></i></span>
+          </div>
+          <div class="exp-body">
+            <h3>Foto- &amp; tv-opnames</h3>
+            <p>Het kasteel is al het decor van <em>Het conclaaf</em> (2024) en seizoen zes van <em>De Verraders</em> op RTL 4 (2026). Uw shoot verdient hetzelfde podium.</p>
+            <a class="exp-link" href="#praktisch">Meer weten<i class="bi bi-arrow-right-long"></i></a>
+          </div>
+        </article>
+      </div>
+    </div><!--/ID:14-->
+  </div>
+</section><!--/ID:15-->
+
+<!-- ================= RIBBON ================= -->
+<!--ID:18--><div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <!--ID:16--><div class="ribbon-group">
+      <span>Hotel &amp; Suites</span><i class="rb-dot">✦</i>
+      <span>Huwelijken &amp; Feesten</span><i class="rb-dot">✦</i>
+      <span>Congres &amp; Teams</span><i class="rb-dot">✦</i>
+      <span>Foto- &amp; TV-opnames</span><i class="rb-dot">✦</i>
+      <span>Dorpskern Hargimont</span><i class="rb-dot">✦</i>
+      <span>Hart van de Ardennen</span><i class="rb-dot">✦</i>
+    </div><!--/ID:16-->
+    <!--ID:17--><div class="ribbon-group">
+      <span>Hotel &amp; Suites</span><i class="rb-dot">✦</i>
+      <span>Huwelijken &amp; Feesten</span><i class="rb-dot">✦</i>
+      <span>Congres &amp; Teams</span><i class="rb-dot">✦</i>
+      <span>Foto- &amp; TV-opnames</span><i class="rb-dot">✦</i>
+      <span>Dorpskern Hargimont</span><i class="rb-dot">✦</i>
+      <span>Hart van de Ardennen</span><i class="rb-dot">✦</i>
+    </div><!--/ID:17-->
+  </div>
+</div><!--/ID:18-->
+
+<!-- ================= GALERIJ ================= -->
+<!--ID:21--><section id="galerij" class="sec" style="background:var(--paper-2)">
+  <div class="container">
+    <!--ID:19--><div class="text-center reveal mb-5">
+      <span class="kicker">Galerij</span>
+      <h2 class="section-title mb-3">Bekijk de beelden</h2>
+      <div class="ornament" aria-hidden="true"></div>
+      <p class="lead-warm mx-auto" style="max-width:560px">Een blik op het kasteel en zijn omgeving. Klik op een foto om hem te vergroten.</p>
+    </div><!--/ID:19-->
+
+    <!--ID:20--><div class="gallery-grid reveal" id="galleryGrid">
+      <button type="button" class="g-item" data-caption="Zicht op het kasteel van Jemeppe" aria-label="Foto vergroten: zicht op het kasteel van Jemeppe">
+        <span class="g-media"><img src="img/2026-09-22T18-24-09_20260922_112339.jpg" alt="Zicht op het kasteel van Jemeppe" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Zicht op het kasteel van Jemeppe</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Het kastelterrein in Hargimont" aria-label="Foto vergroten: het kastelterrein in Hargimont">
+        <span class="g-media"><img src="img/2026-09-22T18-24-09_20260922_112527.jpg" alt="Het kastelterrein in Hargimont" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Het kastelterrein in Hargimont</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="De omgeving van het kasteel bij daglicht" aria-label="Foto vergroten: de omgeving van het kasteel bij daglicht">
+        <span class="g-media"><img src="img/2026-09-22T18-24-09_20260922_114056.jpg" alt="De omgeving van het kasteel bij daglicht" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">De omgeving van het kasteel bij daglicht</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Het kasteel in de middagzon" aria-label="Foto vergroten: het kasteel in de middagzon">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_20260922_142012.jpg" alt="Het kasteel in de middagzon" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Het kasteel in de middagzon</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Groen om het kasteel heen" aria-label="Foto vergroten: groen om het kasteel heen">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_20260922_142029.jpg" alt="Groen om het kasteel heen" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Groen om het kasteel heen</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Het kasteel in de vroege ochtend" aria-label="Foto vergroten: het kasteel in de vroege ochtend">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_Hargimont_050227_2.jpg" alt="Het kasteel in de vroege ochtend" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Het kasteel in de vroege ochtend</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Opstelling voor een evenement op locatie" aria-label="Foto vergroten: opstelling voor een evenement">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_IMG-20260922-WA0000.jpg" alt="Opstelling voor een evenement op locatie" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Opstelling voor een evenement</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Decor en ambiance bij het kasteel" aria-label="Foto vergroten: decor en ambiance">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_IMG-20260922-WA0001.jpg" alt="Decor en ambiance bij het kasteel" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Decor en ambiance</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Voorbereiding voor een tv-opname" aria-label="Foto vergroten: voorbereiding voor een tv-opname">
+        <span class="g-media"><img src="img/2026-09-22T18-24-10_IMG-20260922-WA0002.jpg" alt="Voorbereiding voor een tv-opname" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Kasteel+van+Jemeppe';"></span>
+        <span class="g-cap">Voorbereiding voor een tv-opname</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Landschap in Hargimont" aria-label="Foto vergroten: landschap in Hargimont">
+        <span class="g-media"><img src="img/2026-09-22T18-24-08_20260922_112111.jpg" alt="Landschap in Hargimont" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Hargimont';"></span>
+        <span class="g-cap">Landschap in Hargimont</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" class="g-item" data-caption="Het Ardennische landschap bij het dorp" aria-label="Foto vergroten: het Ardennische landschap">
+        <span class="g-media"><img src="img/2026-09-22T18-24-08_20260922_112336.jpg" alt="Het Ardennische landschap bij het dorp" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Hargimont';"></span>
+        <span class="g-cap">Het Ardennische landschap</span><span class="g-zoom"><i class="bi bi-zoom-in" aria-hidden="true"></i></span>
+      </button>
+    </div><!--/ID:20-->
+  </div>
+</section><!--/ID:21-->
+
+<!-- ================= PRAKTISCH ================= -->
+<!--ID:24--><section id="praktisch" class="sec" style="background:var(--paper)">
+  <div class="container">
+    <!--ID:22--><div class="text-center reveal mb-5">
+      <span class="kicker">Praktisch</span>
+      <h2 class="section-title mb-3">Plan uw bezoek</h2>
+      <div class="ornament" aria-hidden="true"></div>
+    </div><!--/ID:22-->
+
+    <!--ID:23--><div class="row g-4 align-items-stretch">
+      <div class="col-lg-5 reveal">
+        <div class="info-card h-100">
+          <h3>Contact &amp; locatie</h3>
+          <div class="contact-line">
+            <span class="ci-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+            <div><span class="cl-lbl d-block">Adres</span><span class="cl-val">Kasteel van Jemeppe · Hargimont<br>6840 Marche-en-Famenne, België</span></div>
+          </div>
+          <div class="contact-line">
+            <span class="ci-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+            <div><span class="cl-lbl d-block">Telefoon</span><a class="cl-val" href="tel:+3261274852">+32 (0)61 27 48 52</a></div>
+          </div>
+          <div class="contact-line">
+            <span class="ci-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+            <div><span class="cl-lbl d-block">E-mail</span><a class="cl-val" href="mailto:info@chateaudhargimont.be">info@chateaudhargimont.be</a></div>
+          </div>
+          <div class="contact-line">
+            <span class="ci-icon"><i class="bi bi-clock" aria-hidden="true"></i></span>
+            <div><span class="cl-lbl d-block">Bezoek &amp; rondleidingen</span><span class="cl-val">Op afspraak - vraag een datum aan via het formulier.</span></div>
+          </div>
+          <hr style="border-color:var(--line)">
+          <ul class="list-unstyled mb-0" style="font-size:.92rem;color:var(--muted);line-height:1.8">
+            <li><i class="bi bi-car-front me-2 text-muted-warm"></i>Auto: via de E25/N67 richting Marche-en-Famenne, volg daarna de borden naar Hargimont - het kasteel staat prominent aan de dorpsrand.</li>
+            <li><i class="bi bi-p-circle me-2 text-muted-warm"></i>Gratis parking op het kasteelterrein.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-7 reveal" style="--d:.15s">
+        <form class="form-card h-100" id="planForm" novalidate>
+          <h3>Vraag een bezichtiging of offerte aan</h3>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="fNaam" class="form-label d-block">Naam *</label>
+              <input type="text" class="form-control" id="fNaam" name="naam" required autocomplete="name">
+            </div>
+            <div class="col-md-6">
+              <label for="fMail" class="form-label d-block">E-mail *</label>
+              <input type="email" class="form-control" id="fMail" name="mail" required autocomplete="email">
+            </div>
+            <div class="col-md-6">
+              <label for="fType" class="form-label d-block">Type bezoek</label>
+              <select class="form-select" id="fType" name="type">
+                <option selected>Huwelijk &amp; feest</option>
+                <option>Overnachting / hotel</option>
+                <option>Congres &amp; teamuitje</option>
+                <option>Foto- of tv-opname</option>
+                <option>Rondleiding / ander</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="fDatum" class="form-label d-block">Gewenste datum</label>
+              <input type="date" class="form-control" id="fDatum" name="datum">
+            </div>
+            <div class="col-12">
+              <label for="fBericht" class="form-label d-block">Uw aanvraag *</label>
+              <textarea class="form-control" id="fBericht" name="bericht" rows="4" required placeholder="Vertel ons kort over uw evenement, het aantal personen en wat u zoekt…"></textarea>
+            </div>
+            <div class="col-12 d-flex flex-wrap align-items-center gap-3">
+              <button type="submit" class="btn-castle"><i class="bi bi-send me-1"></i>Verstuur aanvraag</button>
+              <p id="formStatus" class="mb-0 small text-muted-warm" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!--/ID:23-->
+  </div>
+</section><!--/ID:24-->
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<!--ID:27--><footer class="site-footer grain">
+  <div class="container">
+    <!--ID:25--><div class="row g-4 pb-2">
+      <div class="col-lg-5">
+        <svg class="footer-crest" viewBox="0 0 48 56" role="img" aria-label="Wapenschild van het kasteel">
+          <path d="M24 3 L43 10 V29 C43 42 35 50.5 24 53.5 C13 50.5 5 42 5 29 V10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M16 21 v-5 h4 v3 h8 v-3 h4 v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M16 21 h16 v20 h-16 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="M21.5 41 v-6 a2.5 2.5 0 0 1 5 0 v6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="24" cy="27" r="1.5" fill="currentColor"/>
+        </svg>
+        <p class="footer-brand mb-3">Kasteel van Jemeppe</p>
+        <p style="max-width:380px">Meer dan acht eeuwen historie in Hargimont, deelgemeente van Marche-en-Famenne. Vandaag hotel en evenementenlocatie - omringd door grachten, park en Ardennisch groen.</p>
+        <div class="mt-3">
+          <a class="social-btn" href="#galerij" aria-label="Bekijk de fotogalerij"><i class="bi bi-instagram"></i></a>
+          <a class="social-btn" href="#beleving" aria-label="Ontdek de belevingen"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <p class="footer-head mb-0">Verken</p>
+        <ul class="list-unstyled mt-2" style="line-height:2.1">
+          <li><a href="#hargimont">Het dorp Hargimont</a></li>
+          <li><a href="#geschiedenis">Geschiedenis</a></li>
+          <li><a href="#beleving">Hotel &amp; evenementen</a></li>
+          <li><a href="#galerij">Galerij</a></li>
+          <li><a href="#praktisch">Praktische info</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <p class="footer-head mb-0">Contact</p>
+        <ul class="list-unstyled mt-2" style="line-height:2.1">
+          <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Hargimont, 6840 Marche-en-Famenne</li>
+          <li><a href="tel:+3261274852"><i class="bi bi-telephone me-2" aria-hidden="true"></i>+32 (0)61 27 48 52</a></li>
+          <li><a href="mailto:info@chateaudhargimont.be"><i class="bi bi-envelope me-2" aria-hidden="true"></i>info@chateaudhargimont.be</a></li>
+        </ul>
+      </div>
+    </div><!--/ID:25-->
+
+    <!--ID:26--><div class="footer-bottom">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>&copy; 2026 Kasteel van Jemeppe · Château d'Hargimont - Hargimont, Marche-en-Famenne</span>
+        <span class="legal d-inline-block">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacyverklaring</a><br class="d-lg-none">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / cookie-instellingen</a>
+        </span>
+      </div>
+    </div><!--/ID:26-->
+  </div>
+</footer><!--/ID:27-->
+
+<!-- ================= LIGHTBOX ================= -->
+<!--ID:28--><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotovergroting">
+  <span class="lb-count" id="lbCount">1 / 11</span>
+  <button type="button" class="lb-btn" id="lbClose" aria-label="Vergroting sluiten"><i class="bi bi-x-lg"></i></button>
+  <button type="button" class="lb-btn" id="lbPrev" aria-label="Vorige foto"><i class="bi bi-chevron-left"></i></button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn" id="lbNext" aria-label="Volgende foto"><i class="bi bi-chevron-right"></i></button>
+</div><!--/ID:28-->
+
+<!-- ================= COOKIE MODAL ================= -->
+<!--ID:32--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:29--><div class="modal-header">
+        <h2 class="modal-title" id="cookieModalLabel">Gebruik van cookies</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:29-->
+      <!--ID:30--><div class="modal-body small">
+        <p class="text-muted-warm mb-3">Wij respecteren uw privacy. Deze site plaatst geen tracking- of marketingcookies. Hieronder vindt u wat er wél wordt gebruikt:</p>
+        <ul class="cookie-list">
+          <li><i class="bi bi-hdd" aria-hidden="true"></i><span><strong>Functionele opslag (localStorage)</strong> - onthoudt uw cookiekeuze en lokale voorkeuren in uw eigen browser. Er wordt niets gedeeld met derden.</span></li>
+          <li><i class="bi bi-globe2" aria-hidden="true"></i><span><strong>Webfonts via Google Fonts</strong> - twee lettertypes worden geladen vanaf de servers van Google; daarbij kan technisch gegevensverkeer (o.a. uw IP-adres) plaatsvinden. Er staat geen Google Analytics of andere tracking op deze site.</span></li>
+        </ul>
+        <p class="text-muted-warm mt-3 mb-0">U kunt uw keuze op elk moment wijzigen via de link "Cookies / cookie-instellingen" in de voettekst.</p>
+      </div><!--/ID:30-->
+      <!--ID:31--><div class="modal-footer">
+        <button type="button" class="btn-line btn-sm" id="cookieReject" data-bs-dismiss="modal">Afwijzen</button>
+        <button type="button" class="btn-castle btn-sm" id="cookieAccept">Accepteren</button>
+      </div><!--/ID:31-->
+    </div>
+  </div>
+</div><!--/ID:32-->
+
+<!-- ================= PRIVACY MODAL ================= -->
+<!--ID:36--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!--ID:33--><div class="modal-header">
+        <h2 class="modal-title" id="privacyModalLabel">Privacyverklaring</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:33-->
+      <!--ID:34--><div class="modal-body small" style="line-height:1.75;color:#4a4638">
+        <p><strong>Verantwoordelijke.</strong> Kasteel van Jemeppe (Château d'Hargimont), Hargimont, 6840 Marche-en-Famenne (België) - e-mail: <a href="mailto:info@chateaudhargimont.be">info@chateaudhargimont.be</a>.</p>
+        <p><strong>Wat we verzamelen.</strong> (1) De gegevens die u zelf verstrekt via het aanvraagformulier (naam, e-mail en inhoud van uw bericht); (2) uw cookiekeuze, opgeslagen lokaal in uw browser; (3) minimale serverloggegevens (o.a. IP-adres en tijdstip) voor de beveiliging en stabiliteit van de website.</p>
+        <p><strong>Doel &amp; wettelijke grondslag.</strong> Uw aanvragen beantwoorden (precontractueel verband / legitiem belang), de website beheren en beveiligen (legitiem belang) en uw voorkeuren onthouden (toestemming / functionele noodzaak). We verkopen geen gegevens, plaatsen geen advertentierichting en nemen geen geautomatiseerde beslissingen met rechtsgevolgen.</p>
+        <p><strong>Bewaringstermijn.</strong> Aanvraaggegevens bewaren we zolang nodig om uw aanvraag af te handelen. Serverlogs worden na ± 30 dagen verwijderd. Uw cookiekeuze blijft geldig tot u die wijzigt of wist (o.a. via uw browser).</p>
+        <p><strong>Derden.</strong> Enkel Google Fonts voor het laden van lettertypes (zie cookies). Er zijn geen andere externe verwerkers verbonden aan deze website.</p>
+        <p class="mb-0"><strong>Uw rechten.</strong> U heeft recht op inzage, rectificatie, verwijdering, beperking van verwerking, bezwaar en dataportabiliteit. Richt een schriftelijk verzoek via bovenstaande e-mailadres aan ons; wij reageren binnen 30 dagen. U kunt tevens klacht indienen bij de Gegevensbeschermingsautoriteit (www.gegevensbeschermingsautoriteit.be).</p>
+      </div><!--/ID:34-->
+      <!--ID:35--><div class="modal-footer">
+        <button type="button" class="btn-line btn-sm" data-bs-dismiss="modal">Sluiten</button>
+      </div><!--/ID:35-->
+    </div>
+  </div>
+</div><!--/ID:36-->
+
+<!--ID:37--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:37-->
+<!--ID:38--><script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- Cookie consent (1x via localStorage) ---------- */
+  function storeConsent(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} }
+  function readConsent(){ try{ return localStorage.getItem('cookieConsent'); }catch(e){ return null; } }
+
+  try {
+    if (!readConsent()) {
+      var cm = document.getElementById('cookieModal');
+      if (cm && window.bootstrap) new bootstrap.Modal(cm).show();
+    }
+  } catch(e) {}
+
+  var cookieAccept = document.getElementById('cookieAccept');
+  if (cookieAccept) cookieAccept.addEventListener('click', function () {
+    storeConsent('accepted');
+    var m = document.getElementById('cookieModal');
+    if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+  });
+
+  var cookieReject = document.getElementById('cookieReject');
+  if (cookieReject) cookieReject.addEventListener('click', function () { storeConsent('rejected'); });
+
+  var cookieModalEl = document.getElementById('cookieModal');
+  if (cookieModalEl) cookieModalEl.addEventListener('hidden.bs.modal', function () {
+    if (!readConsent()) storeConsent('dismissed');
+  });
+
+  /* ---------- Navbar: scrolled state + mobile menu ---------- */
+  var nav = document.getElementById('mainNav');
+  var menu = document.getElementById('siteMenu');
+  var toggleIcon = document.getElementById('navToggleIcon');
+  function onScroll(){ if (window.scrollY > 40) nav.classList.add('nav-scrolled'); else nav.classList.remove('nav-scrolled'); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (menu && toggleIcon) {
+    menu.addEventListener('show.bs.collapse', function () {
+      nav.classList.add('menu-open');
+      toggleIcon.className = 'bi bi-x';
+    });
+    menu.addEventListener('hidden.bs.collapse', function () {
+      nav.classList.remove('menu-open');
+      toggleIcon.className = 'bi bi-list';
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (menu.classList.contains('show') && window.bootstrap) {
+          new bootstrap.Collapse(menu, { toggle: false }).hide();
+        }
+      });
+    });
+  }
+
+  /* ---------- Hero parallax (subtiel, alleen desktop) ---------- */
+  var heroImg = document.querySelector('.hero-bg img');
+  var finePointer = window.matchMedia('(min-width:768px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroImg && finePointer) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var y = window.scrollY;
+          if (y < window.innerHeight * 1.3) {
+            heroImg.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0) scale(1.06)';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Lightbox galerij ---------- */
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbCount = document.getElementById('lbCount');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+  var photos = items.map(function (it) {
+    return {
+      src: it.querySelector('img').getAttribute('src'),
+      cap: it.getAttribute('data-caption') || ''
+    };
+  });
+  var idx = 0, lastFocus = null;
+
+  function lbShow(i) {
+    idx = (i + photos.length) % photos.length;
+    lbImg.src = photos[idx].src;
+    lbImg.alt = photos[idx].cap;
+    lbCap.textContent = photos[idx].cap;
+    lbCount.textContent = (idx + 1) + ' / ' + photos.length;
+    if (!lb.classList.contains('show')) { document.body.style.overflow = 'hidden'; }
+    lb.classList.add('show');
+    document.getElementById('lbClose').focus();
+  }
+  function lbHide() {
+    lb.classList.remove('show');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  items.forEach(function (it, i) {
+    it.addEventListener('click', function () { lastFocus = document.activeElement; lbShow(i); });
+  });
+  document.getElementById('lbClose').addEventListener('click', lbHide);
+  document.getElementById('lbPrev').addEventListener('click', function () { lbShow(idx - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { lbShow(idx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) lbHide(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('show')) return;
+    if (e.key === 'Escape') lbHide();
+    else if (e.key === 'ArrowLeft') lbShow(idx - 1);
+    else if (e.key === 'ArrowRight') lbShow(idx + 1);
+  });
+
+  /* ---------- Contactformulier -> mailto ---------- */
+  var form = document.getElementById('planForm');
+  var status = document.getElementById('formStatus');
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.classList.add('was-validated'); return; }
+    var naam = form.naam.value.trim();
+    var mail = form.mail.value.trim();
+    var type = form.type.value;
+    var datum = form.datum.value || 'nog niet bepaald';
+    var bericht = form.bericht.value.trim();
+    var onderwerp = 'Aanvraag via de website - ' + type;
+    var body = 'Naam: ' + naam + '\nE-mail: ' + mail + '\nType bezoek: ' + type + '\nGewenste datum: ' + datum + '\n\n' + bericht;
+    window.location.href = 'mailto:info@chateaudhargimont.be?subject=' + encodeURIComponent(onderwerp) + '&body=' + encodeURIComponent(body);
+    status.textContent = 'Uw e-mailclient wordt geopend - wij reageren binnen 1 werkdag.';
+    form.classList.add('was-validated');
+  });
+
+});
+</script><!--/ID:38-->
+</body>
+</html>

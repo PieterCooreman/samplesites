@@ -1,0 +1,757 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia Travel - Discover the Outback & Beyond</title>
+    <meta name="description" content="Explore Australia's most breathtaking destinations: the Great Barrier Reef, Uluru, Sydney Harbour, and the wild Australian outback. Plan your dream adventure today.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --accent: #f97316;
+            --accent-light: #fb923c;
+            --accent-glow: rgba(249, 115, 22, 0.3);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: rgba(10, 14, 23, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s ease;
+        }
+        .navbar-custom.scrolled {
+            background: rgba(10, 14, 23, 0.97);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .navbar-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--text-primary) !important; }
+        .navbar-brand span { color: var(--accent); }
+        .nav-link { color: var(--text-secondary) !important; font-weight: 500; transition: color 0.3s; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-light) !important; }
+        .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:var(--accent); transition:width 0.3s ease; }
+        .nav-link:hover::after { width:100%; }
+
+        /* HERO */
+        #hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a1040 30%, #2d1b69 50%, #1a1040 70%, #0a0e17 100%);
+            background-size: 400% 400%;
+            animation: heroGradientShift 12s ease infinite;
+        }
+
+        @keyframes heroGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-particles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.15;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .hero-overlay {
+            position:absolute; inset:0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(10,14,23,0.7) 100%);
+            pointer-events:none;
+        }
+
+        .hero-content { position:relative; z-index:2; text-align:center; padding: 6rem 1rem 4rem; max-width:900px; }
+
+        .hero-badge {
+            display:inline-flex; align-items:center; gap:8px;
+            background: rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.3);
+            padding: 6px 18px; border-radius: 50px; font-size:0.8rem; font-weight:600;
+            color: var(--accent-light); text-transform:uppercase; letter-spacing:2px;
+            margin-bottom:1.5rem; opacity:0; transform:translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 9vw, 6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            opacity: 0; transform: translateY(40px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .hero-title .accent { color: var(--accent); position:relative; display:inline-block; }
+        .hero-title .accent::after {
+            content:''; position:absolute; bottom:4px; left:0; width:100%; height:6px;
+            background:var(--accent); opacity:0.3; border-radius:3px;
+            animation: underlineGrow 1s ease forwards 1.2s; transform-origin:left; transform:scaleX(0);
+        }
+
+        @keyframes underlineGrow { to { transform:scaleX(1); } }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary); max-width:600px; margin:0 auto 2.5rem;
+            line-height:1.7; opacity:0; transform:translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+
+        .hero-cta {
+            display:inline-flex; align-items:center; gap:10px;
+            background: linear-gradient(135deg, var(--accent), #ea580c);
+            color:#fff; padding:16px 40px; border-radius:50px; font-weight:600;
+            text-decoration:none; transition:all 0.4s ease; opacity:0; transform:translateY(30px);
+            animation: fadeUp 0.8s ease forwards 1s;
+            box-shadow: 0 8px 32px rgba(249,115,22,0.3);
+        }
+        .hero-cta:hover { transform:translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(249,115,22,0.5); color:#fff; }
+
+        @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+        .hero-scroll-indicator {
+            position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:3;
+            display:flex; flex-direction:column; align-items:center; gap:8px;
+            color:var(--text-muted); font-size:0.75rem; letter-spacing:2px; text-transform:uppercase;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%,100% { transform:translateX(-50%) translateY(0); }
+            50% { transform:translateX(-50%) translateY(8px); }
+        }
+
+        /* SECTIONS */
+        section { padding: clamp(4rem, 10vw, 7rem) 0; position:relative; }
+
+        .section-label {
+            display:inline-flex; align-items:center; gap:6px;
+            color:var(--accent); font-size:0.8rem; font-weight:600;
+            text-transform:uppercase; letter-spacing:3px; margin-bottom:1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight:700; margin-bottom:1rem; line-height:1.15;
+        }
+
+        .section-desc { color:var(--text-secondary); max-width:600px; line-height:1.8; }
+
+        /* SCROLL ANIMATIONS */
+        .reveal { opacity:0; transform:translateY(50px); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-left { opacity:0; transform:translateX(-60px); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal-left.visible { opacity:1; transform:translateX(0); }
+        .reveal-right { opacity:0; transform:translateX(60px); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal-right.visible { opacity:1; transform:translateX(0); }
+        .reveal-scale { opacity:0; transform:scale(0.85); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+        .reveal-scale.visible { opacity:1; transform:scale(1); }
+
+        /* DESTINATION CARDS */
+        .dest-card {
+            background: var(--bg-card); border-radius:20px; overflow:hidden;
+            border:1px solid rgba(255,255,255,0.06); transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+            position:relative; height:100%; display:flex; flex-direction:column;
+        }
+        .dest-card:hover { transform:translateY(-8px); border-color:rgba(249,115,22,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow); }
+        .dest-card-img { height:240px; overflow:hidden; position:relative; }
+        .dest-card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+        .dest-card:hover .dest-card-img img { transform:scale(1.08); }
+        .dest-card-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:50%; background:linear-gradient(to top, var(--bg-card), transparent); pointer-events:none; }
+        .dest-card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
+        .dest-card-tag { font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:0.5rem; }
+        .dest-card-title { font-size:1.4rem; font-weight:700; margin-bottom:0.8rem; }
+        .dest-card-text { color:var(--text-secondary); font-size:0.9rem; line-height:1.7; flex:1; }
+        .dest-card-link { display:inline-flex; align-items:center; gap:6px; color:var(--accent-light); text-decoration:none; font-weight:500; margin-top:1rem; transition:gap 0.3s ease; }
+        .dest-card-link:hover { gap:12px; color:var(--accent); }
+
+        /* STATS */
+        #stats { background: var(--bg-secondary); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+        .stat-item { text-align:center; padding:2rem 1rem; }
+        .stat-number { font-size:clamp(2.5rem,6vw,4rem); font-weight:900; color:var(--accent); line-height:1; margin-bottom:0.5rem; font-family:'Playfair Display',serif; }
+        .stat-label { color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; }
+
+        /* EXPERIENCES */
+        .exp-card {
+            background: var(--bg-card); border-radius:16px; padding:2rem;
+            border:1px solid rgba(255,255,255,0.06); transition:all 0.4s ease; height:100%;
+        }
+        .exp-card:hover { border-color:rgba(249,115,22,0.3); background:rgba(249,115,22,0.05); transform:translateY(-4px); }
+        .exp-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1.2rem; background:rgba(249,115,22,0.1); color:var(--accent); }
+        .exp-title { font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; }
+        .exp-text { color:var(--text-secondary); font-size:0.88rem; line-height:1.7; }
+
+        /* GALLERY */
+        .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; }
+        .gallery-item { border-radius:16px; overflow:hidden; position:relative; cursor:pointer; height:260px; }
+        .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+        .gallery-item:hover img { transform:scale(1.1); }
+        .gallery-item::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,14,23,0.8), transparent 50%); opacity:0; transition:opacity 0.4s ease; pointer-events:none; }
+        .gallery-item:hover::after { opacity:1; }
+        .gallery-caption { position:absolute; bottom:16px; left:16px; z-index:2; color:#fff; font-weight:600; font-size:0.9rem; transform:translateY(10px); opacity:0; transition:all 0.4s ease; }
+        .gallery-item:hover .gallery-caption { transform:translateY(0); opacity:1; }
+
+        /* LIGHTBOX */
+        .lightbox-overlay {
+            position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999;
+            display:none; align-items:center; justify-content:center; padding:2rem;
+            cursor:pointer; backdrop-filter:blur(10px);
+        }
+        .lightbox-overlay.active { display:flex; animation: fadeIn 0.3s ease; }
+        .lightbox-overlay img { max-width:90vw; max-height:85vh; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:default; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+        /* CTA SECTION */
+        #cta-section { background: linear-gradient(135deg, var(--bg-secondary), rgba(249,115,22,0.08)); border-top:1px solid rgba(255,255,255,0.06); }
+        .cta-box { background:var(--bg-card); border-radius:24px; padding:clamp(2rem, 5vw, 4rem); text-align:center; border:1px solid rgba(255,255,255,0.08); position:relative; overflow:hidden; }
+        .cta-box::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 30% 40%, rgba(249,115,22,0.08), transparent 60%); pointer-events:none; }
+
+        /* FOOTER */
+        footer { background:var(--bg-secondary); border-top:1px solid rgba(255,255,255,0.06); padding:3rem 0 2rem; }
+        .footer-brand { font-family:'Playfair Display',serif; font-weight:900; font-size:1.4rem; color:var(--text-primary); }
+        .footer-brand span { color:var(--accent); }
+        .footer-text { color:var(--text-muted); font-size:0.85rem; line-height:1.7; }
+        .footer-link { color:var(--text-secondary); text-decoration:none; transition:color 0.3s; font-size:0.9rem; }
+        .footer-link:hover { color:var(--accent-light); }
+
+        /* MODAL STYLES */
+        .modal-content { background:var(--bg-card); border:1px solid rgba(255,255,255,0.1); border-radius:16px; }
+        .modal-header { border-bottom-color:rgba(255,255,255,0.08); padding:1.5rem 1.5rem 1rem; }
+        .modal-body { color:var(--text-secondary); line-height:1.8; font-size:0.9rem; }
+        .modal-footer { border-top-color:rgba(255,255,255,0.08); padding:1rem 1.5rem 1.5rem; }
+
+        /* RESPONSIVE */
+        @media (max-width:768px) {
+            .hero-content { padding-top:5rem; }
+            .gallery-item { height:200px; }
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background:rgba(249,115,22,0.3); border-radius:4px; }
+        ::-webkit-scrollbar-thumb:hover { background:rgba(249,115,22,0.6); }
+
+        /* COUNTER ANIMATION */
+        .counting { transition: none; }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Australia Travel - Discover the Outback & Beyond">
+    <meta property="og:description" content="Explore Australia's most breathtaking destinations: the Great Barrier Reef, Uluru, Sydney Harbour, and the wild Australian outback. Plan your dream adventure today.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/cvqq366fy0p2tfnq/">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!--ID:2--><nav class="navbar navbar-expand-lg fixed-top navbar-custom" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#hero"><i class="bi bi-globe-americas me-2"></i>Aus<span>Travel</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-label="Toggle navigation">
+            <i class="bi bi-list fs-4 text-light"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav ms-auto align-items-center gap-lg-3">
+                <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#destinations">Destinations</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experiences">Experiences</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item ms-lg-2">
+                    <a class="btn btn-sm px-4 py-2 rounded-pill" style="background:var(--accent);color:#fff;font-weight:600;" href="#cta-section">Plan Trip</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav><!--/ID:2-->
+
+<!-- HERO -->
+<!--ID:7--><section id="hero">
+    <!--ID:3--><div class="hero-particles" id="particles"></div><!--/ID:3-->
+    <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+    <!--ID:5--><div class="hero-content">
+        <div class="hero-badge"><i class="bi bi-compass"></i> Discover the Unknown</div>
+        <h1 class="hero-title">Explore the<br><span class="accent">Australian</span> Dream</h1>
+        <p class="hero-subtitle">From the turquoise waters of the Great Barrier Reef to the ancient red heart of Uluru - Australia awaits with wonders beyond imagination.</p>
+        <a href="#destinations" class="hero-cta"><i class="bi bi-arrow-down-circle"></i> Start Exploring</a>
+    </div><!--/ID:5-->
+    <!--ID:6--><div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <i class="bi bi-chevron-double-down fs-5"></i>
+    </div><!--/ID:6-->
+</section><!--/ID:7-->
+
+<!-- STATS -->
+<!--ID:12--><section id="stats" style="padding:3rem 0;">
+    <div class="container">
+        <div class="row g-4">
+            <!--ID:8--><div class="col-6 col-md-3 reveal">
+                <div class="stat-item"><div class="stat-number" data-target="7692024">0</div><div class="stat-label">km² of Land</div></div>
+            </div><!--/ID:8-->
+            <!--ID:9--><div class="col-6 col-md-3 reveal" style="transition-delay:0.1s;">
+                <div class="stat-item"><div class="stat-number" data-target="2574">0</div><div class="stat-label">km of Coastline</div></div>
+            </div><!--/ID:9-->
+            <!--ID:10--><div class="col-6 col-md-3 reveal" style="transition-delay:0.2s;">
+                <div class="stat-item"><div class="stat-number" data-target="1500">0</div><div class="stat-label">+ Species Endemic</div></div>
+            </div><!--/ID:10-->
+            <!--ID:11--><div class="col-6 col-md-3 reveal" style="transition-delay:0.3s;">
+                <div class="stat-item"><div class="stat-number" data-target="10">0</div><div class="stat-label">UNESCO Sites</div></div>
+            </div><!--/ID:11-->
+        </div>
+    </div>
+</section><!--/ID:12-->
+
+<!-- DESTINATIONS -->
+<!--ID:15--><section id="destinations">
+    <div class="container">
+        <!--ID:13--><div class="text-center mb-5 reveal">
+            <span class="section-label"><i class="bi bi-map"></i> Top Destinations</span>
+            <h2 class="section-title">Where the Wild Things Are</h2>
+            <p class="section-desc mx-auto">Australia is a continent of extremes - from tropical rainforests to arid deserts, pristine beaches to ancient rock formations.</p>
+        </div><!--/ID:13-->
+        <!--ID:14--><div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?w=600&h=400&fit=crop" alt="Great Barrier Reef underwater coral formations with tropical fish" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=1';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-water me-1"></i> Marine</span>
+                        <h3 class="dest-card-title">Great Barrier Reef</h3>
+                        <p class="dest-card-text">The world's largest coral reef system, stretching over 2,300 km along Queensland's coast. Home to 1,500 species of fish and 400 types of coral.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.2s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&h=400&fit=crop" alt="Uluru (Ayers Rock) at sunset with red sandstone and desert landscape" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=2';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-mountain"></i> Outback</span>
+                        <h3 class="dest-card-title">Uluru & Kata Tjuta</h3>
+                        <p class="dest-card-text">The sacred monolith of Uluru rises 348m from the desert floor. Watch it transform through fiery hues at sunrise and sunset - a spiritual experience unlike any other.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop" alt="Sydney Harbour Bridge and Opera House at twilight with city lights reflecting on water" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=3';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-building"></i> Urban</span>
+                        <h3 class="dest-card-title">Sydney Harbour</h3>
+                        <p class="dest-card-text">The iconic Opera House and Harbour Bridge frame one of the world's most beautiful natural harbours. Walk the coastal paths, sail the bay, or climb to the top.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.15s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&h=400&fit=crop" alt="Whitehaven Beach in the Whitsundays with turquoise water and white silica sand" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=4';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-sunrise"></i> Beach</span>
+                        <h3 class="dest-card-title">Whitsundays</h3>
+                        <p class="dest-card-text">Whitehaven Beach is consistently ranked among the world's most beautiful beaches. Its 98% pure white silica sand and swirling turquoise waters are breathtaking.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.25s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop" alt="Tasmanian wilderness with ancient rainforest and dramatic mountain peaks" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=5';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-tree"></i> Wilderness</span>
+                        <h3 class="dest-card-title">Tasmania</h3>
+                        <p class="dest-card-text">Australia's island state is a land of ancient rainforests, dramatic mountain peaks, and pristine wilderness. The Overland Track and Cradle Mountain are must-sees.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.35s;">
+                <div class="dest-card">
+                    <div class="dest-card-img"><img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?w=600&h=400&fit=crop" alt="Kakadu National Park wetlands with crocodiles and tropical waterfalls" onerror="this.onerror=null;this.src='https://picsum.photos/600/400?random=6';"></div>
+                    <div class="dest-card-body">
+                        <span class="dest-card-tag"><i class="bi bi-compass"></i> Adventure</span>
+                        <h3 class="dest-card-title">Kakadu National Park</h3>
+                        <p class="dest-card-text">One of Australia's most iconic national parks, Kakadu features ancient Aboriginal rock art, spectacular waterfalls, and incredible wildlife including saltwater crocodiles.</p>
+                        <a href="#" class="dest-card-link">Learn more <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ID:14-->
+    </div>
+</section><!--/ID:15-->
+
+<!-- EXPERIENCES -->
+<!--ID:18--><section id="experiences" style="background:var(--bg-secondary);">
+    <div class="container">
+        <!--ID:16--><div class="text-center mb-5 reveal">
+            <span class="section-label"><i class="bi bi-stars"></i> Experiences</span>
+            <h2 class="section-title">Unforgettable Adventures</h2>
+            <p class="section-desc mx-auto">Australia offers experiences you won't find anywhere else on Earth.</p>
+        </div><!--/ID:16-->
+        <!--ID:17--><div class="row g-4">
+            <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.1s;">
+                <div class="exp-card">
+                    <div class="exp-icon"><i class="bi bi-droplet-fill"></i></div>
+                    <h5 class="exp-title">Scuba Diving</h5>
+                    <p class="exp-text">Dive into crystal-clear waters teeming with marine life along the Coral Sea and Ningaloo Reef.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.2s;">
+                <div class="exp-card">
+                    <div class="exp-icon"><i class="bi bi-signpost-split"></i></div>
+                    <h5 class="exp-title">Outback Road Trips</h5>
+                    <p class="exp-text">Drive the legendary Stuart Highway or the Gibb River Road through vast, untouched landscapes.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.3s;">
+                <div class="exp-card">
+                    <div class="exp-icon"><i class="bi bi-binoculars"></i></div>
+                    <h5 class="exp-title">Wildlife Encounters</h5>
+                    <p class="exp-text">Swim with whale sharks, spot koalas in the wild, and watch kangaroos at golden hour.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.4s;">
+                <div class="exp-card">
+                    <div class="exp-icon"><i class="bi bi-fire"></i></div>
+                    <h5 class="exp-title">Indigenous Culture</h5>
+                    <p class="exp-text">Connect with 65,000 years of living culture through guided tours and sacred site visits.</p>
+                </div>
+            </div>
+        </div><!--/ID:17-->
+    </div>
+</section><!--/ID:18-->
+
+<!-- GALLERY -->
+<!--ID:21--><section id="gallery">
+    <div class="container">
+        <!--ID:19--><div class="text-center mb-5 reveal">
+            <span class="section-label"><i class="bi bi-images"></i> Gallery</span>
+            <h2 class="section-title">Captured Moments</h2>
+            <p class="section-desc mx-auto">A glimpse into the beauty that awaits you across this vast continent.</p>
+        </div><!--/ID:19-->
+        <!--ID:20--><div class="gallery-grid reveal-scale">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=500&fit=crop" alt="Bondi Beach at sunrise with golden light on the ocean and surfers in the water" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Bondi Beach</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=500&fit=crop" alt="Sydney Opera House illuminated at night with harbour reflections" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Sydney at Night</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&h=500&fit=crop" alt="Uluru rock formation glowing orange during golden hour in the Australian desert" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Uluru Sunset</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&h=500&fit=crop" alt="Whitehaven Beach aerial view showing swirling white sand and turquoise water patterns" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Whitehaven Beach</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=500&fit=crop" alt="Tasmanian mountain landscape with misty peaks and ancient forest canopy" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Tasmania</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1528892952291-009c663ce843?w=600&h=500&fit=crop" alt="Kangaroo standing in golden grassland during sunset in the Australian outback" loading="lazy">
+                <span class="gallery-caption"><i class="bi bi-camera me-1"></i> Outback Wildlife</span>
+            </div>
+        </div><!--/ID:20-->
+    </div>
+</section><!--/ID:21-->
+
+<!-- LIGHTBOX -->
+<!--ID:22--><div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <img src="" alt="Full size gallery image of Australian landscape" id="lightboxImg">
+</div><!--/ID:22-->
+
+<!-- CTA -->
+<!--ID:23--><section id="cta-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 reveal-scale">
+                <div class="cta-box">
+                    <span class="section-label"><i class="bi bi-airplane"></i> Ready to Go?</span>
+                    <h2 class="section-title mb-3">Your Australian Adventure Starts Here</h2>
+                    <p class="text-secondary mb-4 mx-auto" style="max-width:500px;">Whether you dream of diving the reef, hiking the outback, or exploring ancient rainforests - Australia is calling. Start planning your journey today.</p>
+                    <a href="#" class="hero-cta"><i class="bi bi-compass"></i> Plan Your Trip</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/ID:23-->
+
+<!-- FOOTER -->
+<!--ID:26--><footer>
+    <div class="container">
+        <!--ID:24--><div class="row g-4 mb-4">
+            <div class="col-lg-5">
+                <div class="footer-brand mb-3"><i class="bi bi-globe-americas me-2"></i>Aus<span>Travel</span></div>
+                <p class="footer-text">Discover the beauty, culture, and adventure of Australia. From ancient landscapes to vibrant cities - your journey begins here.</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h6 class="text-light fw-bold mb-3">Explore</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2">
+                    <li><a href="#destinations" class="footer-link">Destinations</a></li>
+                    <li><a href="#experiences" class="footer-link">Experiences</a></li>
+                    <li><a href="#gallery" class="footer-link">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h6 class="text-light fw-bold mb-3">Resources</h6>
+                <ul class="list-unstyled d-flex flex-column gap-2">
+                    <li><a href="#" class="footer-link">Travel Tips</a></li>
+                    <li><a href="#" class="footer-link">Visa Info</a></li>
+                    <li><a href="#" class="footer-link">Best Time to Visit</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-1 col-md-6 text-center text-md-end">
+                <h6 class="text-light fw-bold mb-3">Follow</h6>
+                <div class="d-flex gap-2 justify-content-center justify-content-md-end">
+                    <a href="#" class="footer-link" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="#" class="footer-link" aria-label="Twitter"><i class="bi bi-twitter-x fs-5"></i></a>
+                    <a href="#" class="footer-link" aria-label="YouTube"><i class="bi bi-youtube fs-5"></i></a>
+                </div>
+            </div>
+        </div><!--/ID:24-->
+        <hr style="border-color:rgba(255,255,255,0.08);">
+        <!--ID:25--><div class="d-flex flex-wrap justify-content-between align-items-center gap-3 pt-2">
+            <span class="small text-muted">&copy; 2026 AusTravel. All rights reserved.</span>
+            <div class="d-flex gap-3 small">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="footer-link">Privacy</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" class="footer-link">Cookies / Cookie settings</a>
+            </div>
+        </div><!--/ID:25-->
+    </div>
+</footer><!--/ID:26-->
+
+<!-- COOKIE MODAL -->
+<!--ID:30--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:27--><div class="modal-header">
+        <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div><!--/ID:27-->
+      <!--ID:28--><div class="modal-body">
+        <p class="mb-3"><strong>We use only necessary cookies to make this site work.</strong></p>
+        <ul class="small text-secondary mb-0 ps-3">
+            <li><strong>Functional / localStorage:</strong> Stores your cookie consent preference so we don't ask again. No tracking or marketing cookies are used on this site.</li>
+            <li><strong>No third-party trackers:</strong> We do not use analytics, advertising, or social media tracking cookies.</li>
+        </ul>
+        <p class="small text-secondary mt-3 mb-0">You can change your choice anytime via the Cookies link in the footer. If embedded content (maps, video) is added later, it may set its own cookies - see Privacy for details.</p>
+      </div><!--/ID:28-->
+      <!--ID:29--><div class="modal-footer">
+        <button type="button" class="btn btn-outline-light btn-sm" id="cookieReject" data-bs-dismiss="modal"><i class="bi bi-x-lg me-1"></i> Reject</button>
+        <button type="button" class="btn btn-sm px-4" style="background:var(--accent);color:#fff;" id="cookieAccept">Accept All</button>
+      </div><!--/ID:29-->
+    </div>
+  </div>
+</div><!--/ID:30-->
+
+<!-- PRIVACY MODAL -->
+<!--ID:34--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!--ID:31--><div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacy Statement</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div><!--/ID:31-->
+      <!--ID:32--><div class="modal-body">
+        <p><strong>Data Controller:</strong> AusTravel (website operator).</p>
+        <p><strong>What we collect:</strong> Only data you voluntarily provide (e.g. via contact forms). Standard server logs (IP address, user agent, timestamp) are collected automatically for security and site operation purposes.</p>
+        <p><strong>Purpose & legal basis:</strong> Data is used to operate, secure, and improve the website (legitimate interest under GDPR Art. 6(1)(f)) and to respond to your inquiries (consent or contract).</p>
+        <p><strong>Cookies:</strong> We use only functional cookies stored via localStorage for your consent preference. No tracking, analytics, or marketing cookies are used.</p>
+        <p><strong>Data retention:</strong> Server logs are retained briefly (up to 30 days). Form data is kept only as long as necessary to handle your request and then deleted.</p>
+        <p><strong>Your rights:</strong> You have the right to access, rectify, erase, restrict processing, or port your personal data. You may also withdraw consent at any time. Contact us via the website for any requests.</p>
+        <p class="mb-0 text-secondary small">This is a template privacy statement - adapt it to your actual data processing activities and applicable jurisdiction.</p>
+      </div><!--/ID:32-->
+      <!--ID:33--><div class="modal-footer">
+        <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal"><i class="bi bi-check-lg me-1"></i>I understand</button>
+      </div><!--/ID:33-->
+    </div>
+  </div>
+</div><!--/ID:34-->
+
+<!--ID:35--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:35-->
+<!--ID:36--><script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- COOKIE CONSENT ---
+    try {
+        if (!localStorage.getItem('cookieConsent')) {
+            var el = document.getElementById('cookieModal');
+            if (el && window.bootstrap) new bootstrap.Modal(el).show();
+        }
+    } catch(e) {}
+    var accBtn = document.getElementById('cookieAccept');
+    if (accBtn) accBtn.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+        var m = document.getElementById('cookieModal');
+        if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+    });
+    var rejBtn = document.getElementById('cookieReject');
+    if (rejBtn) rejBtn.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+    });
+
+    // --- NAVBAR SCROLL EFFECT ---
+    var nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    });
+
+    // --- ACTIVE NAV LINK ON SCROLL ---
+    var sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', function() {
+        var scrollPos = window.scrollY + 100;
+        sections.forEach(function(sec) {
+            var top = sec.offsetTop;
+            var height = sec.offsetHeight;
+            var id = sec.getAttribute('id');
+            var link = document.querySelector('.nav-link[href="#' + id + '"]');
+            if (link) {
+                if (scrollPos >= top && scrollPos < top + height) {
+                    document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active'); });
+                    link.classList.add('active');
+                }
+            }
+        });
+    });
+
+    // --- SCROLL REVEAL ANIMATIONS ---
+    var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    var observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Trigger counter animation for stat numbers
+                if (entry.target.querySelector('.stat-number[data-target]')) {
+                    animateCounters(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+    revealElements.forEach(function(el) { observer.observe(el); });
+
+    // --- COUNTER ANIMATION ---
+    function animateCounters(container) {
+        var counters = container.querySelectorAll('.stat-number[data-target]');
+        counters.forEach(function(counter) {
+            if (counter.dataset.animated) return;
+            counter.dataset.animated = 'true';
+            var target = parseInt(counter.getAttribute('data-target'));
+            var duration = 2000;
+            var start = performance.now();
+            function update(now) {
+                var elapsed = now - start;
+                var progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                var eased = 1 - Math.pow(1 - progress, 3);
+                var current = Math.floor(eased * target);
+                counter.textContent = current.toLocaleString();
+                if (progress < 1) requestAnimationFrame(update);
+                else counter.textContent = target.toLocaleString();
+            }
+            requestAnimationFrame(update);
+        });
+    }
+
+    // --- HERO PARTICLES ---
+    var particlesContainer = document.getElementById('particles');
+    for (var i = 0; i < 30; i++) {
+        var p = document.createElement('div');
+        p.className = 'particle';
+        var size = Math.random() * 6 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        particlesContainer.appendChild(p);
+    }
+
+    // --- LIGHTBOX ---
+    window.openLightbox = function(item) {
+        var img = item.querySelector('img');
+        if (!img) return;
+        document.getElementById('lightboxImg').src = img.src.replace(/w=\d+&h=\d+/, 'w=1200&h=900');
+        document.getElementById('lightboxImg').alt = img.alt || 'Full size image';
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+    window.closeLightbox = function() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // --- SMOOTH SCROLL FOR NAV LINKS ---
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                var offset = 80; // navbar height
+                var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+                // Close mobile nav
+                var navCollapse = document.getElementById('navContent');
+                if (navCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(navCollapse)?.hide();
+                }
+            }
+        });
+    });
+
+});
+</script><!--/ID:36-->
+</body>
+</html>

@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferrari Testarossa - Een Tijdloos Icoon van de Jaren '80</title>
+<meta name="description" content="Ontdek de Ferrari Testarossa: het icoon uit 1984 met zijn iconische kaasschaaf-flanken, flat-12 motor en cultstatus via Miami Vice en OutRun.">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --red:#e01f1f;
+  --red-deep:#a80f14;
+  --ink:#0c0b0d;
+  --ink-2:#131116;
+  --panel:#1a171d;
+  --panel-2:#211d25;
+  --cream:#f4efe6;
+  --muted:#a89f93;
+  --line:rgba(255,255,255,.09);
+  --font-display:'Bebas Neue', sans-serif;
+  --font-body:'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--ink);
+  color:var(--cream);
+  overflow-x:hidden;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:var(--font-display);font-weight:400;line-height:.98;letter-spacing:.5px;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+section{scroll-margin-top:76px;position:relative;}
+
+/* ---------- Kicker / labels ---------- */
+.kicker{
+  font-family:var(--font-body);
+  font-weight:800;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--red);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;
+}
+.kicker::before{content:"";width:34px;height:2px;background:var(--red);display:inline-block;}
+.section-title{font-size:clamp(2.6rem,6vw,4.6rem);}
+.section-lead{color:var(--muted);max-width:56ch;font-size:1.08rem;}
+
+/* ---------- Navbar ---------- */
+.main-nav{background:transparent;transition:background .35s ease, box-shadow .35s ease, padding .35s ease;padding:.9rem 0;}
+.main-nav.scrolled{background:rgba(12,11,13,.86);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line),0 14px 40px rgba(0,0,0,.5);padding:.5rem 0;}
+.navbar-brand{font-family:var(--font-display);font-size:1.7rem;letter-spacing:2px;color:#fff;display:flex;align-items:center;gap:.6rem;}
+.brand-mark{width:34px;height:22px;background:linear-gradient(90deg,var(--red) 0 33%,transparent 33% 50%,var(--red) 50% 83%,transparent 83%);transform:skewX(-18deg);}
+.navbar-nav .nav-link{color:#dcd6cc;font-weight:600;font-size:.92rem;letter-spacing:.04em;margin-left:.4rem;padding:.5rem .85rem;position:relative;}
+.navbar-nav .nav-link::after{content:"";position:absolute;left:.85rem;right:.85rem;bottom:.35rem;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
+.navbar-nav .nav-link:hover,.navbar-nav .nav-link:focus{color:#fff;}
+.navbar-nav .nav-link:hover::after,.navbar-nav .nav-link.active::after{transform:scaleX(1);}
+.navbar-toggler{border-color:var(--line);padding:.4rem .55rem;}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f4efe6' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding:8rem 0 4.5rem;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center 30%;transform:scale(1.06);animation:heroZoom 14s ease-out forwards;}
+@keyframes heroZoom{to{transform:scale(1);}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(12,11,13,.94) 0%,rgba(12,11,13,.72) 45%,rgba(12,11,13,.35) 100%),
+             linear-gradient(0deg,var(--ink) 2%,transparent 45%);}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 80% 10%,transparent 40%,rgba(0,0,0,.55) 100%);}
+.hero-kicker{font-family:var(--font-body);font-weight:700;letter-spacing:.36em;text-transform:uppercase;font-size:.78rem;color:#e9c9c9;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem;}
+.hero-kicker .dot{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 14px var(--red);}
+.hero h1{font-size:clamp(3.6rem,13vw,10.5rem);color:#fff;margin:0;letter-spacing:2px;}
+.hero h1 .accent{color:var(--red);}
+.hero-sub{max-width:44ch;color:#e7e1d8;font-size:clamp(1.05rem,2vw,1.35rem);margin-top:1.4rem;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:1.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;color:#cfc8bd;}
+.hero-meta span{display:inline-flex;align-items:center;gap:.5rem;}
+.hero-meta i{color:var(--red);}
+.btn-red{background:var(--red);color:#fff;border:none;font-weight:700;letter-spacing:.06em;padding:.85rem 1.7rem;border-radius:2px;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;}
+.btn-red:hover{background:var(--red-deep);color:#fff;transform:translateY(-3px);box-shadow:0 14px 30px rgba(224,31,31,.35);}
+.btn-ghost{border:1px solid var(--line);color:#f4efe6;font-weight:700;letter-spacing:.06em;padding:.85rem 1.7rem;border-radius:2px;background:transparent;transition:border-color .25s ease, background .25s ease, transform .25s ease;}
+.btn-ghost:hover{border-color:var(--red);background:rgba(224,31,31,.08);color:#fff;transform:translateY(-3px);}
+.scroll-cue{position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);z-index:2;color:#cfc8bd;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.4rem;}
+.scroll-cue .bar{width:1px;height:38px;background:linear-gradient(var(--red),transparent);animation:cue 1.8s ease-in-out infinite;}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6);}50%{opacity:1;transform:scaleY(1);}}
+
+/* ---------- Marquee ---------- */
+.marquee{overflow:hidden;background:var(--red);color:#fff;padding:.75rem 0;border-block:1px solid rgba(0,0,0,.25);}
+.marquee-track{display:flex;width:max-content;animation:scrollX 30s linear infinite;}
+.marquee:hover .marquee-track{animation-play-state:paused;}
+.marquee span{font-family:var(--font-display);font-size:1.4rem;letter-spacing:2px;padding:0 1.6rem;display:inline-flex;align-items:center;gap:1.6rem;white-space:nowrap;}
+.marquee span::after{content:"◆";color:rgba(255,255,255,.5);font-size:.7rem;}
+@keyframes scrollX{to{transform:translateX(-50%);}}
+
+/* ---------- Intro ---------- */
+.intro{padding:6.5rem 0;background:var(--ink);}
+.intro .statement{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.8rem);color:#fff;line-height:1.02;}
+.intro .statement em{color:var(--red);font-style:normal;}
+.intro-img{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55);}
+.intro-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.intro-img:hover img{transform:scale(1.05);}
+.intro-img::after{content:"";position:absolute;left:0;top:0;width:6px;height:100%;background:var(--red);}
+
+/* ---------- Design (sticky two-column) ---------- */
+.design{padding:6.5rem 0;background:var(--ink-2);border-block:1px solid var(--line);}
+.sticky-col{position:sticky;top:96px;}
+.feature-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;position:relative;}
+.feature-card::before{content:"";position:absolute;top:0;left:0;height:4px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:2;}
+.feature-card:hover{transform:translateY(-6px);border-color:rgba(224,31,31,.5);box-shadow:0 24px 50px rgba(0,0,0,.5);}
+.feature-card:hover::before{transform:scaleX(1);}
+.feature-media{height:280px;overflow:hidden;}
+.feature-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:saturate(.95);}
+.feature-card:hover .feature-media img{transform:scale(1.06);}
+.feature-body{padding:1.8rem 1.9rem 2rem;}
+.feature-num{font-family:var(--font-display);color:var(--red);font-size:1.3rem;letter-spacing:2px;}
+.feature-body h3{font-size:2rem;color:#fff;margin:.4rem 0 .7rem;}
+.feature-body p{color:var(--muted);margin-bottom:0;font-size:.98rem;}
+
+/* ---------- Engine ---------- */
+.engine{padding:6.5rem 0;background:radial-gradient(120% 120% at 50% -10%,#1c1417 0%,var(--ink) 55%);overflow:hidden;border-block:1px solid var(--line);}
+.engine .ghost{position:absolute;top:8%;left:50%;transform:translateX(-50%);font-family:var(--font-display);font-size:clamp(6rem,24vw,20rem);color:transparent;-webkit-text-stroke:1px rgba(224,31,31,.16);white-space:nowrap;pointer-events:none;z-index:0;}
+.engine .wrap{position:relative;z-index:1;}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:1.6rem 1.3rem;text-align:center;transition:border-color .3s ease, transform .3s ease;}
+.stat:hover{border-color:rgba(224,31,31,.5);transform:translateY(-4px);}
+.stat .num{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,3.8rem);color:#fff;line-height:1;}
+.stat .num small{font-size:.5em;color:var(--red);}
+.stat .lbl{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;margin-top:.6rem;font-weight:700;}
+.rode-kop{border-left:3px solid var(--red);padding-left:1.4rem;color:#e9e3da;}
+
+/* ---------- Specs ---------- */
+.specs{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.spec-row{display:flex;justify-content:space-between;gap:1rem;padding:.95rem 1.6rem;border-bottom:1px dashed var(--line);}
+.spec-row:last-child{border-bottom:none;}
+.spec-row dt{color:var(--muted);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;}
+.spec-row dd{margin:0;color:#fff;font-weight:600;text-align:right;}
+
+/* ---------- Culture / Legacy ---------- */
+.culture{padding:6.5rem 0;background:var(--ink);}
+.cult-card{background:linear-gradient(160deg,var(--panel) 0%,#141217 100%);border:1px solid var(--line);border-radius:10px;padding:2rem;height:100%;position:relative;overflow:hidden;transition:transform .35s ease, border-color .35s ease;}
+.cult-card:hover{transform:translateY(-6px);border-color:rgba(224,31,31,.5);}
+.cult-card .tag{font-family:var(--font-display);letter-spacing:2px;color:var(--red);font-size:1.05rem;}
+.cult-card h3{color:#fff;font-size:2.1rem;margin:.5rem 0 .8rem;}
+.cult-card p{color:var(--muted);margin-bottom:0;}
+.cult-card i.big{position:absolute;right:-14px;top:-14px;font-size:7rem;color:rgba(224,31,31,.09);}
+
+/* ---------- Timeline ---------- */
+.timeline{list-style:none;margin:0;padding:0 0 0 1.6rem;border-left:2px solid var(--line);position:relative;}
+.timeline li{position:relative;padding:0 0 2.4rem 1.8rem;}
+.timeline li:last-child{padding-bottom:0;}
+.timeline li::before{content:"";position:absolute;left:-9px;top:.35rem;width:16px;height:16px;border-radius:50%;background:var(--ink);border:3px solid var(--red);}
+.timeline .yr{font-family:var(--font-display);color:var(--red);font-size:1.7rem;letter-spacing:2px;line-height:1;}
+.timeline h4{font-weight:800;color:#fff;font-size:1.15rem;margin:.35rem 0 .3rem;}
+.timeline p{color:var(--muted);margin-bottom:0;font-size:.96rem;max-width:60ch;}
+
+/* ---------- Gallery ---------- */
+.gallery{padding:6.5rem 0;background:var(--ink-2);border-top:1px solid var(--line);}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.gallery-item{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;border:1px solid var(--line);aspect-ratio:4/3;background:#000;}
+.gallery-item.wide{grid-column:span 2;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease, filter .5s ease;filter:saturate(.9) brightness(.9);}
+.gallery-item:hover img,.gallery-item:focus-visible img{transform:scale(1.08);filter:saturate(1.05) brightness(1);}
+.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:2rem 1rem .9rem;font-size:.86rem;font-weight:700;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));opacity:0;transform:translateY(10px);transition:opacity .35s ease, transform .35s ease;}
+.gallery-item:hover figcaption,.gallery-item:focus-visible figcaption{opacity:1;transform:none;}
+.gallery-item::after{content:"\f28a";font-family:'bootstrap-icons';position:absolute;top:.7rem;right:.9rem;color:#fff;font-size:1.1rem;opacity:0;transition:opacity .3s ease;text-shadow:0 2px 6px rgba(0,0,0,.6);}
+.gallery-item:hover::after{opacity:.85;}
+
+/* ---------- Lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(6,5,7,.94);display:none;align-items:center;justify-content:center;padding:1.5rem;}
+.lightbox.open{display:flex;animation:fade .3s ease;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lightbox figure{margin:0;text-align:center;max-width:min(1200px,94vw);}
+.lightbox img{max-height:78vh;max-width:100%;object-fit:contain;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;}
+.lightbox figcaption{color:#e9e3da;margin-top:1rem;font-weight:600;}
+.lb-count{position:absolute;top:1.2rem;left:1.4rem;color:var(--muted);font-family:var(--font-display);letter-spacing:2px;font-size:1.1rem;}
+.lb-btn{position:absolute;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.4rem;display:flex;align-items:center;justify-content:center;transition:background .25s ease,border-color .25s ease;}
+.lb-btn:hover{background:var(--red);border-color:var(--red);}
+.lb-close{top:1.2rem;right:1.3rem;font-size:1.6rem;}
+.lb-prev{left:1.4rem;top:50%;transform:translateY(-50%);}
+.lb-next{right:1.4rem;top:50%;transform:translateY(-50%);}
+
+/* ---------- Footer ---------- */
+footer{background:#080709;border-top:1px solid var(--line);padding:3.5rem 0 2rem;}
+.foot-brand{font-family:var(--font-display);font-size:2rem;letter-spacing:2px;color:#fff;display:flex;align-items:center;gap:.6rem;}
+footer .small{color:var(--muted);}
+.foot-link{color:var(--muted);transition:color .25s ease;font-weight:600;}
+.foot-link:hover{color:var(--red);}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+
+/* ---------- Modals ---------- */
+.modal-content{background:#161319;border:1px solid var(--line);color:var(--cream);border-radius:10px;}
+.modal-header,.modal-footer{border-color:var(--line);}
+.modal-title{font-family:var(--font-display);letter-spacing:1.5px;font-size:1.6rem;color:#fff;}
+.btn-primary{background:var(--red);border-color:var(--red);}
+.btn-primary:hover{background:var(--red-deep);border-color:var(--red-deep);}
+
+/* ---------- Responsive ---------- */
+@media (max-width:991px){
+  .sticky-col{position:static;margin-bottom:2rem;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .gal-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:575px){
+  .hero{padding-top:6.5rem;}
+  .gallery-item.wide{grid-column:span 2;}
+  .lb-prev,.lb-next{width:44px;height:44px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ferrari Testarossa - Een Tijdloos Icoon van de Jaren '80">
+    <meta property="og:description" content="Ontdek de Ferrari Testarossa: het icoon uit 1984 met zijn iconische kaasschaaf-flanken, flat-12 motor en cultstatus via Miami Vice en OutRun.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/psywqciqssn9qlpv/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/psywqciqssn9qlpv/img/2026-09-05T21-28-37_46762632-19.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/psywqciqssn9qlpv/img/2026-09-05T21-28-37_46762632-19.webp">
+</head>
+<body id="top">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg fixed-top main-nav" aria-label="Hoofdnavigatie">
+  <div class="container">
+    <a class="navbar-brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>TESTAROSSA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-controls="navmenu" aria-expanded="false" aria-label="Menu openen">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#intro">Intro</a></li>
+        <li class="nav-item"><a class="nav-link" href="#design">Design</a></li>
+        <li class="nav-item"><a class="nav-link" href="#motor">Motor</a></li>
+        <li class="nav-item"><a class="nav-link" href="#erfenis">Erfenis</a></li>
+        <li class="nav-item"><a class="btn btn-red ms-lg-3 my-2 my-lg-0 nav-cta" href="#galerij">Galerij</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg" style="background-image:url('img/2026-09-05T21-28-37_ferrari-testarossa-monodado-29-621-kms-1987.webp');"></div>
+  <div class="container">
+    <div class="hero-kicker reveal"><span class="dot" aria-hidden="true"></span>Ferrari · Pininfarina · 1984</div>
+    <h1 class="reveal">TESTAROSSA<span class="accent">.</span></h1>
+    <p class="hero-sub reveal">Er zijn auto's, en er zijn legendes. Dit rijdende symbool van een tijdperk vol extravagantie, grenzeloze ambitie en pure snelheid - onthuld op het Autosalon van Parijs in 1984.</p>
+    <div class="hero-meta reveal">
+      <span><i class="bi bi-gear-fill" aria-hidden="true"></i> Flat-12</span>
+      <span><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> 390 pk</span>
+      <span><i class="bi bi-speedometer2" aria-hidden="true"></i> Middenmotor</span>
+    </div>
+    <div class="d-flex flex-wrap gap-3 mt-4 reveal">
+      <a href="#design" class="btn btn-red">Ontdek het design</a>
+      <a href="#galerij" class="btn btn-ghost">Bekijk de galerij</a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><span class="bar"></span></div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Parijs 1984</span><span>Pininfarina</span><span>Kaasschaaf-flanken</span><span>Flat-12</span><span>390 pk</span><span>Miami Vice</span><span>OutRun</span><span>Rode kop</span>
+    <span>Parijs 1984</span><span>Pininfarina</span><span>Kaasschaaf-flanken</span><span>Flat-12</span><span>390 pk</span><span>Miami Vice</span><span>OutRun</span><span>Rode kop</span>
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section class="intro" id="intro">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <span class="kicker">De legende</span>
+        <p class="statement mb-4">Er zijn auto's, en er zijn <em>legendes</em>. De Testarossa valt onmiskenbaar in die laatste categorie.</p>
+        <p class="section-lead mb-0">Bij zijn onthulling op het Autosalon van Parijs in 1984 sloeg dit meesterwerk van designhuis Pininfarina in als een bom. Het was niet zomaar een nieuwe sportwagen; het was een rijdend symbool van een tijdperk vol extravagantie, grenzeloze ambitie en pure snelheid.</p>
+      </div>
+      <div class="col-lg-6 reveal">
+        <figure class="intro-img" style="height:420px;">
+          <img src="img/2026-09-05T21-28-37_46762632-19.webp" alt="Ferrari Testarossa in profiel met zijn iconische geribbelde flanken" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Testarossa';">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESIGN (sticky two-column) ============ -->
+<section class="design" id="design">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="sticky-col reveal">
+          <span class="kicker">01 / Design</span>
+          <h2 class="section-title mb-3">Het Meesterlijke<br>Design</h2>
+          <p class="section-lead">Wat de Testarossa direct onuitwisbaar in het geheugen grift, is zijn dramatische vormgeving. Drie elementen maken dit icoon voor eeuwig herkenbaar.</p>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="d-flex flex-column gap-4">
+
+          <article class="feature-card reveal">
+            <div class="row g-0 h-100">
+              <div class="col-md-6 feature-media"><img src="img/2026-09-05T21-28-37_46762632-22.webp" alt="De geribbelde luchtinlaten aan de zijkant van een Ferrari Testarossa" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Flanken';"></div>
+              <div class="col-md-6 feature-body">
+                <span class="feature-num">01</span>
+                <h3>De flanken</h3>
+                <p>De iconische, geribbelde luchtinlaten aan de zijkant - soms gekscherend 'kaasschaven' genoemd - waren niet alleen een gedurfd esthetisch statement, maar hadden een cruciale functie: het koelen van de dubbele radiatoren aan de achterkant.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="row g-0 h-100 flex-md-row-reverse">
+              <div class="col-md-6 feature-media"><img src="img/2026-09-05T21-28-37_46762632-25.webp" alt="De lage, brede houding van de Testarossa die optisch aan het asfalt kleeft" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Houding';"></div>
+              <div class="col-md-6 feature-body">
+                <span class="feature-num">02</span>
+                <h3>De houding</h3>
+                <p>Met zijn brede achterkant en lage profiel kleeft de auto optisch aan het asfalt. Het zorgde voor een ongekende visuele wegligging en agressie - alsof hij elk moment zou wegvluchten.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="row g-0 h-100">
+              <div class="col-md-6 feature-media"><img src="img/2026-09-05T21-28-37_46762632-29.webp" alt="De strakke, pijlvormige neus met klapkoplampen van de Testarossa" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Klapkoplampen';"></div>
+              <div class="col-md-6 feature-body">
+                <span class="feature-num">03</span>
+                <h3>Klapkoplampen</h3>
+                <p>De strakke, pijlvormige neus met de typerende klapkoplampen perfectioneerde de gestroomlijnde en mysterieuze uitstraling die zo kenmerkend is voor de jaren '80.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGINE ============ -->
+<section class="engine" id="motor">
+  <span class="ghost" aria-hidden="true">FLAT-12</span>
+  <div class="container wrap">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 reveal">
+        <span class="kicker">02 / Motor</span>
+        <h2 class="section-title mb-3">Een Kloppend Hart<br>van Twaalf Cilinders</h2>
+        <p class="section-lead mb-4">Achter de bestuurder schuilt een ware mechanische symfonie. De Testarossa wordt aangedreven door een machtige 4,9-liter flat-12 motor - een boxermotor met twaalf cilinders in twee rijen.</p>
+        <div class="rode-kop">
+          <p class="mb-0">De naam van de auto, Italiaans voor <strong>"rode kop"</strong>, is een directe en poëtische verwijzing naar de vuurrood gespoten kleppendeksels van dit imposante motorblok. Met 390 pk wist deze Ferrari indrukwekkende prestaties neer te zetten, vergezeld door het rauwe, huilende geluid dat alleen een atmosferische twaalfcilinder kan produceren.</p>
+        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <figure class="intro-img" style="height:380px;">
+          <img src="img/2026-09-05T21-28-37_46762632-30.webp" alt="De achterzijde van de Testarossa met de dubbele radiatoren en het flat-12 motorblok" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Flat-12';">
+        </figure>
+      </div>
+    </div>
+
+    <div class="stat-grid reveal">
+      <div class="stat"><div class="num"><span data-count="4.9" data-decimals="1">0</span><small> L</small></div><div class="lbl">Cilinderinhoud</div></div>
+      <div class="stat"><div class="num"><span data-count="390">0</span><small> pk</small></div><div class="lbl">Vermogen</div></div>
+      <div class="stat"><div class="num"><span data-count="12">0</span></div><div class="lbl">Cilinders · flat-12</div></div>
+      <div class="stat"><div class="num"><span data-count="5">0</span></div><div class="lbl">Versnellingen</div></div>
+    </div>
+
+    <!-- Specs -->
+    <div class="row mt-5 reveal">
+      <div class="col-lg-8 mx-auto">
+        <dl class="specs mb-0">
+          <div class="spec-row"><dt>Motor</dt><dd>Flat-12 (boxermotor)</dd></div>
+          <div class="spec-row"><dt>Cilinderinhoud</dt><dd>4,9 liter</dd></div>
+          <div class="spec-row"><dt>Vermogen</dt><dd>390 pk</dd></div>
+          <div class="spec-row"><dt>Transmissie</dt><dd>5-versnellings handmatig</dd></div>
+          <div class="spec-row"><dt>Aandrijving</dt><dd>Middenmotor · achterwielen</dd></div>
+          <div class="spec-row"><dt>Gewichtsverdeling</dt><dd>40% voor / 60% achter</dd></div>
+          <div class="spec-row"><dt>Productie (Testarossa)</dt><dd>1984 – 1991</dd></div>
+          <div class="spec-row"><dt>Totaal gebouwd</dt><dd>≈ 10.000 (incl. 512 TR &amp; F512 M)</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CULTURE / LEGACY ============ -->
+<section class="culture" id="erfenis">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="kicker justify-content-center">03 / Erfenis</span>
+      <h2 class="section-title mb-3">Een Cultureel Fenomeen</h2>
+      <p class="section-lead mx-auto">De Testarossa oversteeg de autowereld moeiteloos en werd een cultureel icoon dat miljoenen tienerkamers sierde in de vorm van een poster aan de muur.</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-6 reveal">
+        <article class="cult-card">
+          <i class="bi bi-broadcast big" aria-hidden="true"></i>
+          <span class="tag">TELEVISIE</span>
+          <h3>Miami Vice</h3>
+          <p>Als de spierwitte, razendsnelle ster in de politieserie Miami Vice (vanaf 1986) werd de Testarossa wereldwijd onmiskenbaar. Neonlicht, snelheid en pure stijl - het perfecte duo.</p>
+        </article>
+      </div>
+      <div class="col-md-6 reveal">
+        <article class="cult-card">
+          <i class="bi bi-controller big" aria-hidden="true"></i>
+          <span class="tag">ARCADE</span>
+          <h3>OutRun</h3>
+          <p>In arcadespellen zoals Sega's OutRun (1986) was de Testarossa de hoofdrolspeler. Achter het stuur van een rode Testarossa door zonovergoten snelwegen - een icoon voor generaties gamers.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-6 reveal">
+        <figure class="intro-img" style="height:400px;">
+          <img src="img/2026-09-05T21-28-37_46762632-31.webp" alt="De Testarossa als culticoon van de jaren '80, een rijdende tijdmachine" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Culticoon';">
+        </figure>
+      </div>
+      <div class="col-lg-6 reveal">
+        <span class="kicker">De tijdlijn</span>
+        <h3 style="font-size:2.4rem;color:#fff;margin-bottom:1.8rem;">Van Parijs tot legende</h3>
+        <ul class="timeline">
+          <li><div class="yr">1984</div><h4>Onthulling in Parijs</h4><p>Première op het Autosalon van Parijs; de Testarossa (Type F110) volgt de Berlinetta Boxer op.</p></li>
+          <li><div class="yr">1986</div><h4>Cultstatus</h4><p>Miami Vice en OutRun maken de rode Ferrari wereldberoemd en een icoon van het decennium.</p></li>
+          <li><div class="yr">1992</div><h4>512 TR</h4><p>Herontworpen en geïntroduceerd op het Los Angeles Auto Show, met verbeterde gewichtsverdeling (41/59).</p></li>
+          <li><div class="yr">1994</div><h4>F512 M - de laatste flat-12</h4><p>Het definitieve model; de F512 M is Ferraris laatste voertuig met een flat-12 motor.</p></li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="mt-5 reveal" style="border-left:3px solid var(--red);padding-left:1.6rem;max-width:70ch;">
+      <p class="mb-2" style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.05;">Vandaag de dag is de Testarossa veel meer dan enkel een klassieker.</p>
+      <p class="mb-0 section-lead">Het is een rijdende tijdmachine - een viering van een decennium waarin autodesign geen grenzen leek te kennen.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="galerij">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="kicker justify-content-center">04 / Galerij</span>
+      <h2 class="section-title mb-3">In Beeld</h2>
+      <p class="section-lead mx-auto">Klik op een foto om deze in het groot te bekijken.</p>
+    </div>
+
+    <div class="gal-grid reveal" id="galleryGrid">
+      <figure class="gallery-item wide" data-full="img/2026-09-05T21-28-37_ferrari-testarossa-monodado-29-621-kms-1987.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: Ferrari Testarossa Monodado, 1987">
+        <img src="img/2026-09-05T21-28-37_ferrari-testarossa-monodado-29-621-kms-1987.webp" alt="Ferrari Testarossa Monodado uit 1987 met 29.621 kilometer op de teller" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Testarossa';">
+        <figcaption>Ferrari Testarossa Monodado · 1987</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="img/2026-09-05T21-28-37_46762632-19.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: de flanken in profiel">
+        <img src="img/2026-09-05T21-28-37_46762632-19.webp" alt="De Testarossa in profiel met zijn iconische flanken" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Profiel';">
+        <figcaption>Iconische flanken in profiel</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="img/2026-09-05T21-28-37_46762632-22.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: geribbelde luchtinlaten">
+        <img src="img/2026-09-05T21-28-37_46762632-22.webp" alt="De geribbelde luchtinlaten aan de zijkant van de Testarossa" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Luchtinlaten';">
+        <figcaption>Geribbelde luchtinlaten</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="img/2026-09-05T21-28-37_46762632-25.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: lage brede houding">
+        <img src="img/2026-09-05T21-28-37_46762632-25.webp" alt="De lage, brede houding van de Testarossa" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Houding';">
+        <figcaption>Lage, brede houding</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="img/2026-09-05T21-28-37_46762632-29.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: klapkoplampen">
+        <img src="img/2026-09-05T21-28-37_46762632-29.webp" alt="De pijlvormige neus met klapkoplampen van de Testarossa" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Klapkoplampen';">
+        <figcaption>Pijlvormige neus &amp; klapkoplampen</figcaption>
+      </figure>
+      <figure class="gallery-item" data-full="img/2026-09-05T21-28-37_46762632-30.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: het flat-12 hart">
+        <img src="img/2026-09-05T21-28-37_46762637_46762632-30.webp" alt="" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Flat-12';">
+        <img src="img/2026-09-05T21-28-37_46762632-30.webp" alt="De achterzijde met het flat-12 motorblok en dubbele radiatoren" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Flat-12';">
+        <figcaption>Het hart: de flat-12</figcaption>
+      </figure>
+      <figure class="gallery-item wide" data-full="img/2026-09-05T21-28-37_46762632-31.webp" tabindex="0" role="button" aria-label="Open foto in groot formaat: culticoon van de jaren '80">
+        <img src="img/2026-09-05T21-28-37_46762632-31.webp" alt="De Testarossa als culticoon en rijdende tijdmachine van de jaren '80" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Culticoon';">
+        <figcaption>Culticoon van de jaren '80</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-5">
+        <div class="foot-brand mb-2"><span class="brand-mark" aria-hidden="true"></span>TESTAROSSA</div>
+        <p class="small mb-0">Een tijdloos icoon van de jaren '80 - een rijdende tijdmachine en viering van een decennium zonder grenzen.</p>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+          <li><a href="#intro" class="foot-link">Intro</a></li>
+          <li><a href="#design" class="foot-link">Design</a></li>
+          <li><a href="#motor" class="foot-link">Motor</a></li>
+          <li><a href="#erfenis" class="foot-link">Erfenis</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-8 text-lg-end">
+        <p class="small mb-2"><i class="bi bi-shield-check me-1" aria-hidden="true"></i>Dit is een informatief, niet-commercieel project over de Ferrari Testarossa.</p>
+        <div class="d-flex gap-3 justify-content-lg-end">
+          <a href="#" class="foot-link" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
+          <span class="text-secondary" aria-hidden="true">·</span>
+          <a href="#" class="foot-link" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / Cookie-instellingen</a>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:var(--line);margin:2rem 0 1.4rem;">
+    <p class="small text-center mb-0">&copy; 2026 Testarossa - Een Tijdloos Icoon · Gemaakt met passie voor de flat-12.</p>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Foto in groot formaat" aria-hidden="true">
+  <span class="lb-count" id="lbCount"></span>
+  <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Sluiten">&times;</button>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Vorige foto"><i class="bi bi-chevron-left"></i></button>
+  <figure>
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Volgende foto"><i class="bi bi-chevron-right"></i></button>
+</div>
+
+<!-- ============ COOKIE MODAL ============ -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cookieModalLabel">Cookies</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div>
+      <div class="modal-body small">
+        <p class="mb-3">Wij gebruiken op deze site uitsluitend functionele gegevens via <strong>localStorage</strong> om uw cookiekeuze te onthouden. Er worden <strong>geen tracking-, analytiek- of marketingcookies</strong> gebruikt.</p>
+        <ul class="list-unstyled mb-3" style="color:var(--muted);">
+          <li><i class="bi bi-check2 me-1 text-danger"></i> Functioneel / localStorage - onthoudt uw cookiekeuze.</li>
+          <li><i class="bi bi-info-circle me-1 text-danger"></i> Webfonts (Google Fonts) &amp; Bootstrap via CDN - laden bronbestanden, maar plaatsen geen cookies.</li>
+        </ul>
+        <p class="mb-0" style="color:var(--muted);">U kunt uw keuze op elk moment wijzigen via de link "Cookies / Cookie-instellingen" in de voettekst.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Afwijzen</button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accepteren</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRIVACY MODAL ============ -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Privacyverklaring</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Verantwoordelijke:</strong> Testarossa - Een Tijdloos Icoon (informatief, niet-commercieel project).</p>
+        <p><strong>Wat we verzamelen:</strong> uitsluitend uw cookiekeuze, opgeslagen lokaal in uw browser via localStorage. Daarnaast kunnen standaard serverlogs (bijv. IP-adres en gebruikersagent) worden geregistreerd voor beveiliging en stabiliteit. Er wordt geen persoonsgegevens verkocht of gedeeld met derden.</p>
+        <p><strong>Doeleind &amp; rechtsgrondslag:</strong> het vlot, veilig en correct laten werken van de website (gerechtvaardigd belang) en het respecteren van uw voorkeuren (toestemming).</p>
+        <p><strong>Bewaartermijn:</strong> serverlogs worden kort bewaard; uw cookiekeuze blijft lokaal in uw browser totdat u deze zelf wist.</p>
+        <p><strong>Uw rechten:</strong> u heeft recht op inzage, correctie en verwijdering van eventuele gegevens. Neem hiervoor contact op via de site of door uw lokale opslag te wissen.</p>
+        <p class="mb-0" style="color:var(--muted);">Dit is een informatief project; pas deze tekst aan indien er daadwerkelijk verwerking van persoonsgegevens plaatsvindt.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Sluiten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- Cookie consent (once via localStorage) ---------- */
+  try {
+    if (!localStorage.getItem('cookieConsent')) {
+      var el = document.getElementById('cookieModal');
+      if (el && window.bootstrap) new bootstrap.Modal(el).show();
+    }
+  } catch (e) {}
+
+  function setConsent(val) { try { localStorage.setItem('cookieConsent', val); } catch (e) {} }
+  var acc = document.getElementById('cookieAccept');
+  if (acc) acc.addEventListener('click', function () {
+    setConsent('accepted');
+    var m = document.getElementById('cookieModal');
+    if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); else new bootstrap.Modal(m).hide(); }
+  });
+  var rej = document.getElementById('cookieReject');
+  if (rej) rej.addEventListener('click', function () { setConsent('rejected'); });
+
+  /* ---------- Navbar scrolled state ---------- */
+  var nav = document.querySelector('.main-nav');
+  function onScroll() { if (nav) nav.classList.toggle('scrolled', window.scrollY > 40); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- Close mobile navbar after clicking a link ---------- */
+  var collapse = document.getElementById('navmenu');
+  if (collapse) {
+    collapse.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth < 992 && bootstrap.Collapse.getInstance(collapse)) {
+          bootstrap.Collapse.getInstance(collapse).hide();
+        }
+      });
+    });
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (r) { ro.observe(r); });
+  } else {
+    reveals.forEach(function (r) { r.classList.add('in'); });
+  }
+
+  /* ---------- Animated counters ---------- */
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    var dur = 1600, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target.toFixed(dec);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animateCount(en.target); co.unobserve(en.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { co.observe(c); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* ---------- Lightbox gallery ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbCount = document.getElementById('lbCount');
+  var current = 0;
+
+  function show(i) {
+    if (!items.length) return;
+    current = (i + items.length) % items.length;
+    var it = items[current];
+    var full = it.getAttribute('data-full') || it.querySelector('img').src;
+    lbImg.src = full;
+    lbImg.alt = it.querySelector('figcaption') ? it.querySelector('figcaption').textContent : 'Ferrari Testarossa';
+    lbCap.textContent = it.querySelector('figcaption') ? it.querySelector('figcaption').textContent : '';
+    lbCount.textContent = (current + 1) + ' / ' + items.length;
+  }
+  function openLb(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+
+  items.forEach(function (it, idx) {
+    it.addEventListener('click', function () { openLb(idx); });
+    it.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(idx); } });
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function () { show(current - 1); });
+  document.getElementById('lbNext').addEventListener('click', function () { show(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+});
+</script>
+</body>
+</html>

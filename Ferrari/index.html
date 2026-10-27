@@ -1,0 +1,796 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Testarossa - De Legende van de 512</title>
+    <meta name="description" content="Ontdek de Ferrari Testarossa: een iconische V12 supercar uit de jaren '80 en '90. Geschiedenis, specificaties en foto's van deze legendarische sportwagen.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --ferrari-red: #DC2626;
+            --ferrari-dark: #991B1B;
+            --gold: #D4A853;
+            --dark-bg: #0a0a0a;
+            --card-bg: #141414;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.15);
+            padding: 1rem 0;
+        }
+
+        .navbar-custom .nav-link {
+            color: #ccc;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--ferrari-red);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff !important;
+        }
+
+        .navbar-brand span {
+            color: var(--ferrari-red);
+        }
+
+        /* HERO */
+        .hero-section {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 60%, var(--dark-bg) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            line-height: 0.95;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .hero-title span {
+            display: block;
+            color: var(--ferrari-red);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin-top: 1.5rem;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--ferrari-red);
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat h3 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--ferrari-red);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .hero-stat p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        /* SECTIONS */
+        .section-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            color: var(--ferrari-red);
+        }
+
+        .section-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* CARDS */
+        .spec-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ferrari-red);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.15);
+        }
+
+        .spec-card .icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--ferrari-red), var(--ferrari-dark));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.2rem;
+        }
+
+        .spec-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* GALLERY */
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.7);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 2.5rem;
+            color: #fff;
+            background: rgba(220,38,38,0.9);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* LIGHTBOX */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        /* TIMELINE */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid rgba(220,38,38,0.3);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--ferrari-red);
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        .timeline-item .year {
+            color: var(--ferrari-red);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050505;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            color: var(--ferrari-red);
+        }
+
+        /* DIVIDER */
+        .red-divider {
+            width: 60px;
+            height: 4px;
+            background: var(--ferrari-red);
+            border-radius: 2px;
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* MODAL CUSTOM */
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e5e5e5;
+        }
+
+        .modal-header {
+            border-bottom-color: rgba(255,255,255,0.08);
+        }
+
+        .modal-footer {
+            border-top-color: rgba(255,255,255,0.08);
+        }
+
+        .btn-close { filter: invert(1); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-stats { gap: 2rem; }
+            .timeline-item { padding-left: 2rem; }
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ferrari Testarossa - De Legende van de 512">
+    <meta property="og:description" content="Ontdek de Ferrari Testarossa: een iconische V12 supercar uit de jaren '80 en '90. Geschiedenis, specificaties en foto's van deze legendarische sportwagen.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/fa5016h1wxhnh9nu/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/fa5016h1wxhnh9nu/img/2026-10-26T09-08-38_46762632-25.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/fa5016h1wxhnh9nu/img/2026-10-26T09-08-38_46762632-25.webp">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!--ID:2--><nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">FERRARI <span>TESTAROSSA</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Navigatie menu openen/sluiten">
+            <i class="bi bi-list fs-4 text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+            <ul class="navbar-nav gap-lg-3 gap-2">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#geschiedenis">Geschiedenis</a></li>
+                <li class="nav-item"><a class="nav-link" href="#specificaties">Specificaties</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galerij">Galerij</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><!--/ID:2-->
+
+<!-- HERO -->
+<!--ID:6--><section id="home" class="hero-section">
+    <!--ID:3--><div class="hero-bg">
+        <img src="img/2026-10-26T09-08-38_46762632-25.webp" alt="Voorzijde van een rode Ferrari Testarossa geparkeerd op grind">
+    </div><!--/ID:3-->
+    <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+    <!--ID:5--><div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="hero-badge">1984 – 1996</span>
+                <h1 class="hero-title">Testa<span>Rossa</span></h1>
+                <p class="hero-subtitle">De Ferrari Testarossa is een van de meest iconische supercars aller tijden. Met zijn brede lijnen, zijluchtinlaten en 4,9-liter V12-motor zette hij in de jaren '80 nieuwe maatstaven voor snelheid en stijl.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <h3>390</h3>
+                        <p>PK</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>V12</h3>
+                        <p>4.900 cc</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3>290</h3>
+                        <p>Km/u</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/ID:5-->
+</section><!--/ID:6-->
+
+<!-- GESCHIEDENIS -->
+<!--ID:9--><section id="geschiedenis" class="py-5">
+    <div class="container py-5">
+        <!--ID:7--><div class="row align-items-center g-5">
+            <div class="col-lg-6 fade-up">
+                <span class="hero-badge mb-3 d-inline-block">De Legende</span>
+                <h2 class="section-title mb-4">Geschiedenis van de <span>Testarossa</span></h2>
+                <p class="section-subtitle mb-4">De Ferrari Testarossa werd in 1984 geïntroduceerd als opvolger van de Ferrari 512 BB. De naam "Testa Rossa" betekent letterlijk "rode kop" en verwijst naar de rode kleurstof die Ferrari al decennia gebruikt voor de cilinderkoppen van zijn racemotoren.</p>
+                <p class="section-subtitle mb-4">De auto werd ontworpen door Pininfarina en kenmerkt zich door zijn brede, lage silhouet met de iconische zijluchtinlaten die lucht naar de motor leiden. De Testarossa was niet alleen snel - hij was ook een statement van design dat decennia lang invloed zou uitoefenen op de auto-industrie.</p>
+                <p class="section-subtitle">In totaal werden er ongeveer 7.177 exemplaren geproduceerd, wat hem tot een van de meest gezochte Ferraris van zijn generatie maakt.</p>
+            </div>
+            <div class="col-lg-6 fade-up">
+                <img src="img/2026-10-26T09-08-38_46762632-22.webp" alt="Zijprofiel van een rode Ferrari Testarossa met witte velgen" class="w-100 rounded-4 shadow-lg" style="object-fit:cover; height: 500px;">
+            </div>
+        </div><!--/ID:7-->
+
+        <!-- TIMELINE -->
+        <!--ID:8--><div class="row mt-5 pt-5">
+            <div class="col-lg-8 mx-auto">
+                <h3 class="section-title text-center mb-5"><span>Tijdlijn</span></h3>
+                <div class="timeline-item fade-up">
+                    <span class="year">1984</span>
+                    <h4>Eerste presentatie op de Autosalon van Parijs</h4>
+                    <p class="text-secondary mt-2">De Testarossa wordt voor het eerst aan het publiek getoond en veroorzaakt direct een sensatie door zijn brede lijnen en zijluchtinlaten.</p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="year">1987</span>
+                    <h4>Ferrari 512 TR - de opvolger</h4>
+                    <p class="text-secondary mt-2">De Testarossa wordt vervangen door de 512 TR (Testa Rossa), met verbeterde aerodynamica en een lichtere constructie.</p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="year">1991</span>
+                    <h4>Ferrari F512 M - de laatste versie</h4>
+                    <p class="text-secondary mt-2">De F512 M brengt een facelift met meer vermogen (390 PK), verbeterde koeling en een verfijnd interieur.</p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="year">1996</span>
+                    <h4>Einde productie</h4>
+                    <p class="text-secondary mt-2">Na 12 jaar en meer dan 7.000 exemplaren stopt de productie van de Testarossa-familie.</p>
+                </div>
+            </div>
+        </div><!--/ID:8-->
+    </div>
+</section><!--/ID:9-->
+
+<!-- SPECIFICATIES -->
+<!--ID:14--><section id="specificaties" class="py-5">
+    <div class="container py-5">
+        <!--ID:10--><div class="text-center mb-5 fade-up">
+            <span class="hero-badge mb-3 d-inline-block">Techniek</span>
+            <h2 class="section-title"><span>Specificaties</span></h2>
+            <p class="section-subtitle mx-auto mt-3">De Ferrari Testarossa is gebouwd rond een krachtige 4,9-liter V12-motor die in zijn tijd de meest krachtige productiemotor van Ferrari was.</p>
+        </div><!--/ID:10-->
+
+        <!--ID:11--><div class="row g-4">
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="icon"><i class="bi bi-speedometer2"></i></div>
+                    <h4>Motor</h4>
+                    <p>4.942 cc V12, 60° banken, DOHC, 5 kleppen per cilinder. De motor levert 390 PK bij 6.300 tpm.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="icon"><i class="bi bi-lightning"></i></div>
+                    <h4>Vermogen</h4>
+                    <p>287 kW (390 PK) bij 6.300 tpm, met een koppel van 490 Nm beschikbaar vanaf 4.500 tpm.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="icon"><i class="bi bi-gear-wide-connected"></i></div>
+                    <h4>Transmissie</h4>
+                    <p>5-versnellings handgeschakelde versnellingsbak met een centrale schakelstang. De auto weegt slechts 1.490 kg.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="icon"><i class="bi bi-trophy"></i></div>
+                    <h4>Prestaties</h4>
+                    <p>0–100 km/u in 4,8 seconden. De topsnelheid bedraagt 290 km/u - een record voor zijn tijd.</p>
+                </div>
+            </div>
+        </div><!--/ID:11-->
+
+        <!-- Engine photo -->
+        <!--ID:12--><div class="row mt-5 pt-4 align-items-center">
+            <div class="col-lg-6 fade-up">
+                <img src="img/2026-10-26T09-08-38_46762632-31.webp" alt="Close-up van een Ferrari V8-motor met zilveren inlaatkanalen en rode klepdeksels" class="w-100 rounded-4 shadow-lg" style="object-fit:cover; height: 450px;">
+            </div>
+            <div class="col-lg-6 fade-up">
+                <h3 class="section-title mb-4"><span>De Motor</span></h3>
+                <p class="section-subtitle mb-4">De V12-motor van de Testarossa is een meesterwerk van mechanische precisie. Met 5 kleppen per cilinder (3 inlaat, 2 uitlaat) en dubbele bovenliggende nokkenassen levert hij een ongeëvenaarde geluidssymfonie die Ferrari-enthousiastelingen wereldwijd beroemd heeft gemaakt.</p>
+                <p class="section-subtitle">De zijluchtinlaten aan de zijkant van de auto zijn niet alleen esthetisch - ze leiden koellucht naar de motor en zorgen voor optimale prestaties onder alle omstandigheden. Dit ontwerp is een van de meest herkenbare kenmerken van de Testarossa.</p>
+            </div>
+        </div><!--/ID:12-->
+
+        <!-- Interior photo -->
+        <!--ID:13--><div class="row mt-5 pt-4 align-items-center">
+            <div class="col-lg-6 order-lg-2 fade-up">
+                <img src="img/2026-10-26T09-08-38_46762632-19.webp" alt="Interieur van de Ferrari Testarossa met crèmekleurige lederen bucket seats en een zwart dashboard met rode instrumenten" class="w-100 rounded-4 shadow-lg" style="object-fit:cover; height: 450px;">
+            </div>
+            <div class="col-lg-6 order-lg-1 fade-up">
+                <h3 class="section-title mb-4"><span>Het Interieur</span></h3>
+                <p class="section-subtitle mb-4">Het interieur van de Testarossa is een harmonieus samenspel van luxe en functionaliteit. De crèmekleurige lederen bucket seats bieden uitstekende zijdelingse ondersteuning, terwijl het zwarte dashboard met rode instrumenten wijzers direct verwijst naar de race-erfgoed van Ferrari.</p>
+                <p class="section-subtitle">De drie-sporige stuurwiel en de centrale schakelstang creëren een cockpit-ervaring die de bestuurder volledig in de auto onderdompelt. Elk detail is met zorg ontworpen voor zowel comfort als prestatie.</p>
+            </div>
+        </div><!--/ID:13-->
+    </div>
+</section><!--/ID:14-->
+
+<!-- GALERIJ -->
+<!--ID:18--><section id="galerij" class="py-5">
+    <div class="container py-5">
+        <!--ID:15--><div class="text-center mb-5 fade-up">
+            <span class="hero-badge mb-3 d-inline-block">Foto's</span>
+            <h2 class="section-title"><span>Galerij</span></h2>
+            <p class="section-subtitle mx-auto mt-3">Een visuele reis door de iconische lijnen en details van de Ferrari Testarossa.</p>
+        </div><!--/ID:15-->
+
+        <!--ID:16--><div class="row g-4">
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-25.webp" alt="Voorzijde van een rode Ferrari Testarossa geparkeerd op grind">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-29.webp" alt="Rode Ferrari Testarossa voorzijde met Gallery Aaldering bordje">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-22.webp" alt="Zijprofiel van een rode Ferrari Testarossa met witte velgen">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-19.webp" alt="Interieur van de Ferrari Testarossa met crèmekleurige lederen bucket seats">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-31.webp" alt="Close-up van een Ferrari V8-motor met zilveren inlaatkanalen">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-30.webp" alt="Voorzijde van een rode Ferrari 328 GTB geparkeerd op grind">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+        </div><!--/ID:16-->
+
+        <!-- Extra wide photo -->
+        <!--ID:17--><div class="row mt-4 fade-up">
+            <div class="col-12">
+                <div class="gallery-item" style="aspect-ratio: 16/7;" onclick="openLightbox(this)">
+                    <img src="img/2026-10-26T09-08-38_46762632-32.webp" alt="Rode Ferrari 328 GTB geparkeerd op grind met bakstenen muur als achtergrond">
+                    <div class="gallery-overlay"><i class="bi bi-arrows-fullscreen"></i></div>
+                </div>
+            </div>
+        </div><!--/ID:17-->
+    </div>
+</section><!--/ID:18-->
+
+<!-- FOOTER -->
+<!--ID:21--><footer class="py-5 mt-5">
+    <div class="container text-center">
+        <h4 style="font-family: 'Playfair Display', serif; font-weight: 900; color: #fff;">FERRARI <span style="color: var(--ferrari-red);">TESTAROSSA</span></h4>
+        <p class="text-secondary mt-3 small">Een eerbetoon aan een van de meest iconische supercars aller tijden.</p>
+        <!--ID:19--><div class="d-flex justify-content-center gap-4 mt-4 flex-wrap">
+            <a href="#home" class="footer-link">Home</a>
+            <a href="#geschiedenis" class="footer-link">Geschiedenis</a>
+            <a href="#specificaties" class="footer-link">Specificaties</a>
+            <a href="#galerij" class="footer-link">Galerij</a>
+        </div><!--/ID:19-->
+        <hr class="my-4" style="border-color: rgba(255,255,255,0.06);">
+        <p class="small text-secondary mb-1">&copy; 2026 Ferrari Testarossa - Alle rechten voorbehouden.</p>
+        <!--ID:20--><div class="d-flex justify-content-center gap-3 mt-2 flex-wrap">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="footer-link"><i class="bi bi-shield-lock me-1"></i>Privacy</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" class="footer-link"><i class="bi bi-cookie me-1"></i>Cookies / Cookie-instellingen</a>
+        </div><!--/ID:20-->
+    </div>
+</footer><!--/ID:21-->
+
+<!-- LIGHTBOX -->
+<!--ID:22--><div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Afbeelding sluiten"><i class="bi bi-x-lg"></i></button>
+    <img src="" alt="Grootte afbeelding" id="lightboxImg">
+</div><!--/ID:22-->
+
+<!-- COOKIE MODAL -->
+<!--ID:26--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:23--><div class="modal-header">
+        <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:23-->
+      <!--ID:24--><div class="modal-body">
+        <p class="small text-secondary mb-3">Deze website gebruikt alleen functionele cookies (localStorage) om uw voorkeuren op te slaan. Er worden geen tracking- of marketingcookies gebruikt.</p>
+        <ul class="small text-secondary ps-3 mb-0">
+            <li><strong>Functie:</strong> localStorage - bewaart uw cookievoorkeur (accepteren/verwerpen). Geen persoonsgegevens.</li>
+            <li><strong>Tracking:</strong> geen analytics, geen advertentiecookies, geen social media-widgets.</li>
+        </ul>
+      </div><!--/ID:24-->
+      <!--ID:25--><div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Verwerpen</button>
+        <button type="button" class="btn btn-danger btn-sm" id="cookieAccept">Accepteren</button>
+      </div><!--/ID:25-->
+    </div>
+  </div>
+</div><!--/ID:26-->
+
+<!-- PRIVACY MODAL -->
+<!--ID:30--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!--ID:27--><div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacyverklaring</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:27-->
+      <!--ID:28--><div class="modal-body small">
+        <p><strong>Verwerkingsverantwoordelijke:</strong> Ferrari Testarossa website.</p>
+        <p><strong>Welke gegevens worden verzameld?</strong> Deze website verzamelt geen persoonsgegevens. Er worden alleen functionele cookies (localStorage) gebruikt om uw cookievoorkeur op te slaan. Serverlogs kunnen standaard technische gegevens bevatten (IP-adres, user agent) voor beveiligingsdoeleinden.</p>
+        <p><strong>Doel en rechtsgrondslag:</strong> Het opslaan van uw cookievoorkeur is noodzakelijk voor de werking van de website (art. 6 lid 1 onder f AVG: gerechtvaardigd belang). Serverlogs worden gebruikt voor beveiliging en foutopsporing.</p>
+        <p><strong>Bewaartermijn:</strong> Cookievoorkeuren blijven bewaard totdat u ze wijzigt of uw browsergegevens wist. Serverlogs worden kort bewaard (maximaal 30 dagen).</p>
+        <p><strong>Uw rechten:</strong> U heeft het recht om inzage te krijgen in, correctie van of verwijdering van uw gegevens te verzoeken. Omdat er geen persoonsgegevens worden verwerkt, is dit vooral van toepassing op eventuele serverlogs.</p>
+        <p><strong>Contact:</strong> Voor vragen over privacy kunt u contact opnemen via de e-mail die op deze website wordt vermeld.</p>
+        <p class="mb-0 text-secondary mt-3">Laatst bijgewerkt: oktober 2026. Deze verklaring kan worden aangepast naarmate de website groeit.</p>
+      </div><!--/ID:28-->
+      <!--ID:29--><div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Sluiten</button>
+      </div><!--/ID:29-->
+    </div>
+  </div>
+</div><!--/ID:30-->
+
+<!--ID:31--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:31-->
+<!--ID:32--><script>
+// Cookie consent logic
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        if (!localStorage.getItem('cookieConsent')) {
+            var el = document.getElementById('cookieModal');
+            if (el && window.bootstrap) new bootstrap.Modal(el).show();
+        }
+    } catch(e) {}
+
+    var acc = document.getElementById('cookieAccept');
+    if (acc) acc.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+        var m = document.getElementById('cookieModal');
+        if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+    });
+
+    var rej = document.getElementById('cookieReject');
+    if (rej) rej.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+    });
+});
+
+// Lightbox
+function openLightbox(el) {
+    var img = el.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxImg').alt = img.alt;
+    document.getElementById('lightboxOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightboxOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+});
+
+// Scroll animations
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Close mobile nav
+            var navCollapse = document.getElementById('navMenu');
+            if (navCollapse.classList.contains('show')) {
+                bootstrap.Collapse.getInstance(navCollapse)?.hide();
+            }
+        }
+    });
+});
+
+// Active nav on scroll
+window.addEventListener('scroll', function() {
+    var sections = ['home','geschiedenis','specificaties','galerij'];
+    var scrollPos = window.scrollY + 100;
+    sections.forEach(function(id) {
+        var sec = document.getElementById(id);
+        if (sec) {
+            var top = sec.offsetTop;
+            var bottom = top + sec.offsetHeight;
+            var link = document.querySelector('a[href="#' + id + '"]');
+            if (link) {
+                if (scrollPos >= top && scrollPos < bottom) {
+                    document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active'); });
+                    link.classList.add('active');
+                }
+            }
+        }
+    });
+});
+</script><!--/ID:32-->
+
+<!-- Safety net for overflow -->
+<!--ID:33--><style>
+html, body { max-width: 100vw; overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+</style><!--/ID:33-->
+
+</body>
+</html>

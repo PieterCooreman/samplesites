@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Marchetti | Minimalist Architecture Portfolio</title>
+    <meta name="description" content="Studio Marchetti is a Copenhagen-based architecture practice creating calm, light-filled spaces for residential, cultural and workspace projects.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --ink: #1c1a17;
+            --muted: #6f6b66;
+            --paper: #faf9f7;
+            --card: #ffffff;
+            --accent: #a67c52;
+            --accent-dark: #8a6240;
+            --line: #e7e2db;
+            --dark-bg: #161411;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 4.75rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.45rem;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+        }
+
+        .text-muted-arch {
+            color: var(--muted) !important;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        @media (max-width: 575.98px) {
+            .section {
+                padding: 3.5rem 0;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(22, 20, 17, 0.65);
+            backdrop-filter: blur(12px);
+            transition: background-color .3s ease, box-shadow .3s ease;
+        }
+
+        .navbar-scrolled {
+            background: rgba(250, 249, 247, 0.97);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar .navbar-brand,
+        .navbar .nav-link {
+            color: #fff;
+        }
+
+        .navbar .nav-link:hover {
+            color: #d8c9b5;
+        }
+
+        .navbar-scrolled .navbar-brand,
+        .navbar-scrolled .nav-link {
+            color: var(--ink);
+        }
+
+        .navbar-scrolled .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-scrolled .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2828,26,23,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding: 6rem 0 4rem;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(15, 15, 12, 0.65) 0%, rgba(15, 15, 12, 0.35) 55%, rgba(15, 15, 12, 0.55) 100%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .lead {
+            max-width: 620px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Buttons */
+        .btn {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            border-radius: 2rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: #fff;
+            transition: all .3s ease;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light {
+            border-radius: 2rem;
+            transition: all .3s ease;
+        }
+
+        .btn-outline-light:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            color: var(--ink);
+        }
+
+        /* About */
+        .about-image {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .about-image {
+                height: 360px;
+            }
+        }
+
+        /* Project cards */
+        .project-card {
+            position: relative;
+            display: block;
+            background: var(--card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(28, 26, 23, 0.05);
+            transition: transform .4s ease, box-shadow .4s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 45px rgba(28, 26, 23, 0.10);
+        }
+
+        .project-card-img {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+
+        .project-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .8s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .project-card:hover .project-card-img img {
+            transform: scale(1.06);
+        }
+
+        .project-card .card-body {
+            padding: 1.5rem 1.5rem 1.75rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .project-card .meta {
+            color: var(--muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Philosophy */
+        .philosophy-card {
+            background: transparent;
+            border-top: 1px solid var(--line);
+            padding-top: 2rem;
+            transition: border-color .3s ease, transform .3s ease;
+            height: 100%;
+        }
+
+        .philosophy-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .philosophy-card i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .contact-section h2 {
+            color: #fff;
+        }
+
+        .contact-section .lead {
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 620px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        /* Lightbox */
+        .lightbox-img {
+            max-height: 80vh;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+        }
+
+        .modal-content.bg-transparent {
+            border: 0;
+            box-shadow: none;
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Studio Marchetti | Minimalist Architecture Portfolio">
+    <meta property="og:description" content="Studio Marchetti is a Copenhagen-based architecture practice creating calm, light-filled spaces for residential, cultural and workspace projects.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/8npfrpmltb2zvk5g/">
+</head>
+<body>
+    <!--ID:2--><nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Studio Marchetti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#approach">Approach</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-accent btn-sm px-4" href="#contact">Start a project</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <header class="hero" id="home">
+        <img class="hero-bg" src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1920&q=80" alt="Minimalist white concrete building facade against a clear sky" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080?text=Image+Not+Found';">
+        <!--ID:3--><div class="hero-overlay"></div><!--/ID:3-->
+        <!--ID:4--><div class="container">
+            <p class="text-uppercase small mb-3 opacity-75" style="letter-spacing: 0.2em;">Architecture &amp; Spatial Design</p>
+            <h1 class="mb-4">Quiet spaces,<br>precisely composed.</h1>
+            <p class="lead mb-5">Elena Marchetti is an architect and spatial designer crafting calm, light-filled spaces that feel inevitable - rooted in place, material, and human ritual.</p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="#work" class="btn btn-accent">View selected works</a>
+                <a href="#contact" class="btn btn-outline-light">Start a project</a>
+            </div>
+        </div><!--/ID:4-->
+    </header>
+
+    <main>
+        <!--ID:7--><section class="section" id="about">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <!--ID:5--><div class="col-lg-5">
+                        <img class="about-image shadow-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80" alt="Portrait of architect Elena Marchetti in a light-filled studio" onerror="this.onerror=null;this.src='https://placehold.co/900x1100?text=Image+Not+Found';">
+                    </div><!--/ID:5-->
+                    <!--ID:6--><div class="col-lg-7">
+                        <p class="text-uppercase small text-muted-arch mb-2" style="letter-spacing: 0.18em;">About the studio</p>
+                        <h2 class="mb-4">Architecture with a deliberately light touch.</h2>
+                        <p class="text-muted-arch mb-4">Studio Marchetti is a Copenhagen-based practice founded by Elena Marchetti in 2016. We design residential, cultural and workspace architecture for people who value calm, clarity and connection to context.</p>
+                        <p class="text-muted-arch mb-5">Every project begins with listening - to the land, the light, and the people who will inhabit it. The result is architecture that feels timeless, tactile, and deeply at home in its setting.</p>
+                        <div class="row text-start g-4 mb-5">
+                            <div class="col-4">
+                                <div class="fs-2 fw-semibold font-display">12+</div>
+                                <div class="small text-muted-arch">Years of practice</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="fs-2 fw-semibold font-display">38</div>
+                                <div class="small text-muted-arch">Projects completed</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="fs-2 fw-semibold font-display">9</div>
+                                <div class="small text-muted-arch">Design awards</div>
+                            </div>
+                        </div>
+                        <p class="fw-semibold mb-1">Elena Marchetti</p>
+                        <p class="text-muted-arch small mb-0">Founder &amp; Principal Architect</p>
+                    </div><!--/ID:6-->
+                </div>
+            </div>
+        </section><!--/ID:7-->
+
+        <!--ID:10--><section class="section" id="work">
+            <div class="container">
+                <!--ID:8--><div class="row mb-5">
+                    <div class="col-lg-8">
+                        <p class="text-uppercase small text-muted-arch mb-2" style="letter-spacing: 0.18em;">Selected works</p>
+                        <h2 class="mb-0">Projects that let material, light and landscape speak.</h2>
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-lg-end justify-content-lg-end mt-3 mt-lg-0">
+                        <p class="text-muted-arch mb-0 small">A selection of residential, cultural and workspace architecture.</p>
+                    </div>
+                </div><!--/ID:8-->
+                <!--ID:9--><div class="row g-4">
+                    <div class="col-md-6">
+                        <article class="project-card lightbox-trigger" data-full-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" data-caption="Casa Serra - Residential, Barcelona, 2024" aria-label="View Casa Serra project image">
+                            <div class="project-card-img">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Casa Serra residential building exterior" onerror="this.onerror=null;this.src='https://placehold.co/1200x900?text=Image+Not+Found';">
+                            </div>
+                            <div class="card-body">
+                                <div class="meta">Residential · Barcelona, 2024</div>
+                                <h3 class="mb-0">Casa Serra</h3>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="project-card lightbox-trigger" data-full-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" data-caption="Villa Alba - Private House, Menorca, 2023" aria-label="View Villa Alba project image">
+                            <div class="project-card-img">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Villa Alba private house interior with courtyard" onerror="this.onerror=null;this.src='https://placehold.co/1200x900?text=Image+Not+Found';">
+                            </div>
+                            <div class="card-body">
+                                <div class="meta">Private House · Menorca, 2023</div>
+                                <h3 class="mb-0">Villa Alba</h3>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="project-card lightbox-trigger" data-full-src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1600&q=80" data-caption="Pavilion N - Cultural Pavilion, Milan, 2022" aria-label="View Pavilion N project image">
+                            <div class="project-card-img">
+                                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80" alt="Pavilion N cultural building exterior" onerror="this.onerror=null;this.src='https://placehold.co/1200x900?text=Image+Not+Found';">
+                            </div>
+                            <div class="card-body">
+                                <div class="meta">Cultural Pavilion · Milan, 2022</div>
+                                <h3 class="mb-0">Pavilion N</h3>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="project-card lightbox-trigger" data-full-src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80" data-caption="Atelier Nord - Workspace, Copenhagen, 2021" aria-label="View Atelier Nord project image">
+                            <div class="project-card-img">
+                                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Atelier Nord workspace interior" onerror="this.onerror=null;this.src='https://placehold.co/1200x900?text=Image+Not+Found';">
+                            </div>
+                            <div class="card-body">
+                                <div class="meta">Workspace · Copenhagen, 2021</div>
+                                <h3 class="mb-0">Atelier Nord</h3>
+                            </div>
+                        </article>
+                    </div>
+                </div><!--/ID:9-->
+            </div>
+        </section><!--/ID:10-->
+
+        <!--ID:13--><section class="section" id="approach">
+            <div class="container">
+                <!--ID:11--><div class="row mb-5">
+                    <div class="col-lg-7">
+                        <p class="text-uppercase small text-muted-arch mb-2" style="letter-spacing: 0.18em;">The approach</p>
+                        <h2 class="mb-0">Three principles guide every project.</h2>
+                    </div>
+                </div><!--/ID:11-->
+                <!--ID:12--><div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="philosophy-card">
+                            <i class="bi bi-compass mb-3 d-inline-block"></i>
+                            <h3 class="h4">Context</h3>
+                            <p class="text-muted-arch mb-0">Each project begins by reading the landscape, climate and community, so the building belongs where it stands.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="philosophy-card">
+                            <i class="bi bi-bricks mb-3 d-inline-block"></i>
+                            <h3 class="h4">Materiality</h3>
+                            <p class="text-muted-arch mb-0">We work with a restrained palette of stone, timber, plaster and light - materials that age gracefully and feel honest.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="philosophy-card">
+                            <i class="bi bi-sun mb-3 d-inline-block"></i>
+                            <h3 class="h4">Light</h3>
+                            <p class="text-muted-arch mb-0">Natural light is treated as a building material, shaping rooms that feel quiet, warm and generous throughout the day.</p>
+                        </div>
+                    </div>
+                </div><!--/ID:12-->
+            </div>
+        </section><!--/ID:13-->
+
+        <!--ID:14--><section class="contact-section section" id="contact">
+            <div class="container text-center">
+                <p class="text-uppercase small mb-2 opacity-75" style="letter-spacing: 0.18em;">Contact</p>
+                <h2 class="display-5 mb-4">Let’s build something enduring.</h2>
+                <p class="lead mx-auto mb-5">Have a site, a brief or a half-formed idea? We would love to hear from you.</p>
+                <a href="mailto:studio@marchetti.example" class="btn btn-accent btn-lg">studio@marchetti.example</a>
+            </div>
+        </section><!--/ID:14-->
+    </main>
+
+    <!--ID:15--><footer class="footer py-5">
+        <div class="container text-center">
+            <div class="font-display fs-3 fw-semibold text-white mb-2">Studio Marchetti</div>
+            <p class="small mb-3">Architecture &amp; Spatial Design - Copenhagen</p>
+            <p class="small mb-2">&copy; <span id="year">2026</span> Studio Marchetti. All rights reserved.</p>
+            <p class="small mb-0">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
+                &middot;
+                <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / Cookie settings</a>
+            </p>
+        </div>
+    </footer><!--/ID:15-->
+
+    <!-- Lightbox modal -->
+    <!--ID:18--><div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent">
+                <!--ID:16--><div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:16-->
+                <!--ID:17--><div class="modal-body text-center">
+                    <img id="lightboxImage" src="" alt="Project image" class="lightbox-img">
+                    <p id="lightboxCaption" class="text-white mt-3 mb-0 small"></p>
+                </div><!--/ID:17-->
+            </div>
+        </div>
+    </div><!--/ID:18-->
+
+    <!-- Cookie notice -->
+    <!--ID:22--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!--ID:19--><div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel">Cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:19-->
+                <!--ID:20--><div class="modal-body">
+                    <p class="small text-secondary mb-2">This site uses only essential cookies and local storage to remember your cookie preference. It also loads Google Fonts for typography, which may process your IP address for font delivery. No tracking or marketing cookies are used.</p>
+                    <p class="small text-secondary mb-0">You can update your choice at any time via the footer link.</p>
+                </div><!--/ID:20-->
+                <!--ID:21--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="cookieAccept" data-bs-dismiss="modal">Accept</button>
+                </div><!--/ID:21-->
+            </div>
+        </div>
+    </div><!--/ID:22-->
+
+    <!-- Privacy statement -->
+    <!--ID:26--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!--ID:23--><div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy statement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:23-->
+                <!--ID:24--><div class="modal-body small">
+                    <p><strong>Data controller:</strong> Studio Marchetti, fictive address, Copenhagen, Denmark.</p>
+                    <p><strong>What we collect:</strong> information you provide when contacting us (name, email, message), standard server logs (IP address, user agent) for security, and font requests sent to Google Fonts.</p>
+                    <p><strong>Purpose and legal basis:</strong> responding to enquiries (consent / pre-contractual measures), ensuring site security (legitimate interest), and delivering web fonts (legitimate interest).</p>
+                    <p><strong>Retention:</strong> emails are kept only as long as needed to handle your request; server logs are deleted after 30 days.</p>
+                    <p><strong>Your rights:</strong> you may request access, rectification, deletion, restriction or portability of your personal data and object to processing. Contact <a href="mailto:privacy@marchetti.example">privacy@marchetti.example</a>.</p>
+                    <p class="mb-0 text-secondary">This is a fictional portfolio website; replace the controller details with your own before real use.</p>
+                </div><!--/ID:24-->
+                <!--ID:25--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div><!--/ID:25-->
+            </div>
+        </div>
+    </div><!--/ID:26-->
+
+    <!--ID:27--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:27-->
+    <!--ID:28--><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year
+            var yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Navbar scroll state
+            var nav = document.getElementById('mainNav');
+            function onScroll() {
+                if (window.scrollY > 40) {
+                    nav.classList.add('navbar-scrolled');
+                } else {
+                    nav.classList.remove('navbar-scrolled');
+                }
+            }
+            window.addEventListener('scroll', onScroll);
+            onScroll();
+
+            // Lightbox
+            var triggers = document.querySelectorAll('.lightbox-trigger');
+            var lightboxEl = document.getElementById('lightboxModal');
+            var lightboxImg = document.getElementById('lightboxImage');
+            var lightboxCaption = document.getElementById('lightboxCaption');
+            var lightboxModal = lightboxEl ? new bootstrap.Modal(lightboxEl) : null;
+
+            triggers.forEach(function(trigger) {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (lightboxModal && lightboxImg) {
+                        var full = trigger.getAttribute('data-full-src');
+                        var caption = trigger.getAttribute('data-caption') || '';
+                        lightboxImg.setAttribute('src', full);
+                        lightboxImg.setAttribute('alt', caption || 'Project image');
+                        lightboxCaption.textContent = caption;
+                        lightboxModal.show();
+                    }
+                });
+            });
+
+            // Cookie consent
+            var cookieModalEl = document.getElementById('cookieModal');
+            if (cookieModalEl) {
+                var cookieModal = new bootstrap.Modal(cookieModalEl);
+                try {
+                    if (!localStorage.getItem('cookieConsent')) {
+                        cookieModal.show();
+                    }
+                } catch(e) {}
+
+                cookieModalEl.addEventListener('hidden.bs.modal', function() {
+                    try {
+                        if (!localStorage.getItem('cookieConsent')) {
+                            localStorage.setItem('cookieConsent', 'dismissed');
+                        }
+                    } catch(e) {}
+                });
+
+                var accept = document.getElementById('cookieAccept');
+                if (accept) accept.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'accepted'); } catch(e) {}
+                    cookieModal.hide();
+                });
+
+                var reject = document.getElementById('cookieReject');
+                if (reject) reject.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'rejected'); } catch(e) {}
+                });
+            }
+        });
+    </script><!--/ID:28-->
+</body>
+</html>

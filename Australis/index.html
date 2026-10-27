@@ -1,0 +1,855 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australis - Travel the Great Southern Land | Dark Australia Journey</title>
+    <meta name="description" content="A dark, cinematic travel guide to Australia: dive the Great Barrier Reef, stand before Uluru at sunrise, sail Sydney Harbour and wander the outback. Plan your journey with interactive itineraries.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#070a12;
+            --surface:#0e1424;
+            --surface-2:#151f36;
+            --line:rgba(255,255,255,.08);
+            --line-strong:rgba(255,255,255,.14);
+            --ink:#eef2fb;
+            --muted:#9aa6c0;
+            --accent:#ff7a45;
+            --accent-soft:#ffb27a;
+            --glow:rgba(255,122,69,.35);
+        }
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+        body{
+            background:var(--bg);
+            color:var(--muted);
+            font-family:'Manrope',system-ui,sans-serif;
+            line-height:1.7;
+            overflow-x:hidden;
+            letter-spacing:.1px;
+        }
+        h1,h2,h3,.font-display{font-family:'Syne','Manrope',sans-serif;color:var(--ink);letter-spacing:-.01em;line-height:1.08}
+        a{color:inherit;text-decoration:none}
+        ::selection{background:var(--accent);color:#1a0d06}
+        :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+        /* Scroll progress bar */
+        #progressBar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-soft));z-index:2000;box-shadow:0 0 14px var(--glow)}
+
+        /* Navbar */
+        .navbar{padding:.85rem 0;transition:background .4s ease, padding .3s ease, box-shadow .4s ease;border-bottom:1px solid transparent}
+        .navbar.scrolled{background:rgba(7,10,18,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--line);padding:.5rem 0;box-shadow:0 14px 40px -20px rgba(0,0,0,.7)}
+        .navbar-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ink)!important;font-size:1.35rem;display:flex;align-items:center;gap:.55rem}
+        .brand-mark{width:34px;height:34px;border-radius:9px;background:radial-gradient(120% 120% at 30% 20%,var(--accent-soft),var(--accent));display:grid;place-items:center;color:#1a0d06;font-size:1.05rem;box-shadow:0 8px 24px -8px var(--glow)}
+        .nav-link{color:var(--muted)!important;font-weight:500;margin:0 .15rem;padding:.4rem .7rem!important;border-radius:8px;position:relative;transition:color .25s ease}
+        .nav-link:hover,.nav-link.active{color:var(--ink)!important}
+        .nav-link::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.15rem;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;border-radius:2px}
+        .nav-link.active::after,.nav-link:hover::after{transform:scaleX(1)}
+
+        /* Buttons */
+        .btn-sunset{background:linear-gradient(180deg,var(--accent-soft),var(--accent));color:#200d05;border:none;font-weight:700;padding:.7rem 1.4rem;border-radius:12px;box-shadow:0 14px 34px -12px var(--glow);transition:transform .2s ease, box-shadow .3s ease}
+        .btn-sunset:hover{color:#200d05;transform:translateY(-3px);box-shadow:0 22px 46px -14px var(--glow)}
+        .btn-ghost{background:rgba(255,255,255,.04);border:1px solid var(--line-strong);color:var(--ink);font-weight:600;padding:.7rem 1.35rem;border-radius:12px;transition:border-color .25s ease,background .25s ease,transform .2s ease}
+        .btn-ghost:hover{border-color:var(--accent);background:rgba(255,122,69,.08);color:var(--ink);transform:translateY(-3px)}
+
+        /* Hero */
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 90px;overflow:hidden}
+        .hero-bg,.hero-glow{position:absolute;inset:-8%;will-change:transform;z-index:0}
+        .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.9) contrast(1.05);animation:kenburns 32s ease-in-out infinite alternate}
+        .hero-overlay{position:absolute;inset:0;z-index:1;background:
+            radial-gradient(120% 80% at 70% 10%,rgba(255,122,69,.14),transparent 55%),
+            linear-gradient(180deg,rgba(7,10,18,.5) 0%,rgba(7,10,18,.75) 55%,var(--bg) 100%)}
+        .hero-glow{background:radial-gradient(60% 60% at 20% 40%,rgba(255,122,69,.16),transparent 60%),radial-gradient(50% 50% at 85% 75%,rgba(53,208,192,.12),transparent 60%);animation:glowdrift 14s ease-in-out infinite alternate}
+        #stars{position:absolute;inset:0;z-index:1;width:100%;height:100%}
+        .hero-inner{position:relative;z-index:3}
+        .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;font-size:.74rem;color:var(--accent-soft);background:rgba(255,122,69,.08);border:1px solid rgba(255,122,69,.25);padding:.45rem .9rem;border-radius:100px}
+        .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--glow);animation:pulse 2.4s infinite}
+        .hero-title{font-size:clamp(2.9rem,8vw,6.1rem);font-weight:800;margin:1.3rem 0 1.1rem}
+        .hero-title .accentword{position:relative;color:var(--ink)}
+        .hero-title .accentword span{background:linear-gradient(120deg,var(--accent-soft),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .lead-text{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:640px;color:#c3ccdf;font-weight:400}
+        .stat-chips{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+        .chip{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:.7rem 1rem;display:flex;flex-direction:column;min-width:130px;backdrop-filter:blur(6px)}
+        .chip b{font-family:'Syne',sans-serif;color:var(--ink);font-size:1.5rem;line-height:1}
+        .chip small{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;margin-top:.3rem}
+        .scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+        .scroll-cue .mouse{width:24px;height:38px;border:2px solid var(--line-strong);border-radius:14px;display:flex;justify-content:center;padding-top:6px}
+        .scroll-cue .wheel{width:3px;height:8px;border-radius:3px;background:var(--accent);animation:wheel 1.6s infinite}
+
+        /* Marquee */
+        .marquee{border-block:1px solid var(--line);background:linear-gradient(90deg,rgba(255,122,69,.06),transparent,rgba(255,122,69,.06));overflow:hidden;padding:1.1rem 0}
+        .marquee-track{display:flex;gap:2.4rem;width:max-content;animation:scrollx 34s linear infinite;align-items:center}
+        .marquee:hover .marquee-track{animation-play-state:paused}
+        .marquee span{font-family:'Syne',sans-serif;font-weight:700;color:var(--ink);white-space:nowrap;display:inline-flex;align-items:center;gap:2.4rem;font-size:1.15rem;text-transform:uppercase;letter-spacing:.08em}
+        .marquee i{color:var(--accent)}
+
+        /* Sections */
+        section{position:relative;padding:clamp(64px,9vw,110px) 0}
+        .section-head{max-width:720px;margin-bottom:3rem}
+        .kicker{display:inline-block;font-weight:700;letter-spacing:.26em;text-transform:uppercase;font-size:.72rem;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+        .kicker::before{content:"";width:34px;height:2px;background:var(--accent);border-radius:2px}
+        .section-title{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:800;margin-bottom:.9rem}
+
+        /* Destination cards */
+        .dest-card{position:relative;border:1px solid var(--line);background:var(--surface);border-radius:20px;overflow:hidden;height:100%;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,border-color .35s ease;display:flex;flex-direction:column}
+        .dest-card:hover{transform:translateY(-8px);border-color:rgba(255,122,69,.4);box-shadow:0 40px 70px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,122,69,.15)}
+        .dest-media{position:relative;height:230px;overflow:hidden}
+        .dest-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1);filter:saturate(1.05)}
+        .dest-card:hover .dest-media img{transform:scale(1.1)}
+        .dest-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(7,10,18,.85))}
+        .tag{position:absolute;top:.9rem;left:.9rem;z-index:2;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(7,10,18,.6);border:1px solid var(--line-strong);padding:.35rem .7rem;border-radius:100px;backdrop-filter:blur(6px)}
+        .dest-body{padding:1.4rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;flex-grow:1}
+        .dest-body h3{font-size:1.4rem;font-weight:700;margin:0}
+        .dest-body p{margin:0;font-size:.95rem;color:var(--muted)}
+        .link-arrow{margin-top:auto;display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:700;font-size:.9rem;padding-top:.6rem}
+        .link-arrow i{transition:transform .3s ease}
+        .dest-card:hover .link-arrow i{transform:translateX(6px)}
+
+        /* Experiences */
+        .exp-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-bottom:clamp(3rem,7vw,6rem)}
+        .exp-row:last-child{margin-bottom:0}
+        .exp-media{position:relative;border-radius:22px;overflow:hidden;height:min(78vh,560px);border:1px solid var(--line)}
+        .exp-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.02);will-change:transform}
+        .exp-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,18,.35),transparent 45%)}
+        .exp-num{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,5vw,4rem);color:transparent;-webkit-text-stroke:1.5px var(--accent);line-height:1}
+        .exp-media-badge{position:absolute;left:1.1rem;bottom:1.1rem;z-index:2;background:rgba(7,10,18,.65);border:1px solid var(--line-strong);padding:.4rem .85rem;border-radius:100px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);backdrop-filter:blur(6px)}
+        .exp-copy h3{font-size:clamp(1.8rem,3.4vw,2.5rem);margin:1rem 0}
+        .exp-copy p{color:#c3ccdf;font-size:1.05rem;margin-bottom:1.3rem}
+        .check-list{list-style:none;padding:0;margin:0;display:grid;gap:.65rem}
+        .check-list li{display:flex;align-items:center;gap:.7rem;color:var(--muted)}
+        .check-list i{color:var(--accent);font-size:1.05rem}
+
+        /* Gallery */
+        .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:.9rem}
+        .g-item{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid var(--line)}
+        .g-item.tall{grid-row:span 2}
+        .g-item.wide{grid-column:span 2}
+        .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1);filter:saturate(1.05)}
+        .g-item:hover img{transform:scale(1.08)}
+        .g-cap{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(transparent,rgba(7,10,18,.9));color:var(--ink);font-weight:600;font-size:.9rem;transform:translateY(12px);opacity:0;transition:.35s ease}
+        .g-item:hover .g-cap{transform:none;opacity:1}
+
+        /* Plan / trip builder */
+        .info-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem;height:100%;transition:border-color .3s ease,transform .3s ease}
+        .info-card:hover{border-color:rgba(255,122,69,.35);transform:translateY(-4px)}
+        .info-icon{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;font-size:1.4rem;background:rgba(255,122,69,.12);color:var(--accent);border:1px solid rgba(255,122,69,.2)}
+        .info-card h3{font-size:1.2rem;margin:1.1rem 0 .5rem}
+        .info-card p{margin:0;font-size:.94rem;color:var(--muted)}
+        .builder-panel{background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1px solid var(--line-strong);border-radius:22px;padding:clamp(1.5rem,3vw,2.4rem)}
+        .interest-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line-strong);background:rgba(255,255,255,.03);color:var(--muted);padding:.6rem 1rem;border-radius:100px;cursor:pointer;font-weight:600;font-size:.92rem;transition:.25s ease;user-select:none}
+        .interest-chip input{position:absolute;opacity:0;width:0;height:0}
+        .interest-chip:hover{border-color:var(--accent);color:var(--ink)}
+        .interest-chip.on{background:rgba(255,122,69,.14);border-color:var(--accent);color:var(--ink);box-shadow:0 8px 20px -10px var(--glow)}
+        .itinerary-out{margin-top:1.6rem;border-top:1px dashed var(--line-strong);padding-top:1.5rem;min-height:90px}
+        .itin-stop{display:inline-flex;align-items:center;gap:.45rem;background:var(--surface);border:1px solid rgba(255,122,69,.3);color:var(--ink);padding:.45rem .85rem;border-radius:100px;margin:.3rem;font-size:.9rem}
+        .itin-stop i{color:var(--accent)}
+
+        /* CTA band */
+        .cta-band{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 80% -10%,rgba(255,122,69,.2),transparent 55%),var(--surface);border-block:1px solid var(--line)}
+        .cta-band h2{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800}
+        .news-form{display:flex;gap:.7rem;flex-wrap:wrap}
+        .news-form input{background:rgba(255,255,255,.04);border:1px solid var(--line-strong);color:var(--ink);border-radius:12px;padding:.85rem 1.1rem;min-width:230px}
+        .news-form input::placeholder{color:#7b869e}
+        .form-msg{margin-top:1rem;font-weight:600;color:var(--accent-soft)}
+
+        /* Footer */
+        footer{background:#05070d;border-top:1px solid var(--line);padding:64px 0 30px;margin-top:20px}
+        .footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ink);font-size:1.5rem;display:flex;align-items:center;gap:.55rem}
+        footer a.flink{display:block;color:var(--muted);padding:.32rem 0;font-size:.94rem;transition:color .2s ease,transform .2s ease;width:max-content}
+        footer a.flink:hover{color:var(--accent-soft);transform:translateX(4px)}
+        .footer-bottom{border-top:1px solid var(--line);margin-top:2.6rem;padding-top:1.5rem;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;color:#7b869e;font-size:.85rem}
+        .socials a{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);transition:.25s ease}
+        .socials a:hover{color:#1a0d06;background:var(--accent);transform:translateY(-3px)}
+
+        /* Lightbox */
+        #galleryModal .modal-content{background:rgba(5,7,13,.94);border:1px solid var(--line-strong);backdrop-filter:blur(8px)}
+        #lbImg{width:100%;max-height:72vh;object-fit:contain;background:#000}
+
+        /* Reveal animation */
+        .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+        .reveal.in-view{opacity:1;transform:none}
+        [style*="--d"]{transition-delay:var(--d,0s)}
+
+        /* Modals dark */
+        .modal-content{background:var(--surface-2);border:1px solid var(--line-strong);color:var(--muted)}
+        .modal-header,.modal-footer{border-color:var(--line)}
+        .modal-title{font-family:'Syne',sans-serif;color:var(--ink)}
+
+        @keyframes kenburns{from{transform:scale(1.05) translate(0,0)}to{transform:scale(1.2) translate(-2%,-3%)}}
+        @keyframes glowdrift{from{opacity:.7;transform:translate(0,0)}to{opacity:1;transform:translate(3%, -2%)}}
+        @keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 9px rgba(255,122,69,0)}100%{box-shadow:0 0 0 0 rgba(255,122,69,0)}}
+        @keyframes wheel{0%{opacity:1;transform:translateY(0)}80%,100%{opacity:0;transform:translateY(12px)}}
+        @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+        /* Responsive */
+        @media (max-width:991.98px){
+            .exp-row{grid-template-columns:1fr}
+            .exp-media{height:min(60vh,420px);order:-1}
+        }
+        @media (max-width:767.98px){
+            .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+            .g-item.wide{grid-column:span 2}
+            .scroll-cue{display:none}
+        }
+
+        @media (prefers-reduced-motion: reduce){
+            *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+            .reveal{opacity:1;transform:none}
+            .marquee-track{animation:none}
+        }
+    </style>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Australis - Travel the Great Southern Land | Dark Australia Journey">
+    <meta property="og:description" content="A dark, cinematic travel guide to Australia: dive the Great Barrier Reef, stand before Uluru at sunrise, sail Sydney Harbour and wander the outback. Plan your journey with interactive itineraries.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/0h34pc05gvdk56fr/">
+</head>
+<body id="top">
+
+    <div id="progressBar" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Primary navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#top">
+                <span class="brand-mark"><i class="bi bi-compass-fill"></i></span>
+                Australis
+            </a>
+            <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-2 text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#destinations">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiences">Experiences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#plan">Plan your trip</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="#plan" class="btn btn-sunset d-none d-md-inline-block ms-lg-3">Start planning</a>
+                    <a href="#plan" class="btn btn-sunset d-md-none"><i class="bi bi-route me-1"></i>Plan</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-bg" data-mouse><img src="https://picsum.photos/seed/australia-outback-dusk/1920/1280" alt="Sunset over the vast Australian outback landscape" onerror="this.onerror=null;this.src='https://placehold.co/1920x1280?text=Australian+Outback';"></div>
+        <canvas id="stars" aria-hidden="true"></canvas>
+        <div class="hero-glow" data-mouse></div>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-inner">
+            <span class="eyebrow"><span class="dot"></span>The Great Southern Land</span>
+            <h1 class="hero-title reveal in-view">Chase the wild<br>across <span class="accentword"><span>Australia</span></span></h1>
+            <p class="lead-text reveal in-view" style="--d:.1s">From coral gardens under a turquoise sea to red-rock monoliths glowing at dawn - pack your bag and follow the light across an entire continent of coastlines, deserts and ancient country.</p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4 reveal in-view" style="--d:.2s">
+                <a href="#destinations" class="btn btn-sunset"><i class="bi bi-binoculars me-2"></i>Explore destinations</a>
+                <a href="#plan" class="btn btn-ghost">Build my route <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+
+            <div class="stat-chips reveal in-view" style="--d:.3s">
+                <div class="chip"><b data-count="8">0</b><small>UNESCO sites</small></div>
+                <div class="chip"><b data-count="2900">0</b><small>Reef islands</small></div>
+                <div class="chip"><b data-count="3">0</b><small>Time zones</small></div>
+                <div class="chip"><b data-count="42">0</b><small>Million km² of land</small></div>
+            </div>
+        </div>
+
+        <a href="#destinations" class="scroll-cue" aria-label="Scroll to destinations">
+            <span class="mouse"><span class="wheel"></span></span>Scroll
+        </a>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Outback <i class="bi bi-asterisk"></i> Reef <i class="bi bi-asterisk"></i> Red Centre <i class="bi bi-asterisk"></i> Coastline <i class="bi bi-asterisk"></i> Rainforest <i class="bi bi-asterisk"></i> Harbour City <i class="bi bi-asterisk"></i></span>
+            <span>Outback <i class="bi bi-asterisk"></i> Reef <i class="bi bi-asterisk"></i> Red Centre <i class="bi bi-asterisk"></i> Coastline <i class="bi bi-asterisk"></i> Rainforest <i class="bi bi-asterisk"></i> Harbour City <i class="bi bi-asterisk"></i></span>
+        </div>
+    </div>
+
+    <!-- Destinations -->
+    <section id="destinations">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="kicker">Where to go</span>
+                <h2 class="section-title">Six landscapes that define a country the size of Europe</h2>
+                <p>Australia is less one place and more a dozen. Here are the stops most travellers circle first - each with its own rhythm, light and reason to stay.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 reveal" style="--d:0s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">New South Wales</span><img src="https://picsum.photos/seed/sydney-harbour-opera/800/600" alt="The Sydney Opera House and Harbour Bridge at golden hour" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Sydney+Harbour';"></div>
+                        <div class="dest-body">
+                            <h3>Sydney &amp; the Harbour</h3>
+                            <p>A masterpiece of 20th-century architecture on Bennelong Point, home to 1,800 shows a year and watched over by millions of visitors - plus the Bridge for sunset walks.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="--d:.1s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">Queensland</span><img src="https://picsum.photos/seed/great-barrier-reef-blue/800/600" alt="Turquoise water and coral of the Great Barrier Reef" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Great+Barrier+Reef';"></div>
+                        <div class="dest-body">
+                            <h3>The Great Barrier Reef</h3>
+                            <p>Over 2,900 reefs and 900 islands stretching more than 2,300 km - the largest living structure on Earth, visible from space and a World Heritage site since 1981.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="--d:.2s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">Northern Territory</span><img src="https://picsum.photos/seed/uluru-red-rock-sunset/800/600" alt="Uluru sandstone monolith glowing red at sunset in the desert" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Uluru';"></div>
+                        <div class="dest-body">
+                            <h3>Uluru &amp; the Red Centre</h3>
+                            <p>A sacred sandstone monolith 335 km from Alice Springs, ancient to the Aṉangu people. Watch it shift colour at dawn and dusk - one of the country's most recognisable landmarks.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="--d:0s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">North Queensland</span><img src="https://picsum.photos/seed/daintree-rainforest-mist/800/600" alt="Lush green Daintree rainforest with a river winding through it" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Daintree+Rainforest';"></div>
+                        <div class="dest-body">
+                            <h3>Daintree Rainforest</h3>
+                            <p>One of the oldest tropical rainforests on the planet, where jungle meets reef. Walk canopy boardwalks and keep an eye out for cassowaries in the morning mist.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="--d:.1s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">New South Wales</span><img src="https://picsum.photos/seed/bondi-ocean-cliffs-surf/800/600" alt="Waves breaking on the cliffs of Bondi Beach on the east coast" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Bondi+Coast';"></div>
+                        <div class="dest-body">
+                            <h3>Bondi &amp; the East Coast</h3>
+                            <p>Iconic surf, coastal cliff walks and golden sand. Ride the train up from Sydney in minutes - or drive the whole coastline south to the wine valleys of Victoria.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="--d:.2s">
+                    <article class="dest-card">
+                        <div class="dest-media"><span class="tag">New South Wales</span><img src="https://picsum.photos/seed/blue-mountains-eucalyptus/800/600" alt="Eucalyptus-covered ranges of the Blue Mountains in haze" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Blue+Mountains';"></div>
+                        <div class="dest-body">
+                            <h3>The Blue Mountains</h3>
+                            <p>Sandstone ridges, three-sided canyons and eucalyptus haze that gives the ranges their blue tint. Just an hour west of Sydney - a perfect day-trip or overnight.</p>
+                            <a href="#plan" class="link-arrow">Plan this stop <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences -->
+    <section id="experiences" style="background:linear-gradient(180deg,transparent,rgba(255,122,69,.03),transparent)">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="kicker">How to travel it</span>
+                <h2 class="section-title">Four ways in - pick your pace</h2>
+                <p>There is no single way through Australia. Some people fly, some drive for weeks. These are the four experiences that come back again and again.</p>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-media reveal" data-parallax="0.12"><img src="https://picsum.photos/seed/coral-reef-diving-fish/900/1200" alt="Scuba diver swimming above a colourful coral reef" onerror="this.onerror=null;this.src='https://placehold.co/900x1200?text=Reef+Diving';"><span class="exp-media-badge">Cairns · Whitsundays</span></div>
+                <div class="exp-copy reveal" style="--d:.1s">
+                    <div class="exp-num">01</div>
+                    <h3>Dive &amp; snorkel the Reef</h3>
+                    <p>The reef supports an extraordinary diversity of life, sheltered by the Great Barrier Reef Marine Park. Take a glass-bottom boat if you can't swim - or drop into 20 metres with a guide.</p>
+                    <ul class="check-list">
+                        <li><i class="bi bi-check-circle-fill"></i>Turtle and reef-fish snorkelling</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Sail between the Whitsunday Islands</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Best months: June to October, dry and calm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-copy reveal" style="--d:.1s" order="0">
+                    <div class="exp-num">02</div>
+                    <h3>Drive the outback</h3>
+                    <p>The Red Centre is all distance and drama. Hire a 4WD, fill your tank at Alice Springs, and chase the sun around Uluru - where rock art, waterholes and ancient stories line every trail.</p>
+                    <ul class="check-list">
+                        <li><i class="bi bi-check-circle-fill"></i>Sunrise &amp; sunset from the base walk</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Cross to the Olgas at Kata Tjuta</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Plan fuel stops - services are far apart</li>
+                    </ul>
+                </div>
+                <div class="exp-media reveal" data-parallax="0.12"><img src="https://picsum.photos/seed/red-outback-4wd-road/900/1200" alt="A 4WD vehicle driving a red dirt road across the Australian outback" onerror="this.onerror=null;this.src='https://placehold.co/900x1200?text=Outback+Drive';"><span class="exp-media-badge">Alice Springs · Uluru</span></div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-media reveal" data-parallax="0.12"><img src="https://picsum.photos/seed/sydney-harbour-sail-yacht/900/1200" alt="A yacht sailing on Sydney Harbour with the Opera House in view" onerror="this.onerror=null;this.src='https://placehold.co/900x1200?text=Harbour+Sailing';"><span class="exp-media-badge">Sydney · Port Jackson</span></div>
+                <div class="exp-copy reveal" style="--d:.1s">
+                    <div class="exp-num">03</div>
+                    <h3>Sail the harbour city</h3>
+                    <p>Few cities reward water as generously as Sydney. Hop a ferry from Circular Quay, watch the Opera House and Bridge slide past, and let the ferries double as your transport between bays.</p>
+                    <ul class="check-list">
+                        <li><i class="bi bi-check-circle-fill"></i>Ferries to Manly &amp; Watsons Bay</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Catch a show or take an interior tour</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Sunset cruises run year-round</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-row">
+                <div class="exp-copy reveal" style="--d:.1s">
+                    <div class="exp-num">04</div>
+                    <h3>Walk the rainforest</h3>
+                    <p>The Daintree pairs tropical jungle with a living reef on its doorstep. Morning is best - cooler, quieter and when the wildlife is out. Bring layers; the mist rolls in fast.</p>
+                    <ul class="check-list">
+                        <li><i class="bi bi-check-circle-fill"></i>Skywalks above the canopy</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Reef and rainforest in one day-trip</li>
+                        <li><i class="bi bi-check-circle-fill"></i>Cassowaries, tree-kangaroos &amp; birdlife</li>
+                    </ul>
+                </div>
+                <div class="exp-media reveal" data-parallax="0.12"><img src="https://picsum.photos/seed/rainforest-boardwalk-walk/900/1200" alt="A boardwalk trail winding through a misty tropical rainforest" onerror="this.onerror=null;this.src='https://placehold.co/900x1200?text=Rainforest+Walk';"><span class="exp-media-badge">Cape Tribulation</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" style="background:var(--surface)">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4 reveal">
+                <div class="section-head mb-0">
+                    <span class="kicker">Field notes</span>
+                    <h2 class="section-title">A frame from every corner</h2>
+                </div>
+                <p class="mb-0 text-secondary" style="max-width:340px">Click any photo to open it full-screen. Use your arrow keys to move through the set.</p>
+            </div>
+
+            <div class="gallery-grid reveal" id="galleryGrid">
+                <figure class="g-item tall" data-cap="Great Barrier Reef, Queensland"><img src="https://picsum.photos/seed/gallery-reef-blue/600/1200" alt="Deep blue water of the Great Barrier Reef" onerror="this.onerror=null;this.src='https://placehold.co/600x1200?text=Great+Barrier+Reef';"></figure>
+                <figure class="g-item wide" data-cap="Uluru at dusk, Red Centre"><img src="https://picsum.photos/seed/gallery-uluru-dusk/1200/800" alt="Uluru glowing under a twilight sky" onerror="this.onerror=null;this.src='https://placehold.co/1200x800?text=Uluru';"></figure>
+                <figure class="g-item" data-cap="Sydney Harbour Bridge"><img src="https://picsum.photos/seed/gallery-sydney-bridge/600/600" alt="The Sydney Harbour Bridge against a clear sky" onerror="this.onerror=null;this.src='https://placehold.co/600x600?text=Sydney+Bridge';"></figure>
+                <figure class="g-item tall" data-cap="Daintree canopy"><img src="https://picsum.photos/seed/gallery-daintree-canopy/600/1200" alt="Sunlight filtering through the Daintree rainforest canopy" onerror="this.onerror=null;this.src='https://placehold.co/600x1200?text=Daintree';"></figure>
+                <figure class="g-item wide" data-cap="Bondi Beach coastline"><img src="https://picsum.photos/seed/gallery-bondi-coast/1200/800" alt="Surfers on the coast at Bondi Beach" onerror="this.onerror=null;this.src='https://placehold.co/1200x800?text=Bondi+Beach';"></figure>
+                <figure class="g-item" data-cap="Blue Mountains haze"><img src="https://picsum.photos/seed/gallery-blue-mountains/600/600" alt="Mist over the Blue Mountains ranges" onerror="this.onerror=null;this.src='https://placehold.co/600x600?text=Blue+Mountains';"></figure>
+                <figure class="g-item" data-cap="Red dirt outback road"><img src="https://picsum.photos/seed/gallery-outback-road/600/600" alt="A red dirt road stretching across the outback" onerror="this.onerror=null;this.src='https://placehold.co/600x600?text=Outback';"></figure>
+                <figure class="g-item tall" data-cap="Whitsunday Islands by sea"><img src="https://picsum.photos/seed/gallery-whitsundays-sea/600/1200" alt="Turquoise sea around the Whitsunday Islands" onerror="this.onerror=null;this.src='https://placehold.co/600x1200?text=Whitsundays';"></figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan -->
+    <section id="plan">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="kicker">Practical &amp; personal</span>
+                <h2 class="section-title">Plan it your way</h2>
+                <p>A few facts to keep in your pocket, and a tiny builder that sketches a route from whatever you're into.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-sm-6 col-lg-3 reveal" style="--d:0s"><div class="info-card"><div class="info-icon"><i class="bi bi-calendar2-week"></i></div><h3>When to go</h3><p>Australia spans three time zones and every season at once. June–October is dry in the north; Dec–Feb brings summer and northern storms.</p></div></div>
+                <div class="col-sm-6 col-lg-3 reveal" style="--d:.08s"><div class="info-card"><div class="info-icon"><i class="bi bi-cash-stack"></i></div><h3>Money</h3><p>The currency is the Australian dollar (AUD). Cards are accepted almost everywhere; carry a little cash for outback towns and markets.</p></div></div>
+                <div class="col-sm-6 col-lg-3 reveal" style="--d:.16s"><div class="info-card"><div class="info-icon"><i class="bi bi-pass"></i></div><h3>Getting in</h3><p>Most visitors need a visitor visa or eVisitor/eTA. Apply online before you fly - processing is usually quick but never last-minute.</p></div></div>
+                <div class="col-sm-6 col-lg-3 reveal" style="--d:.24s"><div class="info-card"><div class="info-icon"><i class="bi bi-airplane"></i></div><h3>Around the country</h3><p>Fly between states, rent a car for the regions. The east coast is dense and easy; the outback rewards slow travel with fuel stops planned.</p></div></div>
+            </div>
+
+            <div class="builder-panel reveal">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-5">
+                        <h3 class="font-display mb-2" style="font-size:1.6rem;">Build a route in 10 seconds</h3>
+                        <p class="mb-0">Tap the things you'd love to do and watch a suggested stop list appear on the right.</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="d-flex flex-wrap gap-2" id="interests">
+                            <label class="interest-chip"><input type="checkbox" data-stops="Cairns, Great Barrier Reef, Whitsundays" aria-label="Include reef and diving">🤿 Reef &amp; diving</label>
+                            <label class="interest-chip"><input type="checkbox" data-stops="Alice Springs, Uluru, Kata Tjuta" aria-label="Include the outback and Red Centre">🏜️ Outback &amp; Red Centre</label>
+                            <label class="interest-chip"><input type="checkbox" data-stops="Sydney, Blue Mountains, Manly" aria-label="Include cities and coast">🌆 Cities &amp; harbour</label>
+                            <label class="interest-chip"><input type="checkbox" data-stops="Daintree, Cape Tribulation, Mossman Gorge" aria-label="Include rainforest">🌴 Rainforest</label>
+                            <label class="interest-chip"><input type="checkbox" data-stops="Melbourne, Yarra Valley, Great Ocean Road" aria-label="Include the south and wine country">🍷 South &amp; wine country</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="itinerary-out" id="itinOut" aria-live="polite">
+                    <p class="text-secondary mb-0" id="itinEmpty"><i class="bi bi-signpost-split me-2"></i>Select at least one interest above and your suggested stops will build here.</p>
+                    <div id="itinStops" class="d-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Newsletter -->
+    <section class="cta-band">
+        <div class="container py-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7 reveal">
+                    <h2 class="mb-3">Ready when you are</h2>
+                    <p class="mb-0" style="max-width:520px;">Get a short, no-spam email with the best months for each region, plus one outback tip we're proud of. One letter, then it's your move.</p>
+                </div>
+                <div class="col-lg-5 reveal" style="--d:.1s">
+                    <form class="news-form" id="newsForm" novalidate>
+                        <label for="emailInput" class="visually-hidden">Email address</label>
+                        <input type="email" id="emailInput" name="email" placeholder="you@somewhere.com" required autocomplete="email">
+                        <button type="submit" class="btn btn-sunset"><i class="bi bi-send me-1"></i>Send my guide</button>
+                    </form>
+                    <p class="form-msg d-none" id="newsMsg"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a href="#top" class="footer-brand mb-3 d-inline-flex"><span class="brand-mark"><i class="bi bi-compass-fill"></i></span> Australis</a>
+                    <p style="max-width:320px;">A dark, cinematic field guide to travelling Australia - from the reef to the red centre. Built for the curious.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3 class="font-display" style="color:var(--ink);font-size:1rem;margin-bottom:.9rem;">Explore</h3>
+                    <a href="#destinations" class="flink">Destinations</a>
+                    <a href="#experiences" class="flink">Experiences</a>
+                    <a href="#gallery" class="flink">Gallery</a>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h3 class="font-display" style="color:var(--ink);font-size:1rem;margin-bottom:.9rem;">Plan</h3>
+                    <a href="#plan" class="flink">Trip builder</a>
+                    <a href="#plan" class="flink">Best time to go</a>
+                    <a href="#plan" class="flink">Getting around</a>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h3 class="font-display mb-3" style="color:var(--ink);font-size:1rem;">Follow the light</h3>
+                    <div class="socials d-inline-flex gap-2">
+                        <a href="#top" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#top" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#top" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Australis Travel Guide. Made for the road less travelled.</span>
+                <span>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" aria-label="Read privacy statement">Privacy</a> &nbsp;&middot;&nbsp;
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" aria-label="Manage cookie settings">Cookies / Cookie settings</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="lbTitle" aria-hidden="true" aria-label="Photo lightbox">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-2">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-dark rounded-circle" data-bs-dismiss="modal" aria-label="Close lightbox"></button>
+                <img id="lbImg" src="" alt="">
+                <div class="d-flex align-items-center justify-content-between p-2">
+                    <span id="lbCap" class="font-display text-white" style="font-size:1.05rem;"></span>
+                    <span class="d-flex align-items-center gap-3">
+                        <button type="button" id="lbPrev" class="btn btn-ghost btn-sm px-3" aria-label="Previous photo"><i class="bi bi-chevron-left"></i></button>
+                        <span id="lbCount" class="text-secondary small">1 / 8</span>
+                        <button type="button" id="lbNext" class="btn btn-ghost btn-sm px-3" aria-label="Next photo"><i class="bi bi-chevron-right"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie modal -->
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-shield-lock me-2" style="color:var(--accent)"></i>Cookies &amp; your privacy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">Australis keeps things light. Here's exactly what we store on your device:</p>
+                    <ul class="list-unstyled small mb-3 ps-0" style="color:var(--muted)">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color:var(--accent)"></i><strong>Functional (localStorage):</strong> a single flag, <code>cookieConsent</code>, so we only ever ask you about cookies once.</li>
+                        <li class="mb-0"><i class="bi bi-check-circle me-2" style="color:var(--accent)"></i><strong>No tracking or marketing:</strong> this page loads no analytics, ads, maps or third-party video. The only external resources are the Bootstrap CDN and Google Fonts - neither sets cookies on your behalf.</li>
+                    </ul>
+                    <p class="small mb-0 text-secondary">You can change your choice at any time via the "Cookies / Cookie settings" link in the footer, or by clearing site data in your browser.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+                    <button type="button" class="btn btn-sunset btn-sm" id="cookieAccept">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-file-earmark-lock me-2" style="color:var(--accent)"></i>Privacy statement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body small">
+                    <p><strong>Data controller:</strong> Australis Travel Guide (the operator of this website).</p>
+                    <p><strong>What we collect:</strong> We do not use tracking, analytics or advertising cookies. The only thing stored locally is your one-time cookie preference (<code>cookieConsent</code>) in your browser's localStorage. If you send us an email through the newsletter form on this demo page, that submission is handled by your browser and is not transmitted anywhere; no data is sold or shared.</p>
+                    <p><strong>Purpose &amp; legal basis:</strong> To remember your cookie choice so we don't keep re-asking you (legitimate interest), and to deliver the content you requested. Where consent is required, we rely on it - which is why this notice appears before anything is stored.</p>
+                    <p><strong>Retention:</strong> The preference flag stays in your browser until you clear it or reject/accept again. No server-side data about you is retained by this page.</p>
+                    <p><strong>Your rights:</strong> You can access, correct or erase anything we hold simply by clearing this site's local storage in your browser, or by contacting us to request removal of any information you have given us.</p>
+                    <p class="mb-0 text-secondary">This is a demonstration privacy statement written for the purpose of this template. If you publish a live version, replace the controller name and contact details with your real ones before going public.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    (function(){
+        "use strict";
+        var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        /* ---------- Cookie consent ---------- */
+        document.addEventListener('DOMContentLoaded', function(){
+            try{
+                if(!localStorage.getItem('cookieConsent')){
+                    var el = document.getElementById('cookieModal');
+                    if(el && window.bootstrap) new bootstrap.Modal(el).show();
+                }
+            }catch(e){}
+
+            var accept = document.getElementById('cookieAccept');
+            var reject = document.getElementById('cookieReject');
+            var modal  = document.getElementById('cookieModal');
+
+            function save(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} }
+            if(accept) accept.addEventListener('click', function(){
+                save('accepted');
+                if(modal && window.bootstrap){ var i=bootstrap.Modal.getInstance(modal)||new bootstrap.Modal(modal); i.hide(); }
+            });
+            if(reject) reject.addEventListener('click', function(){
+                save('rejected');
+                if(modal && window.bootstrap){ var i=bootstrap.Modal.getInstance(modal)||new bootstrap.Modal(modal); i.hide(); }
+            });
+            // close via X / backdrop counts as "dismissed" - only once, never reshow
+            if(modal) modal.addEventListener('hidden.bs.modal', function(){
+                try{ if(!localStorage.getItem('cookieConsent')) save('dismissed'); }catch(e){}
+            });
+
+            /* ---------- Reveal on scroll (IntersectionObserver) ---------- */
+            var reveals = document.querySelectorAll('.reveal:not(.in-view)');
+            if(reduceMotion || !('IntersectionObserver' in window)){
+                reveals.forEach(function(el){ el.classList.add('in-view'); });
+            } else {
+                var io = new IntersectionObserver(function(entries){
+                    entries.forEach(function(en){
+                        if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); }
+                    });
+                }, {threshold:0.14, rootMargin:'0px 0px -6% 0px'});
+                reveals.forEach(function(el){ io.observe(el); });
+            }
+
+            /* ---------- Animated counters in hero chips ---------- */
+            var counters = document.querySelectorAll('[data-count]');
+            function animateCount(el){
+                var target = parseInt(el.getAttribute('data-count'),10)||0;
+                if(reduceMotion){ el.textContent = target.toLocaleString(); return; }
+                var start=performance.now(), dur=1500;
+                function step(now){
+                    var p=Math.min((now-start)/dur,1);
+                    var val=Math.floor(target*(1-Math.pow(1-p,3)));
+                    el.textContent = val.toLocaleString();
+                    if(p<1) requestAnimationFrame(step); else el.textContent=target.toLocaleString();
+                }
+                requestAnimationFrame(step);
+            }
+            counters.forEach(function(el){ setTimeout(function(){animateCount(el);}, 500); });
+
+            /* ---------- Scroll: progress bar, navbar state, parallax, active nav ---------- */
+            var bar = document.getElementById('progressBar');
+            var nav = document.getElementById('mainNav');
+            var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+            var ticking=false;
+
+            function onScroll(){
+                if(ticking) return; ticking=true;
+                requestAnimationFrame(function(){
+                    var doc=document.documentElement;
+                    var scrollTop=window.pageYOffset||doc.scrollTop;
+                    var maxH=(doc.scrollHeight-window.innerHeight);
+                    bar.style.width = (maxH>0 ? (scrollTop/maxH*100):0)+'%';
+                    if(nav) nav.classList.toggle('scrolled', scrollTop>40);
+
+                    if(!reduceMotion){
+                        parallaxEls.forEach(function(el){
+                            var r=el.getBoundingClientRect();
+                            if(r.bottom<0||r.top>window.innerHeight) return;
+                            var p=(r.top + r.height/2 - window.innerHeight/2)/window.innerHeight;
+                            var f=parseFloat(el.getAttribute('data-parallax'))||0.1;
+                            el.style.transform='translate3d(0,'+(p*f*-1)+'px,0)';
+                        });
+                    }
+                    ticking=false;
+                });
+            }
+            window.addEventListener('scroll', onScroll, {passive:true});
+            window.addEventListener('resize', onScroll);
+            onScroll();
+
+            /* Active nav link via section observer */
+            var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link[href^="#"]'));
+            var sections = links.map(function(l){ return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
+            if('IntersectionObserver' in window && sections.length){
+                var nio = new IntersectionObserver(function(entries){
+                    entries.forEach(function(en){
+                        if(en.isIntersecting){
+                            links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+en.target.id); });
+                        }
+                    });
+                }, {rootMargin:'-45% 0px -50% 0px'});
+                sections.forEach(function(s){ nio.observe(s); });
+            }
+
+            /* ---------- Hero mouse parallax (fine pointers only) ---------- */
+            var mouseLayers = Array.prototype.slice.call(document.querySelectorAll('[data-mouse]'));
+            if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){
+                document.addEventListener('mousemove', function(e){
+                    var x=(e.clientX/window.innerWidth-0.5);
+                    var y=(e.clientY/window.innerHeight-0.5);
+                    mouseLayers.forEach(function(l,i){
+                        var depth=(i+1)*8;
+                        l.style.transform='translate3d('+(x*depth)+'px,'+(y*depth)+'px,0)';
+                    });
+                }, {passive:true});
+            }
+
+            /* ---------- Hero drifting particles (canvas fireflies/dust) ---------- */
+            var canvas=document.getElementById('stars');
+            if(canvas && !reduceMotion){
+                var ctx=canvas.getContext('2d'), W,H,dots=[], running=true;
+                function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+                function seed(){
+                    dots=[];
+                    var n=Math.min(70, Math.floor(W/22));
+                    for(var i=0;i<n;i++){
+                        dots.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+0.4,vx:(Math.random()-0.5)*0.25,vy:-Math.random()*0.3-0.05,a:Math.random()*0.5+0.2});
+                    }
+                }
+                function frame(){
+                    if(!running) return;
+                    ctx.clearRect(0,0,W,H);
+                    for(var i=0;i<dots.length;i++){
+                        var d=dots[i];
+                        d.x+=d.vx; d.y+=d.vy;
+                        if(d.y<-5){ d.y=H+5; d.x=Math.random()*W; }
+                        if(d.x<-5) d.x=W+5; else if(d.x>W+5) d.x=-5;
+                        ctx.beginPath();
+                        ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+                        ctx.fillStyle='rgba(255,'+(140+Math.floor(Math.random()*60))+',90,'+d.a+')';
+                        ctx.fill();
+                    }
+                    requestAnimationFrame(frame);
+                }
+                resize(); seed(); frame();
+                window.addEventListener('resize', function(){ resize(); seed(); });
+                document.addEventListener('visibilitychange', function(){ running=!document.hidden; if(running) frame(); });
+            }
+
+            /* ---------- Gallery lightbox ---------- */
+            var items = Array.prototype.map.call(document.querySelectorAll('#galleryGrid .g-item'), function(f){
+                return { src: f.querySelector('img').src, cap: f.getAttribute('data-cap')||'', alt: (f.querySelector('img').alt||'') };
+            });
+            var gModal=document.getElementById('galleryModal');
+            var lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lbCount=document.getElementById('lbCount');
+            var idx=0;
+            function show(i){
+                idx=(i+items.length)%items.length;
+                var it=items[idx];
+                lbImg.src=it.src; lbImg.alt=it.alt; lbCap.textContent=it.cap;
+                lbCount.textContent=(idx+1)+' / '+items.length;
+            }
+            if(gModal){
+                document.querySelectorAll('#galleryGrid .g-item').forEach(function(f,i){
+                    f.setAttribute('tabindex','0'); f.setAttribute('role','button');
+                    f.setAttribute('aria-label','Open photo: '+(f.getAttribute('data-cap')||''));
+                    function open(){ show(i); if(window.bootstrap) new bootstrap.Modal(gModal).show(); }
+                    f.addEventListener('click', open);
+                    f.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }});
+                });
+                document.getElementById('lbNext').addEventListener('click', function(){ show(idx+1); });
+                document.getElementById('lbPrev').addEventListener('click', function(){ show(idx-1); });
+                gModal.addEventListener('hidden.bs.modal', function(){ lbImg.src=''; lbImg.removeAttribute('src'); });
+            }
+            window.addEventListener('keydown', function(e){
+                if(gModal && gModal.classList.contains('show')){
+                    if(e.key==='ArrowRight'){ show(idx+1); }
+                    else if(e.key==='ArrowLeft'){ show(idx-1); }
+                }
+            });
+
+            /* ---------- Trip builder ---------- */
+            var chips=document.querySelectorAll('#interests .interest-chip input');
+            var stopsWrap=document.getElementById('itinStops');
+            var emptyMsg=document.getElementById('itinEmpty');
+            function buildItinerary(){
+                var selected=[];
+                document.querySelectorAll('#interests .interest-chip.on').forEach(function(chip){
+                    (chip.querySelector('input').getAttribute('data-stops')||'').split(',').forEach(function(s){ s=s.trim(); if(s) selected.push(s); });
+                });
+                if(selected.length===0){ stopsWrap.classList.add('d-none'); emptyMsg.classList.remove('d-none'); return; }
+                var seen={}, out=[];
+                selected.forEach(function(s){ if(!seen[s]){ seen[s]=1; out.push(s); }});
+                emptyMsg.classList.add('d-none');
+                stopsWrap.classList.remove('d-none');
+                stopsWrap.innerHTML='';
+                out.forEach(function(s,i){
+                    var el=document.createElement('span');
+                    el.className='itin-stop reveal in-view';
+                    el.style.setProperty('--d',(i*0.05)+'s');
+                    el.innerHTML='<i class="bi bi-geo-alt-fill"></i>'+ (i===0?'Start: ':'') + s;
+                    stopsWrap.appendChild(el);
+                });
+            }
+            chips.forEach(function(cb){
+                cb.addEventListener('change', function(){
+                    cb.closest('.interest-chip').classList.toggle('on', cb.checked);
+                    buildItinerary();
+                });
+            });
+
+            /* ---------- Newsletter (client-side demo) ---------- */
+            var form=document.getElementById('newsForm');
+            if(form){
+                form.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    var input=document.getElementById('emailInput');
+                    var msg=document.getElementById('newsMsg');
+                    var val=(input.value||'').trim();
+                    var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+                    if(!ok){
+                        msg.textContent='Please enter a valid email address.';
+                        msg.style.color='#ff8a6b';
+                        msg.classList.remove('d-none');
+                        input.focus();
+                        return;
+                    }
+                    msg.innerHTML='<i class="bi bi-check-circle-fill me-1"></i>Thanks - your guide is on its way to '+val+'.';
+                    msg.style.color='var(--accent-soft)';
+                    msg.classList.remove('d-none');
+                    form.reset();
+                });
+            }
+
+        });
+    })();
+    </script>
+</body>
+</html>

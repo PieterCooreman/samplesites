@@ -1,0 +1,990 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Land Rover Defender - a British 4x4 icon combining heritage, engineering, capability and unmistakable style.">
+    <title>Land Rover Defender | Iconic 4x4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --df-accent: #c65a17;
+            --df-accent-dark: #9c430f;
+            --df-dark: #14171c;
+            --df-ink: #212529;
+            --df-cream: #f6f2ec;
+            --df-warm: #edd8c3;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            background-color: var(--df-cream);
+            color: var(--df-ink);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .font-display {
+            font-family: "Oswald", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+        }
+
+        .section-padding {
+            padding: clamp(4rem, 8vw, 6rem) 0;
+        }
+
+        .eyebrow {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            color: var(--df-accent);
+        }
+
+        .section-title {
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            line-height: 1.05;
+        }
+
+        .text-accent {
+            color: var(--df-accent) !important;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(16, 18, 22, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .navbar-brand {
+            font-family: "Oswald", sans-serif;
+            font-size: 1.35rem;
+            letter-spacing: .05em;
+            color: #fff !important;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            color: var(--df-accent);
+        }
+
+        .navbar .nav-link {
+            color: rgba(255, 255, 255, .82);
+            font-weight: 500;
+            font-size: .92rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-left: .1rem;
+            padding: .6rem .8rem;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus,
+        .navbar .nav-link.active {
+            color: #fff;
+        }
+
+        .navbar-toggler {
+            border: 0;
+            color: #fff;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 .2rem rgba(198, 90, 23, .35);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            min-height: 100svh;
+            overflow: hidden;
+            padding: calc(5rem + 1vh) 0 5rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(10, 12, 15, .92) 0%, rgba(12, 14, 18, .72) 46%, rgba(0, 0, 0, .35) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            color: #fff;
+        }
+
+        .hero-eyebrow {
+            font-size: .8rem;
+            letter-spacing: .42em;
+            text-transform: uppercase;
+            color: #f0a97c;
+            margin-bottom: .8rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 13vw, 6rem);
+            line-height: .94;
+            color: #fff;
+            overflow-wrap: break-word;
+        }
+
+        .hero-lead {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #e7e1da;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 3;
+            color: rgba(255, 255, 255, .7);
+            font-size: 1.5rem;
+            transition: color .2s ease;
+        }
+
+        .hero-scroll:hover {
+            color: #fff;
+        }
+
+        /* Buttons */
+        .btn {
+            min-height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: .45rem;
+        }
+
+        .btn-accent {
+            background-color: var(--df-accent);
+            border: 1px solid var(--df-accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn-accent:hover,
+        .btn-accent:focus {
+            background-color: var(--df-accent-dark);
+            border-color: var(--df-accent-dark);
+            color: #fff;
+        }
+
+        .btn-outline-light:hover {
+            color: #16181b;
+        }
+
+        /* Cards */
+        .hover-card {
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            border: 1px solid rgba(0, 0, 0, .04);
+        }
+
+        .hover-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 1rem 1.8rem rgba(20, 25, 35, .08) !important;
+            border-color: rgba(198, 90, 23, .18);
+        }
+
+        .icon-badge {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 1.6rem;
+            color: #ad4c11;
+            background: rgba(198, 90, 23, .1);
+        }
+
+        /* Heritage image */
+        .feature-media {
+            width: 100%;
+            height: clamp(280px, 48vw, 500px);
+            object-fit: cover;
+            border-radius: 1.1rem;
+            box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, .14);
+        }
+
+        /* Dark stats */
+        .dark-section {
+            background: linear-gradient(135deg, #101317 0%, #181c22 60%, #1d1b18 100%);
+            color: #f1ede8;
+        }
+
+        .dark-section .eyebrow {
+            color: #edb28a;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, .055);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 1.2rem;
+            height: 100%;
+            padding: 1.7rem 1.25rem;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, .09);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-family: "Oswald", sans-serif;
+            font-size: clamp(2.1rem, 5vw, 3.4rem);
+            line-height: 1;
+            color: #ee943e;
+            text-transform: uppercase;
+        }
+
+        .stat-unit {
+            font-size: clamp(.95rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, .62);
+            font-weight: 300;
+        }
+
+        .stat-label {
+            margin-top: .55rem;
+            font-size: .82rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .78);
+            margin-bottom: 0;
+        }
+
+        /* Models */
+        .model-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .model-code {
+            font-family: "Oswald", sans-serif;
+            font-size: 5.2rem;
+            line-height: .8;
+            font-weight: 700;
+            color: rgba(198, 90, 23, .12);
+            position: absolute;
+            right: .6rem;
+            top: .4rem;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .model-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .model-list li {
+            padding: .35rem 0;
+            font-size: .94rem;
+            color: #4b5158;
+        }
+
+        .model-list i {
+            color: var(--df-accent);
+            margin-right: .45rem;
+        }
+
+        /* Gallery */
+        .gallery-btn {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: none;
+            box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .08);
+        }
+
+        .gallery-img {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform .45s ease;
+        }
+
+        .gallery-btn:hover .gallery-img,
+        .gallery-btn:focus-visible .gallery-img {
+            transform: scale(1.06);
+        }
+
+        .gallery-zoom {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(16, 16, 18, .28);
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity .25s ease;
+        }
+
+        .gallery-btn:hover .gallery-zoom,
+        .gallery-btn:focus-visible .gallery-zoom {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            font-size: .82rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #6d7176;
+            margin-top: .55rem;
+            text-align: center;
+        }
+
+        /* Lightbox */
+        #lightboxModal .modal-content {
+            background: transparent;
+        }
+
+        #lightboxModal .modal-body {
+            background: transparent;
+        }
+
+        #lightboxImage {
+            border-radius: .65rem;
+        }
+
+        /* Contact */
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(198, 90, 23, .12);
+            color: var(--df-accent);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer-link {
+            color: rgba(255, 255, 255, .72);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, .75);
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Land Rover Defender | Iconic 4x4">
+    <meta property="og:description" content="Explore the Land Rover Defender - a British 4x4 icon combining heritage, engineering, capability and unmistakable style.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/iajs36ao9i218muk/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/iajs36ao9i218muk/img/2026-09-09T21-44-13_om-mali-dl69Gs9B37I-unsplash.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/iajs36ao9i218muk/img/2026-09-09T21-44-13_om-mali-dl69Gs9B37I-unsplash.jpg">
+</head>
+<body id="home">
+    <!-- Navigation -->
+    <!--ID:2--><nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-hexagon-half me-2"></i>
+                Land Rover Defender
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#heritage">Heritage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#capability">Capability</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#models">Models</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- Hero -->
+    <!--ID:5--><section class="hero" id="home">
+        <img class="hero-bg" src="img/2026-09-09T21-44-13_om-mali-dl69Gs9B37I-unsplash.jpg" alt="Land Rover Defender in a dramatic outdoor setting" onerror="this.onerror=null;this.src='https://placehold.co/1600x900?text=Land+Rover+Defender';">
+        <!--ID:3--><div class="hero-overlay" aria-hidden="true"></div><!--/ID:3-->
+        <!--ID:4--><div class="container">
+            <div class="hero-content">
+                <p class="hero-eyebrow mb-2">Since 1948</p>
+                <h1>Land&nbsp;Rover <span class="d-block">Defender</span></h1>
+                <p class="hero-lead mt-4 mb-5">
+                    Forged for the wild, refined for the city. An icon that refuses to compromise - capable, purposeful and unmistakably Defender.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#models" class="btn btn-accent btn-lg">Explore the line-up</a>
+                    <a href="#gallery" class="btn btn-outline-light btn-lg">View gallery</a>
+                </div>
+            </div>
+        </div><!--/ID:4-->
+        <a href="#overview" class="hero-scroll d-none d-xl-flex" aria-label="Scroll down to overview"><i class="bi bi-arrow-down-circle" aria-hidden="true"></i></a>
+    </section><!--/ID:5-->
+
+    <!-- Overview -->
+    <!--ID:8--><section id="overview" class="section-padding bg-white">
+        <div class="container">
+            <!--ID:6--><div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="eyebrow">The Defender mindset</span>
+                    <h2 class="section-title mt-3 mb-3">Built to go beyond the map</h2>
+                    <p class="lead text-secondary mb-0">
+                        Every Defender carries a simple promise: never stop. It is a vehicle for people who measure success in places reached, not roads followed.
+                    </p>
+                </div>
+            </div><!--/ID:6-->
+            <!--ID:7--><div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                        <div class="card-body p-4">
+                            <div class="icon-badge mb-3"><i class="bi bi-shield-check" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">All-terrain DNA</h3>
+                            <p class="card-text text-secondary">From exposed rocky ridges to city kerbs, Defender’s engineering is built to absorb whatever the world throws at it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                        <div class="card-body p-4">
+                            <div class="icon-badge mb-3"><i class="bi bi-layers" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">Timeless silhouette</h3>
+                            <p class="card-text text-secondary">Alpine roof, clamshell bonnet and a commanding driving position - modern Defender still whispers its original spirit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                        <div class="card-body p-4">
+                            <div class="icon-badge mb-3"><i class="bi bi-geo-alt" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">Ready for every route</h3>
+                            <p class="card-text text-secondary">Whether it is a school run or a week-long expedition, Defender adapts around you, your gear and your destination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:7-->
+        </div>
+    </section><!--/ID:8-->
+
+    <!-- Heritage -->
+    <!--ID:11--><section id="heritage" class="section-padding">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <!--ID:9--><div class="col-lg-6">
+                    <img class="feature-media" src="img/2026-09-09T21-44-13_serjan-midili-o_VJqpNFVQ0-unsplash.jpg" alt="Land Rover Defender approaching rugged terrain" onerror="this.onerror=null;this.src='https://placehold.co/1200x900?text=Image+Not+Found';">
+                </div><!--/ID:9-->
+                <!--ID:10--><div class="col-lg-6">
+                    <span class="eyebrow">Heritage</span>
+                    <h2 class="section-title mt-3 mb-4">A legacy that never stopped moving</h2>
+                    <p class="text-secondary">
+                        Defender began life after the Second World War as a utilitarian workhorse. Series Land Rovers were built for farms, forests and expeditions - and in 1990 the family was officially named Defender.
+                    </p>
+                    <p class="text-secondary">
+                        Seven decades later, the name remains one of the most respected in automotive history. The latest Defender generation respects that lineage, adding modern comfort, clever connectivity and genuine capability.
+                    </p>
+                    <ul class="list-unstyled mt-4 mb-0">
+                        <li class="d-flex align-items-start py-1">
+                            <i class="bi bi-check-circle-fill text-accent me-3 mt-1" aria-hidden="true"></i>
+                            <span>Class-leading wading and all-terrain engineering</span>
+                        </li>
+                        <li class="d-flex align-items-start py-1">
+                            <i class="bi bi-check-circle-fill text-accent me-3 mt-1" aria-hidden="true"></i>
+                            <span>Iconic design cues from the original Series I</span>
+                        </li>
+                        <li class="d-flex align-items-start py-1">
+                            <i class="bi bi-check-circle-fill text-accent me-3 mt-1" aria-hidden="true"></i>
+                            <span>90, 110 and 130 configurations for every journey</span>
+                        </li>
+                    </ul>
+                </div><!--/ID:10-->
+            </div>
+        </div>
+    </section><!--/ID:11-->
+
+    <!-- Capability -->
+    <!--ID:14--><section id="capability" class="section-padding dark-section">
+        <div class="container">
+            <!--ID:12--><div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="eyebrow">Capability</span>
+                    <h2 class="section-title text-white mt-3 mb-3">Numbers that earn respect</h2>
+                    <p class="text-white-50 mb-0">
+                        Defender is engineered with serious margins, so you can rely on it when the landscape stops being polite.
+                    </p>
+                </div>
+            </div><!--/ID:12-->
+            <!--ID:13--><div class="row g-4">
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="stat-card text-center">
+                        <p class="stat-number">900 <span class="stat-unit">mm</span></p>
+                        <p class="stat-label">Maximum wading depth</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="stat-card text-center">
+                        <p class="stat-number">3500 <span class="stat-unit">kg</span></p>
+                        <p class="stat-label">Braked towing capacity</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="stat-card text-center">
+                        <p class="stat-number">9 <span class="stat-unit">modes</span></p>
+                        <p class="stat-label">Terrain Response programmes</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="stat-card text-center">
+                        <p class="stat-number">3 <span class="stat-unit">bodies</span></p>
+                        <p class="stat-label">90, 110 &amp; 130 options</p>
+                    </div>
+                </div>
+            </div><!--/ID:13-->
+        </div>
+    </section><!--/ID:14-->
+
+    <!-- Models -->
+    <!--ID:17--><section id="models" class="section-padding bg-white">
+        <div class="container">
+            <!--ID:15--><div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="eyebrow">The range</span>
+                    <h2 class="section-title mt-3 mb-3">Choose your Defender</h2>
+                    <p class="text-secondary mb-0">Three different expressions, one uncompromising character.</p>
+                </div>
+            </div><!--/ID:15-->
+            <!--ID:16--><div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card model-card">
+                        <div class="card-body p-4">
+                            <span class="model-code" aria-hidden="true">90</span>
+                            <div class="icon-badge mb-3"><i class="bi bi-layout-text-window-reverse" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">Defender 90</h3>
+                            <p class="text-secondary small">The shortest and most agile Defender. Compact enough for the city, still ferocious off the road.</p>
+                            <ul class="model-list mt-3">
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Two-door character</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Best-in-class agility</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Personality by the bucketload</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card model-card">
+                        <div class="card-body p-4">
+                            <span class="model-code" aria-hidden="true">110</span>
+                            <div class="icon-badge mb-3"><i class="bi bi-signpost-split" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">Defender 110</h3>
+                            <p class="text-secondary small">The definitive five-door Defender. A balanced choice for families, expeditions and everything in between.</p>
+                            <ul class="model-list mt-3">
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Flexible five-door layout</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Up to seven available seats</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>The classic modern Defender</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 hover-card model-card">
+                        <div class="card-body p-4">
+                            <span class="model-code" aria-hidden="true">130</span>
+                            <div class="icon-badge mb-3"><i class="bi bi-box-seam" aria-hidden="true"></i></div>
+                            <h3 class="h4 card-title">Defender 130</h3>
+                            <p class="text-secondary small">Maximum space, maximum presence. Designed for large crews, big adventures and heavier loads.</p>
+                            <ul class="model-list mt-3">
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Eight-seat potential</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Extended load space</li>
+                                <li><i class="bi bi-dot" aria-hidden="true"></i>Commanding rear presence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:16-->
+        </div>
+    </section><!--/ID:17-->
+
+    <!-- Gallery -->
+    <!--ID:20--><section id="gallery" class="section-padding">
+        <div class="container">
+            <!--ID:18--><div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="eyebrow">Gallery</span>
+                    <h2 class="section-title mt-3 mb-3">Defender moments</h2>
+                    <p class="text-secondary mb-0">Select any image to view it in full screen.</p>
+                </div>
+            </div><!--/ID:18-->
+            <!--ID:19--><div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-10_karsten-winegeart-afDsNrec8gI-unsplash.jpg" data-caption="Chasing horizons" aria-label="Open gallery image: Chasing horizons">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-10_karsten-winegeart-afDsNrec8gI-unsplash.jpg" alt="Land Rover Defender adventuring on open terrain" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">Chasing horizons</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-12_serjan-midili-b0wcV10IQfE-unsplash.jpg" data-caption="Built rugged" aria-label="Open gallery image: Built rugged">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-12_serjan-midili-b0wcV10IQfE-unsplash.jpg" alt="Classic Land Rover Defender showing its rugged exterior" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">Built rugged</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-13_om-mali-dl69Gs9B37I-unsplash.jpg" data-caption="The black icon" aria-label="Open gallery image: The black icon">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-13_om-mali-dl69Gs9B37I-unsplash.jpg" alt="Black Land Rover Defender parked in dramatic light" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">The black icon</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-13_serjan-midili-o_VJqpNFVQ0-unsplash.jpg" data-caption="Ready to roam" aria-label="Open gallery image: Ready to roam">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-13_serjan-midili-o_VJqpNFVQ0-unsplash.jpg" alt="Land Rover Defender on a dusty off-road trail" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">Ready to roam</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-14_gaku-suyama-G1qZiZa2xrE-unsplash.jpg" data-caption="Modern capability" aria-label="Open gallery image: Modern capability">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-14_gaku-suyama-G1qZiZa2xrE-unsplash.jpg" alt="Modern Land Rover Defender on rugged stone ground" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">Modern capability</p>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <button type="button" class="gallery-btn" data-lightbox data-full="img/2026-09-09T21-44-14_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg" data-caption="Driver’s seat" aria-label="Open gallery image: Driver’s seat">
+                        <img class="gallery-img" src="img/2026-09-09T21-44-14_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg" alt="Person driving a Land Rover Defender through nature" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Image+Not+Found';">
+                        <span class="gallery-zoom" aria-hidden="true"><i class="bi bi-arrows-fullscreen"></i></span>
+                    </button>
+                    <p class="gallery-caption mb-0">Driver’s seat</p>
+                </div>
+            </div><!--/ID:19-->
+        </div>
+    </section><!--/ID:20-->
+
+    <!-- Contact -->
+    <!--ID:23--><section id="contact" class="section-padding bg-white border-top">
+        <div class="container">
+            <div class="row g-5">
+                <!--ID:21--><div class="col-lg-5">
+                    <span class="eyebrow">Contact</span>
+                    <h2 class="section-title mt-3 mb-4">Arrange a demonstration</h2>
+                    <p class="text-secondary">
+                        Want to see a Defender up close? Send a message and we will point you to the nearest experience centre in this demo version.
+                    </p>
+                    <div class="d-flex align-items-start py-2">
+                        <div class="contact-icon me-3 flex-shrink-0" aria-hidden="true"><i class="bi bi-geo-alt"></i></div>
+                        <div>
+                            <strong>Defender World</strong><br>
+                            <span class="text-secondary">Concept site - available wherever you take it.</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start py-2">
+                        <div class="contact-icon me-3 flex-shrink-0" aria-hidden="true"><i class="bi bi-clock"></i></div>
+                        <div>
+                            <strong>Opening hours</strong><br>
+                            <span class="text-secondary">Monday – Saturday: 09:00 – 18:00</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start py-2">
+                        <div class="contact-icon me-3 flex-shrink-0" aria-hidden="true"><i class="bi bi-info-circle"></i></div>
+                        <div>
+                            <strong>Demo notice</strong><br>
+                            <span class="text-secondary">This form is static and sends no message over the internet.</span>
+                        </div>
+                    </div>
+                </div><!--/ID:21-->
+                <!--ID:22--><div class="col-lg-7">
+                    <form id="contactForm" aria-label="Test drive enquiry form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label" for="name">Full name</label>
+                                <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="email">Email address</label>
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="you@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="message">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell us about the Defender adventure you are planning..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-accent btn-lg">Send demo enquiry</button>
+                            </div>
+                            <div class="col-12 d-none" id="formSuccess">
+                                <div class="alert alert-success mb-0" role="alert">
+                                    <i class="bi bi-check-circle me-2" aria-hidden="true"></i>
+                                    Thank you! Your demonstration enquiry has been prepared. This static demo does not send data.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--/ID:22-->
+            </div>
+        </div>
+    </section><!--/ID:23-->
+
+    <!-- Footer -->
+    <!--ID:26--><footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <!--ID:24--><div class="row g-4 gy-lg-0">
+                <div class="col-lg-5">
+                    <p class="footer-brand mb-2">
+                        <a class="navbar-brand p-0" href="#home">
+                            <i class="bi bi-hexagon-half me-2" aria-hidden="true"></i>
+                            Land Rover Defender
+                        </a>
+                    </p>
+                    <p class="text-white-50 small pe-lg-5">
+                        A non-commercial concept page celebrating the Defender spirit. Land Rover, Defender and related marks are trademarks of their respective owners.
+                    </p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="h6 text-white mb-3">Explore</h5>
+                    <ul class="list-unstyled small d-grid gap-2">
+                        <li><a class="footer-link" href="#overview">Overview</a></li>
+                        <li><a class="footer-link" href="#heritage">Heritage</a></li>
+                        <li><a class="footer-link" href="#capability">Capability</a></li>
+                        <li><a class="footer-link" href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h5 class="h6 text-white mb-3">The range</h5>
+                    <ul class="list-unstyled small d-grid gap-2">
+                        <li><a class="footer-link" href="#models">Defender 90</a></li>
+                        <li><a class="footer-link" href="#models">Defender 110</a></li>
+                        <li><a class="footer-link" href="#models">Defender 130</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h5 class="h6 text-white mb-3">Legal</h5>
+                    <ul class="list-unstyled small d-grid gap-2">
+                        <li>
+                            <a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#privacyModal">
+                                <i class="bi bi-shield-lock me-2" aria-hidden="true"></i>Privacy statement
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link" data-bs-toggle="modal" data-bs-target="#cookieModal">
+                                <i class="bi bi-cookie me-2" aria-hidden="true"></i>Cookies / Cookie settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--/ID:24-->
+            <!--ID:25--><div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 mt-5 small">
+                <span>&copy; <span id="copyrightYear">2026</span> Defender World. All rights reserved.</span>
+                <span class="text-white-50 mt-2 mt-md-0">The icon, evolved.</span>
+            </div><!--/ID:25-->
+        </div>
+    </footer><!--/ID:26-->
+
+    <!-- Cookie notice modal -->
+    <!--ID:30--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content rounded-4 overflow-hidden">
+                <!--ID:27--><div class="modal-header">
+                    <h2 class="modal-title h5" id="cookieModalLabel"><i class="bi bi-cookie me-2" aria-hidden="true"></i>Cookies</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:27-->
+                <!--ID:28--><div class="modal-body small text-secondary">
+                    <p>
+                        This website does <strong>not</strong> use marketing, analytics or advertising cookies. We only store your cookie preference in your browser’s <strong>localStorage</strong> (functional/storage purpose).
+                    </p>
+                    <p>
+                        Third-party providers such as Bootstrap CDN, Bootstrap Icons and Google Fonts may process limited technical data, such as your IP address, when resources are loaded. We do not control their server logs or use their services for tracking.
+                    </p>
+                    <p class="mb-0">
+                        You can change your choice at any time by opening the “Cookies” link in the website footer.
+                    </p>
+                </div><!--/ID:28-->
+                <!--ID:29--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cookieReject">Reject</button>
+                    <button type="button" class="btn btn-accent" id="cookieAccept">Accept</button>
+                </div><!--/ID:29-->
+            </div>
+        </div>
+    </div><!--/ID:30-->
+
+    <!-- Privacy statement modal -->
+    <!--ID:34--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content rounded-4 overflow-hidden">
+                <!--ID:31--><div class="modal-header">
+                    <h2 class="modal-title h5" id="privacyModalLabel"><i class="bi bi-shield-lock me-2" aria-hidden="true"></i>Privacy statement</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:31-->
+                <!--ID:32--><div class="modal-body small text-secondary">
+                    <p><strong>Data controller:</strong> Defender World - concept website for Land Rover Defender. You can contact us through the contact section on this page.</p>
+                    <p><strong>What we collect:</strong> This static concept site does not use a backend and does not collect or store personal data in a database. Standard server logs may contain technical data such as IP address, browser user agent and access time when you load the page.</p>
+                    <p><strong>Purpose and legal basis:</strong> Technical data is processed to operate and secure this website. Our legal basis is the legitimate interest in providing a stable and secure website. If you enter information in the demo contact form, nothing is transmitted from your browser; we therefore do not process your form data.</p>
+                    <p><strong>Retention:</strong> Any server logs are retained only as long as technically necessary, typically no longer than 30 days.</p>
+                    <p><strong>Your rights:</strong> Depending on applicable law, you may have the right to request access to, rectification or erasure of personal data concerning you, the right to restrict or object to processing, and the right to data portability. To exercise these rights, contact us using the details on this website.</p>
+                    <p><strong>Cookies:</strong> This website stores one functional value, <code>cookieConsent</code>, in browser localStorage. No advertising, tracking or marketing cookies are used.</p>
+                    <p class="mb-0"><strong>Contact:</strong> If you have privacy questions, please use the contact form on this page.</p>
+                </div><!--/ID:32-->
+                <!--ID:33--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div><!--/ID:33-->
+            </div>
+        </div>
+    </div><!--/ID:34-->
+
+    <!-- Lightbox modal -->
+    <!--ID:37--><div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true" aria-label="Image lightbox">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <!--ID:35--><div class="modal-header border-0 justify-content-end p-0 pb-2">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close enlarged image"></button>
+                </div><!--/ID:35-->
+                <!--ID:36--><div class="modal-body p-0">
+                    <img id="lightboxImage" class="w-100" src="https://placehold.co/1400x900?text=Gallery+Image" alt="Gallery image enlarged" onerror="this.onerror=null;this.src='https://placehold.co/1200x800?text=Image+Not+Found';">
+                    <p id="lightboxCaption" class="text-center small text-white mt-2 mb-0"></p>
+                </div><!--/ID:36-->
+            </div>
+        </div>
+    </div><!--/ID:37-->
+
+    <!-- Bootstrap bundle -->
+    <!--ID:38--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:38-->
+    <!--ID:39--><script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Current year in footer
+            var yearEl = document.getElementById('copyrightYear');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Cookie modal logic
+            var cookieModalEl = document.getElementById('cookieModal');
+            if (cookieModalEl) {
+                function setCookieConsent(value) {
+                    try {
+                        localStorage.setItem('cookieConsent', value);
+                    } catch (e) {
+                        // localStorage unavailable
+                    }
+                }
+
+                cookieModalEl.addEventListener('hidden.bs.modal', function () {
+                    try {
+                        if (!localStorage.getItem('cookieConsent')) {
+                            setCookieConsent('dismissed');
+                        }
+                    } catch (e) {}
+                });
+
+                var acceptBtn = document.getElementById('cookieAccept');
+                if (acceptBtn) {
+                    acceptBtn.addEventListener('click', function () {
+                        setCookieConsent('accepted');
+                        var instance = bootstrap.Modal.getInstance(cookieModalEl);
+                        if (instance) instance.hide();
+                    });
+                }
+
+                var rejectBtn = document.getElementById('cookieReject');
+                if (rejectBtn) {
+                    rejectBtn.addEventListener('click', function () {
+                        setCookieConsent('rejected');
+                        var instance = bootstrap.Modal.getInstance(cookieModalEl);
+                        if (instance) instance.hide();
+                    });
+                }
+
+                try {
+                    if (!localStorage.getItem('cookieConsent')) {
+                        new bootstrap.Modal(cookieModalEl).show();
+                    }
+                } catch (e) {}
+            }
+
+            // Lightbox gallery
+            var lightboxModalEl = document.getElementById('lightboxModal');
+            var lightboxImage = document.getElementById('lightboxImage');
+            var lightboxCaption = document.getElementById('lightboxCaption');
+
+            if (lightboxModalEl && lightboxImage) {
+                document.querySelectorAll('[data-lightbox]').forEach(function (trigger) {
+                    trigger.addEventListener('click', function () {
+                        var full = trigger.getAttribute('data-full');
+                        var caption = trigger.getAttribute('data-caption') || 'Defender';
+                        if (full) lightboxImage.src = full;
+                        lightboxImage.alt = 'Enlarged view: ' + caption;
+                        if (lightboxCaption) lightboxCaption.textContent = caption;
+                        new bootstrap.Modal(lightboxModalEl).show();
+                    });
+                });
+            }
+
+            // Demo contact form
+            var contactForm = document.getElementById('contactForm');
+            var formSuccess = document.getElementById('formSuccess');
+            if (contactForm && formSuccess) {
+                contactForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    formSuccess.classList.remove('d-none');
+                    contactForm.reset();
+                    setTimeout(function () {
+                        formSuccess.classList.add('d-none');
+                    }, 6000);
+                });
+            }
+        });
+    </script><!--/ID:39-->
+</body>
+</html>

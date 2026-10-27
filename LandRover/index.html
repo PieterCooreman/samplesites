@@ -1,0 +1,727 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Rover Defender 2019 | De Nieuwe Generatie</title>
+    <meta name="description" content="Ontdek de Land Rover Defender uit 2019: een iconische off-road legende in een compleet nieuw jasje. Kracht, luxe en avontuur samengebracht.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --primary: #1a3c2a;
+            --primary-light: #2d5e42;
+            --accent: #c8956c;
+            --accent-dark: #a07050;
+            --dark: #0f1a14;
+            --cream: #faf8f4;
+            --warm-gray: #6b6358;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: rgba(15, 26, 20, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-custom.scrolled {
+            background: rgba(15, 26, 20, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        .navbar-brand-text {
+            font-family: 'Playfair Display', serif;
+            color: #fff !important;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .navbar-custom .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s;
+        }
+        .navbar-custom .nav-link:hover { color: var(--accent) !important; }
+
+        /* HERO */
+        .hero-section {
+            min-height: 100svh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.45) saturate(0.8);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15,26,20,0.3) 0%, rgba(15,26,20,0.7) 100%);
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            color: #fff;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* BUTTONS */
+        .btn-defender {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .btn-defender:hover {
+            background: var(--accent-dark);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200,149,108,0.3);
+        }
+        .btn-outline-defender {
+            border: 2px solid rgba(255,255,255,0.6);
+            color: #fff;
+            padding: 0.8rem 2.2rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-defender:hover {
+            background: #fff;
+            color: var(--dark);
+            border-color: #fff;
+        }
+
+        /* SECTIONS */
+        section { padding: clamp(4rem, 8vw, 7rem) 0; }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ABOUT */
+        .about-section { background: #fff; }
+        .about-img-wrapper {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .about-img-wrapper img {
+            width: 100%;
+            height: clamp(350px, 50vw, 600px);
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .about-img-wrapper:hover img { transform: scale(1.03); }
+
+        /* SPECS */
+        .specs-section { background: var(--dark); color: #fff; }
+        .specs-section .section-title { color: #fff; }
+        .spec-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .spec-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .spec-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .spec-value {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+        .spec-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* GALLERY */
+        .gallery-section { background: var(--cream); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.2rem;
+        }
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.7);
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+        /* LIGHTBOX */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s;
+        }
+        .lightbox-close:hover { transform: scale(1.2); }
+
+        /* HERITAGE */
+        .heritage-section { background: #fff; }
+        .timeline-item {
+            padding-left: 2rem;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d5e42 100%);
+            color: #fff;
+            text-align: center;
+        }
+        .cta-section .section-title { color: #fff; }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 0 1.5rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: #fff; }
+
+        /* SCROLL ANIMATIONS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-section { min-height: 90svh; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .spec-card { padding: 1.5rem; }
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Land Rover Defender 2019 | De Nieuwe Generatie">
+    <meta property="og:description" content="Ontdek de Land Rover Defender uit 2019: een iconische off-road legende in een compleet nieuw jasje. Kracht, luxe en avontuur samengebracht.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/6elcaft26rwptgc3/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/6elcaft26rwptgc3/img/2026-10-26T12-11-57_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/6elcaft26rwptgc3/img/2026-10-26T12-11-57_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-text" href="#">DEFENDER 2019</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Navigatie openen/sluiten">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+            <ul class="navbar-nav gap-1">
+                <li class="nav-item"><a class="nav-link" href="#over">Over</a></li>
+                <li class="nav-item"><a class="nav-link" href="#specificaties">Specificaties</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galerij">Galerij</a></li>
+                <li class="nav-item"><a class="nav-link" href="#erfgoed">Erfgoed</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><!--/ID:2-->
+
+<!-- HERO -->
+<!--ID:6--><section class="hero-section">
+    <!--ID:3--><div class="hero-bg">
+        <img src="img/2026-10-26T12-11-57_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg" alt="Tan Land Rover Defender met verlichte koplampen op een grindweg richting mistige bergen">
+    </div><!--/ID:3-->
+    <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+    <!--ID:5--><div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-xl-7">
+                <span class="hero-badge">Nieuwe Generatie</span>
+                <h1 class="hero-title mb-3">Land Rover<br>Defender</h1>
+                <p class="hero-subtitle mb-4">De iconische off-road legende keert terug - compleet vernieuwd, met moderne technologie en het onverslaanbare karakter waar de Defender om bekend staat.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#specificaties" class="btn btn-defender">Ontdek meer</a>
+                    <a href="#galerij" class="btn btn-outline-defender">Galerij bekijken</a>
+                </div>
+            </div>
+        </div>
+    </div><!--/ID:5-->
+</section><!--/ID:6-->
+
+<!-- OVER -->
+<!--ID:9--><section id="over" class="about-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <!--ID:7--><div class="col-lg-6 fade-up">
+                <div class="about-img-wrapper shadow-sm">
+                    <img src="img/2026-10-26T12-11-53_karsten-winegeart-afDsNrec8gI-unsplash.jpg" alt="Blauwe Land Rover Defender geparkeerd op een natte grindweg met mistige bergen">
+                </div>
+            </div><!--/ID:7-->
+            <!--ID:8--><div class="col-lg-6 fade-up">
+                <span class="section-label">Over de Defender</span>
+                <h2 class="section-title">Een legende, opnieuw uitgevonden</h2>
+                <p class="text-secondary mb-4" style="line-height:1.8;">De Land Rover Defender uit 2019 markeert het begin van een nieuw hoofdstuk in de geschiedenis van dit iconische voertuig. Gebouwd op het nieuwe D7u-platform, combineert de nieuwe Defender de onverslaanbare off-road capaciteiten van zijn voorganger met moderne technologie, comfort en efficiëntie.</p>
+                <p class="text-secondary mb-4" style="line-height:1.8;">Met een aluminium unibody constructie is hij tot 60% lichter dan de vorige generatie, terwijl de stijfheid van het chassis met 50% toeneemt. Dit betekent betere prestaties op en buiten de weg.</p>
+                <div class="row g-3 mt-2">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span class="small fw-medium">Aluminium unibody chassis</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span class="small fw-medium">Terrain Response 2</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span class="small fw-medium">Waterspoor tot 900 mm</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                            <span class="small fw-medium">Pano-dak met uitschuifbaar glas</span>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:8-->
+        </div>
+    </div>
+</section><!--/ID:9-->
+
+<!-- SPECIFICATIES -->
+<!--ID:12--><section id="specificaties" class="specs-section">
+    <div class="container">
+        <!--ID:10--><div class="text-center mb-5 fade-up">
+            <span class="section-label">Specificaties</span>
+            <h2 class="section-title">Kracht & Prestatie</h2>
+            <p class="text-white-50 mx-auto" style="max-width:600px;">De Defender 2019 levert indrukwekkende cijfers, of je nu kiest voor de 2.0L turbo benzine, de 3.0L inline-six mild-hybrid of de krachtige V8.</p>
+        </div><!--/ID:10-->
+        <!--ID:11--><div class="row g-4">
+            <div class="col-sm-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="bi bi-speedometer2"></i></div>
+                    <div class="spec-value">300</div>
+                    <div class="spec-label">PK (max.)</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="bi bi-lightning-charge"></i></div>
+                    <div class="spec-value">450</div>
+                    <div class="spec-label">Nm Koppel</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="bi bi-arrow-down-circle"></i></div>
+                    <div class="spec-value">900</div>
+                    <div class="spec-label">mm Waterspoor</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 fade-up">
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                    <div class="spec-value">8</div>
+                    <div class="spec-label">Versnellingen (ZF)</div>
+                </div>
+            </div>
+        </div><!--/ID:11-->
+    </div>
+</section><!--/ID:12-->
+
+<!-- GALERIJ -->
+<!--ID:15--><section id="galerij" class="gallery-section">
+    <div class="container">
+        <!--ID:13--><div class="text-center mb-5 fade-up">
+            <span class="section-label">Galerij</span>
+            <h2 class="section-title">De Defender in zijn element</h2>
+            <p class="text-secondary mx-auto" style="max-width:600px;">Van mistige bergpassen tot ruwe off-road terreinen - de Defender is overal thuis.</p>
+        </div><!--/ID:13-->
+        <!--ID:14--><div class="gallery-grid">
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-53_karsten-winegeart-afDsNrec8gI-unsplash.jpg" alt="Blauwe Land Rover Defender geparkeerd op een natte grindweg met mistige bergen">
+                <div class="gallery-caption"><small>Mistige bergpassen</small></div>
+            </div>
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-55_serjan-midili-b0wcV10IQfE-unsplash.jpg" alt="Donkergrijze Land Rover Defender met dakdrager en cargo box op een asfaltweg">
+                <div class="gallery-caption"><small>Avontuur op de weg</small></div>
+            </div>
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-56_gaku-suyama-G1qZiZa2xrE-unsplash.jpg" alt="Witte Land Rover Defender geparkeerd op een grindweg in dikke mist">
+                <div class="gallery-caption"><small>Door de mist</small></div>
+            </div>
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-56_om-mali-dl69Gs9B37I-unsplash.jpg" alt="Donker teal Land Rover Defender met dakladder in dramatische studioverlichting">
+                <div class="gallery-caption"><small>Studio & design</small></div>
+            </div>
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-56_serjan-midili-o_VJqpNFVQ0-unsplash.jpg" alt="Grijze Land Rover Defender met dakdrager en kampeerspullen">
+                <div class="gallery-caption"><small>Camping & avontuur</small></div>
+            </div>
+            <div class="gallery-item fade-up" onclick="openLightbox(this)">
+                <img src="img/2026-10-26T12-11-57_karsten-winegeart-yOwrFVY6JBE-unsplash.jpg" alt="Tan Land Rover Defender met verlichte koplampen op een grindweg richting mistige bergen">
+                <div class="gallery-caption"><small>De weg vooruit</small></div>
+            </div>
+        </div><!--/ID:14-->
+    </div>
+</section><!--/ID:15-->
+
+<!-- LIGHTBOX -->
+<!--ID:16--><div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Afbeelding sluiten">&times;</button>
+    <img src="" alt="Vergrootte afbeelding van de Land Rover Defender" id="lightboxImg">
+</div><!--/ID:16-->
+
+<!-- ERFGOED -->
+<!--ID:19--><section id="erfgoed" class="heritage-section">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+            <!--ID:17--><div class="col-lg-5 fade-up">
+                <span class="section-label">Erfgoed</span>
+                <h2 class="section-title">Van 1948 tot vandaag</h2>
+                <p class="text-secondary mb-4" style="line-height:1.8;">De Land Rover Defender is een van de meest iconische auto's ter wereld. Oorspronkelijk ontworpen als landbouwwerktuig in 1948, heeft hij zich ontwikkeld tot het symbool van avontuur en onafhankelijkheid.</p>
+                <a href="#contact" class="btn btn-defender mt-2">Bekijk alle modellen</a>
+            </div><!--/ID:17-->
+            <!--ID:18--><div class="col-lg-7 fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-year">1948</div>
+                    <p class="text-secondary small mb-0">De originele Land Rover wordt gepresenteerd op het Amsterdam Motor Show. Een eenvoudig, robuust voertuig voor landbouw en terrein.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1983</div>
+                    <p class="text-secondary small mb-0">De naam "Defender" wordt officieel geïntroduceerd, als onderdeel van de Range Rover-familie.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016</div>
+                    <p class="text-secondary small mb-0">De laatste originele Defender verlaat de productielijn in Solihull, na 68 jaar productie.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <p class="text-secondary small mb-0">De nieuwe Defender (L663) wordt onthuld - een compleet nieuw ontwerp met aluminium chassis, moderne technologie en het iconische silhouet.</p>
+                </div>
+            </div><!--/ID:18-->
+        </div>
+    </div>
+</section><!--/ID:19-->
+
+<!-- CTA -->
+<!--ID:20--><section id="contact" class="cta-section">
+    <div class="container fade-up">
+        <span class="section-label" style="color:rgba(255,255,255,0.7);">Klaar voor avontuur?</span>
+        <h2 class="section-title mb-3">Bereid je voor op de weg</h2>
+        <p class="text-white-50 mx-auto mb-4" style="max-width:550px;">Of je nu een proefrit wilt maken of meer informatie zoekt over configuratie en levering - wij helpen je graag verder.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="#" class="btn btn-defender" style="background:#fff;color:var(--primary);">Proefrit aanvragen</a>
+            <a href="#" class="btn btn-outline-defender">Configuratie starten</a>
+        </div>
+    </div>
+</section><!--/ID:20-->
+
+<!-- FOOTER -->
+<!--ID:23--><footer>
+    <div class="container">
+        <!--ID:21--><div class="row g-4 mb-4">
+            <div class="col-lg-4">
+                <h5 style="color:#fff;font-family:'Playfair Display',serif;">DEFENDER 2019</h5>
+                <p class="small mt-2" style="line-height:1.7;">De nieuwe generatie van de iconische Land Rover Defender - gebouwd voor avontuur, ontworpen voor vandaag.</p>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="text-white mb-3" style="font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Navigatie</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#over">Over de Defender</a></li>
+                    <li class="mb-2"><a href="#specificaties">Specificaties</a></li>
+                    <li class="mb-2"><a href="#galerij">Galerij</a></li>
+                    <li class="mb-2"><a href="#erfgoed">Erfgoed</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="text-white mb-3" style="font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">Contact</h6>
+                <p class="small mb-1"><i class="bi bi-envelope me-2"></i><a href="mailto:info@defender2019.nl">info@defender2019.nl</a></p>
+                <p class="small mb-1"><i class="bi bi-telephone me-2"></i>+31 (0)20 123 4567</p>
+                <p class="small mb-0"><i class="bi bi-geo-alt me-2"></i>Amsterdam, Nederland</p>
+            </div>
+        </div><!--/ID:21-->
+        <hr style="border-color:rgba(255,255,255,0.1);">
+        <!--ID:22--><div class="d-flex flex-wrap justify-content-between align-items-center small mt-3">
+            <span>&copy; 2026 Defender 2019 - Alle rechten voorbehouden.</span>
+            <div class="d-flex gap-3 mt-2 mt-sm-0">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal"><i class="bi bi-shield-lock me-1"></i>Privacy</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal"><i class="bi bi-cookie me-1"></i>Cookies</a>
+            </div>
+        </div><!--/ID:22-->
+    </div>
+</footer><!--/ID:23-->
+
+<!-- COOKIE MODAL -->
+<!--ID:27--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:24--><div class="modal-header border-0 pb-0">
+        <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:24-->
+      <!--ID:25--><div class="modal-body small">
+        <p class="text-secondary mb-3">Deze website gebruikt alleen noodzakelijke cookies om de functionaliteit te garanderen. Er worden geen tracking- of marketingcookies ingezet.</p>
+        <ul class="small text-secondary mb-0 ps-3">
+            <li><strong>Functioneel:</strong> localStorage voor het onthouden van je cookievoorkeur (cookieConsent).</li>
+            <li><strong>Analyse/Tracking:</strong> geen cookies worden gebruikt.</li>
+        </ul>
+      </div><!--/ID:25-->
+      <!--ID:26--><div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Weigeren</button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accepteren</button>
+      </div><!--/ID:26-->
+    </div>
+  </div>
+</div><!--/ID:27-->
+
+<!-- PRIVACY MODAL -->
+<!--ID:31--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!--ID:28--><div class="modal-header border-0 pb-0">
+        <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacyverklaring</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:28-->
+      <!--ID:29--><div class="modal-body small text-secondary">
+        <p><strong>Datacontroller:</strong> Defender 2019, Amsterdam, Nederland.</p>
+        <p><strong>Welke gegevens worden verzameld:</strong> Deze website verzamelt geen persoonsgegevens. Er worden alleen noodzakelijke cookies gebruikt (localStorage voor cookievoorkeur). Serverlogs kunnen tijdelijk IP-adressen en user agents opslaan voor beveiligingsdoeleinden.</p>
+        <p><strong>Doel en rechtsgrondslag:</strong> Het garanderen van de werking van de website (gerechtvaardigd belang, art. 6 lid 1 f AVG). Cookievoorkeuren worden verwerkt op basis van toestemming (art. 6 lid 1 a AVG).</p>
+        <p><strong>Bewaartermijn:</strong> Serverlogs worden maximaal 30 dagen bewaard. Cookievoorkeuren blijven in de browser van de gebruiker tot deze zelf wordt gewist.</p>
+        <p><strong>Uw rechten:</strong> U heeft het recht op inzage, correctie, verwijdering en beperking van verwerking. Neem contact op via info@defender2019.nl.</p>
+        <p class="mb-0">Deze privacyverklaring is een sjabloon - pas deze aan naar uw eigen situatie.</p>
+      </div><!--/ID:29-->
+      <!--ID:30--><div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Sluiten</button>
+      </div><!--/ID:30-->
+    </div>
+  </div>
+</div><!--/ID:31-->
+
+<!--ID:32--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:32-->
+<!--ID:33--><script>
+// Cookie consent logic
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        if (!localStorage.getItem('cookieConsent')) {
+            var el = document.getElementById('cookieModal');
+            if (el && window.bootstrap) new bootstrap.Modal(el).show();
+        }
+    } catch(e) {}
+
+    var acc = document.getElementById('cookieAccept');
+    if (acc) acc.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+        var m = document.getElementById('cookieModal');
+        if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+    });
+
+    var rej = document.getElementById('cookieReject');
+    if (rej) rej.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar-custom');
+    if (nav) {
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    }
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Lightbox
+function openLightbox(item) {
+    const img = item.querySelector('img');
+    if (!img) return;
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxImg').alt = img.alt;
+    document.getElementById('lightboxOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightboxOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+});
+</script><!--/ID:33-->
+</body>
+</html>

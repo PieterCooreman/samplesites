@@ -1,0 +1,1251 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durbuy – The Smallest City in the World | Visit Durbuy</title>
+    <meta name="description" content="Discover Durbuy, Belgium's smallest city nestled in the heart of the Ardennes. Explore medieval castles, cobblestone streets, the Ourthe River, and charming gardens.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!--ID:1--><style>
+        :root {
+            --primary: #2d5a27;
+            --primary-light: #4a8c3f;
+            --primary-dark: #1e3d19;
+            --accent: #c8a951;
+            --accent-light: #e0cc7a;
+            --dark: #1a1a1a;
+            --light-bg: #f7f5f0;
+            --warm-gray: #6b6358;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand-custom {
+            font-family: 'Playfair Display', serif;
+            color: #fff !important;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand-custom span {
+            color: var(--accent);
+        }
+
+        .nav-link-custom {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .nav-link-custom:hover, .nav-link-custom.active {
+            color: var(--accent) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            padding-top: 4rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(200, 169, 81, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 10vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-hero {
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 0.85rem 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200,169,81,0.4);
+            color: var(--dark);
+        }
+
+        .btn-hero-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.6);
+            padding: 0.8rem 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        /* Section Styles */
+        section {
+            padding: clamp(3rem, 8vw, 6rem) 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--warm-gray);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--light-bg);
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: clamp(300px, 50vw, 550px);
+            object-fit: cover;
+        }
+
+        .about-stat-card {
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            background: var(--primary);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(45,90,39,0.3);
+        }
+
+        .about-stat-card .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-stat-card .stat-label {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* Castle Section */
+        .castle-section {
+            background: #fff;
+        }
+
+        .castle-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .castle-image-grid img {
+            width: 100%;
+            height: clamp(200px, 35vw, 400px);
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .castle-image-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Attractions Cards */
+        .attraction-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .attraction-card-img {
+            width: 100%;
+            height: clamp(200px, 30vw, 280px);
+            object-fit: cover;
+        }
+
+        .attraction-card-body {
+            padding: 1.5rem;
+        }
+
+        .attraction-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .attraction-card-text {
+            color: var(--warm-gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* River Section */
+        .river-section {
+            background: linear-gradient(135deg, #f0f4e8 0%, #e8efe0 100%);
+        }
+
+        .river-image-full {
+            width: 100%;
+            height: clamp(250px, 45vw, 500px);
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        /* Restaurant Section */
+        .restaurant-section {
+            background: var(--dark);
+            color: #fff;
+        }
+
+        .restaurant-section .section-label {
+            color: var(--accent);
+        }
+
+        .restaurant-section .section-title {
+            color: #fff;
+        }
+
+        .restaurant-section .section-text {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .restaurant-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+        }
+
+        .restaurant-card-img {
+            width: 100%;
+            height: clamp(200px, 30vw, 260px);
+            object-fit: cover;
+        }
+
+        .restaurant-card-body {
+            padding: 1.5rem;
+        }
+
+        .restaurant-card-title {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-card-text {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--light-bg);
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: clamp(200px, 35vw, 350px);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            background: rgba(0,0,0,0.3);
+        }
+
+        .gallery-overlay i {
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox-modal .modal-body {
+            padding: 0;
+            background: #000;
+        }
+
+        .lightbox-modal img {
+            width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            padding: clamp(4rem, 10vw, 7rem) 0;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(45,90,39,0.85) 0%, rgba(30,61,25,0.9) 100%);
+            z-index: -1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Scroll animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .about-stat-card {
+                position: relative;
+                bottom: auto; right: auto;
+                margin-top: 1rem;
+                display: inline-block;
+            }
+            .castle-image-grid img {
+                height: clamp(200px, 50vw, 300px);
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--light-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Durbuy – The Smallest City in the World | Visit Durbuy">
+    <meta property="og:description" content="Discover Durbuy, Belgium's smallest city nestled in the heart of the Ardennes. Explore medieval castles, cobblestone streets, the Ourthe River, and charming gardens.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/92dd015dd1w2ubbe/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/92dd015dd1w2ubbe/img/2026-10-20T20-19-28_marcovitjz-P7p-Fpr2hlk-unsplash.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/92dd015dd1w2ubbe/img/2026-10-20T20-19-28_marcovitjz-P7p-Fpr2hlk-unsplash.jpg">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="#">Durbuy<span>.</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-3"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-center gap-lg-1">
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#castle">Castle</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#attractions">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#river">Ourthe River</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#dining">Dining</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- Hero Section -->
+    <!--ID:6--><section class="hero-section" id="home">
+        <!--ID:3--><div class="hero-bg" style="background-image: url('img/2026-10-20T20-19-29_michael-maga-ao-n6VdPO3csOo-unsplash.jpg');"></div><!--/ID:3-->
+        <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+        <!--ID:5--><div class="container hero-content">
+            <div class="hero-badge">Ardennes, Belgium</div>
+            <h1 class="hero-title">Durbuy</h1>
+            <p class="hero-subtitle">The smallest city in the world - where medieval charm meets breathtaking Ardennes nature.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#about" class="btn btn-hero">Discover Durbuy</a>
+                <a href="#gallery" class="btn btn-hero-outline">View Gallery</a>
+            </div>
+        </div><!--/ID:5-->
+    </section><!--/ID:6-->
+
+    <!-- About Section -->
+    <!--ID:9--><section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!--ID:7--><div class="col-lg-6 fade-up">
+                    <div class="about-image-wrapper">
+                        <img src="img/2026-10-20T20-19-28_marcovitjz-P7p-Fpr2hlk-unsplash.jpg" alt="Stone buildings and a castle tower on a narrow cobblestone street in Durbuy">
+                        <div class="about-stat-card">
+                            <div class="stat-number">~650</div>
+                            <div class="stat-label">Residents</div>
+                        </div>
+                    </div>
+                </div><!--/ID:7-->
+                <!--ID:8--><div class="col-lg-6 fade-up" style="transition-delay: 0.15s;">
+                    <span class="section-label">Welcome to Durbuy</span>
+                    <h2 class="section-title">The Smallest City in the World</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text mb-4">
+                        Nestled deep within the lush Ardennes forest of Wallonia, Belgium, Durbuy proudly holds the title of the world's smallest city - a distinction it earned in 2009 when its residents voted to upgrade from "village" to "city." With fewer than 700 permanent inhabitants, this enchanting town packs centuries of history into every cobblestone lane.
+                    </p>
+                    <p class="section-text mb-4">
+                        The origins of Durbuy trace back to the 11th century and Siegfried, Count of Ardennes, who acquired the local castle in 1025. Over the centuries, Durbuy survived wars, fires, and floods - each time rising from the ashes with renewed character. Today, its medieval core remains remarkably intact, drawing visitors from around the globe to wander through streets that have echoed with footsteps for nearly a millennium.
+                    </p>
+                    <div class="row g-3 mt-2">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-shield-check text-success fs-5"></i>
+                                <div>
+                                    <strong>Medieval Heritage</strong><br>
+                                    <small class="text-secondary">11th-century castle & old town</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-tree fs-5 text-success"></i>
+                                <div>
+                                    <strong>Ardennes Nature</strong><br>
+                                    <small class="text-secondary">Hiking, cycling & forests</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-cup-hot fs-5 text-success"></i>
+                                <div>
+                                    <strong>Craft Beer & Cuisine</strong><br>
+                                    <small class="text-secondary">Local breweries & restaurants</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-calendar-event fs-5 text-success"></i>
+                                <div>
+                                    <strong>Festivals Year-Round</strong><br>
+                                    <small class="text-secondary">Events & cultural activities</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/ID:8-->
+            </div>
+        </div>
+    </section><!--/ID:9-->
+
+    <!-- Castle Section -->
+    <!--ID:13--><section class="castle-section" id="castle">
+        <div class="container">
+            <!--ID:10--><div class="text-center mb-5 fade-up">
+                <span class="section-label">Landmark</span>
+                <h2 class="section-title">Château de Durbuy</h2>
+                <p class="section-text mx-auto" style="max-width: 650px;">Perched on a hill overlooking the town, the castle has been a silent witness to nearly a thousand years of history.</p>
+            </div><!--/ID:10-->
+
+            <!--ID:11--><div class="row align-items-center g-4 mb-5">
+                <div class="col-lg-7 fade-up">
+                    <img src="img/2026-10-20T20-19-29_unnamed.webp" alt="Stone castle on a hill overlooking a paved plaza with people walking in Durbuy" class="w-100 river-image-full">
+                </div>
+                <div class="col-lg-5 fade-up" style="transition-delay: 0.15s;">
+                    <h3 class="mb-3" style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.2rem);">A Thousand Years of History</h3>
+                    <p class="section-text mb-3">
+                        The Château de Durbuy was first mentioned in historical records dating to the early 11th century. Siegfried, Count of Ardennes - later Grand Duke of Luxembourg - acquired the fortress around 1025, establishing it as a strategic stronghold in the Ardennes region.
+                    </p>
+                    <p class="section-text mb-3">
+                        Throughout its long history, the castle has been rebuilt and modified multiple times following fires, wars, and changing architectural tastes. Today, its pointed turrets and stone walls dominate the skyline, offering panoramic views of Durbuy's charming rooftops and the surrounding forested hills.
+                    </p>
+                    <p class="section-text mb-0">
+                        The castle grounds are open to visitors year-round, with guided tours available during peak season. In summer, the plaza below hosts cultural events, markets, and concerts that bring the medieval heart of Durbuy alive.
+                    </p>
+                </div>
+            </div><!--/ID:11-->
+
+            <!--ID:12--><div class="castle-image-grid fade-up">
+                <img src="img/2026-10-20T20-19-29_unnamed2.webp" alt="Tall stone castle towers rising above village rooftops in a valley">
+                <img src="img/2026-10-20T20-19-29_unnamed5.webp" alt="Stone castle on a hill next to a river with bare trees">
+            </div><!--/ID:12-->
+        </div>
+    </section><!--/ID:13-->
+
+    <!-- Attractions Section -->
+    <!--ID:17--><section class="py-5" id="attractions" style="background: #fff;">
+        <div class="container">
+            <!--ID:14--><div class="text-center mb-5 fade-up">
+                <span class="section-label">Things to Do</span>
+                <h2 class="section-title">Explore Durbuy &amp; Beyond</h2>
+                <p class="section-text mx-auto" style="max-width: 600px;">From medieval streets to forest trails, adventure awaits at every turn in the heart of the Ardennes.</p>
+            </div><!--/ID:14-->
+
+            <!--ID:15--><div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3 fade-up">
+                    <div class="attraction-card">
+                        <img src="img/2026-10-20T20-19-27_120814_m_04.jpg" alt="Outdoor cafe seating under trees on a cobblestone street in Durbuy" class="attraction-card-img">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-shop me-2 text-success"></i>Old Town Stroll</h5>
+                            <p class="attraction-card-text">Wander through narrow cobblestone streets lined with centuries-old stone buildings, boutique shops, and hidden courtyards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="attraction-card">
+                        <img src="img/2026-10-20T20-19-29_unnamed1.webp" alt="A stone building near a rocky cliff overlooks a landscaped garden with water features and visitors in Durbuy" class="attraction-card-img">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-flower1 me-2 text-success"></i>Gardens &amp; Parks</h5>
+                            <p class="attraction-card-text">Discover beautifully landscaped gardens with winding paths, water features, and scenic viewpoints overlooking the valley.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="attraction-card">
+                        <img src="img/2026-10-20T20-19-27_niels-bosman-U6cPvzKb3eI-unsplash.jpg" alt="People standing near a restaurant entrance flanked by stone walls and greenery in Durbuy" class="attraction-card-img">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-mortarboard me-2 text-success"></i>Heritage Trail</h5>
+                            <p class="attraction-card-text">Follow the self-guided heritage trail to discover Durbuy's most significant historical monuments and stories.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="attraction-card">
+                        <img src="img/2026-10-20T20-19-29_unnamed4.webp" alt="Illuminated hotel at night with people walking on a wet street in Durbuy" class="attraction-card-img">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-stars me-2 text-success"></i>Night Ambiance</h5>
+                            <p class="attraction-card-text">Experience Durbuy after dark - the illuminated medieval streets and cozy taverns create an unforgettable atmosphere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:15-->
+
+            <!-- Additional activities -->
+            <!--ID:16--><div class="row g-4 mt-2">
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/600x400/2d5a27/ffffff?text=Hiking+Trails" alt="Hiking trails through the Ardennes forest near Durbuy" class="attraction-card-img" onerror="this.src='https://picsum.photos/600/400?seed=hiking'">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-compass me-2 text-success"></i>Hiking &amp; Cycling</h5>
+                            <p class="attraction-card-text">Explore dozens of marked trails through dense Ardennes forests, rolling hills, and along scenic river valleys.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/600x400/c8a951/1a1a1a?text=Beer+Tasting" alt="Local beer tasting in Durbuy" class="attraction-card-img" onerror="this.src='https://picsum.photos/600/400?seed=beer'">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-cup-straw me-2 text-success"></i>Beer &amp; Food</h5>
+                            <p class="attraction-card-text">Sample local Ardennes beers and traditional Walloon cuisine at charming taverns and restaurants throughout town.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/600x400/1a1a1a/c8a951?text=Shopping" alt="Boutique shopping in Durbuy old town" class="attraction-card-img" onerror="this.src='https://picsum.photos/600/400?seed=shopping'">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-bag me-2 text-success"></i>Local Shops</h5>
+                            <p class="attraction-card-text">Browse artisan workshops, local crafts, and specialty food shops tucked into medieval buildings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fade-up" style="transition-delay: 0.4s;">
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/600x400/f7f5f0/2d5a27?text=Events" alt="Cultural events and festivals in Durbuy" class="attraction-card-img" onerror="this.src='https://picsum.photos/600/400?seed=events'">
+                        <div class="attraction-card-body">
+                            <h5 class="attraction-card-title"><i class="bi bi-calendar-heart me-2 text-success"></i>Festivals</h5>
+                            <p class="attraction-card-text">Durbuy hosts year-round events including medieval markets, music festivals, and seasonal celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:16-->
+        </div>
+    </section><!--/ID:17-->
+
+    <!-- River Section -->
+    <!--ID:20--><section class="river-section" id="river">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!--ID:18--><div class="col-lg-6 fade-up order-lg-2">
+                    <img src="img/2026-10-20T20-19-29_unnamed3.webp" alt="Wide view of a river flowing past a stone castle and bridge in Durbuy" class="w-100 river-image-full">
+                </div><!--/ID:18-->
+                <!--ID:19--><div class="col-lg-6 fade-up order-lg-1" style="transition-delay: 0.15s;">
+                    <span class="section-label">Nature</span>
+                    <h2 class="section-title">The Ourthe River</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text mb-4">
+                        The Ourthe River winds gracefully through Durbuy, carving its way through the Ardennes landscape and providing a serene backdrop to the town. This gentle waterway has shaped life in Durbuy for centuries - powering mills, facilitating trade, and offering a natural boundary that once protected the settlement.
+                    </p>
+                    <p class="section-text mb-4">
+                        Today, the riverbanks are beloved by locals and visitors alike. In summer, you'll find people relaxing along the green banks, paddling on calm stretches of water, or fishing beneath ancient stone bridges. The river also serves as a starting point for scenic walks that lead into the surrounding forest.
+                    </p>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-water fs-5 text-success"></i>
+                                <div>
+                                    <strong>River Walks</strong><br>
+                                    <small class="text-secondary">Scenic paths along the Ourthe</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi bi-sun fs-5 text-success"></i>
+                                <div>
+                                    <strong>Summer Activities</strong><br>
+                                    <small class="text-secondary">Kayaking, fishing & swimming</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/ID:19-->
+            </div>
+        </div>
+    </section><!--/ID:20-->
+
+    <!-- Dining Section -->
+    <!--ID:24--><section class="restaurant-section" id="dining">
+        <div class="container">
+            <!--ID:21--><div class="text-center mb-5 fade-up">
+                <span class="section-label">Where to Eat</span>
+                <h2 class="section-title">Dine in Durbuy</h2>
+                <p class="section-text mx-auto" style="max-width: 600px;">From cozy taverns to elegant hotels, Durbuy offers a delightful culinary scene rooted in Walloon tradition.</p>
+            </div><!--/ID:21-->
+
+            <!--ID:22--><div class="row g-4">
+                <!-- Restaurant 1 -->
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="restaurant-card">
+                        <img src="img/2026-10-20T20-19-29_unnamed4.webp" alt="Illuminated hotel at night with people walking on a wet street in Durbuy" class="restaurant-card-img">
+                        <div class="restaurant-card-body">
+                            <h5 class="restaurant-card-title"><i class="bi bi-building me-2" style="color: var(--accent);"></i>Hostellerie Le Sanglier</h5>
+                            <p class="restaurant-card-text mb-3">A historic hotel and restaurant glowing warmly against the night sky, Le Sanglier has been welcoming travelers for generations. Enjoy refined Walloon cuisine in a charming medieval setting.</p>
+                            <span class="badge" style="background: var(--accent); color: var(--dark); font-weight: 600;">Fine Dining</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant 2 -->
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.1s;">
+                    <div class="restaurant-card">
+                        <img src="img/2026-10-20T20-19-27_niels-bosman-U6cPvzKb3eI-unsplash.jpg" alt="People standing near a restaurant entrance flanked by stone walls and greenery in Durbuy" class="restaurant-card-img">
+                        <div class="restaurant-card-body">
+                            <h5 class="restaurant-card-title"><i class="bi bi-shop me-2" style="color: var(--accent);"></i>Le Victoria</h5>
+                            <p class="restaurant-card-text mb-3">Tucked behind ivy-covered stone walls, Le Victoria offers a warm and inviting atmosphere. Known for its hearty portions of traditional Ardennes fare and excellent local beer selection.</p>
+                            <span class="badge" style="background: var(--accent); color: var(--dark); font-weight: 600;">Traditional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant 3 -->
+                <div class="col-md-6 col-lg-4 fade-up" style="transition-delay: 0.2s;">
+                    <div class="restaurant-card">
+                        <img src="img/2026-10-20T20-19-27_120814_m_04.jpg" alt="Outdoor cafe seating under trees on a cobblestone street in Durbuy" class="restaurant-card-img">
+                        <div class="restaurant-card-body">
+                            <h5 class="restaurant-card-title"><i class="bi bi-cup-hot me-2" style="color: var(--accent);"></i>Cafés &amp; Terraces</h5>
+                            <p class="restaurant-card-text mb-3">Durbuy's cobblestone streets are dotted with charming cafés and terraces. Enjoy a coffee, local beer, or light meal al fresco beneath the shade of ancient trees.</p>
+                            <span class="badge" style="background: var(--accent); color: var(--dark); font-weight: 600;">Casual</span>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:22-->
+
+            <!--ID:23--><div class="text-center mt-5 fade-up">
+                <p class="section-text mb-3" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    <i class="bi bi-info-circle me-1"></i>
+                    Restaurant hours and availability may vary by season. We recommend calling ahead or checking local listings.
+                </p>
+            </div><!--/ID:23-->
+        </div>
+    </section><!--/ID:24-->
+
+    <!-- Gallery Section -->
+    <!--ID:27--><section class="gallery-section" id="gallery">
+        <div class="container">
+            <!--ID:25--><div class="text-center mb-5 fade-up">
+                <span class="section-label">Gallery</span>
+                <h2 class="section-title">Capturing Durbuy</h2>
+                <p class="section-text mx-auto" style="max-width: 600px;">A visual journey through the medieval streets, castle, river, and gardens of Belgium's smallest city.</p>
+            </div><!--/ID:25-->
+
+            <!--ID:26--><div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3 fade-up">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-27_120814_m_04.jpg" alt="Outdoor cafe seating under trees on a cobblestone street in Durbuy">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.05s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-27_niels-bosman-U6cPvzKb3eI-unsplash.jpg" alt="People standing near a restaurant entrance flanked by stone walls and greenery in Durbuy">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.1s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-28_marcovitjz-P7p-Fpr2hlk-unsplash.jpg" alt="Stone buildings and a castle tower on a narrow cobblestone street in Durbuy">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.15s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_michael-maga-ao-n6VdPO3csOo-unsplash.jpg" alt="Aerial view of a historic town nestled in a lush green valley">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.2s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed.webp" alt="Stone castle on a hill overlooking a paved plaza with people walking">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.25s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed1.webp" alt="A stone building near a rocky cliff overlooks a landscaped garden with water features and visitors">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.3s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed2.webp" alt="Tall stone castle towers rising above village rooftops in a valley">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.35s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed3.webp" alt="Wide view of a river flowing past a stone castle and bridge">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.4s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed4.webp" alt="Illuminated hotel at night with people walking on a wet street">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 fade-up" style="transition-delay: 0.45s;">
+                    <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" onclick="showLightbox(this)">
+                        <img src="img/2026-10-20T20-19-29_unnamed5.webp" alt="Stone castle on a hill next to a river with bare trees">
+                        <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+                    </div>
+                </div>
+            </div><!--/ID:26-->
+        </div>
+    </section><!--/ID:27-->
+
+    <!-- CTA Section -->
+    <!--ID:31--><section class="cta-section">
+        <!--ID:28--><div class="cta-bg" style="background-image: url('img/2026-10-20T20-19-28_marcovitjz-P7p-Fpr2hlk-unsplash.jpg');"></div><!--/ID:28-->
+        <!--ID:29--><div class="cta-overlay"></div><!--/ID:29-->
+        <!--ID:30--><div class="container fade-up">
+            <h2 class="cta-title">Ready to Discover Durbuy?</h2>
+            <p class="cta-text">Plan your visit to Belgium's smallest city and experience the magic of the Ardennes for yourself.</p>
+            <a href="#about" class="btn btn-hero">Start Your Journey</a>
+        </div><!--/ID:30-->
+    </section><!--/ID:31-->
+
+    <!-- Footer -->
+    <!--ID:34--><footer>
+        <div class="container">
+            <!--ID:32--><div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand mb-3">Durbuy<span>.</span></div>
+                    <p style="font-size: 0.9rem; line-height: 1.7;">The smallest city in the world, nestled in the heart of Belgium's Ardennes forest. Discover medieval charm, natural beauty, and warm hospitality.</p>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Explore</h6>
+                    <ul class="list-unstyled footer-links" style="font-size: 0.9rem;">
+                        <li><a href="#about">About Durbuy</a></li>
+                        <li><a href="#castle">Castle</a></li>
+                        <li><a href="#attractions">Attractions</a></li>
+                        <li><a href="#river">Ourthe River</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Visit</h6>
+                    <ul class="list-unstyled footer-links" style="font-size: 0.9rem;">
+                        <li><a href="#dining">Dining</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#">Getting Here</a></li>
+                        <li><a href="#">Accommodation</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h6 style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Contact</h6>
+                    <p style="font-size: 0.9rem;"><i class="bi bi-geo-alt me-2"></i>Durbuy, Luxembourg Province<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wallonia, Belgium</p>
+                    <p style="font-size: 0.9rem;" class="mt-2">
+                        <a href="#" class="me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#"><i class="bi bi-envelope fs-5"></i></a>
+                    </p>
+                </div>
+            </div><!--/ID:32-->
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <!--ID:33--><div class="row align-items-center pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <small>&copy; 2026 Visit Durbuy. All rights reserved.</small>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" style="font-size: 0.85rem;">Privacy</a>
+                    <span class="mx-2" style="color: rgba(255,255,255,0.3);">|</span>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" style="font-size: 0.85rem;">Cookies / Cookie settings</a>
+                </div>
+            </div><!--/ID:33-->
+        </div>
+    </footer><!--/ID:34-->
+
+    <!-- Lightbox Modal -->
+    <!--ID:35--><div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-body text-center position-relative">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img id="lightboxImage" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div><!--/ID:35-->
+
+    <!-- Cookie Notice Modal -->
+    <!--ID:39--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!--ID:36--><div class="modal-header border-0 pb-0">
+            <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div><!--/ID:36-->
+          <!--ID:37--><div class="modal-body">
+            <p class="small text-secondary mb-3">We use only necessary cookies to make this site work properly. Specifically:</p>
+            <ul class="small text-secondary mb-3 ps-3">
+                <li><strong>Functional / localStorage</strong> - stores your cookie preferences so we remember whether you've accepted or rejected cookies.</li>
+            </ul>
+            <p class="small text-secondary mb-0">No tracking, analytics, or marketing cookies are used on this site. If embedded content (maps, video) is added in the future, it may set its own cookies - see our Privacy statement for details.</p>
+          </div><!--/ID:37-->
+          <!--ID:38--><div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-outline-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+            <button type="button" class="btn btn-success btn-sm" id="cookieAccept"><i class="bi bi-check-lg me-1"></i> Accept</button>
+          </div><!--/ID:38-->
+        </div>
+      </div>
+    </div><!--/ID:39-->
+
+    <!-- Privacy Statement Modal -->
+    <!--ID:41--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <!--ID:40--><div class="modal-header border-0 pb-0">
+            <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacy Statement</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div><!--/ID:40-->
+          <div class="modal-body small">
+            <p><strong>Data Controller:</strong> Visit Durbuy, Durbuy, Luxembourg Province, Wallonia, Belgium.</p>
+
+            <h6 class="mt-4 mb-2 fw-bold">What We Collect</h6>
+            <ul>
+                <li><strong>Functional cookies (localStorage):</strong> Stores your cookie consent choice (accepted / rejected / dismissed).</li>
+                <li><strong>Server logs:</strong> IP address, browser user agent, date/time of visit, and pages viewed - used for security and analytics.</li>
+                <li><strong>No personal data is collected</strong> unless you voluntarily provide it (e.g., via email contact).</li>
+            </ul>
+
+            <h6 class="mt-4 mb-2 fw-bold">Purpose &amp; Legal Basis</h6>
+            <p>Cookies are necessary for the website to function correctly (Article 6(1)(f) GDPR - legitimate interest). Server logs help us maintain site security and performance. No data is sold or shared with third parties.</p>
+
+            <h6 class="mt-4 mb-2 fw-bold">Retention</h6>
+            <p>Server logs are retained for a maximum of 12 months. Cookie preferences are stored indefinitely until the user clears their browser data or changes their choice.</p>
+
+            <h6 class="mt-4 mb-2 fw-bold">Your Rights</h6>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data.</li>
+                <li><strong>Correction:</strong> Update inaccurate or incomplete data.</li>
+                <li><strong>Deletion:</strong> Request removal of your data ("right to be forgotten").</li>
+                <li><strong>Portability:</strong> Receive your data in a machine-readable format.</li>
+                <li><strong>Objection:</strong> Object to processing based on legitimate interest.</li>
+            </ul>
+
+            <h6 class="mt-4 mb-2 fw-bold">Contact</h6>
+            <p>To exercise any of your rights, or for questions about this privacy statement, please contact us via the email link in the footer of this website.</p>
+
+            <p class="mb-0 text-secondary mt-3"><em>Last updated: October 2026. This is a starter template - adapt as needed.</em></p>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div><!--/ID:41--><!--ID:42-->
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    // Cookie consent logic
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            if (!localStorage.getItem('cookieConsent')) {
+                var el = document.getElementById('cookieModal');
+                if (el && window.bootstrap) new bootstrap.Modal(el).show();
+            }
+        } catch(e) {}
+
+        // Accept button
+        var acc = document.getElementById('cookieAccept');
+        if (acc) acc.addEventListener('click', function() {
+            try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+            var m = document.getElementById('cookieModal');
+            if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+        });
+
+        // Reject button
+        var rej = document.getElementById('cookieReject');
+        if (rej) rej.addEventListener('click', function() {
+            try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+        });
+    });
+
+    // Lightbox functionality
+    function showLightbox(element) {
+        var img = element.querySelector('img');
+        var lightboxImg = document.getElementById('lightboxImage');
+        if (img && lightboxImg) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || 'Gallery image';
+        }
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        var nav = document.getElementById('mainNav');
+        if (nav) {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+    });
+
+    // Scroll animations (Intersection Observer)
+    document.addEventListener('DOMContentLoaded', function() {
+        var fadeElements = document.querySelectorAll('.fade-up');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            fadeElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        } else {
+            // Fallback: show all elements immediately
+            fadeElements.forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
+    });
+
+    // Smooth scroll for nav links (fallback for older browsers)
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            var target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                var navHeight = document.getElementById('mainNav') ? document.getElementById('mainNav').offsetHeight : 0;
+                var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+
+                // Close mobile menu if open
+                var navCollapse = document.getElementById('navMenu');
+                if (navCollapse && navCollapse.classList.contains('show')) {
+                    var bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            }
+        });
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', function() {
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.nav-link-custom');
+        var navHeight = document.getElementById('mainNav') ? document.getElementById('mainNav').offsetHeight : 0;
+
+        var scrollPos = window.scrollY + navHeight + 100;
+
+        sections.forEach(function(section) {
+            var top = section.offsetTop;
+            var bottom = top + section.offsetHeight;
+            var id = section.getAttribute('id');
+
+            if (scrollPos >= top && scrollPos < bottom) {
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    // Image error fallback
+    document.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('error', function() {
+            if (!this.dataset.fallbackHandled) {
+                this.dataset.fallbackHandled = 'true';
+                var seed = this.src.split('/').pop().split('.')[0].substring(0, 15);
+                this.src = 'https://picsum.photos/800/600?seed=' + encodeURIComponent(seed);
+            }
+        });
+    });
+    </script>
+
+<!--/ID:42--></body>
+</html>

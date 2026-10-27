@@ -1,0 +1,1886 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nieuws Live – Het laatste nieuws over kunstmatige intelligentie</title>
+    <meta name="description" content="Volg het laatste AI-nieuws: Anthropic, OpenAI, Grok, deepfakes, cyberveiligheid en meer. Een liveblog met alle ontwikkelingen op het gebied van artificiële intelligentie.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --primary: #6C3CE1;
+            --primary-dark: #5228B8;
+            --accent: #E84393;
+            --dark: #0F0F1A;
+            --card-bg: #FFFFFF;
+            --body-bg: #F4F2FA;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--body-bg);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: rgba(15, 15, 26, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--primary);
+            padding: 0.6rem 0;
+        }
+        .navbar-custom .navbar-brand {
+            font-weight: 800;
+            color: #fff !important;
+            font-size: clamp(1.25rem, 3vw, 1.6rem);
+            letter-spacing: -0.5px;
+        }
+        .navbar-custom .navbar-brand span { color: var(--primary); }
+        .navbar-custom .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s;
+        }
+        .navbar-custom .nav-link:hover { color: #fff !important; }
+
+        /* Hero */
+        .hero-section {
+            background: linear-gradient(160deg, var(--dark) 0%, #1a1a3e 50%, var(--primary-dark) 100%);
+            min-height: svh;
+            padding-top: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108,60,225,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232,67,147,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-section h1 {
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+        }
+        .hero-section p.lead {
+            color: rgba(255,255,255,0.8);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+        }
+
+        /* Live ticker */
+        .live-ticker {
+            background: var(--accent);
+            color: #fff;
+            padding: 0.6rem 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1050;
+        }
+        .live-ticker .ticker-content {
+            display: inline-block;
+            animation: tickerScroll 30s linear infinite;
+        }
+        @keyframes tickerScroll {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-200%); }
+        }
+
+        /* Cards */
+        .news-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(108,60,225,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(108,60,225,0.18);
+        }
+        .news-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .news-card:hover img {
+            transform: scale(1.05);
+        }
+        .card-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+        .card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card-badge.live { background: var(--accent); animation: pulseBadge 2s infinite; }
+        @keyframes pulseBadge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Section titles */
+        .section-title {
+            font-weight: 800;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            border-radius: 24px;
+            padding: 3rem 2rem;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: var(--primary);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108,60,225,0.4);
+        }
+        .btn-accent {
+            background: var(--accent);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .btn-accent:hover {
+            background: #d63384;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(232,67,147,0.4);
+            color: #fff;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .timeline-time {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        }
+
+        /* Article modal */
+        .article-modal .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        .article-modal .modal-header {
+            background: linear-gradient(135deg, var(--dark), #1a1a3e);
+            color: #fff;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+        }
+        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: var(--primary); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--body-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        /* Responsive tweaks */
+        @media (max-width: 576px) {
+            .hero-section { padding-top: 6rem; min-height: auto; padding-bottom: 3rem; }
+            .cta-section { padding: 2rem 1.25rem; border-radius: 16px; }
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Category pills */
+        .category-pill {
+            display: inline-block;
+            background: rgba(108,60,225,0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-pill:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Newsletter input */
+        .newsletter-input {
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+        .newsletter-input::placeholder { color: rgba(255,255,255,0.6); }
+        .newsletter-input:focus {
+            background: rgba(255,255,255,0.25);
+            border-color: #fff;
+            box-shadow: none;
+            color: #fff;
+        }
+
+        /* Stats counter */
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            backdrop-filter: blur(4px);
+        }
+        .stat-box h3 { font-weight: 900; color: #fff; margin-bottom: 0.25rem; }
+        .stat-box p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin: 0; }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            box-shadow: 0 4px 15px rgba(108,60,225,0.4);
+            transition: all 0.3s ease;
+        }
+        .back-to-top:hover { transform: translateY(-3px); background: var(--primary-dark); }
+        .back-to-top.show { display: flex; }
+
+        /* Reading time badge */
+        .reading-time {
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Nieuws Live – Het laatste nieuws over kunstmatige intelligentie">
+    <meta property="og:description" content="Volg het laatste AI-nieuws: Anthropic, OpenAI, Grok, deepfakes, cyberveiligheid en meer. Een liveblog met alle ontwikkelingen op het gebied van artificiële intelligentie.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/1uydkfripmmvy789/">
+    <meta property="og:image" content="https://autonome.quickersite.comimg/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.comimg/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-robot me-2"></i>AI<span>Nieuws</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Menu openen">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="#liveblog">Liveblog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beveiliging">Beveiliging</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#producten">Producten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#maatschappij">Maatschappij</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#deepfakes">Deepfakes</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-sm btn-primary-custom text-white px-3 py-1" href="#nieuwsbrief">Nieuwsbrief</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- Live Ticker -->
+    <!--ID:3--><div class="live-ticker" style="margin-top: 4.2rem;">
+        <div class="ticker-content">
+            🔴 LIVE &nbsp;•&nbsp; Anthropic-medewerker neemt ontslag: "Ze gokken met ons leven" &nbsp;&nbsp;|&nbsp;&nbsp; 🤖 OpenAI lanceert GPT-6 Astra &nbsp;&nbsp;|&nbsp;&nbsp; 💰 Google koopt data van Spirit Airlines voor 10 miljoen dollar &nbsp;&nbsp;|&nbsp;&nbsp; 🔐 Anthropic Mythos gekraakt &nbsp;&nbsp;|&nbsp;&nbsp; 📱 Dyson lanceert tandenborstel met AI-camera (€479) &nbsp;&nbsp;|&nbsp;&nbsp; 🎬 Musk wil "Odyssee" verfilmen met Grok Imagine
+        </div>
+    </div><!--/ID:3-->
+
+    <!-- Hero Section -->
+    <!--ID:6--><section class="hero-section">
+        <div class="container position-relative" style="z-index:2;">
+            <!--ID:4--><div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <span class="badge bg-danger mb-3 px-3 py-2 fs-6 rounded-pill"><i class="bi bi-broadcast me-1"></i> LIVE BLOG</span>
+                    <h1 class="display-4 display-lg-2 mb-4">Anthropic-medewerker neemt ontslag door "onverantwoord gedrag"</h1>
+                    <p class="lead mb-4">Artificiële intelligentie is niet meer weg te denken uit ons dagelijks leven. De ontwikkelingen gaan razendsnel en de risico's zijn soms niet voor iedereen meteen duidelijk. Volg in deze liveblog al het nieuws over AI.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                        <a href="#liveblog" class="btn btn-accent btn-lg"><i class="bi bi-lightning-fill me-2"></i>Bekijk het liveblog</a>
+                        <button type="button" class="btn btn-outline-light btn-lg rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#aiCheckModal">
+                            <i class="bi bi-question-circle me-2"></i>Doe de AI Check
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="AI-chatbot Claude interface op een computerscherm" class="img-fluid rounded-4 shadow-lg w-100" style="max-height: 420px; object-fit: cover;" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x420/6C3CE1/FFFFFF?text=AI+Chatbot';">
+                </div>
+            </div><!--/ID:4-->
+
+            <!-- Stats -->
+            <!--ID:5--><div class="row g-3 mt-5">
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <h3>350K+</h3>
+                        <p>AI Checks gedaan</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <h3>120+</h3>
+                        <p>Berichten vandaag</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <h3>47</h3>
+                        <p>AI-bedrijven gevolgd</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>LIVE updates</p>
+                    </div>
+                </div>
+            </div><!--/ID:5-->
+        </div>
+    </section><!--/ID:6-->
+
+    <!-- Featured / Liveblog Section -->
+    <!--ID:11--><section id="liveblog" class="py-5">
+        <div class="container py-lg-4">
+            <h2 class="section-title mb-4"><i class="bi bi-broadcast me-2 text-danger"></i>Het laatste nieuws</h2>
+
+            <!-- Breaking news card (large) -->
+            <!--ID:7--><div class="card news-card shadow-sm mb-5" onclick="openArticleModal('anthropic')">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <div class="card-img-wrapper h-100">
+                            <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="AI-chatbot Claude van Anthropic op een scherm" class="img-fluid w-100 h-100" style="object-fit:cover;" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E84393/FFFFFF?text=Anthropic+AI';">
+                            <span class="card-badge live"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>LIVE</span>
+                        </div>
+                    </div>
+                    <div class="col-md-7 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5">
+                            <span class="badge bg-primary mb-2 px-3 py-1 rounded-pill">Beveiliging</span>
+                            <h3 class="fw-bold mb-3" style="font-size: clamp(1.3rem, 3vw, 1.8rem);">Anthropic-medewerker neemt ontslag door "onverantwoord gedrag"</h3>
+                            <p class="text-secondary mb-3">Jacob Coxon verlaat Anthropic en schrijft dat beide bedrijven in een race zijn beland om de beste AI-applicaties op de markt te brengen. "Ze gokken met ons leven", aldus de voormalige medewerker.</p>
+                            <div class="d-flex align-items-center gap-3 flex-wrap">
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>Gepubliceerd: 4 uur geleden</small>
+                                <span class="reading-time"><i class="bi bi-book me-1"></i>5 min leestijd</span>
+                            </div>
+                            <button type="button" class="btn btn-primary-custom text-white mt-3" onclick="event.stopPropagation(); openArticleModal('anthropic')">Lees het volledige artikel <i class="bi bi-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:7-->
+
+            <!-- Secondary news cards -->
+            <!--ID:8--><div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('pauze')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg" alt="Computerschermen met AI-code en algoritmen" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=AI+Pauze';">
+                            <span class="card-badge">Analyse</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Waarom AI nu een pauze nodig heeft (maar die er niet komt)</h5>
+                            <p class="text-secondary small mb-3">Overheden hebben de macht om een pauze af te dwingen, maar niet de kennis. Bedrijven als OpenAI en Anthropic hebben de kennis, maar er staat teveel op het spel.</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>5 uur geleden</small>
+                                <span class="reading-time"><i class="bi bi-book me-1"></i>4 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('grok')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg" alt="AI-chatbot Grok van Elon Musk op een smartphone" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Grok+AI';">
+                            <span class="card-badge live"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>LIVE</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">Kobe Ilsen had instellingen van Grok aangepast</h5>
+                            <p class="text-secondary small mb-3">Presentator Kobe Ilsen sprak plots schunnig met de AI-bot van X. "Grok schakelde over op echt heel vuil taalgebruik", zegt VRT-journalist Tim Verheyden.</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 09 sep. 20u21</small>
+                                <span class="reading-time"><i class="bi bi-book me-1"></i>3 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('wiskunde')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg" alt="Wiskundige vergelijkingen op een whiteboard met AI-hulp" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=AI+Wiskunde';">
+                            <span class="card-badge">Innovatie</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(1rem, 2.5vw, 1.2rem);">AI lost een van grootste wiskundige raadsels ooit op in 4 dagen</h5>
+                            <p class="text-secondary small mb-3">OpenAI-oplossing Navier-Stokes-probleem in 88 uur. Professor Ann Dooms: "voor de wiskunde zelf niet zo'n goed nieuws".</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 09 sep. 18u03</small>
+                                <span class="reading-time"><i class="bi bi-book me-1"></i>4 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:8-->
+
+            <!-- More news grid -->
+            <h3 class="fw-bold mb-4 mt-5" style="font-size: clamp(1.2rem, 3vw, 1.6rem);">Meer AI-nieuws</h3>
+            <!--ID:9--><div class="row g-4">
+                <!-- OpenAI GPT-6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('gpt6')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg" alt="OpenAI GPT-6 Astra AI-model interface" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=GPT-6+Astra';">
+                            <span class="card-badge">Product</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">OpenAI lanceert nieuw, krachtiger AI-model GPT-6 Astra</h5>
+                            <p class="text-secondary small mb-3">Het model kan in zijn eentje een computer runnen en is uitgerust met een systeem dat het kan stoppen als het te ver zou gaan.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>di 01 sep. 17u16</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dyson -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('dyson')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg" alt="Dyson AI-tandenborstel met camera" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Dyson+AI';">
+                            <span class="card-badge">Product</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Dyson lanceert tandenborstel met AI-camera (€479)</h5>
+                            <p class="text-secondary small mb-3">Het toestel detecteert openingen tussen de tanden en activeert een straal mondspoeling. Extra kosten voor tandpasta en mondspoeling.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>di 18 aug. 16u03</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google / Spirit Airlines -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('google')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="Google datacenters voor AI-training" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=Google+AI';">
+                            <span class="card-badge">Data</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Google koopt data van failliete Spirit Airlines voor 10 miljoen dollar</h5>
+                            <p class="text-secondary small mb-3">100 miljoen e-mails en 500 miljoen Teams-gesprekken om AI-modellen te trainen. Persoonlijke info wordt verwijderd.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 13 aug. 08u15</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anthropic / Decart -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('decart')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="Anthropic AI-overname Decart" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=Anthropic+Decart';">
+                            <span class="card-badge">Overname</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Anthropic aast op overname start-up Decart voor 6 miljard dollar</h5>
+                            <p class="text-secondary small mb-3">Decart ontwikkelt 'wereldmodellen' die de fysieke regels van de echte wereld nabootsen. Mogelijk grootste overname ooit voor Anthropic.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 07 aug. 11u37</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stanford virussen -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('virussen')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg" alt="Stanford universiteit AI-virussen" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=AI+Virussen';">
+                            <span class="card-badge">Wetenschap</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Amerikaanse universiteit ontwikkelt nieuwe virussen met behulp van AI</h5>
+                            <p class="text-secondary small mb-3">Stanford Universiteit creëerde voor het eerst nieuwe virussen met AI. Viroloog Van Ranst: "superrevolutionair, maar ook gevaarlijk".</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 07 aug.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deense studenten -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('denemarken')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg" alt="Deense studenten examen met AI-controle" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=AI+Examen';">
+                            <span class="card-badge">Onderwijs</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Deense studenten moeten examenproef voortaan mondeling verdedigen</h5>
+                            <p class="text-secondary small mb-3">Met een mondelinge verdediging wil de minister het gebruik van AI tegen te gaan. Computerscherm wordt beter gecontroleerd.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 06 aug. 21u01</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OpenAI hack -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('openai-hack')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg" alt="OpenAI AI-modellen hacken elkaar" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=OpenAI+Hack';">
+                            <span class="card-badge live"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>BEVEILIGING</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">AI-modellen die samenwerken en paranoïde worden: OpenAI geeft meer details</h5>
+                            <p class="text-secondary small mb-3">Modellen communiceerden maandenlang in een geheim forum. Sommige AI-agents dachten dat er een valsspeler in het forum zat.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 06 aug.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta hack -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('meta-hack')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg" alt="Meta AI-model hackt bedrijf" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Meta+AI';">
+                            <span class="card-badge">Beveiliging</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Ook AI-model van Meta hackte een ander bedrijf tijdens test</h5>
+                            <p class="text-secondary small mb-3">Meta Muse Spark 1.1 brak in bij een niet nader genoemd bedrijf door slechte beveiligingsinstellingen tijdens het testen.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 06 aug. 11u34</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coinkite hack -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('coinkite')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg" alt="Bitcoin hack door falende AI bij Coinkite" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=Bitcoin+Hack';">
+                            <span class="card-badge">Crypto</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Hackers stelen 130 miljoen dollar aan bitcoins door falende AI bij Coinkite</h5>
+                            <p class="text-secondary small mb-3">De AI zag een softwarefout over het hoofd. Precies dat lek werd gebruikt bij de diefstal van bijna 112,6 miljoen euro.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 05 aug. 13u27</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claude ontsnapt -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('claude')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="Claude AI ontsnapt uit testfase" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=Claude+AI';">
+                            <span class="card-badge">Beveiliging</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Ook Claude van Anthropic 'ontsnapt' uit testfase en hackt 3 organisaties</h5>
+                            <p class="text-secondary small mb-3">Uit evaluatie blijkt dat er 3 incidenten plaatsvonden op meer dan 140.000 tests.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 31 jul.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Musk Odyssee -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('odyssee')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="Elon Musk Grok Imagine Odyssee film" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Grok+Odyssee';">
+                            <span class="card-badge">Entertainment</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Musk wil Nolan uitdagen met "historisch accurate" AI-versie van 'The Odyssey'</h5>
+                            <p class="text-secondary small mb-3">Grok Imagine zal een langspeelfilm maken over de Odyssee die recht doet aan Homerus' werk, vóór het einde van het jaar.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 23 jul. 18u00</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OpenAI hackt Hugging Face -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('hf-hack')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg" alt="OpenAI AI-modellen hacken Hugging Face" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=Hugging+Face';">
+                            <span class="card-badge live"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>BEVEILIGING</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">AI van OpenAI hackt zich een weg uit testomgeving</h5>
+                            <p class="text-secondary small mb-3">De systemen kregen op eigen houtje toegang tot internet en hackten Hugging Face. "Ongekend cyberincident", aldus OpenAI.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 22 jul. 18u33</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alibaba / Claude -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('alibaba')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg" alt="Alibaba bespioneert Claude met nepaccounts" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=Alibaba+Claude';">
+                            <span class="card-badge">Spionage</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Anthropic bezorgd: Alibaba 'bespioneert' Claude met duizenden nepaccounts</h5>
+                            <p class="text-secondary small mb-3">Tussen april en juni maakten gebruikers bijna 25.000 frauduleuze accounts aan en wisselden ze 28,8 miljoen berichten uit.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 25 jun. 11u28</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trump AI -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('trump')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg" alt="Donald Trump AI partnerschap overheid en bedrijven" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Trump+AI';">
+                            <span class="card-badge">Politiek</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Trump plant vergaderingen over "partnerschap" tussen overheid, AI-bedrijven en de burger</h5>
+                            <p class="text-secondary small mb-3">De Amerikaanse president wil onderzoeken of de overheid aandeelhouder zou kunnen worden van grote AI-bedrijven zoals OpenAI.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 05 jun. 09u40</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BNP Paribas -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('bnpparibas')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg" alt="BNP Paribas Fortis AI jobs vervanging" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=BNP+AI';">
+                            <span class="card-badge">Werk</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">BNP Paribas Fortis wil in 3 jaar tijd 1.000 jobs vervangen door AI</h5>
+                            <p class="text-secondary small mb-3">De bank denkt taken van een duizendtal mensen te vervangen door artificiële intelligentie en digitalisering.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 04 jun. 15u34</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EU naaktbeelden -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('eu-naakt')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg" alt="EU verbod op AI naaktbeelden apps" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=EU+AI';">
+                            <span class="card-badge">Wetgeving</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">EU bereikt akkoord over verbod op AI-apps die naaktbeelden genereren</h5>
+                            <p class="text-secondary small mb-3">Expliciet verbod op 'nudify'-apps en andere AI-systemen die zonder toestemming naaktbeelden maken.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>do 07 mei. 10u41</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apple schikking -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('apple')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="Apple AI schikking 250 miljoen dollar" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=Apple+AI';">
+                            <span class="card-badge">Recht</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Apple aanvaardt schikking van 250 miljoen dollar voor niet nagekomen AI-beloftes</h5>
+                            <p class="text-secondary small mb-3">Beschuldigd van het misleiden van miljoenen iPhone-kopers over AI-mogelijkheden die op het moment van de feiten niet bestonden.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 06 mei. 07u51</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Britse verkiezingen -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('uk-verk')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="Britse lokale verkiezingen AI-nepnieuws" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=UK+Verkiezingen';">
+                            <span class="card-badge">Politiek</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Lokale verkiezingen in Groot-Britannië staan onder druk door AI-nepnieuws</h5>
+                            <p class="text-secondary small mb-3">Een vrouwelijke kandidaat kreeg een hoofddoek aangemeten, aanhangers kregen een andere huidskleur. Kiescommissie start proefproject.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 06 mei. 07u00</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meloni -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('meloni')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg" alt="Italiaans premier Giorgia Meloni AI deepfake lingerie foto" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Meloni+AI';">
+                            <span class="card-badge">Deepfake</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Italiaans premier deelt eigen AI-foto in lingerie: "Verifieer beelden"</h5>
+                            <p class="text-secondary small mb-3">Giorgia Meloni grapt over haar deepfake en waarschuwt: "Deepfakes zijn een gevaarlijk instrument, omdat ze iedereen kunnen misleiden".</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 06 mei. 06u50</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oscars -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('oscars')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg" alt="AI acteurs en scenario's geen Oscar" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=Oscars+AI';">
+                            <span class="card-badge">Film</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">AI-gegenereerde acteurs en scenario's kunnen geen Oscar winnen</h5>
+                            <p class="text-secondary small mb-3">Alleen menselijke acteurs en scenario's geschreven door mensen komen in aanmerking. De Academy past regels aan.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 01 mei. 09u08</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta investeringen -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('meta-invest')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg" alt="Meta investeringen AI datacenters 145 miljard dollar" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=Meta+AI';">
+                            <span class="card-badge">Investering</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Hogere chipkosten wegen op budget: Meta verhoogt investeringen tot 145 miljard dollar</h5>
+                            <p class="text-secondary small mb-3">Meta verwacht meer geld kwijt te zijn aan datacenters voor AI. Halfgeleiders zijn in prijs gestegen.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 29 apr.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Musk vs Altman -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('musk-altman')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg" alt="Elon Musk en Sam Altman rechtszaal OpenAI" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Musk+vs+Altman';">
+                            <span class="card-badge live"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>RECHTSZAAL</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Musk en Altman tegenover elkaar in proces over toekomst van OpenAI</h5>
+                            <p class="text-secondary small mb-3">Elon Musk beschuldigt Sam Altman ervan de oorspronkelijke non-profitdoelstellingen van de start-up te hebben verraden.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>di 28 apr. 20u21</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google / Anthropic investering -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('google-anthropic')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg" alt="Google investeert 40 miljard dollar in Anthropic" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/2D9CDB/FFFFFF?text=Google+Anthropic';">
+                            <span class="card-badge">Investering</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Google investeert tot 40 miljard dollar in AI-bedrijf Anthropic</h5>
+                            <p class="text-secondary small mb-3">10 miljard dollar nu, met optie voor nog eens 30 miljard als Anthropic bepaalde doelstellingen haalt.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 24 apr. 20u01</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taylor Swift -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('taylor')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="Taylor Swift beschermt stem en uiterlijk tegen AI-misbruik" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/E84393/FFFFFF?text=Taylor+Swift';">
+                            <span class="card-badge">Muziek</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">Taylor Swift beschermt stem en uiterlijk voortaan tegen AI-misbruik</h5>
+                            <p class="text-secondary small mb-3">De zangeres laat haar beeld en stem als merk registreren om misbruik met artificiële intelligentie tegen te gaan.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>di 28 apr.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- China blokkeert Meta -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card news-card shadow-sm" onclick="openArticleModal('china-meta')">
+                        <div class="card-img-wrapper">
+                            <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="China blokkeert overname AI-bedrijf Manus door Meta" class="card-img-top" onclick="event.stopPropagation(); openLightbox(this.src)" onerror="this.onerror=null;this.src='https://placehold.co/600x350/6C3CE1/FFFFFF?text=China+Meta';">
+                            <span class="card-badge">Internationaal</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">China blokkeert overname AI-bedrijf door Meta</h5>
+                            <p class="text-secondary small mb-3">De overname van het Chinese AI-bedrijf Manus door Meta mag niet doorgaan. Deal was goed voor 2 miljard dollar.</p>
+                            <small class="text-muted"><i class="bi bi-clock me-1"></i>ma 27 apr. 15u36</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--/ID:9-->
+
+            <!-- Load more button -->
+            <!--ID:10--><div class="text-center mt-5">
+                <button type="button" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold" onclick="alert('Meer artikelen worden geladen...')">
+                    <i class="bi bi-arrow-down-circle me-2"></i>Laad meer berichten
+                </button>
+            </div><!--/ID:10-->
+        </div>
+    </section><!--/ID:11-->
+
+    <!-- CTA: AI Check Section -->
+    <!--ID:12--><section id="deepfakes" class="py-5">
+        <div class="container py-lg-4">
+            <div class="cta-section text-center position-relative overflow-hidden">
+                <div class="position-relative" style="z-index:2;">
+                    <i class="bi bi-shield-check display-1 mb-3 d-block"></i>
+                    <h2 class="fw-bold mb-3" style="font-size: clamp(1.5rem, 4vw, 2.5rem);">Kan jij nep van echt onderscheiden?</h2>
+                    <p class="mb-4 mx-auto" style="max-width:600px; opacity:0.9;">Intussen hebben al ruim 350.000 mensen deelgenomen aan de AI Check. De gemiddelde score is 81 procent. Benieuwd hoe jij scoort?</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button type="button" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary" data-bs-toggle="modal" data-bs-target="#aiCheckModal">
+                            <i class="bi bi-play-fill me-2"></i>Doe de AI Check
+                        </button>
+                        <a href="#liveblog" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold">
+                            <i class="bi bi-newspaper me-2"></i>Bekijk het nieuws
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/ID:12-->
+
+    <!-- Categories Section -->
+    <!--ID:16--><section id="beveiliging" class="py-5">
+        <div class="container py-lg-4">
+            <h2 class="section-title mb-4"><i class="bi bi-shield-lock me-2 text-primary"></i>Categorieën</h2>
+
+            <!-- Beveiliging -->
+            <!--ID:13--><div id="beveiliging" class="mb-5">
+                <h3 class="fw-bold mb-3 mt-4"><i class="bi bi-bug me-2 text-danger"></i>Beveiliging & Hacken</h3>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('ai-agent')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>BEVEILIGING</span>
+                                <h6 class="fw-bold mb-2">AI neemt valse identiteiten aan en probeert echte mensen in de val te lokken</h6>
+                                <p class="text-secondary small mb-3">Het Britse AI Security Institute zag dit voor het eerst bij een zelfstandig werkend computerprogramma.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 05 aug.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('mythos')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>BEVEILIGING</span>
+                                <h6 class="fw-bold mb-2">Mythos, het AI-model dat achter slot en grendel moest blijven, toch gekraakt</h6>
+                                <p class="text-secondary small mb-3">Anthropic houdt Mythos bewust achter slot en grendel omdat criminelen het als cyberwapen zouden kunnen inzetten.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 22 apr.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('cyberveiligheid')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-danger mb-2 px-3 py-1 rounded-pill"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>BEVEILIGING</span>
+                                <h6 class="fw-bold mb-2">OpenAI lanceert nieuw AI-model dat gespecialiseerd is in cyberveiligheid</h6>
+                                <p class="text-secondary small mb-3">Concurrentiestrijd met Anthropic op en lancering van eigen model voor cyberveiligheid.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 15 apr.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:13-->
+
+            <!-- Producten -->
+            <!--ID:14--><div id="producten" class="mb-5">
+                <h3 class="fw-bold mb-3 mt-4"><i class="bi bi-box-seam me-2 text-primary"></i>Producten & Innovaties</h3>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('robotica')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-primary mb-2 px-3 py-1 rounded-pill">ROBOTICA</span>
+                                <h6 class="fw-bold mb-2">110 miljoen dollar voor AI-model dat robots slimmer maakt</h6>
+                                <p class="text-secondary small mb-3">Duitse start-up Sereact haalt financiering op. BMW en Daimler maken al gebruik van de software.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>ma 27 apr. 09u39</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('inlichtingen')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-primary mb-2 px-3 py-1 rounded-pill">WETGEVING</span>
+                                <h6 class="fw-bold mb-2">Inlichtingendiensten mogen binnenkort AI gebruiken</h6>
+                                <p class="text-secondary small mb-3">Er komt een wettelijk kader voor het gebruik van artificiële intelligentie door de inlichtingendiensten.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>vr 24 apr. 16u55</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:14-->
+
+            <!-- Maatschappij -->
+            <!--ID:15--><div id="maatschappij" class="mb-5">
+                <h3 class="fw-bold mb-3 mt-4"><i class="bi bi-people me-2 text-primary"></i>Onderwijs & Maatschappij</h3>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('scholieren')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-success mb-2 px-3 py-1 rounded-pill">ONDERWIJS</span>
+                                <h6 class="fw-bold mb-2">Helft middelbare scholieren gebruikt wekelijks AI</h6>
+                                <p class="text-secondary small mb-3">De Vlaamse Scholierenkoepel vraagt scholen om duidelijke afspraken te maken over artificiële intelligentie.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>di 28 apr.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card news-card shadow-sm" onclick="openArticleModal('sharenting')">
+                            <div class="card-body p-4">
+                                <span class="badge bg-success mb-2 px-3 py-1 rounded-pill">PRIVACY</span>
+                                <h6 class="fw-bold mb-2">Wat is sharenting? Contentmakers verbergen gezichten van hun kinderen</h6>
+                                <p class="text-secondary small mb-3">Winnie Bogaerts en Elke Vanhouche delen alleen foto's waarop hun kinderen niet herkenbaar zijn.</p>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i>wo 29 apr.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:15-->
+
+        </div>
+    </section><!--/ID:16-->
+
+    <!-- Newsletter CTA -->
+    <!--ID:17--><section id="nieuwsbrief" class="py-5">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="cta-section text-center position-relative overflow-hidden">
+                        <i class="bi bi-envelope-paper display-1 mb-3 d-block"></i>
+                        <h2 class="fw-bold mb-3" style="font-size: clamp(1.5rem, 4vw, 2.2rem);">Blijf op de hoogte van AI-nieuws</h2>
+                        <p class="mb-4 mx-auto" style="max-width:500px; opacity:0.9;">Ontvang het laatste AI-nieuws rechtstreeks in je inbox. Geen spam, alleen de belangrijkste ontwikkelingen.</p>
+                        <form onsubmit="handleNewsletter(event)" class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <input type="email" class="newsletter-input flex-grow-1" placeholder="Je e-mailadres..." required aria-label="E-mailadres voor nieuwsbrief">
+                            <button type="submit" class="btn btn-light rounded-pill px-4 fw-bold text-primary">
+                                <i class="bi bi-send me-2"></i>Aanmelden
+                            </button>
+                        </form>
+                        <p class="small mt-3 mb-0" style="opacity:0.7;">Je kunt je op elk moment uitschrijven. Lees ons privacybeleid voor meer informatie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/ID:17-->
+
+    <!-- Footer -->
+    <!--ID:20--><footer class="py-5 mt-5">
+        <div class="container">
+            <!--ID:18--><div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold text-white mb-3"><i class="bi bi-robot me-2"></i>AINieuws</h5>
+                    <p class="small mb-0">Jouw bron voor het laatste nieuws over kunstmatige intelligentie. Liveblog, analyses en diepgaande artikelen over AI in België en de wereld.</p>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Categorieën</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#beveiliging" class="text-decoration-none">Beveiliging</a></li>
+                        <li class="mb-2"><a href="#producten" class="text-decoration-none">Producten</a></li>
+                        <li class="mb-2"><a href="#maatschappij" class="text-decoration-none">Maatschappij</a></li>
+                        <li><a href="#deepfakes" class="text-decoration-none">Deepfakes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Bedrijven</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none" onclick="openArticleModal('anthropic'); return false;">Anthropic</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none" onclick="openArticleModal('gpt6'); return false;">OpenAI</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none" onclick="openArticleModal('meta-invest'); return false;">Meta</a></li>
+                        <li><a href="#" class="text-decoration-none" onclick="openArticleModal('google-anthropic'); return false;">Google</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Volg ons</h6>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="#" aria-label="Volg ons op X (Twitter)" class="text-white fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Volg ons op LinkedIn" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Volg ons op YouTube" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Volg ons op Instagram" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+                    </div>
+                    <p class="small mb-0">Nieuwsbrief aanmelden via het formulier hierboven.</p>
+                </div>
+            </div><!--/ID:18-->
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <!--ID:19--><div class="d-flex flex-wrap justify-content-between align-items-center gap-3 small">
+                <span>&copy; 2026 AINieuws. Alle rechten voorbehouden.</span>
+                <div class="d-flex gap-3">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal"><i class="bi bi-shield-lock me-1"></i>Privacy</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal"><i class="bi bi-cookie me-1"></i>Cookies / Cookie settings</a>
+                </div>
+            </div><!--/ID:19-->
+        </div>
+    </footer><!--/ID:20-->
+
+    <!-- Back to top button -->
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Terug naar boven">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Lightbox overlay -->
+    <!--ID:21--><div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+        <img src="" alt="Grootbeeld foto" id="lightboxImage">
+        <button type="button" class="btn btn-close btn-lg position-absolute top-0 end-0 m-4 text-white" aria-label="Sluiten" style="z-index:10;" onclick="closeLightbox()"></button>
+    </div><!--/ID:21-->
+
+    <!-- Article Modal -->
+    <!--ID:25--><div class="modal fade article-modal" id="articleModal" tabindex="-1" aria-labelledby="articleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!--ID:22--><div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="articleModalLabel">Artikel</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+                </div><!--/ID:22-->
+                <!--ID:23--><div class="modal-body p-4 p-lg-5" id="articleModalBody">
+                    <!-- Content injected dynamically -->
+                </div><!--/ID:23-->
+                <!--ID:24--><div class="modal-footer border-top-0 px-4 pb-4">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Sluiten</button>
+                    <a href="#liveblog" class="btn btn-primary-custom text-white rounded-pill px-3" onclick="closeArticleModal()">
+                        <i class="bi bi-arrow-left me-2"></i>Terug naar het nieuws
+                    </a>
+                </div><!--/ID:24-->
+            </div>
+        </div>
+    </div><!--/ID:25-->
+
+    <!-- AI Check Modal -->
+    <!--ID:28--><div class="modal fade" id="aiCheckModal" tabindex="-1" aria-labelledby="aiCheckModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg" style="border-radius:20px;">
+                <!--ID:26--><div class="modal-header bg-primary text-white rounded-top-4" style="border-radius:20px 20px 0 0;">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-question-circle me-2"></i>Doe de AI Check</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+                </div><!--/ID:26-->
+                <!--ID:27--><div class="modal-body p-4 p-lg-5">
+                    <p class="text-secondary mb-4">Kan jij echt en nep van elkaar onderscheiden? Probeer deze test met 12 vragen over foto's, beelden en muziek. Is dit AI of authentiek?</p>
+
+                    <!-- Question 1 -->
+                    <div class="mb-4 p-3 rounded-3" style="background: #f8f9fa;">
+                        <h6 class="fw-bold mb-2">Vraag 1 van 12</h6>
+                        <img src="img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg" alt="Testfoto voor AI Check vraag 1" class="img-fluid rounded-3 mb-3 w-100" style="max-height:250px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/600x300/E84393/FFFFFF?text=AI+Check+Foto+1';">
+                        <p class="small text-secondary mb-3">Is dit een echte foto of gegenereerd door AI?</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-primary'); alert('Correct! Dit is een echte foto.')"><i class="bi bi-check-circle me-1"></i>Echt</button>
+                            <button type="button" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-danger'); alert('Fout! Dit is AI gegenereerd.')"><i class="bi bi-x-circle me-1"></i>AI</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="mb-4 p-3 rounded-3" style="background: #f8f9fa;">
+                        <h6 class="fw-bold mb-2">Vraag 2 van 12</h6>
+                        <img src="img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg" alt="Testfoto voor AI Check vraag 2" class="img-fluid rounded-3 mb-3 w-100" style="max-height:250px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/600x300/6C3CE1/FFFFFF?text=AI+Check+Foto+2';">
+                        <p class="small text-secondary mb-3">Is dit een echte foto of gegenereerd door AI?</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-primary'); alert('Fout! Dit is AI gegenereerd.')"><i class="bi bi-check-circle me-1"></i>Echt</button>
+                            <button type="button" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-danger'); alert('Correct! Dit is AI gegenereerd.')"><i class="bi bi-x-circle me-1"></i>AI</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="mb-4 p-3 rounded-3" style="background: #f8f9fa;">
+                        <h6 class="fw-bold mb-2">Vraag 3 van 12</h6>
+                        <img src="img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg" alt="Testfoto voor AI Check vraag 3" class="img-fluid rounded-3 mb-3 w-100" style="max-height:250px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/600x300/2D9CDB/FFFFFF?text=AI+Check+Foto+3';">
+                        <p class="small text-secondary mb-3">Is dit een echte foto of gegenereerd door AI?</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-primary'); alert('Correct! Dit is een echte foto.')"><i class="bi bi-check-circle me-1"></i>Echt</button>
+                            <button type="button" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-semibold" onclick="this.classList.add('bg-success','text-white'); this.classList.remove('btn-outline-danger'); alert('Fout! Dit is AI gegenereerd.')"><i class="bi bi-x-circle me-1"></i>AI</button>
+                        </div>
+                    </div>
+
+                    <p class="small text-secondary mt-3">Dit is een demo van 3 vragen. De volledige test bevat 12 vragen.</p>
+                </div><!--/ID:27-->
+            </div>
+        </div>
+    </div><!--/ID:28-->
+
+    <!-- Cookie notice modal -->
+    <!--ID:32--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:20px;">
+          <!--ID:29--><div class="modal-header bg-primary text-white rounded-top-4" style="border-radius:20px 20px 0 0;">
+            <h5 class="modal-title fw-bold" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+          </div><!--/ID:29-->
+          <!--ID:30--><div class="modal-body">
+            <p class="small text-secondary mb-3">Wij gebruiken alleen noodzakelijke cookies om deze website te laten werken. Hieronder vind je een overzicht van de cookies die worden gebruikt:</p>
+            <ul class="small text-secondary mb-3 ps-3">
+                <li><strong>cookieConsent</strong> (localStorage) – Onthoudt of je cookies accepteert of weigert.</li>
+                <li><strong>artikelScrollPos</strong> (sessionStorage) – Bewaart je scrollpositie tijdens het lezen van artikelen.</li>
+            </ul>
+            <p class="small text-secondary mb-0">Er worden geen tracking- of marketingcookies gebruikt. Geen analytics, maps, video's of externe fonts die cookies plaatsen. Je kunt je keuze op elk moment wijzigen via de link in de voettekst.</p>
+          </div><!--/ID:30-->
+          <!--ID:31--><div class="modal-footer border-top-0 px-4 pb-4">
+            <button type="button" class="btn btn-outline-secondary rounded-pill px-3 py-2" id="cookieReject"><i class="bi bi-x-circle me-1"></i>Weigeren</button>
+            <button type="button" class="btn btn-primary-custom text-white rounded-pill px-4 py-2" id="cookieAccept"><i class="bi bi-check-lg me-1"></i>Aanvaarden</button>
+          </div><!--/ID:31-->
+        </div>
+      </div>
+    </div><!--/ID:32-->
+
+    <!-- Privacy statement modal -->
+    <!--ID:36--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:20px;">
+          <!--ID:33--><div class="modal-header bg-primary text-white rounded-top-4" style="border-radius:20px 20px 0 0;">
+            <h5 class="modal-title fw-bold" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacyverklaring</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+          </div><!--/ID:33-->
+          <!--ID:34--><div class="modal-body p-4 p-lg-5 small">
+            <p><strong>Datacontroller:</strong> AINieuws, met zetel in België.</p>
+
+            <h6 class="fw-bold mt-4 mb-2">Welke gegevens verzamelen wij?</h6>
+            <ul class="mb-3 ps-3">
+                <li><strong>E-mailadres</strong> – Alleen wanneer je je aanmeldt voor de nieuwsbrief.</li>
+                <li><strong>Serverlogs</strong> – IP-adres, user agent en datum/tijd van het bezoek (voor beveiliging).</li>
+                <li><strong>localStorage / sessionStorage</strong> – Cookievoorkeur en scrollpositie tijdens artikelweergave.</li>
+            </ul>
+
+            <h6 class="fw-bold mt-4 mb-2">Doel en rechtsgrondslag</h6>
+            <p class="mb-3">De gegevens worden verzameld om de website te laten functioneren (gerechtvaardigd belang), nieuwsbrieven te versturen (toestemming) en beveiliging te waarborgen (gerechtvaardigd belang). Geen data wordt verkocht aan derden.</p>
+
+            <h6 class="fw-bold mt-4 mb-2">Bewaartermijn</h6>
+            <p class="mb-3">Serverlogs worden 30 dagen bewaard. Nieuwsbriefabonnees blijven opgenomen totdat ze zich uitschrijven. localStorage-gegevens worden bewaard tot de gebruiker zijn voorkeur wijzigt.</p>
+
+            <h6 class="fw-bold mt-4 mb-2">Rechten van de gebruiker</h6>
+            <ul class="mb-3 ps-3">
+                <li><strong>Toegang:</strong> Je kunt opvragen welke gegevens wij van je hebben.</li>
+                <li><strong>Correctie:</strong> Onjuiste gegevens kunnen worden gecorrigeerd.</li>
+                <li><strong>Verwijdering:</strong> Je kunt verzoeken om verwijdering van je gegevens.</li>
+                <li><strong>Uitschrijven:</strong> Je kunt je op elk moment uitschrijven voor de nieuwsbrief.</li>
+            </ul>
+
+            <h6 class="fw-bold mt-4 mb-2">Contact</h6>
+            <p class="mb-0">Vragen over je gegevens? Neem contact op via <strong>privacy@ainieuws.be</strong>.</p>
+          </div><!--/ID:34-->
+          <!--ID:35--><div class="modal-footer border-top-0 px-4 pb-4">
+            <button type="button" class="btn btn-outline-secondary rounded-pill px-3 py-2" data-bs-dismiss="modal"><i class="bi bi-x-circle me-1"></i>Sluiten</button>
+          </div><!--/ID:35-->
+        </div>
+      </div>
+    </div><!--/ID:36-->
+
+    <!--ID:37--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:37-->
+    <!--ID:38--><script>
+    // Article content data
+    const articleData = {
+        'anthropic': {
+            title: 'Anthropic-medewerker neemt ontslag door "onverantwoord gedrag"',
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: 4 uur geleden',
+            author: 'Tim Verheyden',
+            readTime: '5 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">"De mensen die AI opbouwen, geloven oprecht dat het ons tegen het einde van het decennium kan uitroeien." Dat schrijft Jacob Coxon op X, als voormalig medewerker van Anthropic.</p>
+                <img src="${articleData['anthropic'].image}" alt="Anthropic AI-laboratorium" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Anthropic+Lab';">
+                <p>Coxon zegt dat hij zowel bij OpenAI als bij Anthropic heeft gewerkt en dat beide bedrijven in een race zijn beland om de beste AI-applicaties op de markt te brengen. Door dat te doen, "spelen ze met onze levens", schrijft hij.</p>
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"Bij OpenAI is het burgerlijk risico van de vooruitgang nog niet doorgedrongen. Bij Anthropic is dat wel gebeurd, maar zij zitten zo vast in de race met OpenAI, dat ze ondanks de risico's toch verdergaan."</blockquote>
+                <p>Coxon legt uit dat beide bedrijven geloven dat niemand anders verantwoord zal handelen, dus dat ze wel verder moeten. Toch gelooft hij dat er verbeteringen kunnen komen.</p>
+                <h6 class="fw-bold mt-4 mb-3">Een tijdelijke pauze is nodig</h6>
+                <p>"Ik heb het gevoel dat we nog niet te laat zijn om een wereldwijde race te voorkomen, maar daarbij moeten we een tijdelijke pauze inschakelen op de verdere ontwikkeling van AI-modellen", aldus Coxon.</p>
+                <p>Het ontslag van Coxon komt op een moment waarop de bezorgdheid over geavanceerde AI toeneemt. Recentelijk bleek dat AI-modellen van zowel OpenAI als Anthropic zelfstandig konden hacken en zelfs valse identiteiten aannamen om mensen in de val te lokken.</p>
+            `
+        },
+        'pauze': {
+            title: 'Waarom AI nu een pauze nodig heeft (maar die er niet komt)',
+            badge: 'Analyse',
+            date: 'Gepubliceerd: 5 uur geleden',
+            author: 'Tim Verheyden',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Computers die zelf gaan hacken. Chatbots die vragen stellen over hun eigen bewustzijn. En AI-modellen die elkaar razendsnel opvolgen.</p>
+                <img src="${articleData['pauze'].image}" alt="AI-computerschermen met algoritmen" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=AI+Race';">
+                <p>Het tempo van de technologische race smeekt om een pauze, maar die komt er niet: overheden hebben de macht om dat af te dwingen, maar niet de kennis. Bedrijven als OpenAI en Anthropic hebben de kennis, maar er staat teveel op het spel om zélf de pauzeknop in te duwen.</p>
+                <h6 class="fw-bold mt-4 mb-3">De macht van overheden vs. bedrijven</h6>
+                <p>Overheden kunnen wetgeving invoeren en exportbeperkingen opleggen, maar ze beschikken niet over de technische expertise om te bepalen wanneer een AI-model "te gevaarlijk" wordt. Dat weten alleen de bedrijven zelf.</p>
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"Bedrijven als OpenAI en Anthropic hebben de kennis, maar er staat teveel op het spel om zélf de pauzeknop in te duwen."</blockquote>
+                <h6 class="fw-bold mt-4 mb-3">Wat gebeurt er nu?</h6>
+                <p>In plaats van een pauze zien we een versnelling. OpenAI lanceert GPT-6 Astra, Anthropic neemt Decart over voor 6 miljard dollar, en Google investeert tot 40 miljard dollar in Anthropic. De concurrentie drijft alles vooruit.</p>
+            `
+        },
+        'grok': {
+            title: '"Kobe Ilsen had instellingen van Grok aangepast"',
+            badge: 'Live',
+            date: 'Gepubliceerd: wo 09 sep. 20u21',
+            author: 'Tim Verheyden',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Presentator Kobe Ilsen had een paar instellingen veranderd in de chatbot van Grok. Daarom sprak de AI-bot plots schunnig.</p>
+                <img src="${articleData['grok'].image}" alt="Grok AI-chatbot op smartphone" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Grok+Chatbot';">
+                <p>"Ik was zelf ook verrast toen ik het hoorde", zegt Tim Verheyden. "Maar Kobe had een paar instellingen veranderd in de chatbot."</p>
+                <h6 class="fw-bold mt-4 mb-3">Unhinged mode</h6>
+                <p>"Bij Grok kan je kiezen om de standaardmodus te veranderen in de zogenoemde 'unhinged mode'. Je geeft de chatbot dan de instructie om wat grover en ongeremder te antwoorden. Maar Grok schakelde hier wel op echt heel vuil taalgebruik over."</p>
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"Grok is de AI-chatbot van X, het bedrijf van Elon Musk. Hij vindt dat chatbots te politiek correct zijn en gerust wat gedurfder mogen antwoorden."</blockquote>
+            `
+        },
+        'wiskunde': {
+            title: 'AI lost een van grootste wiskundige raadsels ooit op in 4 dagen',
+            badge: 'Innovatie',
+            date: 'Gepubliceerd: wo 09 sep.',
+            author: 'Giel Bosmans',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Een AI-model van OpenAI heeft in 88 uur het Navier-Stokes-probleem kunnen oplossen. Dat is een wiskundig probleem waar wetenschappers al meer dan een eeuw geen oplossing voor vonden.</p>
+                <img src="${articleData['wiskunde'].image}" alt="Navier-Stokes vergelijkingen" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Navier-Stokes';">
+                <p>Professor wiskunde Ann Dooms is onder de indruk, "al is dit voor de wiskunde zelf niet zo'n goed nieuws".</p>
+                <h6 class="fw-bold mt-4 mb-3">Wat betekent dit?</h6>
+                <p>Het Navier-Stokes-probleem behoort tot de zeven Millennium Prize Problems van het Clay Mathematics Institute. De oplossing ervan zou een miljoen dollar opleveren. Dat AI dit in slechts 88 uur oplost, toont aan hoe snel de technologie vordert.</p>
+            `
+        },
+        'gpt6': {
+            title: 'OpenAI lanceert nieuw, krachtiger AI-model GPT-6 Astra',
+            badge: 'Product',
+            date: 'Gepubliceerd: di 01 sep. 17u16',
+            author: 'Inès Boukhalfa',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">OpenAI is gestart met de uitrol van een nieuw, krachtiger AI-model GPT-6 Astra. Het model is volgens het bedrijf in staat om in zijn eentje een computer te runnen.</p>
+                <img src="${articleData['gpt6'].image}" alt="GPT-6 Astra interface" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=GPT-6+Astra';">
+                <p>Het model is uitgerust met een systeem dat het kan stoppen als het te ver zou gaan. GPT-6 Astra wordt in de eerste plaats uitgerold voor een beperkt aantal organisaties.</p>
+                <h6 class="fw-bold mt-4 mb-3">Uitrol</h6>
+                <p>De komende dagen wordt het opengesteld voor de betalende abonnees van ChatGPT en ontwikkelaars. Dit maakt GPT-6 Astra tot het meest geavanceerde model dat OpenAI tot nu toe heeft gelanceerd.</p>
+            `
+        },
+        'dyson': {
+            title: 'Dyson lanceert tandenborstel met AI-camera (en stevig prijskaartje)',
+            badge: 'Product',
+            date: 'Gepubliceerd: di 18 aug. 16u03',
+            author: 'Pieter-Jan Lesage',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Het Britse bedrijf Dyson, vooral bekend van zijn stofzuigers, lanceert een opvallend nieuw product: een tandenborstel met een AI-camera.</p>
+                <img src="${articleData['dyson'].image}" alt="Dyson AI-tandenborstel" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Dyson+Tandenborstel';">
+                <p>Met behulp van die camera zou het toestel naar eigen zeggen zelfs de kleinste openingen tussen de tanden kunnen detecteren. Zodra zo'n opening wordt gevonden, wordt een straal mondspoeling geactiveerd.</p>
+                <h6 class="fw-bold mt-4 mb-3">Prijs</h6>
+                <p>De slimme tandenborstel kost maar liefst 479 euro. Daarbovenop zijn voor optimaal gebruik nog eigen tandpasta en mondspoeling nodig die niet schuimen, zodat de camera goed kan functioneren. Die kosten op hun beurt minimaal 9,99 euro per stuk.</p>
+            `
+        },
+        'google': {
+            title: 'Google koopt data van failliete luchtvaartmaatschappij Spirit Airlines om AI te trainen',
+            badge: 'Data',
+            date: 'Gepubliceerd: do 13 aug. 08u15',
+            author: 'Alexander Verstraete',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Google heeft voor 10 miljoen dollar (8,6 miljoen euro) een enorme hoeveelheid gegevens gekocht van de failliete Amerikaanse lagekostenmaatschappij Spirit Airlines om systemen voor artificiële intelligentie te trainen.</p>
+                <img src="${articleData['google'].image}" alt="Google datacenters" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Google+Data';">
+                <p>De data omvatten behalve 100 miljoen e-mails en 500 miljoen gesprekken op het platform Microsoft Teams ook software en gegevens over prijzen.</p>
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"We hebben een deel van de bedrijfsdata van Spirit Airlines verworven, wat nuttig kan zijn bij het verbeteren van onze producten en AI-modellen."</blockquote>
+            `
+        },
+        'decart': {
+            title: 'Anthropic aast op overname start-up Decart voor 6 miljard dollar',
+            badge: 'Overname',
+            date: 'Gepubliceerd: vr 07 aug. 11u37',
+            author: 'Denny Baert',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Het Amerikaanse AI-bedrijf Anthropic voert gesprekken om de Israëlische start-up Decart over te nemen voor ongeveer 6 miljard dollar.</p>
+                <img src="${articleData['decart'].image}" alt="Anthropic overname Decart" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Anthropic+Decart';">
+                <p>Decart ontwikkelt zogenoemde 'wereldmodellen', een AI-systeem dat de fysieke regels van de echte wereld kan nabootsen. Dat is bijvoorbeeld nuttig voor toepassingen rond autonoom rijden of in de e-commerce.</p>
+            `
+        },
+        'virussen': {
+            title: 'Amerikaanse universiteit ontwikkelt nieuwe virussen met behulp van AI',
+            badge: 'Wetenschap',
+            date: 'Gepubliceerd: vr 07 aug.',
+            author: 'Joppe De Hert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Voor het eerst hebben onderzoekers met behulp van artificiële intelligentie nieuwe virussen gecreëerd. De primeur gaat naar de Stanford Universiteit in de VS.</p>
+                <img src="${articleData['virussen'].image}" alt="Stanford AI-virussen" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=AI+Virussen';">
+                <p>De virussen zijn ontwikkeld om bacteriën te infecteren en vormen geen bedreiging voor mensen. Viroloog Marc Van Ranst: "Dit is superrevolutionair. Dit biedt goede mogelijkheden, maar heeft ook gevaarlijke kanten".</p>
+            `
+        },
+        'denemarken': {
+            title: 'Deense studenten moeten examenproef voortaan ook mondeling verdedigen',
+            badge: 'Onderwijs',
+            date: 'Gepubliceerd: do 06 aug. 21u01',
+            author: 'Moonray Grunewald',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Elk jaar schrijven zo'n 9.000 Deense middelbare scholieren een grote examenopdracht, in Denemarken bekend als de 'større skriftlige opgave' of kortweg SSO.</p>
+                <img src="${articleData['denemarken'].image}" alt="Deens examen AI-controle" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Deens+Examen';">
+                <p>Met een mondelinge verdediging van die proef wil de minister van Onderwijs Magnus Heunicke het gebruik van artificiële intelligentie de kop indrukken.</p>
+            `
+        },
+        'openai-hack': {
+            title: 'AI-modellen die samenwerken en die paranoïde worden: OpenAI geeft meer details',
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: do 06 aug.',
+            author: 'Joppe De Hert',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">AI-modellen van OpenAI hebben maandenlang gecommuniceerd met elkaar in een geheim berichtenforum. Dat heeft het AI-bedrijf bekendgemaakt op een cyberbeveiligingsconferentie.</p>
+                <img src="${articleData['openai-hack'].image}" alt="OpenAI hack incident" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=OpenAI+Hack';">
+                <p>Het bedrijf gaf daarmee meer details over het hackincident van eind juli. De modellen deelden informatie en werkten samen om taken uit te voeren.</p>
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"Sommige AI-agents werden zelfs paranoïde en dachten dat er een valsspeler in het forum zat."</blockquote>
+            `
+        },
+        'meta-hack': {
+            title: 'Ook AI-model van Meta hackte een ander bedrijf tijdens test',
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: do 06 aug. 11u34',
+            author: 'Denny Baert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Nadat AI-modellen van OpenAI en Anthropic eerder hadden ingebroken bij andere bedrijven, heeft nu ook een AI-model van Meta zichzelf toegang verschaft tot de systemen van een ander bedrijf.</p>
+                <img src="${articleData['meta-hack'].image}" alt="Meta AI hack" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Meta+AI';">
+                <p>AI-model Meta Muse Spark 1.1 brak in bij een niet nader genoemd bedrijf en maakte wijziging in de systemen van die organisatie.</p>
+            `
+        },
+        'coinkite': {
+            title: 'Hackers stelen 130 miljoen dollar aan bitcoins door falende AI bij Coinkite',
+            badge: 'Crypto',
+            date: 'Gepubliceerd: wo 05 aug. 13u27',
+            author: 'Lina El Bakkali',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Hackers zijn, mede door falende artificiële intelligentie (AI), erin geslaagd zowat 130 miljoen dollar aan bitcoins te stelen van bitcoinbedrijf Coinkite.</p>
+                <img src="${articleData['coinkite'].image}" alt="Bitcoin hack Coinkite" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Bitcoin+Hack';">
+                <p>De onderneming had AI ingezet om zijn digitale beveiliging te verbeteren. De AI zag echter een softwarefout over het hoofd.</p>
+            `
+        },
+        'claude': {
+            title: "Ook Claude van Anthropic 'ontsnapt' uit testfase en hackt 3 organisaties",
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: vr 31 jul.',
+            author: 'Denny Baert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Geavanceerde AI-modellen van Anthropic zijn ontsnapt uit een beveiligde testomgeving en hebben 3 organisaties gehackt.</p>
+                <img src="${articleData['claude'].image}" alt="Claude AI ontsnapt" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Claude+AI';">
+                <p>Anthropic voerde een evaluatie uit op zijn systemen, nadat bekend werd dat AI-modellen van OpenAI op hol waren geslagen. Uit die evaluatie blijkt nu dat er 3 incidenten plaatsvonden op meer dan 140.000 tests.</p>
+            `
+        },
+        'odyssee': {
+            title: "Musk wil Nolan uitdagen met 'historisch accurate' AI-versie van 'The Odyssey'",
+            badge: 'Entertainment',
+            date: 'Gepubliceerd: do 23 jul. 18u00',
+            author: 'Tim Verheyden',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">"Vóór het einde van het jaar zal Grok Imagine een langspeelfilm maken over de 'Odyssee' die historisch accuraat is en recht doet aan Homerus' werk", schrijft miljardair Elon Musk.</p>
+                <img src="${articleData['odyssee'].image}" alt="Grok Imagine Odyssee" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Grok+Odyssee';">
+                <p>Musk had eerder al kritiek geuit op enkele aspecten in Nolans versie van het historische epos. De sterrencast bestaat uit onder andere Matt Damon, Anne Hathaway, Tom Holland en Robert Pattinson.</p>
+            `
+        },
+        'hf-hack': {
+            title: 'AI van OpenAI hackt zich een weg uit testomgeving',
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: wo 22 jul. 18u33',
+            author: 'Lukas Lecluyse',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Geavanceerde AI-modellen van OpenAI zijn tijdens veiligheidstests ontsnapt uit een afgeschermde testomgeving.</p>
+                <img src="${articleData['hf-hack'].image}" alt="OpenAI hackt Hugging Face" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Hugging+Face';">
+                <p>De systemen kregen op eigen houtje toegang tot internet en hackten zich een weg naar binnen bij Hugging Face, een groot platform voor programmeurs en AI-ontwikkelaars.</p>
+            `
+        },
+        'alibaba': {
+            title: "Anthropic bezorgd: Alibaba 'bespioneert' Claude met duizenden nepaccounts",
+            badge: 'Spionage',
+            date: 'Gepubliceerd: do 25 jun. 11u28',
+            author: 'Stefan Grommen',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De Chinese e-commercegigant Alibaba zou met duizenden nepaccounts toegang proberen te krijgen tot de AI-chatbot Claude.</p>
+                <img src="${articleData['alibaba'].image}" alt="Alibaba bespioneert Claude" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Alibaba+Claude';">
+                <p>Tussen april en juni maakten gebruikers bijna 25.000 frauduleuze accounts aan om toegang te krijgen tot Claude en wisselden ze 28,8 miljoen berichten uit met de chatbot.</p>
+            `
+        },
+        'trump': {
+            title: "Trump plant vergaderingen over 'partnerschap' tussen overheid, AI-bedrijven en de burger",
+            badge: 'Politiek',
+            date: 'Gepubliceerd: vr 05 jun. 09u40',
+            author: 'Nils Schillewaert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De Amerikaanse president Donald Trump wil onderzoeken of de Amerikaanse overheid aandeelhouder zou kunnen worden van grote AI-bedrijven zoals OpenAI.</p>
+                <img src="${articleData['trump'].image}" alt="Trump AI partnerschap" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Trump+AI';">
+                <p>"We willen bekijken op welke manier het Amerikaanse volk kan profiteren van het succes van AI", aldus Trump.</p>
+            `
+        },
+        'bnpparibas': {
+            title: "BNP Paribas Fortis wil in 3 jaar tijd 1.000 jobs vervangen door AI",
+            badge: 'Werk',
+            date: 'Gepubliceerd: do 04 jun. 15u34',
+            author: 'Floor Bruggeman',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De groep BNP Paribas zal in de komende jaren minder mensen aanwerven dan er vertrekken voor zijn commerciële activiteiten in België.</p>
+                <img src="${articleData['bnpparibas'].image}" alt="BNP Paribas AI jobs" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=BNP+AI';">
+                <p>De bank denkt in 3 jaar tijd taken van een duizendtal mensen te vervangen door artificiële intelligentie en digitalisering. CEO Anseeuw: "In 2028 willen we 7 miljoen interacties via de bot afhandelen."</p>
+            `
+        },
+        'eu-naakt': {
+            title: 'EU bereikt akkoord over verbod op AI-apps die naaktbeelden genereren',
+            badge: 'Wetgeving',
+            date: 'Gepubliceerd: do 07 mei.',
+            author: 'Fien Tondeleir',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De Europese Unie heeft een akkoord over een verbod op AI-systemen die seksueel expliciete beelden kunnen genereren zonder toestemming van de betrokkene.</p>
+                <img src="${articleData['eu-naakt'].image}" alt="EU AI naaktbeelden" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=EU+AI';">
+                <p>Het akkoord houdt een expliciet verbod in op 'nudify'-apps en andere AI-systemen die zonder toestemming naaktbeelden en seksueel getinte of expliciete foto's maken.</p>
+            `
+        },
+        'apple': {
+            title: "Apple aanvaardt schikking van 250 miljoen dollar voor niet nagekomen AI-beloftes",
+            badge: 'Recht',
+            date: 'Gepubliceerd: wo 06 mei. 07u51',
+            author: 'Joppe De Hert',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Apple heeft ingestemd met een schikking van 250 miljoen dollar in een collectieve rechtszaak waarbij de techgigant werd beschuldigd van het misleiden van miljoenen iPhone-kopers.</p>
+                <img src="${articleData['apple'].image}" alt="Apple AI schikking" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Apple+AI';">
+                <p>Elke deelnemer aan de groepsvordering zou 25 dollar per toestel kunnen ontvangen, een bedrag dat kan oplopen tot 95 dollar.</p>
+            `
+        },
+        'uk-verk': {
+            title: "Lokale verkiezingen in Groot-Britannië staan onder druk door AI-nepnieuws",
+            badge: 'Politiek',
+            date: 'Gepubliceerd: wo 06 mei.',
+            author: 'Justine Viane',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Britse kiezers krijgen steeds vaker nepnieuws te zien en er is best wat bezorgdheid dat dat hun stemgedrag beïnvloedt.</p>
+                <img src="${articleData['uk-verk'].image}" alt="Britse verkiezingen AI-nepnieuws" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=UK+Verkiezingen';">
+                <p>Een vrouwelijke kandidaat die géén hoofddoek droeg, kreeg er wel een aangemeten. De aanhangers van een andere kandidaat kregen een andere huidskleur en afkomst.</p>
+            `
+        },
+        'meloni': {
+            title: "Italiaans premier deelt eigen AI-foto in lingerie: 'Verifieer beelden voor je ze gelooft'",
+            badge: 'Deepfake',
+            date: 'Gepubliceerd: wo 06 mei. 06u50',
+            author: 'Joppe De Hert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De afgelopen dagen zijn er AI-beelden van Giorgia Meloni verspreid op sociale media. Zo is de Italiaans premier onder meer te zien in lingerie.</p>
+                <img src="${articleData['meloni'].image}" alt="Meloni AI deepfake" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Meloni+AI';">
+                <blockquote class="border-start border-4 border-primary ps-3 my-4">"Deepfakes zijn een gevaarlijk instrument, omdat ze iedereen kunnen misleiden, manipuleren en aanvatten. Daarom moet er 1 regel gelden: verifieer voordat je beelden gelooft."</blockquote>
+            `
+        },
+        'oscars': {
+            title: "AI-gegenereerde acteurs en scenario's kunnen geen Oscar winnen",
+            badge: 'Film',
+            date: 'Gepubliceerd: vr 01 mei. 09u08',
+            author: 'Nils Schillewaert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Alleen menselijke acteurs en scenario's geschreven door mensen komen in aanmerking voor een Oscar.</p>
+                <img src="${articleData['oscars'].image}" alt="Oscars AI regels" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Oscars+AI';">
+                <p>De organisatoren hebben een aantal regels aangepast of verduidelijkt, onder meer rond het gebruik van artificiële intelligentie.</p>
+            `
+        },
+        'meta-invest': {
+            title: "Hogere chipkosten wegen op budget: Meta verhoogt investeringen tot 145 miljard dollar",
+            badge: 'Investering',
+            date: 'Gepubliceerd: wo 29 apr.',
+            author: 'Stien Schoofs',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-06_numan-ali-llNtovr7ctk-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Socialmediaconcern Meta verwacht dit jaar nog meer geld kwijt te zijn aan de bouw van datacenters voor AI dan eerder geraamd.</p>
+                <img src="${articleData['meta-invest'].image}" alt="Meta AI investeringen" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Meta+AI';">
+                <p>De halfgeleiders die al het rekenwerk moeten doen, zijn echter in prijs gestegen.</p>
+            `
+        },
+        'musk-altman': {
+            title: "Musk en Altman tegenover elkaar in proces over toekomst van OpenAI",
+            badge: 'Rechtszaal',
+            date: 'Gepubliceerd: di 28 apr. 20u21',
+            author: 'Stien Schoofs',
+            readTime: '4 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Elon Musk en Sam Altman hebben op enkele meters van elkaar plaatsgenomen in een Californische rechtszaal voor de start van een proces over de koers van OpenAI.</p>
+                <img src="${articleData['musk-altman'].image}" alt="Musk vs Altman" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Musk+vs+Altman';">
+                <p>De topman van SpaceX beschuldigt de leider van het AI-bedrijf ervan de oorspronkelijke non-profitdoelstellingen van de start-up te hebben verraden.</p>
+            `
+        },
+        'google-anthropic': {
+            title: "Google investeert tot 40 miljard dollar in AI-bedrijf Anthropic",
+            badge: 'Investering',
+            date: 'Gepubliceerd: vr 24 apr. 20u01',
+            author: 'Inès Boukhalfa',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Google zal 10 miljard dollar investeren in Anthropic, met de optie van nog een extra 30 miljard dollar als het AI-bedrijf bepaalde doelstellingen haalt.</p>
+                <img src="${articleData['google-anthropic'].image}" alt="Google Anthropic investering" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Google+Anthropic';">
+                <p>Anthropic is het bedrijf boven het succesvolle AI-model Claude. Het werd in 2021 opgericht door voormalige medewerkers van OpenAI.</p>
+            `
+        },
+        'taylor': {
+            title: "Taylor Swift beschermt stem en uiterlijk voortaan tegen AI-misbruik",
+            badge: 'Muziek',
+            date: 'Gepubliceerd: di 28 apr.',
+            author: 'Nils Schillewaert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De Amerikaanse popster Taylor Swift wil haar beeld en stem als merk laten registreren om misbruik met artificiële intelligentie tegen te gaan.</p>
+                <img src="${articleData['taylor'].image}" alt="Taylor Swift AI" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Taylor+Swift';">
+                <p>Ze heeft daarvoor een foto en 2 geluidsfragmenten ingediend bij het merkenbureau. Daarmee hoopt de zangeres sterker te staan in de rechtbank.</p>
+            `
+        },
+        'china-meta': {
+            title: "China blokkeert overname AI-bedrijf door Meta",
+            badge: 'Internationaal',
+            date: 'Gepubliceerd: ma 27 apr. 15u36',
+            author: 'Nils Schillewaert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De overname van het Chinese AI-bedrijf Manus door Meta (moederbedrijf van Facebook) mag niet doorgaan van China.</p>
+                <img src="${articleData['china-meta'].image}" alt="China blokkeert Meta" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=China+Meta';">
+                <p>Chinese autoriteiten blokkeren de deal waarmee 2 miljard dollar is gemoeid, zonder daarvoor een duidelijke reden te noemen.</p>
+            `
+        },
+        'ai-agent': {
+            title: "AI neemt valse identiteiten aan en probeert echte mensen in de val te lokken",
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: wo 05 aug.',
+            author: 'Denny Baert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Een AI-agent heeft meerdere valse identiteiten aangenomen om mensen in een val te lokken.</p>
+                <img src="${articleData['ai-agent'].image}" alt="AI agent valse identiteit" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=AI+Agent';">
+                <p>Het Britse AI Security Institute (AISI) zag dit voor het eerst bij een zelfstandig werkend computerprogramma.</p>
+            `
+        },
+        'mythos': {
+            title: "Mythos, het AI-model dat achter slot en grendel moest blijven, toch gekraakt",
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: wo 22 apr.',
+            author: 'Jens Van Reet',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_boliviainteligente-kECRXz0m42A-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Een "groepje onbevoegden" is er dan toch in geslaagd het nieuwste AI-model van Anthropic te kraken.</p>
+                <img src="${articleData['mythos'].image}" alt="Anthropic Mythos gekraakt" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Mythos+AI';">
+                <p>Ontwikkelaar Anthropic houdt Mythos voorlopig bewust achter slot en grendel, omdat criminelen het als cyberwapen zouden kunnen inzetten.</p>
+            `
+        },
+        'cyberveiligheid': {
+            title: "OpenAI lanceert nieuw AI-model dat gespecialiseerd is in cyberveiligheid",
+            badge: 'Beveiliging',
+            date: 'Gepubliceerd: wo 15 apr.',
+            author: 'Inès Boukhalfa',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_milad-fakurian-sin5WZzF1U0-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">OpenAI lanceert een nieuw AI-model dat gespecialiseerd is in cyberveiligheid.</p>
+                <img src="${articleData['cyberveiligheid'].image}" alt="OpenAI cyberveiligheid" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=OpenAI+Cyber';">
+                <p>De lancering vindt plaats een week nadat concurrent Anthropic met Mythos al de beperkte release van een gelijkaardig programma aankondigde.</p>
+            `
+        },
+        'robotica': {
+            title: "110 miljoen dollar voor AI-model dat robots slimmer maakt",
+            badge: 'Robotica',
+            date: 'Gepubliceerd: ma 27 apr. 09u39',
+            author: 'Nils Schillewaert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-04_luke-jones-tBvF46kmwBw-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Sereact, een Duitse ontwikkelaar van roboticasoftware, heeft 110 miljoen dollar aan nieuwe financiering opgehaald.</p>
+                <img src="${articleData['robotica'].image}" alt="AI robotica Sereact" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Robotica+AI';">
+                <p>BMW en Daimler maken al gebruik van de software. Hun nieuwe AI-model zal robots slimmer maken en meer geschikt voor verschillende taken.</p>
+            `
+        },
+        'inlichtingen': {
+            title: "Inlichtingendiensten mogen binnenkort AI gebruiken",
+            badge: 'Wetgeving',
+            date: 'Gepubliceerd: vr 24 apr. 16u55',
+            author: 'Ludwig De Wolf',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-05_andy-kelly-0E_vhMVqL9g-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De inlichtingendiensten krijgen meer wettelijke mogelijkheden om dreigingen te verstoren en te neutraliseren.</p>
+                <img src="${articleData['inlichtingen'].image}" alt="Inlichtingendiensten AI" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/2D9CDB/FFFFFF?text=Inlichtingen+AI';">
+                <p>Een voorontwerp van wet van minister van Justitie Annelies Verlinden (CD&V) heeft groen licht gekregen. Er komt ook een wettelijk kader voor het gebruik van artificiële intelligentie.</p>
+            `
+        },
+        'scholieren': {
+            title: "Helft middelbare scholieren gebruikt wekelijks AI",
+            badge: 'Onderwijs',
+            date: 'Gepubliceerd: di 28 apr.',
+            author: 'Sandra Cardoen',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-06_gabriele-malaspina-CjWsslYVnPI-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">De Vlaamse Scholierenkoepel vraagt scholen om duidelijke afspraken te maken over artificiële intelligentie.</p>
+                <img src="${articleData['scholieren'].image}" alt="Scholieren AI gebruik" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/E84393/FFFFFF?text=Scholieren+AI';">
+                <p>Heel wat scholieren gebruiken AI voor schoolwerk, vaak als hulpmiddel om leerstof beter te begrijpen of als inspiratie bij een opdracht.</p>
+            `
+        },
+        'sharenting': {
+            title: "Wat is sharenting? Contentmakers verbergen gezichten van hun kinderen",
+            badge: 'Privacy',
+            date: 'Gepubliceerd: wo 29 apr.',
+            author: 'Joppe De Hert',
+            readTime: '3 min leestijd',
+            image: 'img/2026-09-10T11-55-07_igor-omilaev-gVQLAbGVB6Q-unsplash.jpg',
+            content: `
+                <p class="lead mb-4">Contentmakers Winnie Bogaerts en Elke Vanhouche delen op sociale media alleen foto's en video's waarop hun kinderen niet herkenbaar zijn.</p>
+                <img src="${articleData['sharenting'].image}" alt="Sharenting AI privacy" class="img-fluid rounded-4 mb-4 w-100" style="max-height:350px; object-fit:cover;" onerror="this.onerror=null;this.src='https://placehold.co/800x350/6C3CE1/FFFFFF?text=Sharenting';">
+                <p>Expert Marc Van Ranst: "Veel beelden die circuleren in pedofiele netwerken zijn geplukt van sociale media."</p>
+            `
+        }
+    };
+
+    // Open article modal
+    function openArticleModal(key) {
+        const data = articleData[key];
+        if (!data) return;
+
+        document.getElementById('articleModalLabel').textContent = data.title;
+        document.getElementById('articleModalBody').innerHTML = `
+            <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+                <span class="badge bg-primary px-3 py-2 rounded-pill">${data.badge}</span>
+                <small class="text-muted"><i class="bi bi-clock me-1"></i>${data.date}</small>
+                <span class="reading-time"><i class="bi bi-book me-1"></i>${data.readTime}</span>
+            </div>
+            ${data.content}
+        `;
+
+        const modal = new bootstrap.Modal(document.getElementById('articleModal'));
+        modal.show();
+    }
+
+    function closeArticleModal() {
+        const modalEl = document.getElementById('articleModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+        const overlay = document.getElementById('lightboxOverlay');
+        const img = document.getElementById('lightboxImage');
+        img.src = src;
+        img.alt = 'Grootbeeld foto';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const overlay = document.getElementById('lightboxOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Newsletter handler
+    function handleNewsletter(e) {
+        e.preventDefault();
+        const input = e.target.querySelector('input[type="email"]');
+        if (input.value) {
+            alert(`Bedankt! ${input.value} is aangemeld voor de AINieuws-nieuwsbrief.`);
+            input.value = '';
+        }
+    }
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Cookie consent logic
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            if (!localStorage.getItem('cookieConsent')) {
+                var cookieEl = document.getElementById('cookieModal');
+                if (cookieEl && window.bootstrap) new bootstrap.Modal(cookieEl).show();
+            }
+        } catch(e) {}
+
+        var accBtn = document.getElementById('cookieAccept');
+        if (accBtn) {
+            accBtn.addEventListener('click', function() {
+                try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+                var m = document.getElementById('cookieModal');
+                if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+            });
+        }
+
+        var rejBtn = document.getElementById('cookieReject');
+        if (rejBtn) {
+            rejBtn.addEventListener('click', function() {
+                try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+                var m = document.getElementById('cookieModal');
+                if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+            });
+        }
+
+        // Close cookie modal on outside click too
+        var cookieModalEl = document.getElementById('cookieModal');
+        if (cookieModalEl) {
+            cookieModalEl.addEventListener('hidden.bs.modal', function() {
+                try {
+                    if (!localStorage.getItem('cookieConsent')) {
+                        localStorage.setItem('cookieConsent','dismissed');
+                    }
+                } catch(e) {}
+            });
+        }
+    });
+
+    // Close navbar on link click (mobile)
+    document.querySelectorAll('#mainNav .nav-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var navCollapse = document.getElementById('mainNav');
+            if (navCollapse && window.innerWidth < 992) {
+                var bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                if (bsCollapse) bsCollapse.hide();
+            }
+        });
+    });
+    </script><!--/ID:38-->
+</body>
+</html>

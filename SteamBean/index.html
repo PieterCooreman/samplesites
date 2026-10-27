@@ -1,0 +1,1167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam & Bean - Where Every Sip Tells a Story</title>
+    <meta name="description" content="Steam & Bean is a fictional artisan coffee brand celebrating the art of brewing. Explore our story, signature blends, and interactive coffee experience.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --espresso: #2C1810;
+            --dark-roast: #3E2723;
+            --medium-roast: #5D4037;
+            --light-roast: #8D6E63;
+            --cream: #FFF8F0;
+            --latte: #D4A574;
+            --caramel: #C68B59;
+            --foam: #FAEBD7;
+            --accent: #FF6B35;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--espresso);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .display-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-custom.scrolled {
+            background: rgba(44, 24, 16, 0.98);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        .navbar-brand-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--latte) !important;
+            font-size: 1.5rem;
+        }
+        .nav-link-custom {
+            color: var(--foam) !important;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link-custom::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link-custom:hover::after {
+            width: 80%;
+        }
+        .nav-link-custom:hover {
+            color: var(--latte) !important;
+            transform: translateY(-2px);
+        }
+
+        /* HERO PARALLAX */
+        .hero-section {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-roast) 0%, #1a0f08 40%, var(--espresso) 100%);
+        }
+        .hero-parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            will-change: transform;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(26,15,8,0.7) 100%);
+        }
+
+        /* STEAM ANIMATION */
+        .coffee-cup-container {
+            position: relative;
+            width: 120px;
+            height: 140px;
+            margin-bottom: 2rem;
+        }
+        .steam-particle {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: steamRise 3s ease-in-out infinite;
+        }
+        .steam-particle:nth-child(1) { left: 40%; animation-delay: 0s; width: 6px; height: 6px; }
+        .steam-particle:nth-child(2) { left: 50%; animation-delay: 0.5s; width: 8px; height: 8px; }
+        .steam-particle:nth-child(3) { left: 60%; animation-delay: 1s; width: 7px; height: 7px; }
+        .steam-particle:nth-child(4) { left: 45%; animation-delay: 1.5s; width: 5px; height: 5px; }
+        .steam-particle:nth-child(5) { left: 55%; animation-delay: 2s; width: 9px; height: 9px; }
+
+        @keyframes steamRise {
+            0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateX(calc(-50% + var(--drift, 10px))) translateY(-60px) scale(2); opacity: 0.4; }
+            100% { transform: translateX(calc(-50% - var(--drift, 10px))) translateY(-120px) scale(3); opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--latte);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* BUTTONS */
+        .btn-steam {
+            background: linear-gradient(135deg, var(--accent), #e85d26);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255,107,53,0.4);
+        }
+        .btn-steam:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(255,107,53,0.6);
+            color: white;
+        }
+        .btn-steam:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        .btn-steam::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .btn-steam:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-outline-steam {
+            background: transparent;
+            color: var(--latte);
+            border: 2px solid var(--latte);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-steam:hover {
+            background: var(--latte);
+            color: var(--espresso);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(212,165,116,0.4);
+        }
+
+        /* FLOATING BEANS */
+        .floating-bean {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: floatBean 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes floatBean {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(90deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            75% { transform: translateY(-30px) rotate(270deg); }
+        }
+
+        /* SECTIONS */
+        .section-padding {
+            padding: 6rem 0;
+        }
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--dark-roast);
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--light-roast);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--foam) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        /* PRODUCT CARDS */
+        .product-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-12px) rotateX(2deg) rotateY(-2deg);
+            box-shadow: 0 20px 50px rgba(62,39,35,0.2);
+        }
+        .product-card .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* INTERACTIVE BREWING SECTION */
+        .brew-section {
+            background: linear-gradient(135deg, var(--dark-roast), var(--espresso));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .brew-meter {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) var(--fill, 0%), rgba(255,255,255,0.1) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .brew-meter-inner {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--dark-roast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* TESTIMONIALS */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--latte);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        /* SCROLL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* PARALLAX SECTIONS */
+        .parallax-divider {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+        }
+
+        /* FOOTER */
+        .footer-custom {
+            background: var(--espresso);
+            color: var(--foam);
+        }
+        .footer-link {
+            color: var(--latte) !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: white !important;
+            transform: translateX(5px);
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+        }
+        .scroll-top-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.6);
+        }
+
+        /* COUNTER ANIMATION */
+        .counter-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        .counter-number {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .section-padding { padding: 4rem 0; }
+            .parallax-divider { height: 300px; }
+            .brew-meter { width: 150px; height: 150px; }
+            .brew-meter-inner { width: 120px; height: 120px; font-size: 2rem; }
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--latte); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--caramel); }
+
+        /* TILT EFFECT */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Steam & Bean - Where Every Sip Tells a Story">
+    <meta property="og:description" content="Steam & Bean is a fictional artisan coffee brand celebrating the art of brewing. Explore our story, signature blends, and interactive coffee experience.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/trkt2mcqwjim8wut/">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" stroke="#D4A574" stroke-width="3"/>
+                    <path d="M30 65 C30 45, 50 30, 50 30 C50 30, 70 45, 70 65" stroke="#D4A574" stroke-width="3" fill="none"/>
+                    <path d="M38 65 L38 75 C38 82, 62 82, 62 75 L62 65" stroke="#D4A574" stroke-width="3" fill="none"/>
+                    <ellipse cx="50" cy="65" rx="18" ry="5" stroke="#D4A574" stroke-width="3" fill="none"/>
+                </svg>
+                <span class="navbar-brand-text">Steam & Bean</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-3"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">Our Story</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#blends">Blends</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#brew">Brew Lab</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- HERO -->
+    <!--ID:12--><section class="hero-section" id="home">
+        <!--ID:3--><div class="hero-parallax-bg" data-parallax-speed="0.3"></div><!--/ID:3-->
+        <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+        <!--ID:5--><div class="floating-bean" style="top:15%;left:10%;animation-delay:0s;">☕</div><!--/ID:5-->
+        <!--ID:6--><div class="floating-bean" style="top:25%;right:15%;animation-delay:2s;font-size:1.5rem;">🫘</div><!--/ID:6-->
+        <!--ID:7--><div class="floating-bean" style="bottom:30%;left:8%;animation-delay:4s;font-size:1.8rem;">☕</div><!--/ID:7-->
+        <!--ID:8--><div class="floating-bean" style="top:60%;right:12%;animation-delay:1s;font-size:1.3rem;">🫘</div><!--/ID:8-->
+        <!--ID:9--><div class="floating-bean" style="bottom:20%;right:25%;animation-delay:3s;font-size:2rem;">☕</div><!--/ID:9-->
+
+        <!--ID:10--><div class="hero-content">
+            <div class="coffee-cup-container mx-auto">
+                <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cup body -->
+                    <path d="M25 50 C25 90, 40 110, 60 110 C80 110, 95 90, 95 50" fill="#D4A574" stroke="#C68B59" stroke-width="3"/>
+                    <!-- Handle -->
+                    <path d="M95 60 C110 60, 110 95, 95 95" stroke="#C68B59" stroke-width="4" fill="none"/>
+                    <!-- Saucer -->
+                    <ellipse cx="60" cy="120" rx="50" ry="12" fill="#C68B59" opacity="0.3"/>
+                    <!-- Coffee surface -->
+                    <ellipse cx="60" cy="50" rx="33" ry="8" fill="#5D4037"/>
+                    <!-- Steam particles -->
+                    <circle class="steam-particle" style="--drift:12px" cx="45" cy="30" r="4" fill="rgba(255,255,255,0.6)"/>
+                    <circle class="steam-particle" style="--drift:-8px" cx="60" cy="25" r="5" fill="rgba(255,255,255,0.5)"/>
+                    <circle class="steam-particle" style="--drift:15px" cx="75" cy="35" r="4" fill="rgba(255,255,255,0.6)"/>
+                </svg>
+            </div>
+            <h1 class="hero-title">Steam & Bean</h1>
+            <p class="hero-subtitle">Where every sip tells a story - from the highlands of Ethiopia to your morning cup.</p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="#blends" class="btn btn-steam">Explore Our Blends</a>
+                <a href="#brew" class="btn btn-outline-steam">Try the Brew Lab</a>
+            </div>
+        </div><!--/ID:10-->
+
+        <!-- Scroll indicator -->
+        <!--ID:11--><div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;">
+            <div class="d-flex flex-column align-items-center text-white-50">
+                <span class="small mb-1">Scroll to explore</span>
+                <i class="bi bi-chevron-down animate-bounce"></i>
+            </div>
+        </div><!--/ID:11-->
+    </section><!--/ID:12-->
+
+    <!-- ABOUT -->
+    <!--ID:15--><section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!--ID:13--><div class="col-lg-6 reveal-left">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Barista pouring latte art in a cozy coffee shop" class="img-fluid rounded-4 shadow-lg" style="max-height:500px;object-fit:cover;width:100%;">
+                </div><!--/ID:13-->
+                <!--ID:14--><div class="col-lg-6 reveal-right">
+                    <span class="text-uppercase fw-bold text-secondary small letter-spacing-2">Our Story</span>
+                    <h2 class="section-title mt-2">Born from a love of the perfect cup</h2>
+                    <p class="lead text-secondary mb-4">Steam & Bean started in 2019 as a tiny roastery in Portland, Oregon - two friends who believed coffee should be an experience, not just a caffeine delivery system.</p>
+                    <p class="text-secondary mb-4">Today we source beans from over 30 farms across six countries, roast them in small batches, and deliver the freshest possible cup to your door. Every bag is traceable back to the farmer who grew it.</p>
+                    <div class="row g-3 mt-2">
+                        <div class="col-4 counter-box reveal">
+                            <div class="counter-number" data-target="30">0</div>
+                            <small class="text-secondary fw-bold">Farms</small>
+                        </div>
+                        <div class="col-4 counter-box reveal">
+                            <div class="counter-number" data-target="12">0</div>
+                            <small class="text-secondary fw-bold">Countries</small>
+                        </div>
+                        <div class="col-4 counter-box reveal">
+                            <div class="counter-number" data-target="500">0</div>
+                            <small class="text-secondary fw-bold">K+ Cups Sold</small>
+                        </div>
+                    </div>
+                </div><!--/ID:14-->
+            </div>
+        </div>
+    </section><!--/ID:15-->
+
+    <!-- PARALLAX DIVIDER -->
+    <div class="parallax-divider">
+        <!--ID:16--><div class="parallax-bg" data-parallax-speed="0.5" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1920&q=80');"></div><!--/ID:16-->
+        <!--ID:17--><div class="position-relative z-2 text-center text-white">
+            <h2 class="display-font fw-bold" style="font-size:clamp(2rem,6vw,4rem);text-shadow:2px 4px 30px rgba(0,0,0,0.7);">"Coffee is a ritual,<br>not just a drink."</h2>
+            <p class="mt-3 text-white-50 fs-5">- Elena Vasquez, Head Roaster</p>
+        </div><!--/ID:17-->
+    </div>
+
+    <!-- BLENDS / PRODUCTS -->
+    <!--ID:20--><section class="section-padding" id="blends" style="background:var(--cream);">
+        <div class="container">
+            <!--ID:18--><div class="text-center mb-5 reveal">
+                <span class="text-uppercase fw-bold text-secondary small">Signature Collection</span>
+                <h2 class="section-title mt-2">Our Blends</h2>
+                <p class="section-subtitle">Each blend is a carefully crafted journey through flavor, aroma, and origin.</p>
+            </div><!--/ID:18-->
+
+            <!--ID:19--><div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.1s;">
+                    <div class="card product-card h-100 tilt-card position-relative">
+                        <span class="product-badge">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Dark roasted coffee beans in a burlap sack" class="card-img-top" onerror="this.src='https://placehold.co/600x400/3E2723/D4A574?text=Midnight+Roast'">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="fw-bold display-font">Midnight Roast</h5>
+                            <p class="text-secondary small mb-3">Bold, smoky, with notes of dark chocolate and a hint of cherry. Our darkest roast for the brave.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold fs-5" style="color:var(--accent);">$14.99</span>
+                                <button class="btn btn-sm btn-steam px-3 py-2 add-to-cart-btn" aria-label="Add Midnight Roast to cart">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.2s;">
+                    <div class="card product-card h-100 tilt-card position-relative">
+                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=600&q=80" alt="Light roasted coffee beans with a golden hue" class="card-img-top" onerror="this.src='https://placehold.co/600x400/D4A574/3E2723?text=Dawn+Blend'">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="fw-bold display-font">Dawn Blend</h5>
+                            <p class="text-secondary small mb-3">Bright and floral with citrus notes. A gentle wake-up call that starts your day right.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold fs-5" style="color:var(--accent);">$12.99</span>
+                                <button class="btn btn-sm btn-steam px-3 py-2 add-to-cart-btn" aria-label="Add Dawn Blend to cart">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.3s;">
+                    <div class="card product-card h-100 tilt-card position-relative">
+                        <span class="product-badge" style="background:#4CAF50;">New</span>
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&q=80" alt="Medium roasted coffee beans with a rich brown color" class="card-img-top" onerror="this.src='https://placehold.co/600x400/5D4037/FFF8F0?text=Caramel+Dream'">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="fw-bold display-font">Caramel Dream</h5>
+                            <p class="text-secondary small mb-3">Smooth caramel sweetness with a nutty finish. Our medium roast crowd favorite.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold fs-5" style="color:var(--accent);">$13.99</span>
+                                <button class="btn btn-sm btn-steam px-3 py-2 add-to-cart-btn" aria-label="Add Caramel Dream to cart">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay:0.4s;">
+                    <div class="card product-card h-100 tilt-card position-relative">
+                        <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&q=80" alt="Coffee beans scattered on a wooden surface with steam rising" class="card-img-top" onerror="this.src='https://placehold.co/600x400/C68B59/FFF8F0?text=Ethiopian+Sunrise'">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="fw-bold display-font">Ethiopian Sunrise</h5>
+                            <p class="text-secondary small mb-3">Single-origin from Yirgacheffe. Wine-like acidity with jasmine and bergamot notes.</p>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <span class="fw-bold fs-5" style="color:var(--accent);">$18.99</span>
+                                <button class="btn btn-sm btn-steam px-3 py-2 add-to-cart-btn" aria-label="Add Ethiopian Sunrise to cart">
+                                    <i class="bi bi-bag-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:19-->
+        </div>
+    </section><!--/ID:20-->
+
+    <!-- BREW LAB (Interactive) -->
+    <!--ID:24--><section class="brew-section section-padding" id="brew">
+        <div class="container text-center">
+            <span class="text-uppercase fw-bold small" style="color:var(--latte);">Interactive Experience</span>
+            <h2 class="section-title mt-2 text-white reveal">The Brew Lab</h2>
+            <p class="section-subtitle text-white-50 reveal">Click the beans to brew your perfect cup. Watch the magic happen!</p>
+
+            <!--ID:21--><div class="row justify-content-center g-4 mb-5">
+                <div class="col-md-3 col-sm-6 reveal" style="transition-delay:0.1s;">
+                    <button class="btn btn-lg w-100 py-4 rounded-4 brew-bean-btn" data-flavor="espresso" aria-label="Brew espresso">
+                        <div class="fs-1 mb-2">☕</div>
+                        <h5 class="fw-bold text-white">Espresso</h5>
+                        <small class="text-white-50">Bold & intense</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6 reveal" style="transition-delay:0.2s;">
+                    <button class="btn btn-lg w-100 py-4 rounded-4 brew-bean-btn" data-flavor="pour-over" aria-label="Brew pour over">
+                        <div class="fs-1 mb-2">🫖</div>
+                        <h5 class="fw-bold text-white">Pour Over</h5>
+                        <small class="text-white-50">Clean & bright</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6 reveal" style="transition-delay:0.3s;">
+                    <button class="btn btn-lg w-100 py-4 rounded-4 brew-bean-btn" data-flavor="french-press" aria-label="Brew french press">
+                        <div class="fs-1 mb-2">🍵</div>
+                        <h5 class="fw-bold text-white">French Press</h5>
+                        <small class="text-white-50">Rich & full-bodied</small>
+                    </button>
+                </div>
+                <div class="col-md-3 col-sm-6 reveal" style="transition-delay:0.4s;">
+                    <button class="btn btn-lg w-100 py-4 rounded-4 brew-bean-btn" data-flavor="cold-brew" aria-label="Brew cold brew">
+                        <div class="fs-1 mb-2">🧊</div>
+                        <h5 class="fw-bold text-white">Cold Brew</h5>
+                        <small class="text-white-50">Smooth & refreshing</small>
+                    </button>
+                </div>
+            </div><!--/ID:21-->
+
+            <!-- Brewing meter -->
+            <!--ID:22--><div class="reveal" style="max-width:400px;margin:0 auto;">
+                <p class="text-white-50 mb-3 small">Brewing Progress</p>
+                <div class="brew-meter mx-auto" id="brewMeter" style="--fill: 0%;">
+                    <div class="brew-meter-inner text-white fw-bold display-font" id="brewPercent">0%</div>
+                </div>
+                <p class="mt-3 small text-white-50" id="brewStatus">Select a brewing method above to begin!</p>
+            </div><!--/ID:22-->
+
+            <!-- Brewing animation area -->
+            <!--ID:23--><div id="brewAnimationArea" style="min-height:120px;margin-top:2rem;"></div><!--/ID:23-->
+        </div>
+    </section><!--/ID:24-->
+
+    <!-- TESTIMONIALS -->
+    <!--ID:27--><section class="section-padding" id="reviews" style="background:white;">
+        <div class="container">
+            <!--ID:25--><div class="text-center mb-5 reveal">
+                <span class="text-uppercase fw-bold text-secondary small">What People Say</span>
+                <h2 class="section-title mt-2">Coffee Love Letters</h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our community of coffee lovers.</p>
+            </div><!--/ID:25-->
+
+            <!--ID:26--><div class="row g-4">
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.1s;">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="text-secondary mb-3">"The Midnight Roast completely changed my morning routine. I used to drink coffee just to function - now I actually look forward to it."</p>
+                        <div class="d-flex align-items-center gap-2 mt-auto">
+                            <div style="width:40px;height:40px;border-radius:50%;background:var(--latte);display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;">M</div>
+                            <div>
+                                <strong class="small d-block">Marcus Chen</strong>
+                                <small class="text-secondary">Portland, OR</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.2s;">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="text-secondary mb-3">"I've tried dozens of subscription services. Steam & Bean is the only one where I can taste the difference between roasts. The Ethiopian Sunrise is unreal."</p>
+                        <div class="d-flex align-items-center gap-2 mt-auto">
+                            <div style="width:40px;height:40px;border-radius:50%;background:#E91E63;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;">S</div>
+                            <div>
+                                <strong class="small d-block">Sarah Mitchell</strong>
+                                <small class="text-secondary">Austin, TX</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal" style="transition-delay:0.3s;">
+                    <div class="testimonial-card h-100">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                        </div>
+                        <p class="text-secondary mb-3">"The Brew Lab on their website is so fun! I learned more about coffee in 5 minutes than I did in a year of barista classes. And the Caramel Dream? Chef's kiss."</p>
+                        <div class="d-flex align-items-center gap-2 mt-auto">
+                            <div style="width:40px;height:40px;border-radius:50%;background:#9C27B0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:white;">J</div>
+                            <div>
+                                <strong class="small d-block">James Okafor</strong>
+                                <small class="text-secondary">London, UK</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:26-->
+        </div>
+    </section><!--/ID:27-->
+
+    <!-- NEWSLETTER CTA -->
+    <!--ID:28--><section class="py-5" style="background:var(--foam);">
+        <div class="container text-center reveal">
+            <h3 class="display-font fw-bold mb-2">Join the Steam & Bean Club</h3>
+            <p class="text-secondary mb-4">Get 10% off your first order + exclusive access to limited roasts.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <form class="d-flex gap-2" onsubmit="event.preventDefault();this.querySelector('button').textContent='🎉 You\'re in!';this.querySelector('input').value='';">
+                        <input type="email" class="form-control form-control-lg rounded-pill px-4" placeholder="your@email.com" aria-label="Email address for newsletter" required>
+                        <button type="submit" class="btn btn-steam rounded-pill px-4 py-3 fw-bold">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section><!--/ID:28-->
+
+    <!-- FOOTER -->
+    <!--ID:31--><footer class="footer-custom section-padding pt-5">
+        <div class="container">
+            <!--ID:29--><div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <h4 class="display-font fw-bold text-white mb-3">Steam & Bean</h4>
+                    <p class="text-white-50 small">Crafting extraordinary coffee experiences since 2019. Every bean tells a story, every cup is an adventure.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white fs-5" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-5" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-white fs-5" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white fs-5" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Shop</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="footer-link">All Blends</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Subscriptions</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Gift Cards</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Merch</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Learn</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="footer-link">Brew Guides</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Origin Stories</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h6 class="fw-bold text-white mb-3">Contact</h6>
+                    <p class="small text-white-50 mb-1"><i class="bi bi-geo-alt me-2"></i>742 Evergreen Terrace, Portland, OR 97201</p>
+                    <p class="small text-white-50 mb-1"><i class="bi bi-envelope me-2"></i>hello@steamandbean.com</p>
+                    <p class="small text-white-50 mb-3"><i class="bi bi-telephone me-2"></i>(503) 555-BREW</p>
+                </div>
+            </div><!--/ID:29-->
+            <hr style="border-color:rgba(255,255,255,0.1);">
+            <!--ID:30--><div class="d-flex flex-wrap justify-content-between align-items-center gap-3 small text-white-50">
+                <span>&copy; 2026 Steam & Bean Co. All rights reserved.</span>
+                <div class="d-flex gap-3">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="footer-link small">Privacy</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" class="footer-link small">Cookies / Cookie settings</a>
+                </div>
+            </div><!--/ID:30-->
+        </div>
+    </footer><!--/ID:31-->
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- COOKIE MODAL -->
+    <!--ID:35--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+          <!--ID:32--><div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold display-font" id="cookieModalLabel"><i class="bi bi-cookie me-2"></i>Cookies</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div><!--/ID:32-->
+          <!--ID:33--><div class="modal-body">
+            <p class="small text-secondary mb-3">We use only necessary cookies to make this site work - specifically <strong>localStorage</strong> to remember your cookie preferences. No tracking or marketing cookies are used on this page.</p>
+            <p class="small text-secondary mb-0">You can change your choice anytime via the Cookies link in the footer.</p>
+          </div><!--/ID:33-->
+          <!--ID:34--><div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+            <button type="button" class="btn btn-primary btn-sm rounded-pill px-4" id="cookieAccept">Accept All</button>
+          </div><!--/ID:34-->
+        </div>
+      </div>
+    </div><!--/ID:35-->
+
+    <!-- PRIVACY MODAL -->
+    <!--ID:39--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+          <!--ID:36--><div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold display-font" id="privacyModalLabel"><i class="bi bi-shield-lock me-2"></i>Privacy Statement</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div><!--/ID:36-->
+          <!--ID:37--><div class="modal-body small text-secondary">
+            <p><strong>Data Controller:</strong> Steam & Bean Co., 742 Evergreen Terrace, Portland, OR 97201.</p>
+            <p><strong>What we collect:</strong> Only data you voluntarily provide (e.g. email via newsletter signup) and standard server logs (IP address, browser type, access timestamps) for security and analytics purposes. No personal data is sold to third parties.</p>
+            <p><strong>Purpose & legal basis:</strong> To operate the website, process your requests, send marketing communications only where you have consented (GDPR Art. 6(1)(a)), and ensure site security (legitimate interest, GDPR Art. 6(1)(f)).</p>
+            <p><strong>Cookies & storage:</strong> We use functional cookies stored in your browser's localStorage to remember your cookie preferences. No tracking pixels or marketing cookies are deployed.</p>
+            <p><strong>Retention:</strong> Newsletter emails are retained until you unsubscribe. Server logs are automatically purged after 30 days.</p>
+            <p><strong>Your rights:</strong> Under applicable data protection laws, you have the right to access, correct, delete, or port your personal data. You may also withdraw consent at any time. Contact us at <a href="mailto:privacy@steamandbean.com" class="text-decoration-none">privacy@steamandbean.com</a>.</p>
+            <p><strong>Third parties:</strong> This page loads fonts from Google Fonts and images from Unsplash, which may have their own privacy policies. Bootstrap components are loaded via CDN.</p>
+            <p class="mb-0 text-secondary fst-italic">This is a fictional website for demonstration purposes. All data references are illustrative.</p>
+          </div><!--/ID:37-->
+          <!--ID:38--><div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-primary btn-sm rounded-pill px-4" data-bs-dismiss="modal">Got it</button>
+          </div><!--/ID:38-->
+        </div>
+      </div>
+    </div><!--/ID:39-->
+
+    <!-- ADD TO CART NOTIFICATION -->
+    <!--ID:40--><div id="cartToast" class="position-fixed bottom-0 end-0 p-3" style="z-index:9999;display:none;">
+        <div class="toast show align-items-center text-white border-0 rounded-pill shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body fw-bold d-flex align-items-center gap-2">
+                    <i class="bi bi-check-circle-fill text-success"></i>
+                    <span id="cartToastMsg">Added to cart!</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div><!--/ID:40--><!--ID:41-->
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // === COOKIE CONSENT ===
+        try {
+            if (!localStorage.getItem('cookieConsent')) {
+                var cookieEl = document.getElementById('cookieModal');
+                if (cookieEl && window.bootstrap) new bootstrap.Modal(cookieEl).show();
+            }
+        } catch(e) {}
+
+        var accBtn = document.getElementById('cookieAccept');
+        if (accBtn) accBtn.addEventListener('click', function() {
+            try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+            var m = bootstrap.Modal.getInstance(document.getElementById('cookieModal'));
+            if (m) m.hide();
+        });
+
+        // === NAVBAR SCROLL EFFECT ===
+        var navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === PARALLAX EFFECT ===
+        var parallaxElements = document.querySelectorAll('[data-parallax-speed]');
+        window.addEventListener('scroll', function() {
+            var scrollY = window.pageYOffset;
+            parallaxElements.forEach(function(el) {
+                var speed = parseFloat(el.getAttribute('data-parallax-speed'));
+                el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+            });
+        });
+
+        // === SCROLL REVEAL ANIMATIONS ===
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            reveals.forEach(function(el) {
+                var windowHeight = window.innerHeight;
+                var elementTop = el.getBoundingClientRect().top;
+                var revealPoint = 120;
+                if (elementTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // === COUNTER ANIMATION ===
+        var countersAnimated = false;
+        function animateCounters() {
+            if (countersAnimated) return;
+            var counterBoxes = document.querySelectorAll('.counter-number');
+            var firstCounter = counterBoxes[0];
+            if (!firstCounter) return;
+            var rect = firstCounter.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                countersAnimated = true;
+                counterBoxes.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-target'));
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+
+                    function step(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        // Ease out cubic
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.floor(eased * target);
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+        }
+        window.addEventListener('scroll', animateCounters);
+
+        // === SCROLL TO TOP BUTTON ===
+        var scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // === SMOOTH SCROLL FOR NAV LINKS ===
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                var target = document.querySelector(targetId);
+                if (target) {
+                    var offset = 80;
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+                // Close mobile nav
+                var navCollapse = document.getElementById('navMenu');
+                if (navCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(navCollapse)?.hide();
+                }
+            });
+        });
+
+        // === ADD TO CART BUTTONS ===
+        var cartToastEl = document.getElementById('cartToast');
+        var cartToastMsg = document.getElementById('cartToastMsg');
+        document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var cardTitle = this.closest('.card-body').querySelector('h5').textContent;
+                cartToastMsg.textContent = '"' + cardTitle + '" added to cart!';
+                cartToastEl.style.display = 'block';
+
+                // Button bounce animation
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => { this.style.transform = ''; }, 150);
+
+                // Hide toast after 3s
+                setTimeout(function() {
+                    cartToastEl.style.display = 'none';
+                }, 3000);
+            });
+        });
+
+        // === BREW LAB INTERACTIVE ===
+        var brewMeter = document.getElementById('brewMeter');
+        var brewPercent = document.getElementById('brewPercent');
+        var brewStatus = document.getElementById('brewStatus');
+        var brewAnimationArea = document.getElementById('brewAnimationArea');
+        var isBrewing = false;
+
+        document.querySelectorAll('.brew-bean-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (isBrewing) return;
+                isBrewing = true;
+
+                var flavor = this.getAttribute('data-flavor');
+                var labels = {
+                    'espresso': '☕ Brewing Espresso...',
+                    'pour-over': '🫖 Pouring Over...',
+                    'french-press': '🍵 Pressing French Press...',
+                    'cold-brew': '🧊 Cold Brewing...'
+                };
+
+                brewStatus.textContent = labels[flavor] || 'Brewing...';
+                var progress = 0;
+
+                // Create steam animation
+                brewAnimationArea.innerHTML = '';
+                for (var i = 0; i < 8; i++) {
+                    var particle = document.createElement('div');
+                    particle.style.cssText = 'position:absolute;width:' + (4+Math.random()*6) + 'px;height:' + (4+Math.random()*6) + 'px;background:rgba(255,255,255,' + (0.3+Math.random()*0.4) + ');border-radius:50%;left:' + (30+Math.random()*40) + '%;bottom:10px;animation:steamRise ' + (2+Math.random()*2) + 's ease-in-out infinite;animation-delay:' + (i*0.3) + 's;';
+                    brewAnimationArea.style.position = 'relative';
+                    brewAnimationArea.appendChild(particle);
+                }
+
+                var interval = setInterval(function() {
+                    progress += Math.random() * 8 + 2;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        isBrewing = false;
+                        brewStatus.textContent = '✅ Perfect! Your ' + flavor.replace('-', ' ') + ' is ready. Enjoy!';
+
+                        // Celebration particles
+                        for (var j = 0; j < 20; j++) {
+                            var confetti = document.createElement('div');
+                            confetti.style.cssText = 'position:absolute;width:8px;height:8px;background:' + ['#FF6B35','#D4A574','#FFF8F0','#C68B59'][Math.floor(Math.random()*4)] + ';border-radius:2px;left:' + Math.random()*100 + '%;top:-10px;animation:confettiFall ' + (1+Math.random()*2) + 's ease-in forwards;';
+                            brewAnimationArea.appendChild(confetti);
+                        }
+
+                        setTimeout(function() {
+                            brewAnimationArea.innerHTML = '';
+                        }, 3000);
+                    }
+                    brewMeter.style.setProperty('--fill', progress + '%');
+                    brewPercent.textContent = Math.floor(progress) + '%';
+                }, 150);
+            });
+        });
+
+        // === TILT EFFECT ON PRODUCT CARDS ===
+        document.querySelectorAll('.tilt-card').forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = (y - centerY) / centerY * -8;
+                var rotateY = (x - centerX) / centerX * 8;
+                card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-12px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = '';
+            });
+        });
+
+    });
+    </script>
+
+<!--/ID:41--></body>
+</html>

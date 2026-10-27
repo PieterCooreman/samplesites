@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella Langley – Country Music Singer & Songwriter</title>
+    <meta name="description" content="Ella Langley is a rising country music singer and songwriter known for her powerful vocals, authentic storytelling, and electrifying live performances. Explore her discography, tour dates, and more.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --primary: #8B1A1A;
+            --primary-light: #C0392B;
+            --accent: #D4A574;
+            --dark: #1a1a1a;
+            --warm-bg: #FDF6EE;
+            --cream: #FFF8F0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NAVBAR */
+        .navbar-custom {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-custom.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .navbar-brand-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: #fff !important;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            letter-spacing: 2px;
+        }
+        .nav-link-custom {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-link-custom:hover { color: var(--accent) !important; }
+
+        /* HERO */
+        .hero-section {
+            min-height: 100svh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26,26,26,0.3) 0%, rgba(139,26,26,0.5) 100%);
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.05;
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--accent);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin-top: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* BUTTONS */
+        .btn-primary-custom {
+            background-color: var(--primary);
+            border: none;
+            color: #fff;
+            padding: 14px 36px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background-color: var(--primary-light);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139,26,26,0.4);
+        }
+        .btn-outline-custom {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 12px 34px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        /* SECTIONS */
+        section { padding: clamp(4rem, 8vw, 7rem) 0; }
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 650px;
+            line-height: 1.8;
+        }
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        /* ABOUT */
+        .about-section { background-color: #fff; }
+        .about-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .about-image-wrapper img {
+            width: 100%;
+            height: clamp(400px, 60vw, 700px);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .about-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+        .about-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 4px solid var(--accent);
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+
+        /* DISCOGRAPHY */
+        .discography-section { background-color: var(--warm-bg); }
+        .album-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .album-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        .album-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .album-card .card-body { padding: 1.5rem; }
+        .album-year {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* GALLERY */
+        .gallery-section { background-color: #fff; }
+        .gallery-grid img {
+            width: 100%;
+            height: clamp(250px, 35vw, 400px);
+            object-fit: cover;
+            border-radius: 6px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* LIGHTBOX */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s;
+        }
+        .lightbox-close:hover { transform: rotate(90deg); }
+
+        /* QUOTE */
+        .quote-section {
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+        }
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .quote-author {
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 2rem;
+        }
+
+        /* TOUR */
+        .tour-section { background-color: var(--warm-bg); }
+        .tour-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            transition: background-color 0.3s;
+        }
+        .tour-item:hover { background-color: rgba(255,248,240,0.8); }
+        .tour-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-width: 120px;
+        }
+        .tour-venue { flex: 1; }
+        .tour-city { color: #888; font-size: 0.9rem; }
+
+        /* SOCIAL */
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--dark);
+            color: #fff;
+            font-size: 1.3rem;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-4px);
+            color: #fff;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 0;
+        }
+        footer a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: #fff; }
+
+        /* SCROLL ANIMATIONS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .about-image-wrapper::after { display: none; }
+            .tour-item { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+            .hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ella Langley – Country Music Singer & Songwriter">
+    <meta property="og:description" content="Ella Langley is a rising country music singer and songwriter known for her powerful vocals, authentic storytelling, and electrifying live performances. Explore her discography, tour dates, and more.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/bnfoe7q443x4t9ua/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/bnfoe7q443x4t9ua/img/2026-10-27T17-01-46_755246955_18619836088042433_6780962458915285161_n.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/bnfoe7q443x4t9ua/img/2026-10-27T17-01-46_755246955_18619836088042433_6780962458915285161_n.jpg">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-text" href="#">ELLA LANGLEY</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+            <ul class="navbar-nav gap-3 align-items-center">
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#music">Music</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#tour">Tour</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><!--/ID:2-->
+
+<!-- HERO -->
+<!--ID:6--><section class="hero-section">
+    <!--ID:3--><div class="hero-bg">
+        <img src="img/2026-10-27T17-01-46_755246955_18619836088042433_6780962458915285161_n.jpg" alt="Woman in blue fringed dress singing on stage">
+    </div><!--/ID:3-->
+    <!--ID:4--><div class="hero-overlay"></div><!--/ID:4-->
+    <!--ID:5--><div class="container hero-content text-center">
+        <p class="hero-subtitle mb-3">Country Music Singer &amp; Songwriter</p>
+        <h1 class="hero-title mb-4">Ella<br>Langley</h1>
+        <p class="hero-tagline mx-auto">Raw emotion. Authentic storytelling. A voice that cuts through the noise of modern country music.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center mt-5">
+            <a href="#music" class="btn btn-primary-custom">Listen Now</a>
+            <a href="#tour" class="btn btn-outline-custom">Tour Dates</a>
+        </div>
+    </div><!--/ID:5-->
+</section><!--/ID:6-->
+
+<!-- ABOUT -->
+<!--ID:9--><section id="about" class="about-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <!--ID:7--><div class="col-lg-6 fade-up">
+                <div class="about-image-wrapper">
+                    <img src="img/2026-10-27T17-01-47_486562171_1174474714055212_8379828083943101565_n.jpg" alt="Woman with bangs and gold chain necklace against wood wall">
+                </div>
+            </div><!--/ID:7-->
+            <!--ID:8--><div class="col-lg-6 fade-up">
+                <span class="accent-line"></span>
+                <h2 class="section-title">The Story</h2>
+                <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.9;">
+                    Ella Langley is a country music singer and songwriter who has been making waves in the Nashville scene with her powerful, unfiltered voice and deeply personal songwriting. Growing up in Oklahoma, she was surrounded by the sounds of classic country, rock, and gospel - influences that shaped her into the artist she is today.
+                </p>
+                <p class="text-secondary mb-4" style="line-height: 1.9;">
+                    Her music blends traditional country storytelling with a modern edge, drawing comparisons to artists like Kacey Musgraves, Maren Morris, and Miranda Lambert. Ella's lyrics are honest, vulnerable, and unapologetically real - whether she's singing about heartbreak, small-town life, or the freedom of the open road.
+                </p>
+                <p class="text-secondary mb-4" style="line-height: 1.9;">
+                    Known for her electrifying live performances, Ella has built a devoted following through relentless touring and an authentic connection with her audience. She plays guitar, writes every song herself, and brings a raw energy to the stage that leaves crowds wanting more.
+                </p>
+                <div class="d-flex gap-4 mt-4">
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0;">10+</h3>
+                        <small class="text-secondary">Years Performing</small>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0;">50+</h3>
+                        <small class="text-secondary">Songs Written</small>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 0;">1M+</h3>
+                        <small class="text-secondary">Streams</small>
+                    </div>
+                </div>
+            </div><!--/ID:8-->
+        </div>
+    </div>
+</section><!--/ID:9-->
+
+<!-- QUOTE -->
+<!--ID:10--><section class="quote-section">
+    <div class="container fade-up">
+        <p class="quote-text">"I write about what I know. The good, the bad, and everything in between. That's what makes it real."</p>
+        <p class="quote-author">- Ella Langley</p>
+    </div>
+</section><!--/ID:10-->
+
+<!-- MUSIC / DISCOGRAPHY -->
+<!--ID:13--><section id="music" class="discography-section">
+    <div class="container">
+        <!--ID:11--><div class="text-center mb-5 fade-up">
+            <span class="accent-line mx-auto"></span>
+            <h2 class="section-title">Music</h2>
+            <p class="section-subtitle mx-auto">From heartfelt ballads to rowdy anthems - explore Ella's discography and find your new favorite song.</p>
+        </div><!--/ID:11-->
+        <!--ID:12--><div class="row g-4">
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="card album-card h-100">
+                    <img src="img/2026-10-27T17-01-46_774905439_18627587848042433_7805475855848116149_n.jpg" alt="Woman playing electric guitar on stage in black and white">
+                    <div class="card-body text-center">
+                        <p class="album-year mb-1">2024</p>
+                        <h5 class="card-title fw-bold">Ride or Die</h5>
+                        <p class="text-secondary small mt-2">Debut EP - 6 tracks of raw country energy and unfiltered emotion.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="card album-card h-100">
+                    <img src="img/2026-10-27T17-01-47_555075821_1313915243444491_737270516199906912_n.jpg" alt="Woman in white lace one-shoulder top leaning against a wall">
+                    <div class="card-body text-center">
+                        <p class="album-year mb-1">2024</p>
+                        <h5 class="card-title fw-bold">Small Town Heart</h5>
+                        <p class="text-secondary small mt-2">Single - A tender ballad about growing up and never forgetting where you came from.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="card album-card h-100">
+                    <img src="img/2026-10-27T17-01-47_473248596_1125022315667119_5370045070141793059_n.jpg" alt="Woman with tattoos holding an acoustic guitar near a window">
+                    <div class="card-body text-center">
+                        <p class="album-year mb-1">2023</p>
+                        <h5 class="card-title fw-bold">Dust &amp; Gold</h5>
+                        <p class="text-secondary small mt-2">Single - A gritty, guitar-driven anthem about chasing dreams in a broken world.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 fade-up">
+                <div class="card album-card h-100">
+                    <img src="img/2026-10-27T17-01-47_623790055_1410541397115208_1300292951677995545_n.jpg" alt="Woman in white lace lying among greenery and purple flowers">
+                    <div class="card-body text-center">
+                        <p class="album-year mb-1">2023</p>
+                        <h5 class="card-title fw-bold">Wildflower</h5>
+                        <p class="text-secondary small mt-2">Single - A free-spirited country-pop track about living life on your own terms.</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ID:12-->
+    </div>
+</section><!--/ID:13-->
+
+<!-- GALLERY -->
+<!--ID:16--><section id="gallery" class="gallery-section">
+    <div class="container">
+        <!--ID:14--><div class="text-center mb-5 fade-up">
+            <span class="accent-line mx-auto"></span>
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle mx-auto">Behind the scenes, on stage, and in between - a visual journey through Ella's world.</p>
+        </div><!--/ID:14-->
+        <!--ID:15--><div class="row g-3 gallery-grid fade-up">
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_461764067_1054133166089368_94410335406383818_n.jpg" alt="Woman with brown hair and bangs wearing silver jewelry looking through a car window" data-bs-toggle="lightbox">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_473416237_1125724308930253_1512410644066827470_n.jpg" alt="Woman in black lace with turquoise jewelry against warm wood">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_555075821_1313915243444491_737270516199906912_n.jpg" alt="Woman in white lace one-shoulder top leaning against a wall">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_486562171_1174474714055212_8379828083943101565_n.jpg" alt="Woman with bangs and gold chain necklace against wood wall">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_473248596_1125022315667119_5370045070141793059_n.jpg" alt="Woman with tattoos holding an acoustic guitar near a window">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <img src="img/2026-10-27T17-01-47_623790055_1410541397115208_1300292951677995545_n.jpg" alt="Woman in white lace lying among greenery and purple flowers">
+            </div>
+        </div><!--/ID:15-->
+    </div>
+</section><!--/ID:16-->
+
+<!-- LIGHTBOX -->
+<!--ID:17--><div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="Gallery image enlarged view" id="lightboxImg">
+</div><!--/ID:17-->
+
+<!-- TOUR -->
+<!--ID:20--><section id="tour" class="tour-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <!--ID:18--><div class="col-lg-5 fade-up">
+                <span class="accent-line"></span>
+                <h2 class="section-title">Tour Dates</h2>
+                <p class="text-secondary mb-4" style="line-height: 1.8;">Catch Ella live - there's nothing like the energy of a country show with her on stage. Tickets are selling fast!</p>
+                <a href="#" class="btn btn-primary-custom">Get Tickets</a>
+            </div><!--/ID:18-->
+            <!--ID:19--><div class="col-lg-7 fade-up">
+                <div class="tour-item">
+                    <span class="tour-date">Nov 15, 2026</span>
+                    <div class="tour-venue">
+                        <strong>The Ryman Auditorium</strong><br>
+                        <span class="tour-city"><i class="bi bi-geo-alt"></i> Nashville, TN</span>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline-custom ms-auto">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <span class="tour-date">Nov 22, 2026</span>
+                    <div class="tour-venue">
+                        <strong>The Bluebird Cafe</strong><br>
+                        <span class="tour-city"><i class="bi bi-geo-alt"></i> Nashville, TN</span>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline-custom ms-auto">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <span class="tour-date">Dec 05, 2026</span>
+                    <div class="tour-venue">
+                        <strong>The Continental Club</strong><br>
+                        <span class="tour-city"><i class="bi bi-geo-alt"></i> Austin, TX</span>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline-custom ms-auto">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <span class="tour-date">Dec 12, 2026</span>
+                    <div class="tour-venue">
+                        <strong>The Troubadour</strong><br>
+                        <span class="tour-city"><i class="bi bi-geo-alt"></i> Los Angeles, CA</span>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline-custom ms-auto">Tickets</a>
+                </div>
+                <div class="tour-item">
+                    <span class="tour-date">Jan 08, 2027</span>
+                    <div class="tour-venue">
+                        <strong>The Fillmore</strong><br>
+                        <span class="tour-city"><i class="bi bi-geo-alt"></i> Denver, CO</span>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-outline-custom ms-auto">Tickets</a>
+                </div>
+            </div><!--/ID:19-->
+        </div>
+    </div>
+</section><!--/ID:20-->
+
+<!-- CONTACT / SOCIAL -->
+<!--ID:21--><section id="contact" style="background-color: #fff;">
+    <div class="container text-center fade-up">
+        <span class="accent-line mx-auto"></span>
+        <h2 class="section-title">Stay Connected</h2>
+        <p class="text-secondary mb-5" style="max-width: 600px; margin: 0 auto;">Follow Ella on social media for the latest updates, behind-the-scenes content, and tour announcements.</p>
+        <div class="social-links justify-content-center d-flex flex-wrap gap-2">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
+            <a href="#" aria-label="Apple Music"><i class="bi bi-apple"></i></a>
+        </div>
+    </div>
+</section><!--/ID:21-->
+
+<!-- FOOTER -->
+<!--ID:24--><footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <!--ID:22--><div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <h5 style="font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 0.5rem;">Ella Langley</h5>
+                <small>&copy; 2026 Ella Langley. All rights reserved.</small>
+            </div><!--/ID:22-->
+            <!--ID:23--><div class="col-md-6 text-center text-md-end">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="me-3 small">Privacy</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal" class="small">Cookies / Cookie settings</a>
+            </div><!--/ID:23-->
+        </div>
+    </div>
+</footer><!--/ID:24-->
+
+<!-- COOKIE MODAL -->
+<!--ID:28--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:25--><div class="modal-header">
+        <h5 class="modal-title" id="cookieModalLabel">Cookies</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div><!--/ID:25-->
+      <!--ID:26--><div class="modal-body">
+        <p class="small text-secondary mb-2">We use only necessary cookies to make this site work (functional / localStorage for your preferences). No tracking or marketing cookies are used. If embedded content (maps, video, analytics) is added later, it may set its own cookies - see Privacy for details.</p>
+        <p class="small text-secondary mb-0">You can change your choice anytime via the Cookies link in the footer.</p>
+      </div><!--/ID:26-->
+      <!--ID:27--><div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+        <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+      </div><!--/ID:27-->
+    </div>
+  </div>
+</div><!--/ID:28-->
+
+<!-- PRIVACY MODAL -->
+<!--ID:32--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <!--ID:29--><div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Privacy statement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div><!--/ID:29-->
+      <!--ID:30--><div class="modal-body small">
+        <p><strong>Data controller:</strong> Ella Langley.</p>
+        <p><strong>What we collect:</strong> only data you provide (e.g. via forms) and standard server logs (IP, user agent) for security. No data is sold.</p>
+        <p><strong>Purpose &amp; legal basis:</strong> to operate and secure the website (legitimate interest / contract) and to respond to your requests (consent).</p>
+        <p><strong>Retention:</strong> server logs are kept briefly, form data only as needed to handle your request.</p>
+        <p><strong>Your rights:</strong> you may request access, correction or deletion of your data. Contact us via the site.</p>
+        <p class="mb-0 text-secondary">This is a starter template - adapt this text to your actual processing.</p>
+      </div><!--/ID:30-->
+      <!--ID:31--><div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div><!--/ID:31-->
+    </div>
+  </div>
+</div><!--/ID:32-->
+
+<!--ID:33--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:33-->
+<!--ID:34--><script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Cookie consent
+    try {
+        if (!localStorage.getItem('cookieConsent')) {
+            var el = document.getElementById('cookieModal');
+            if (el && window.bootstrap) new bootstrap.Modal(el).show();
+        }
+    } catch(e) {}
+    var acc = document.getElementById('cookieAccept');
+    if (acc) acc.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','accepted'); } catch(e) {}
+        var m = document.getElementById('cookieModal'); if (m && window.bootstrap) { var inst = bootstrap.Modal.getInstance(m); if (inst) inst.hide(); }
+    });
+    var rej = document.getElementById('cookieReject');
+    if (rej) rej.addEventListener('click', function() {
+        try { localStorage.setItem('cookieConsent','rejected'); } catch(e) {}
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        var nav = document.querySelector('.navbar-custom');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    });
+
+    // Scroll animations
+    var fadeEls = document.querySelectorAll('.fade-up');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(function(el) { observer.observe(el); });
+
+    // Lightbox
+    var overlay = document.getElementById('lightboxOverlay');
+    var lbImg = document.getElementById('lightboxImg');
+    var closeBtn = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.gallery-grid img').forEach(function(img) {
+        img.addEventListener('click', function() {
+            lbImg.src = this.src;
+            lbImg.alt = this.alt;
+            overlay.classList.add('active');
+        });
+    });
+
+    closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) overlay.classList.remove('active');
+    });
+});
+</script><!--/ID:34-->
+</body>
+</html>
