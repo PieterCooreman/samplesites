@@ -14,6 +14,7 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [Ferrari 2](https://pietercooreman.github.io/samplesites/Ferrari2/index.html) | https://pietercooreman.github.io/samplesites/Ferrari2/index.html |
 | [Honden](https://pietercooreman.github.io/samplesites/Honden/index.html) | https://pietercooreman.github.io/samplesites/Honden/index.html |
 | [Jemeppe](https://pietercooreman.github.io/samplesites/Jemeppe/index.html) | https://pietercooreman.github.io/samplesites/Jemeppe/index.html |
+| [Jitterbean](https://pietercooreman.github.io/samplesites/Jitterbean/index.html) | https://pietercooreman.github.io/samplesites/Jitterbean/index.html |
 | [Land Rover](https://pietercooreman.github.io/samplesites/LandRover/index.html) | https://pietercooreman.github.io/samplesites/LandRover/index.html |
 | [Land Rover 2](https://pietercooreman.github.io/samplesites/LandRover2/index.html) | https://pietercooreman.github.io/samplesites/LandRover2/index.html |
 | [Leuven](https://pietercooreman.github.io/samplesites/Leuven/index.html) | https://pietercooreman.github.io/samplesites/Leuven/index.html |
@@ -22,3 +23,4 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [Quiet Spaces](https://pietercooreman.github.io/samplesites/QuietSpaces/index.html) | https://pietercooreman.github.io/samplesites/QuietSpaces/index.html |
 | [Steam & Bean](https://pietercooreman.github.io/samplesites/SteamBean/index.html) | https://pietercooreman.github.io/samplesites/SteamBean/index.html |
 | [Studio Marchetti](https://pietercooreman.github.io/samplesites/StudioMarchetti/index.html) | https://pietercooreman.github.io/samplesites/StudioMarchetti/index.html |
+| [Wild Australia](https://pietercooreman.github.io/samplesites/WildAustralia/index.html) | https://pietercooreman.github.io/samplesites/WildAustralia/index.html |

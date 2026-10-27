@@ -1,0 +1,1369 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wild.Australia - Dark-Themed Travel Guide &amp; Adventure Planner</title>
+<meta name="description" content="Plan your Australian adventure: Uluru, the Great Barrier Reef, Sydney, Tasmania and the wild west. A cinematic dark-themed travel guide with itineraries, experiences and photo galleries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<!--ID:1--><style>
+  :root{
+    --bg:#06090f;
+    --bg-soft:#0b111a;
+    --surface:#111a26;
+    --surface-2:#16212f;
+    --text:#e9eef6;
+    --muted:#93a2b8;
+    --accent:#ff7a3d;
+    --accent-light:#ffb26b;
+    --accent-soft:rgba(255,122,61,.12);
+    --line:rgba(255,255,255,.08);
+    --radius:20px;
+  }
+
+  html{scroll-behavior:smooth;scroll-padding-top:88px;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5,.font-display{
+    font-family:'Outfit',system-ui,sans-serif;
+    letter-spacing:-.02em;
+    font-weight:700;
+    overflow-wrap:anywhere;
+  }
+  p{color:var(--muted);}
+  a{text-decoration:none;}
+  img{max-width:100%;height:auto;}
+  ::selection{background:var(--accent);color:#180d05;}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,.navbar-toggler:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  .text-accent{color:var(--accent)!important;}
+  .bg-soft{background:var(--bg-soft);}
+  .section{padding:4.5rem 0;}
+  @media (min-width:992px){ .section{padding:6.5rem 0;} }
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block;}
+  .section-title{font-size:clamp(1.75rem,5vw,2.9rem);line-height:1.12;margin-bottom:1rem;}
+  .lead-muted{color:var(--muted);font-size:clamp(1rem,2.4vw,1.1rem);max-width:640px;}
+  .grad-text{
+    background:linear-gradient(100deg,#ff9b57,#ffd08a 48%,#ff7a3d);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* ---------- scroll progress ---------- */
+  #scrollProgress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:2000;
+    background:linear-gradient(90deg,var(--accent),#ffd08a);
+    transition:width .08s linear;
+  }
+
+  /* ---------- navbar ---------- */
+  .navbar{
+    padding-top:1rem;padding-bottom:1rem;
+    border-bottom:1px solid transparent;
+    transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease,padding .4s ease;
+  }
+  .navbar.scrolled{
+    background:rgba(6,9,15,.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom-color:var(--line);
+    padding-top:.6rem;padding-bottom:.6rem;
+  }
+  .navbar .nav-link{
+    color:rgba(233,238,246,.78)!important;
+    font-size:.95rem;font-weight:500;
+    padding:.6rem .85rem!important;
+    transition:color .25s ease;
+  }
+  .navbar .nav-link:hover,.navbar .nav-link:focus{color:var(--accent)!important;}
+  .navbar-toggler{border-color:rgba(255,255,255,.2);padding:.5rem .65rem;}
+  .navbar-toggler:focus{box-shadow:none;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-light));
+    display:grid;place-items:center;color:#180d05;
+    font-family:'Outfit',sans-serif;font-weight:800;font-size:.9rem;
+    flex:0 0 auto;
+  }
+  .navbar-brand span.brand-text{
+    font-family:'Outfit',sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.02em;color:#fff;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn-accent{
+    background:linear-gradient(135deg,var(--accent),var(--accent-light));
+    color:#180d05;border:none;font-weight:600;
+    border-radius:999px;padding:.75rem 1.5rem;min-height:46px;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .3s ease,box-shadow .3s ease,filter .3s ease;
+  }
+  .btn-accent:hover,.btn-accent:focus{
+    color:#180d05;
+    transform:translateY(-3px);
+    box-shadow:0 14px 32px -10px rgba(255,122,61,.65);
+    filter:brightness(1.05);
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.22);
+    color:var(--text);font-weight:500;
+    border-radius:999px;padding:.75rem 1.5rem;min-height:46px;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:border-color .3s,color .3s,background .3s,transform .3s;
+  }
+  .btn-ghost:hover,.btn-ghost:focus{
+    border-color:var(--accent);color:var(--accent);
+    background:var(--accent-soft);transform:translateY(-3px);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;align-items:center;
+    padding:8rem 0 6rem;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    transform:scale(1.08);
+    animation:kenburns 30s ease-in-out infinite alternate;
+    z-index:0;
+  }
+  @keyframes kenburns{
+    from{transform:scale(1.06) translate3d(0,0,0);}
+    to{transform:scale(1.2) translate3d(-1.6%,-1.4%,0);}
+  }
+  .hero-veil{
+    position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(900px 620px at 18% 24%, rgba(255,122,61,.22), transparent 62%),
+      radial-gradient(900px 700px at 88% 78%, rgba(60,120,255,.16), transparent 64%),
+      linear-gradient(180deg, rgba(6,9,15,.88) 0%, rgba(6,9,15,.6) 38%, rgba(6,9,15,.97) 100%);
+  }
+  .orb{
+    position:absolute;border-radius:50%;
+    filter:blur(70px);opacity:.45;
+    pointer-events:none;z-index:1;
+    animation:orbFloat 16s ease-in-out infinite;
+  }
+  .orb-1{width:280px;height:280px;background:rgba(255,122,61,.55);top:8%;left:-90px;}
+  .orb-2{width:220px;height:220px;background:rgba(90,150,255,.4);bottom:12%;right:-70px;animation-delay:-5s;}
+  .orb-3{width:170px;height:170px;background:rgba(255,200,120,.35);top:52%;left:38%;animation-delay:-9s;}
+  @keyframes orbFloat{
+    0%,100%{transform:translate3d(0,0,0) scale(1);}
+    50%{transform:translate3d(24px,-34px,0) scale(1.12);}
+  }
+  .hero-content{position:relative;z-index:3;}
+  .hero h1{
+    font-size:clamp(2.15rem,8.4vw,4.6rem);
+    line-height:1.06;
+    font-weight:800;
+    margin-bottom:1.25rem;
+  }
+  .rotator{
+    display:inline-block;
+    transition:opacity .38s ease,transform .38s ease;
+  }
+  .hero-meta{
+    border-top:1px solid var(--line);
+    padding-top:1.5rem;
+    max-width:620px;
+  }
+  .hero-meta .meta-num{
+    font-family:'Outfit',sans-serif;font-weight:700;font-size:1.3rem;color:#fff;display:block;line-height:1.1;
+  }
+  .hero-meta .meta-label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .scroll-cue{
+    position:absolute;left:50%;bottom:1.25rem;transform:translateX(-50%);
+    z-index:3;color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:.2rem;
+    font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  }
+  .scroll-cue i{font-size:1.1rem;color:var(--accent);animation:cueBob 2s ease-in-out infinite;}
+  .scroll-cue:hover{color:var(--accent);}
+  @keyframes cueBob{
+    0%,100%{transform:translateY(-3px);opacity:.6;}
+    50%{transform:translateY(4px);opacity:1;}
+  }
+
+  /* ---------- reveal animations ---------- */
+  .reveal,.reveal-left,.reveal-right,.reveal-zoom{
+    opacity:0;
+    transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);
+    will-change:opacity,transform;
+  }
+  .reveal{transform:translateY(38px);}
+  .reveal-left{transform:translateX(-40px);}
+  .reveal-right{transform:translateX(40px);}
+  .reveal-zoom{transform:scale(.94);}
+  .is-visible{opacity:1!important;transform:none!important;}
+  .delay-1{transition-delay:.12s;}
+  .delay-2{transition-delay:.24s;}
+  .delay-3{transition-delay:.36s;}
+
+  /* ---------- stats ---------- */
+  .stat-num{
+    font-family:'Outfit',sans-serif;font-weight:800;
+    font-size:clamp(1.9rem,6vw,3.1rem);
+    line-height:1;color:#fff;
+    background:linear-gradient(135deg,#fff,#ffc79a);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* ---------- cards ---------- */
+  .card-dark{
+    background:linear-gradient(180deg,var(--surface) 0%,#0d1521 100%);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;height:100%;
+    display:flex;flex-direction:column;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease,border-color .5s ease;
+  }
+  .card-dark:hover,.card-dark:focus-within{
+    transform:translateY(-8px);
+    border-color:rgba(255,122,61,.45);
+    box-shadow:0 28px 55px -26px rgba(255,122,61,.55);
+  }
+  .media{position:relative;overflow:hidden;height:215px;flex:0 0 auto;}
+  .media img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1);
+  }
+  .card-dark:hover .media img{transform:scale(1.09);}
+  .media::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,9,15,0) 40%,rgba(6,9,15,.8) 100%);
+    pointer-events:none;
+  }
+  .zoom-btn{
+    position:absolute;right:.75rem;top:.75rem;z-index:3;
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(6,9,15,.5);
+    backdrop-filter:blur(6px);
+    color:#fff;display:grid;place-items:center;
+    transition:background .3s,color .3s,border-color .3s,transform .3s;
+  }
+  .zoom-btn:hover{background:var(--accent);color:#180d05;border-color:var(--accent);transform:scale(1.06);}
+  .chip{
+    display:inline-block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);
+    border:1px solid rgba(255,122,61,.28);
+    border-radius:999px;padding:.3rem .75rem;font-weight:600;
+  }
+
+  /* ---------- feature icons ---------- */
+  .icon-box{
+    width:52px;height:52px;border-radius:16px;
+    display:grid;place-items:center;font-size:1.4rem;
+    background:linear-gradient(135deg,rgba(255,122,61,.22),rgba(255,178,107,.08));
+    border:1px solid rgba(255,122,61,.28);
+    color:var(--accent);
+    transition:transform .4s ease,background .4s ease;
+  }
+  .feature:hover .icon-box{transform:translateY(-4px) rotate(-6deg);background:linear-gradient(135deg,rgba(255,122,61,.4),rgba(255,178,107,.14));}
+  .feature{transition:transform .4s ease;}
+  .feature:hover{transform:translateY(-4px);}
+
+  /* ---------- parallax band ---------- */
+  .parallax-band{
+    position:relative;overflow:hidden;
+    min-height:380px;display:flex;align-items:center;
+  }
+  .parallax-band .parallax-img{
+    position:absolute;inset:-10% 0;width:100%;height:120%;
+    object-fit:cover;will-change:transform;z-index:0;
+  }
+  .band-veil{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(6,9,15,.9),rgba(6,9,15,.55) 45%,rgba(6,9,15,.92));
+  }
+  .band-quote{
+    font-family:'Outfit',sans-serif;font-weight:600;
+    font-size:clamp(1.3rem,4.2vw,2.3rem);
+    line-height:1.3;color:#fff;max-width:840px;margin:0 auto;
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  @media (min-width:768px){
+    .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;}
+    .g-item.tall{grid-row:span 2;}
+    .g-item.wide{grid-column:span 2;}
+  }
+  .g-item{
+    position:relative;border:1px solid var(--line);border-radius:16px;
+    overflow:hidden;padding:0;background:none;height:150px;width:100%;
+    transition:transform .5s ease,border-color .5s ease;
+  }
+  @media (min-width:768px){ .g-item{height:100%;} }
+  .g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+  .g-item:hover{border-color:rgba(255,122,61,.5);transform:translateY(-4px);}
+  .g-item:hover img{transform:scale(1.09);}
+  .g-item .g-overlay{
+    position:absolute;inset:0;display:flex;align-items:flex-end;
+    padding:.85rem;color:#fff;font-size:.82rem;font-weight:500;
+    background:linear-gradient(180deg,transparent 45%,rgba(6,9,15,.8));
+    opacity:0;transition:opacity .4s ease;text-align:left;
+  }
+  .g-item:hover .g-overlay,.g-item:focus-visible .g-overlay{opacity:1;}
+
+  /* ---------- timeline ---------- */
+  .timeline{position:relative;padding-left:2.5rem;}
+  .timeline::before{
+    content:"";position:absolute;left:6px;top:.4rem;bottom:.4rem;width:2px;
+    background:linear-gradient(180deg,var(--accent),rgba(255,122,61,.05));
+  }
+  .timeline-item{position:relative;padding-bottom:2.1rem;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute;left:-2.5rem;top:.35rem;
+    width:14px;height:14px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 5px rgba(255,122,61,.16);
+  }
+  .tl-day{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+
+  /* ---------- testimonials ---------- */
+  .quote-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:2rem 1.6rem;height:100%;
+  }
+  @media (min-width:768px){ .quote-card{padding:2.5rem 2.25rem;} }
+  .quote-card .bi-quote{font-size:2rem;color:var(--accent);opacity:.6;}
+  .carousel-indicators [data-bs-target]{width:8px;height:8px;border-radius:50%;background:var(--muted);border:0;margin:0 5px;}
+  .carousel-indicators .active{background:var(--accent);}
+  .carousel-control-prev,.carousel-control-next{width:44px;opacity:.8;}
+
+  /* ---------- cta ---------- */
+  .cta-panel{
+    position:relative;border-radius:26px;overflow:hidden;
+    border:1px solid rgba(255,122,61,.28);
+    background:
+      radial-gradient(600px 340px at 12% 10%, rgba(255,122,61,.22), transparent 60%),
+      linear-gradient(160deg,var(--surface) 0%,#0c131d 100%);
+    padding:2.25rem 1.5rem;
+  }
+  @media (min-width:768px){ .cta-panel{padding:3.5rem 3rem;} }
+  .form-control-dark{
+    background:rgba(6,9,15,.6);
+    border:1px solid var(--line);
+    color:var(--text);
+    border-radius:999px;
+    padding:.8rem 1.25rem;
+    min-height:46px;
+  }
+  .form-control-dark::placeholder{color:#6c7b90;}
+  .form-control-dark:focus{
+    background:rgba(6,9,15,.85);
+    border-color:var(--accent);
+    color:var(--text);
+    box-shadow:0 0 0 .2rem rgba(255,122,61,.18);
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer{
+    background:var(--bg-soft);
+    border-top:1px solid var(--line);
+    padding-top:3.5rem;
+  }
+  .site-footer a{color:var(--muted);transition:color .25s ease;}
+  .site-footer a:hover{color:var(--accent);}
+  .social-btn{
+    width:44px;height:44px;border-radius:50%;
+    display:grid;place-items:center;
+    border:1px solid var(--line);
+    color:var(--muted);
+    transition:border-color .3s,color .3s,transform .3s;
+  }
+  .social-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);}
+
+  /* ---------- back to top ---------- */
+  #toTop{
+    position:fixed;right:1rem;bottom:1rem;z-index:1035;
+    width:48px;height:48px;border-radius:50%;border:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent-light));
+    color:#180d05;display:grid;place-items:center;font-size:1.15rem;
+    opacity:0;pointer-events:none;
+    box-shadow:0 12px 26px -8px rgba(255,122,61,.65);
+    transition:opacity .35s ease,transform .35s ease;
+  }
+  #toTop.show{opacity:1;pointer-events:auto;}
+  #toTop:hover{transform:translateY(-4px);}
+
+  /* ---------- modals ---------- */
+  .modal-content{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+  }
+  .modal-header,.modal-footer{border-color:var(--line);}
+  #lightboxImg{width:100%;height:auto;border-radius:14px;}
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{
+      animation-duration:.001ms!important;
+      animation-iteration-count:1!important;
+      transition-duration:.001ms!important;
+      scroll-behavior:auto!important;
+    }
+    .reveal,.reveal-left,.reveal-right,.reveal-zoom{opacity:1!important;transform:none!important;}
+    .hero-bg{animation:none;transform:scale(1.05);}
+  }
+/*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wild.Australia - Dark-Themed Travel Guide &amp; Adventure Planner">
+    <meta property="og:description" content="Plan your Australian adventure: Uluru, the Great Barrier Reef, Sydney, Tasmania and the wild west. A cinematic dark-themed travel guide with itineraries, experiences and photo galleries.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/o0748204bwoxooyf/">
+</head>
+<body>
+
+<!--ID:2--><div id="scrollProgress" aria-hidden="true"></div><!--/ID:2-->
+
+<!-- ================= NAVBAR ================= -->
+<!--ID:3--><nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+      <span class="brand-mark" aria-hidden="true">WA</span>
+      <span class="brand-text">Wild<span class="text-accent">.</span>Australia</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#destinations">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experiences">Experiences</a></li>
+        <li class="nav-item"><a class="nav-link" href="#itinerary">Itinerary</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a class="btn btn-accent w-100 w-lg-auto" href="#plan">Start planning</a></li>
+      </ul>
+    </div>
+  </div>
+</nav><!--/ID:3-->
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <img class="hero-bg"
+       src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
+       alt="Sydney Harbour at dusk with the Opera House and Harbour Bridge illuminated"
+       onerror="this.onerror=null;this.src='https://picsum.photos/seed/sydneyharbour/1920/1080';">
+  <!--ID:4--><div class="hero-veil" aria-hidden="true"></div><!--/ID:4-->
+  <span class="orb orb-1" aria-hidden="true"></span>
+  <span class="orb orb-2" aria-hidden="true"></span>
+  <span class="orb orb-3" aria-hidden="true"></span>
+
+  <!--ID:7--><div class="container hero-content">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9">
+        <span class="eyebrow">Australia · Travel guide 2026</span>
+        <h1 class="mt-3">Find your <span class="rotator grad-text" id="rotator">outback</span> down under.</h1>
+        <p class="lead-muted mb-4">From the red heart of Uluru to the neon reefs of Queensland - cinematic landscapes, 65,000 years of living culture and roads that simply never end. Let's build the trip you'll talk about forever.</p>
+        <!--ID:5--><div class="d-flex flex-wrap gap-3 mb-5">
+          <a href="#destinations" class="btn btn-accent"><i class="bi bi-compass me-2" aria-hidden="true"></i>Explore destinations</a>
+          <a href="#gallery" class="btn btn-ghost"><i class="bi bi-play-circle me-2" aria-hidden="true"></i>See highlights</a>
+        </div><!--/ID:5-->
+        <!--ID:6--><div class="hero-meta d-flex flex-wrap gap-4">
+          <div>
+            <span class="meta-num">8</span>
+            <span class="meta-label">Regions</span>
+          </div>
+          <div>
+            <span class="meta-num">10,685</span>
+            <span class="meta-label">Beaches</span>
+          </div>
+          <div>
+            <span class="meta-num">4.5 h</span>
+            <span class="meta-label">Avg. flight Sydney → Uluru</span>
+          </div>
+        </div><!--/ID:6-->
+      </div>
+    </div>
+  </div><!--/ID:7-->
+
+  <a class="scroll-cue" href="#stats" aria-label="Scroll down to the next section">
+    <span>Scroll</span>
+    <i class="bi bi-chevron-double-down" aria-hidden="true"></i>
+  </a>
+</header>
+
+<main>
+
+  <!-- ================= STATS ================= -->
+  <!--ID:12--><section class="section bg-soft" id="stats" aria-labelledby="statsTitle">
+    <div class="container">
+      <h2 id="statsTitle" class="visually-hidden">Australia at a glance</h2>
+      <div class="row g-4 text-center">
+        <!--ID:8--><div class="col-6 col-lg-3 reveal">
+          <div class="stat-num" data-count="8">0</div>
+          <p class="mb-0 mt-2 small">States &amp; territories</p>
+        </div><!--/ID:8-->
+        <!--ID:9--><div class="col-6 col-lg-3 reveal delay-1">
+          <div class="stat-num" data-count="10685">0</div>
+          <p class="mb-0 mt-2 small">Beaches to choose from</p>
+        </div><!--/ID:9-->
+        <!--ID:10--><div class="col-6 col-lg-3 reveal delay-2">
+          <div class="stat-num" data-count="550" data-suffix="+">0</div>
+          <p class="mb-0 mt-2 small">National parks</p>
+        </div><!--/ID:10-->
+        <!--ID:11--><div class="col-6 col-lg-3 reveal delay-3">
+          <div class="stat-num" data-count="65000" data-suffix="+">0</div>
+          <p class="mb-0 mt-2 small">Years of First Nations culture</p>
+        </div><!--/ID:11-->
+      </div>
+    </div>
+  </section><!--/ID:12-->
+
+  <!-- ================= DESTINATIONS ================= -->
+  <!--ID:15--><section class="section" id="destinations" aria-labelledby="destTitle">
+    <div class="container">
+      <!--ID:13--><div class="row align-items-end g-4 mb-5">
+        <div class="col-lg-7 reveal">
+          <span class="eyebrow">Where to go</span>
+          <h2 class="section-title mt-3 mb-0" id="destTitle">Six places that will <span class="grad-text">reset your horizon</span></h2>
+        </div>
+        <div class="col-lg-5 reveal delay-1">
+          <p class="lead-muted mb-0">Every region of Australia plays a different song. Pick a first chapter - we'll help you connect the rest.</p>
+        </div>
+      </div><!--/ID:13-->
+
+      <!--ID:14--><div class="row g-4">
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Sydney Opera House and city skyline seen across the harbour"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/sydney/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Sydney - harbour, ferries and sandstone headlands"
+                      aria-label="View larger photo of Sydney harbour">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">New South Wales</span>
+              <h3 class="h5 mb-2">Sydney &amp; the Coast</h3>
+              <p class="small mb-0">Harbour ferries at golden hour, the Bondi-to-Coogee cliff walk and the country's most serious coffee culture.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal delay-1">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1524293581917-878a6d017c71?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Uluru glowing deep red under a wide desert sky at sunset"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/uluru/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1524293581917-878a6d017c71?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Uluru - the beating red heart of the continent"
+                      aria-label="View larger photo of Uluru at sunset">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">Northern Territory</span>
+              <h3 class="h5 mb-2">Uluru &amp; the Red Centre</h3>
+              <p class="small mb-0">Sunrise on a monolith older than the Himalayas, then a night sky so bright it feels like a secret.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal delay-2">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Turquoise coral reef seen from above with clear tropical water"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/greatreef/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Great Barrier Reef - the largest living structure on Earth"
+                      aria-label="View larger photo of the Great Barrier Reef">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">Queensland</span>
+              <h3 class="h5 mb-2">Great Barrier Reef</h3>
+              <p class="small mb-0">Dive the world's largest living structure, then slow down in the rainforest of the Daintree.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Aerial view of a winding coastal road along dramatic ocean cliffs"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/melbourne/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Melbourne &amp; the Great Ocean Road"
+                      aria-label="View larger photo of the Great Ocean Road">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">Victoria</span>
+              <h3 class="h5 mb-2">Melbourne &amp; Great Ocean Road</h3>
+              <p class="small mb-0">Laneway street art and rooftop bars, then 243 km of coastal switchbacks to the Twelve Apostles.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal delay-1">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Misty mountain wilderness with a still lake in Tasmania"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/tasmania/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Tasmania - cool-climate wilderness and wild coastlines"
+                      aria-label="View larger photo of Tasmanian wilderness">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">Tasmania</span>
+              <h3 class="h5 mb-2">Tasmania's Wilderness</h3>
+              <p class="small mb-0">Cradle Mountain at dawn, empty beaches, whisky distilleries and the unmissable MONA in Hobart.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal delay-2">
+          <article class="card-dark">
+            <div class="media">
+              <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                   alt="Fog rolling over a green valley with tall karri forest"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/westaustralia/900/600';">
+              <button type="button" class="zoom-btn"
+                      data-lightbox="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                      data-caption="Margaret River &amp; the wild west coast"
+                      aria-label="View larger photo of the Western Australian landscape">
+                <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <span class="chip mb-3 align-self-start">Western Australia</span>
+              <h3 class="h5 mb-2">Margaret River &amp; the West</h3>
+              <p class="small mb-0">Surf breaks, tall karri forest, cellar doors and the whitest sand you have ever walked on.</p>
+            </div>
+          </article>
+        </div>
+
+      </div><!--/ID:14-->
+    </div>
+  </section><!--/ID:15-->
+
+  <!-- ================= EXPERIENCES ================= -->
+  <!--ID:18--><section class="section bg-soft" id="experiences" aria-labelledby="expTitle">
+    <div class="container">
+      <!--ID:16--><div class="row g-4 mb-5">
+        <div class="col-lg-7 reveal">
+          <span class="eyebrow">Things to do</span>
+          <h2 class="section-title mt-3 mb-0" id="expTitle">Experiences worth <span class="grad-text">crossing the planet</span> for</h2>
+        </div>
+        <div class="col-lg-5 reveal delay-1">
+          <p class="lead-muted mb-0">Australia rewards the curious. Whether you dive, drive, hike or taste your way through it, the scale always wins.</p>
+        </div>
+      </div><!--/ID:16-->
+
+      <!--ID:17--><div class="row g-4">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-water"></i></div>
+            <div>
+              <h3 class="h6 mb-2">Reef diving &amp; snorkelling</h3>
+              <p class="small mb-0">Liveaboard trips, day boats from Cairns and easy shore snorkelling on Ningaloo Reef.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal delay-1">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-signpost-split"></i></div>
+            <div>
+              <h3 class="h6 mb-2">Outback road trips</h3>
+              <p class="small mb-0">Empty highways, roadhouse coffee and sunsets that last a full hour. 4WD recommended.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal delay-2">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-binoculars"></i></div>
+            <div>
+              <h3 class="h6 mb-2">Wildlife encounters</h3>
+              <p class="small mb-0">Kangaroos at dawn, quokkas on Rottnest, whale season along the east coast.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-fire"></i></div>
+            <div>
+              <h3 class="h6 mb-2">First Nations journeys</h3>
+              <p class="small mb-0">Guided walks, rock art sites and storytelling with Aboriginal guides who know the land.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal delay-1">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-sun"></i></div>
+            <div>
+              <h3 class="h6 mb-2">Coastal drives &amp; surf</h3>
+              <p class="small mb-0">Learn to surf at Byron Bay or chase swell on the wild south-west coast.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal delay-2">
+          <div class="feature d-flex gap-3 h-100 p-4 card-dark">
+            <div class="icon-box" aria-hidden="true"><i class="bi bi-cup-hot"></i></div>
+            <div>
+              <h3 class="h6 mb-2">Food, wine &amp; coffee</h3>
+              <p class="small mb-0">Barossa shiraz, Sydney rock oysters and a flat white culture that takes itself seriously.</p>
+            </div>
+          </div>
+        </div>
+      </div><!--/ID:17-->
+    </div>
+  </section><!--/ID:18-->
+
+  <!-- ================= PARALLAX BAND ================= -->
+  <!--ID:21--><section class="parallax-band" aria-label="Australia's outback at night">
+    <img class="parallax-img" data-parallax="0.16"
+         src="https://images.unsplash.com/photo-1546268060-2592ff93ee24?auto=format&amp;fit=crop&amp;w=1920&amp;q=80"
+         alt="Wide desert horizon under a glowing dusk sky in the Australian outback"
+         loading="lazy"
+         onerror="this.onerror=null;this.src='https://picsum.photos/seed/outbackband/1920/1080';">
+    <!--ID:19--><div class="band-veil" aria-hidden="true"></div><!--/ID:19-->
+    <!--ID:20--><div class="container position-relative py-5 text-center" style="z-index:2;">
+      <p class="band-quote reveal">“The outback doesn't shout. It just waits - until the noise in your head runs out.”</p>
+    </div><!--/ID:20-->
+  </section><!--/ID:21-->
+
+  <!-- ================= ITINERARY ================= -->
+  <!--ID:24--><section class="section" id="itinerary" aria-labelledby="itinTitle">
+    <div class="container">
+      <div class="row g-4">
+        <!--ID:22--><div class="col-lg-5 reveal-left">
+          <span class="eyebrow">Suggested route</span>
+          <h2 class="section-title mt-3" id="itinTitle">14 days across <span class="grad-text">a whole continent</span></h2>
+          <p class="lead-muted">A relaxed first-timer loop that mixes city, desert, reef and wilderness - with real rest days built in. Every leg is bookable as private or small-group.</p>
+          <a href="#plan" class="btn btn-accent mt-2">Get this itinerary free</a>
+        </div><!--/ID:22-->
+
+        <!--ID:23--><div class="col-lg-7 reveal-right">
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-day">Days 1–3</span>
+              <h3 class="h5 mt-1 mb-2">Sydney</h3>
+              <p class="small mb-0">Ferry to Manly, walk the Bondi-to-Coogee cliff path, eat your way through Surry Hills.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-day">Days 4–6</span>
+              <h3 class="h5 mt-1 mb-2">Uluru &amp; Kata Tjuta</h3>
+              <p class="small mb-0">Sunrise at the rock, a dot-painting workshop with Anangu artists, Field of Light after dark.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-day">Days 7–9</span>
+              <h3 class="h5 mt-1 mb-2">Cairns &amp; the Reef</h3>
+              <p class="small mb-0">Two days on the outer reef, one full day in the Daintree rainforest and Cape Tribulation.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-day">Days 10–12</span>
+              <h3 class="h5 mt-1 mb-2">Melbourne &amp; the Great Ocean Road</h3>
+              <p class="small mb-0">Laneway coffee and galleries, then the Twelve Apostles right at golden hour.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-day">Days 13–14</span>
+              <h3 class="h5 mt-1 mb-2">Tasmania</h3>
+              <p class="small mb-0">Cradle Mountain hike, a final long lunch in Hobart and MONA before the flight home.</p>
+            </div>
+          </div>
+        </div><!--/ID:23-->
+      </div>
+    </div>
+  </section><!--/ID:24-->
+
+  <!-- ================= GALLERY ================= -->
+  <!--ID:27--><section class="section bg-soft" id="gallery" aria-labelledby="galTitle">
+    <div class="container">
+      <!--ID:25--><div class="row align-items-end g-4 mb-4">
+        <div class="col-lg-8 reveal">
+          <span class="eyebrow">Gallery</span>
+          <h2 class="section-title mt-3 mb-0" id="galTitle">Postcards from <span class="grad-text">the other side of the world</span></h2>
+        </div>
+        <div class="col-lg-4 reveal delay-1">
+          <p class="lead-muted mb-0">Tap any image to see it full screen.</p>
+        </div>
+      </div><!--/ID:25-->
+
+      <!--ID:26--><div class="gallery-grid">
+        <button type="button" class="g-item wide tall reveal"
+                data-lightbox="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&amp;fit=crop&amp;w=1800&amp;q=80"
+                data-caption="Coastal ranges at first light">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"
+               alt="Layered mountain ranges fading into morning mist"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia1/1200/800';">
+          <span class="g-overlay">Coastal ranges at first light</span>
+        </button>
+
+        <button type="button" class="g-item reveal delay-1"
+                data-lightbox="https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                data-caption="Ocean pools carved into the rock">
+          <img src="https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+               alt="Rock pool filled with clear ocean water at the coast"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia2/800/600';">
+          <span class="g-overlay">Ocean pools carved into the rock</span>
+        </button>
+
+        <button type="button" class="g-item reveal delay-2"
+                data-lightbox="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                data-caption="Roads that go on forever">
+          <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+               alt="Empty road stretching toward distant hills at sunset"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia3/800/600';">
+          <span class="g-overlay">Roads that go on forever</span>
+        </button>
+
+        <button type="button" class="g-item tall reveal"
+                data-lightbox="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                data-caption="Wild coastline, southern ocean">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+               alt="Dramatic wild coastline with waves breaking on rocks"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia4/800/1000';">
+          <span class="g-overlay">Wild coastline, southern ocean</span>
+        </button>
+
+        <button type="button" class="g-item reveal delay-1"
+                data-lightbox="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                data-caption="Rainforest meets the reef">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+               alt="Lush green rainforest canopy with light filtering through"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia5/800/600';">
+          <span class="g-overlay">Rainforest meets the reef</span>
+        </button>
+
+        <button type="button" class="g-item reveal delay-2"
+                data-lightbox="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+                data-caption="Sunset over the Indian Ocean">
+          <img src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?auto=format&amp;fit=crop&amp;w=800&amp;q=80"
+               alt="Warm sunset over the ocean with silhouetted headland"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/australia6/800/600';">
+          <span class="g-overlay">Sunset over the Indian Ocean</span>
+        </button>
+      </div><!--/ID:26-->
+    </div>
+  </section><!--/ID:27-->
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <!--ID:30--><section class="section" id="stories" aria-labelledby="storiesTitle">
+    <div class="container">
+      <!--ID:28--><div class="row mb-5">
+        <div class="col-lg-7 reveal">
+          <span class="eyebrow">Traveller stories</span>
+          <h2 class="section-title mt-3 mb-0" id="storiesTitle">Trips that stayed with <span class="grad-text">our travellers</span></h2>
+        </div>
+      </div><!--/ID:28-->
+
+      <!--ID:29--><div id="quoteCarousel" class="carousel slide reveal" data-bs-ride="carousel" data-bs-interval="6500">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="row g-4 justify-content-center">
+              <div class="col-lg-9">
+                <div class="quote-card">
+                  <i class="bi bi-quote" aria-hidden="true"></i>
+                  <p class="mb-4 mt-2 fs-6">“We asked for ‘wild and quiet’ and got two weeks we still bring up at every dinner party. The reef days were magic, but the silence at Uluru is what I remember.”</p>
+                  <p class="mb-0 text-white fw-semibold small">Emma &amp; Jonas <span class="text-accent">· Sweden</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-lg-9">
+                <div class="quote-card">
+                  <i class="bi bi-quote" aria-hidden="true"></i>
+                  <p class="mb-4 mt-2 fs-6">“The itinerary balanced big days with proper rest days. Nothing felt rushed and everything felt enormous. Best-planned trip we've ever taken.”</p>
+                  <p class="mb-0 text-white fw-semibold small">Priya <span class="text-accent">· Singapore</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4 justify-content-center">
+              <div class="col-lg-9">
+                <div class="quote-card">
+                  <i class="bi bi-quote" aria-hidden="true"></i>
+                  <p class="mb-4 mt-2 fs-6">“Standing at Uluru at sunrise with a guide who knew every story behind the land - that's the moment I'll keep forever.”</p>
+                  <p class="mb-0 text-white fw-semibold small">Marcus <span class="text-accent">· Germany</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-indicators position-static mt-4">
+          <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Traveller story 1"></button>
+          <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="1" aria-label="Traveller story 2"></button>
+          <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="2" aria-label="Traveller story 3"></button>
+        </div>
+      </div><!--/ID:29-->
+    </div>
+  </section><!--/ID:30-->
+
+  <!-- ================= CTA / PLAN ================= -->
+  <!--ID:33--><section class="section" id="plan" aria-labelledby="planTitle">
+    <div class="container">
+      <div class="cta-panel reveal-zoom">
+        <div class="row align-items-center g-4">
+          <!--ID:31--><div class="col-lg-6">
+            <span class="eyebrow">Free download</span>
+            <h2 class="section-title mt-3 mb-3" id="planTitle">Get the 14-day Australia itinerary</h2>
+            <p class="mb-0">Day-by-day plan, drive times, best travel windows and a packing list built for desert mornings and reef afternoons. No spam - unsubscribe any time.</p>
+          </div><!--/ID:31-->
+          <!--ID:32--><div class="col-lg-6">
+            <form id="planForm" class="row g-3" novalidate>
+              <div class="col-12">
+                <label for="planEmail" class="form-label small text-white">Your email address</label>
+                <input type="email" class="form-control form-control-dark" id="planEmail" name="email" placeholder="you@example.com" required autocomplete="email">
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="planConsent" required>
+                  <label class="form-check-label small" for="planConsent">
+                    I agree that my email address is used to send the itinerary (see <a href="#" class="text-accent" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>).
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 d-grid d-sm-flex gap-2">
+                <button type="submit" class="btn btn-accent">
+                  <i class="bi bi-send me-2" aria-hidden="true"></i>Send me the itinerary
+                </button>
+              </div>
+              <div class="col-12">
+                <p id="planMessage" class="small mb-0" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div><!--/ID:32-->
+        </div>
+      </div>
+    </div>
+  </section><!--/ID:33-->
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<!--ID:36--><footer class="site-footer">
+  <div class="container">
+    <!--ID:34--><div class="row g-4 pb-5">
+      <div class="col-lg-4">
+        <a class="navbar-brand d-flex align-items-center gap-2 mb-3" href="#top">
+          <span class="brand-mark" aria-hidden="true">WA</span>
+          <span class="brand-text">Wild<span class="text-accent">.</span>Australia</span>
+        </a>
+        <p class="small mb-0">An independent travel guide for people who want Australia slow, wild and a little bit unforgettable. Written by locals, updated for 2026.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h3 class="h6 text-white mb-3">Explore</h3>
+        <ul class="list-unstyled small mb-0 d-grid gap-2">
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#itinerary">Itinerary</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h3 class="h6 text-white mb-3">Practical</h3>
+        <ul class="list-unstyled small mb-0 d-grid gap-2">
+          <li><a href="#plan">Free itinerary</a></li>
+          <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a></li>
+          <li><a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies</a></li>
+          <li><a href="#top">Back to top</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h3 class="h6 text-white mb-3">Follow along</h3>
+        <div class="d-flex gap-2 mb-3">
+          <a href="#" class="social-btn" aria-label="Wild.Australia on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="Wild.Australia on YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="Wild.Australia on Pinterest"><i class="bi bi-pinterest" aria-hidden="true"></i></a>
+          <a href="#" class="social-btn" aria-label="Wild.Australia newsletter by email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+        </div>
+        <p class="small mb-0">hello@wild-australia.example</p>
+      </div>
+    </div><!--/ID:34-->
+
+    <!--ID:35--><div class="border-top py-4 d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 small">
+      <span>&copy; 2026 Wild.Australia - all rights reserved.</span>
+      <span class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / Cookie settings</a>
+      </span>
+    </div><!--/ID:35-->
+  </div>
+</footer><!--/ID:36-->
+
+<button type="button" id="toTop" aria-label="Back to top">
+  <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- ================= LIGHTBOX MODAL ================= -->
+<!--ID:39--><div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:37--><div class="modal-header">
+        <h2 class="modal-title h6" id="lightboxTitle">Photo</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close image viewer"></button>
+      </div><!--/ID:37-->
+      <!--ID:38--><div class="modal-body">
+        <img id="lightboxImg" src="" alt="" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/111a26/ff7a3d?text=Image+unavailable';">
+        <p id="lightboxCaption" class="small mt-3 mb-0"></p>
+      </div><!--/ID:38-->
+    </div>
+  </div>
+</div><!--/ID:39-->
+
+<!-- ================= COOKIE MODAL ================= -->
+<!--ID:41--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!--ID:40--><div class="modal-header">
+        <h2 class="modal-title h5" id="cookieModalLabel">Cookies &amp; local storage</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close cookie notice"></button>
+      </div><!--/ID:40-->
+      <div class="modal-body small">
+        <p class="mb-2">This website uses <strong>no tracking, advertising or marketing cookies</strong>. We only store one item in your browser's local storage:</p>
+        <ul class="mb-3">
+          <li><strong>cookieConsent</strong> (functional, local storage) - remembers whether you accepted or rejected this notice, so it is only shown once. It never leaves your device.</li>
+        </ul>
+        <p class="mb-2">In addition, we load a few external resources that may process your IP address when the page is opened:</p>
+        <ul class="mb-3">
+          <li><strong>Bootstrap &amp; Bootstrap Icons</strong> (CDN, jsDelivr) - layout and icons.</li>
+          <li><strong>Google Fonts</strong> (Google) - typography.</li>
+          <li><strong>Unsplash / Picsum</strong> - photography.</li>
+        </ul>
+        <p class="mb-0">You can change or withdraw your choice at any time via the “Cookies / Cookie settings” link in the footer. More details in our <a href="#" class="text-accent" data-bs-toggle="modal" data-bs-target="#privacyModal" data-bs-dismiss="modal">Privacy statement</a>.</p>
+      </div>
+      <div class="modal-footer flex-wrap gap-2">
+        <button type="button" class="btn btn-ghost btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject / Close</button>
+        <button type="button" class="btn btn-accent btn-sm" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+</div><!--/ID:41--><!--ID:42-->
+
+<!-- ================= PRIVACY MODAL ================= -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="privacyModalLabel">Privacy statement</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close privacy statement"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Data controller:</strong> Wild.Australia (travel guide), contactable at hello@wild-australia.example.</p>
+        <p><strong>What we collect:</strong> only the data you actively provide - currently your e-mail address if you request the free itinerary. In addition, our hosting provider records standard server log data (IP address, user agent, timestamp) for security and stability. No data is sold or shared for advertising.</p>
+        <p><strong>Purpose &amp; legal basis:</strong> sending you the requested itinerary and travel updates is based on your consent (Art. 6(1)(a) GDPR), which you can withdraw at any time. Operating and securing the website is based on our legitimate interest (Art. 6(1)(f) GDPR).</p>
+        <p><strong>External resources:</strong> the page loads Bootstrap, Bootstrap Icons and Google Fonts from external CDNs, and photographs from Unsplash/Picsum. When these are requested, your IP address is transmitted to the respective provider (Google, jsDelivr, Unsplash, Picsum).</p>
+        <p><strong>Retention:</strong> server logs are kept for a maximum of 14 days. Newsletter data is stored until you unsubscribe or request deletion. Local storage entries remain in your browser until you delete them.</p>
+        <p><strong>Your rights:</strong> you have the right to access, rectify, delete, restrict and port your data, to object to processing and to lodge a complaint with a supervisory authority. To exercise these rights, contact us at the e-mail address above.</p>
+        <p class="mb-0 text-secondary">This text is provided as a template and should be adapted to your actual processing activities and jurisdiction.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll progress, navbar, back-to-top, parallax ---------- */
+  var nav = document.getElementById('mainNav');
+  var progress = document.getElementById('scrollProgress');
+  var toTop = document.getElementById('toTop');
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+  var ticking = false;
+
+  function updateOnScroll() {
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+
+    if (progress) {
+      progress.style.width = (docH > 0 ? Math.min((st / docH) * 100, 100) : 0) + '%';
+    }
+    if (nav) { nav.classList.toggle('scrolled', st > 40); }
+    if (toTop) { toTop.classList.toggle('show', st > 600); }
+
+    if (!reduceMotion && window.innerWidth > 767) {
+      parallaxEls.forEach(function (el) {
+        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.12;
+        var parent = el.parentElement;
+        if (!parent) { return; }
+        var rect = parent.getBoundingClientRect();
+        if (rect.bottom > -300 && rect.top < window.innerHeight + 300) {
+          var offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed;
+          el.style.transform = 'translate3d(0,' + offset.toFixed(2) + 'px,0)';
+        }
+      });
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateOnScroll);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateOnScroll();
+
+  if (toTop) {
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  var revealEls = Array.prototype.slice.call(
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom')
+  );
+
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- animated counters ---------- */
+  function animateCount(el) {
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1600;
+    var start = null;
+
+    function step(ts) {
+      if (start === null) { start = ts; }
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var value = Math.round(target * eased);
+      el.textContent = value.toLocaleString('en-AU') + suffix;
+      if (p < 1) { window.requestAnimationFrame(step); }
+    }
+    window.requestAnimationFrame(step);
+  }
+
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  if (counters.length) {
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function (c) { cio.observe(c); });
+    } else {
+      counters.forEach(function (c) {
+        c.textContent = (parseFloat(c.getAttribute('data-count')) || 0).toLocaleString('en-AU') + (c.getAttribute('data-suffix') || '');
+      });
+    }
+  }
+
+  /* ---------- rotating hero word ---------- */
+  var rotator = document.getElementById('rotator');
+  if (rotator && !reduceMotion) {
+    var words = ['outback', 'reef', 'sunset', 'wilderness', 'coastline'];
+    var wi = 0;
+    window.setInterval(function () {
+      wi = (wi + 1) % words.length;
+      rotator.style.opacity = '0';
+      rotator.style.transform = 'translateY(12px)';
+      window.setTimeout(function () {
+        rotator.textContent = words[wi];
+        rotator.style.opacity = '1';
+        rotator.style.transform = 'translateY(0)';
+      }, 380);
+    }, 2900);
+  }
+
+  /* ---------- lightbox ---------- */
+  var lightboxEl = document.getElementById('lightboxModal');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCap = document.getElementById('lightboxCaption');
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lightbox]'), function (trigger) {
+    trigger.addEventListener('click', function () {
+      var src = trigger.getAttribute('data-lightbox');
+      var caption = trigger.getAttribute('data-caption') || 'Australian travel photo';
+
+      if (lightboxImg) {
+        lightboxImg.setAttribute('src', src);
+        lightboxImg.setAttribute('alt', caption);
+      }
+      if (lightboxCap) { lightboxCap.textContent = caption; }
+      if (lightboxEl && window.bootstrap) {
+        bootstrap.Modal.getOrCreateInstance(lightboxEl).show();
+      }
+    });
+  });
+
+  /* ---------- close mobile menu after clicking a link ---------- */
+  var navCollapse = document.getElementById('navMenu');
+  if (navCollapse) {
+    Array.prototype.forEach.call(navCollapse.querySelectorAll('a'), function (link) {
+      link.addEventListener('click', function () {
+        if (navCollapse.classList.contains('show') && window.bootstrap) {
+          bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+        }
+      });
+    });
+  }
+
+  /* ---------- newsletter form ---------- */
+  var planForm = document.getElementById('planForm');
+  if (planForm) {
+    planForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = document.getElementById('planMessage');
+      var email = document.getElementById('planEmail');
+      var consent = document.getElementById('planConsent');
+
+      if (!email || !email.checkValidity() || !consent || !consent.checked) {
+        if (msg) {
+          msg.textContent = 'Please enter a valid e-mail address and accept the privacy note.';
+          msg.className = 'small mb-0 text-warning';
+        }
+        return;
+      }
+      if (msg) {
+        msg.textContent = 'Thank you! Your 14-day Australia itinerary is on its way to ' + email.value + '.';
+        msg.className = 'small mb-0 text-accent';
+      }
+      planForm.reset();
+    });
+  }
+
+  /* ---------- cookie notice (shows once, stored in localStorage) ---------- */
+  var cookieModalEl = document.getElementById('cookieModal');
+  var consentStored = false;
+
+  try {
+    consentStored = !!localStorage.getItem('cookieConsent');
+  } catch (err) {
+    consentStored = false;
+  }
+
+  if (cookieModalEl && window.bootstrap && !consentStored) {
+    bootstrap.Modal.getOrCreateInstance(cookieModalEl).show();
+  }
+
+  function storeConsent(value) {
+    try { localStorage.setItem('cookieConsent', value); } catch (err) {}
+  }
+
+  var acceptBtn = document.getElementById('cookieAccept');
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function () {
+      storeConsent('accepted');
+      if (cookieModalEl && window.bootstrap) {
+        bootstrap.Modal.getOrCreateInstance(cookieModalEl).hide();
+      }
+    });
+  }
+
+  var rejectBtn = document.getElementById('cookieReject');
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', function () {
+      storeConsent('rejected');
+    });
+  }
+
+  if (cookieModalEl) {
+    cookieModalEl.addEventListener('hidden.bs.modal', function () {
+      var hasConsent = false;
+      try { hasConsent = !!localStorage.getItem('cookieConsent'); } catch (err) {}
+      if (!hasConsent) { storeConsent('dismissed'); }
+    });
+  }
+
+});
+</script>
+<!--/ID:42--></body>
+</html>

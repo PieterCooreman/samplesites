@@ -1,0 +1,820 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitterbean Coffee Co. | Playful Specialty Coffee</title>
+    <meta name="description" content="Jitterbean Coffee Co. - small-batch, big smiles. Explore our playful specialty coffee menu, story, and gallery. Sip, smile, repeat!">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!--ID:1--><style>
+        :root {
+            --brand-color: #E76F51;
+            --brand-dark: #2D1B12;
+            --brand-cream: #FDF6F0;
+            --brand-brown: #6B4F3A;
+            --brand-accent: #F4A261;
+            --brand-soft: #FFF3E6;
+            --brand-green: #2A9D8F;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--brand-cream);
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-head {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            overflow-wrap: break-word;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+        }
+
+        .text-brand { color: var(--brand-color) !important; }
+        .text-dark-coffee { color: var(--brand-dark) !important; }
+        .text-brown { color: var(--brand-brown) !important; }
+        .bg-cream { background-color: var(--brand-cream) !important; }
+        .bg-soft { background-color: var(--brand-soft) !important; }
+
+        .btn-brand {
+            background-color: var(--brand-color);
+            border-color: var(--brand-color);
+            color: #fff;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 20px rgba(231, 111, 81, 0.3);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+
+        .btn-brand:hover,
+        .btn-brand:focus {
+            background-color: #d95a3e;
+            border-color: #d95a3e;
+            color: #fff;
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 14px 28px rgba(231, 111, 81, 0.4);
+        }
+
+        .btn-brand:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 4px 10px rgba(231, 111, 81, 0.3);
+        }
+
+        .btn-outline-brand {
+            background-color: transparent;
+            border-color: #fff;
+            color: #fff;
+            border-radius: 50px;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            letter-spacing: 0.02em;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+
+        .btn-outline-brand:hover,
+        .btn-outline-brand:focus {
+            background-color: #fff;
+            border-color: #fff;
+            color: var(--brand-dark);
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-brand:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .navbar {
+            transition: background-color 0.35s ease, box-shadow 0.35s ease;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(45, 27, 18, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .navbar .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 600;
+            font-family: 'Fredoka', sans-serif;
+            position: relative;
+            padding: 0.5rem 0.75rem;
+            transition: color 0.2s ease;
+        }
+
+        .navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--brand-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus,
+        .navbar .nav-link.active {
+            color: #fff !important;
+        }
+
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link:focus::after,
+        .navbar .nav-link.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            color: #fff;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.5);
+        }
+
+        .hero {
+            min-height: 100svh;
+            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                min-height: 100svh;
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(45, 27, 18, 0.7) 0%, rgba(45, 27, 18, 0.35) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .float-item {
+            position: absolute;
+            z-index: 0;
+            font-size: clamp(2rem, 4vw, 4rem);
+            opacity: 0.25;
+            animation: float 6s ease-in-out infinite;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(8deg); }
+        }
+
+        .parallax-section {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+            .parallax-section {
+                background-attachment: scroll;
+            }
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .card-coffee {
+            border: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(45, 27, 18, 0.08);
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.35s ease;
+            height: 100%;
+        }
+
+        .card-coffee:hover {
+            transform: translateY(-8px) rotate(-1deg);
+            box-shadow: 0 20px 35px rgba(45, 27, 18, 0.15);
+        }
+
+        .card-coffee .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+
+        .card-coffee:hover .card-img-top {
+            transform: scale(1.08);
+        }
+
+        .card-coffee .price-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--brand-accent);
+            color: var(--brand-dark);
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 0.4rem 0.9rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .btn-cart {
+            background-color: var(--brand-dark);
+            border: none;
+            color: #fff;
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cart:hover {
+            background-color: var(--brand-color);
+            transform: scale(1.05);
+        }
+
+        .btn-cart.added {
+            background-color: var(--brand-green) !important;
+            animation: pop 0.4s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .gallery-img {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card {
+            background: #fff;
+            border: 0;
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: var(--brand-accent);
+            color: var(--brand-dark);
+            transform: translateY(-3px);
+        }
+
+        .form-control {
+            border-radius: 50px;
+            border: 1px solid #e0d5cc;
+            padding: 0.75rem 1.25rem;
+            background-color: #fff;
+        }
+
+        .form-control:focus {
+            border-color: var(--brand-accent);
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.25);
+        }
+
+        .footer {
+            background-color: var(--brand-dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: var(--brand-accent);
+        }
+
+        .modal-content {
+            border-radius: 20px;
+            border: 0;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background-color: var(--brand-soft);
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--brand-dark);
+        }
+
+        .btn-close:focus {
+            box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.3);
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jitterbean Coffee Co. | Playful Specialty Coffee">
+    <meta property="og:description" content="Jitterbean Coffee Co. - small-batch, big smiles. Explore our playful specialty coffee menu, story, and gallery. Sip, smile, repeat!">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/6mpbea3b6n0t8a30/">
+</head>
+<body>
+    <!--ID:2--><nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand fw-bold font-head d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-cup-hot-fill fs-3 text-brand"></i>
+                <span>Jitterbean</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link active" href="#hero" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#story">Story</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="#menu" class="btn btn-brand btn-sm px-4 py-2">Order Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!--ID:8--><section class="hero" id="hero">
+        <!--ID:3--><div class="hero-overlay"></div><!--/ID:3-->
+        <!--ID:4--><div class="float-item" style="top: 18%; left: 8%; font-size: 3.5rem; animation-delay: 0s;">☕</div><!--/ID:4-->
+        <!--ID:5--><div class="float-item" style="bottom: 22%; right: 10%; font-size: 2.8rem; animation-delay: -2s;">🫘</div><!--/ID:5-->
+        <!--ID:6--><div class="float-item" style="top: 30%; right: 18%; font-size: 2rem; animation-delay: -4s;">✨</div><!--/ID:6-->
+        <!--ID:7--><div class="container hero-content position-relative z-2">
+            <div class="row">
+                <div class="col-lg-8 text-white">
+                    <p class="badge bg-light text-dark fs-6 mb-3 px-3 py-2 rounded-pill shadow-sm">☕ Small-batch. Big smiles.</p>
+                    <h1 class="display-1 fw-bold mb-3">Sip, Smile, <span class="text-brand">Repeat.</span></h1>
+                    <p class="lead mb-4" style="max-width: 600px; color: rgba(255,255,255,0.85);">Jitterbean Coffee Co. pours playful specialty brews with a wink and a wobble. Join the bean team and taste the happy.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#menu" class="btn btn-brand btn-lg">Explore Menu <i class="bi bi-arrow-right ms-1"></i></a>
+                        <a href="#story" class="btn btn-outline-brand btn-lg">Our Story <i class="bi bi-heart-fill ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ID:7-->
+    </section><!--/ID:8-->
+
+    <!--ID:11--><section id="story" class="section-padding bg-cream">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!--ID:9--><div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80" alt="Coffee beans and a cup on a rustic table" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; width: 100%; height: 400px;" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Coffee+Beans';">
+                </div><!--/ID:9-->
+                <!--ID:10--><div class="col-lg-6">
+                    <p class="text-brand fw-bold text-uppercase mb-2">Our Story</p>
+                    <h2 class="fw-bold mb-4">From a wobbly cart to your happy cup</h2>
+                    <p class="text-brown mb-3">Jitterbean started as a lemonade-stand-sized coffee cart with a slightly crooked sign and an dangerously optimistic owner. Today our beans are still ethically sourced, our milk is still frothed with questionable enthusiasm, and our lattes still taste like a hug from a cartoon bear.</p>
+                    <p class="text-brown mb-4">Every cup is a tiny event. We roast in small batches, dance during grinding, and hand-stamp your cup with a smile. No boring sips allowed.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#menu" class="btn btn-brand">Taste the Fun <i class="bi bi-cup-hot-fill ms-1"></i></a>
+                    </div>
+                </div><!--/ID:10-->
+            </div>
+        </div>
+    </section><!--/ID:11-->
+
+    <!--ID:14--><section id="menu" class="section-padding bg-soft">
+        <div class="container">
+            <!--ID:12--><div class="text-center mb-5">
+                <p class="text-brand fw-bold text-uppercase mb-2">Menu</p>
+                <h2 class="fw-bold">Pick Your Perk</h2>
+                <p class="text-brown mx-auto" style="max-width: 600px;">Each drink is made with love, a little chaos, and a mandatory sip-test by our chief happiness officer.</p>
+            </div><!--/ID:12-->
+            <!--ID:13--><div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Espresso being poured into a cup" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Espresso';">
+                        <span class="price-badge">$3.50</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Espresso Express</h3>
+                            <p class="text-brown small mb-3">A tiny, mighty jolt. Double shot, zero patience required.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Espresso Express"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Latte with heart-shaped art" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Latte';">
+                        <span class="price-badge">$4.50</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Lovebug Latte</h3>
+                            <p class="text-brown small mb-3">Velvety milk, a heart in the foam, and a tiny wink from the barista.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Lovebug Latte"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Iced coffee in a tall glass" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Cold+Brew';">
+                        <span class="price-badge">$4.00</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Chill Pill Cold Brew</h3>
+                            <p class="text-brown small mb-3">Smooth, slow-steeped, and colder than a penguin's handshake.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Chill Pill Cold Brew"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Cappuccino with thick foam" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Cappuccino';">
+                        <span class="price-badge">$4.25</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Fluffy Cloud Capp</h3>
+                            <p class="text-brown small mb-3">Foam so thick you could nap on it. We don't recommend napping on it.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Fluffy Cloud Capp"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Mocha with chocolate drizzle" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Mocha';">
+                        <span class="price-badge">$4.75</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Moody Mocha</h3>
+                            <p class="text-brown small mb-3">Chocolate, espresso, and just enough drama to make it interesting.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Moody Mocha"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-coffee position-relative">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Flaky croissants on a wooden board" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Croissant';">
+                        <span class="price-badge">$3.25</span>
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-1">The Buttery Giggle Croissant</h3>
+                            <p class="text-brown small mb-3">Flaky, golden, and guaranteed to make your taste buds giggle.</p>
+                            <button class="btn btn-cart btn-sm add-to-cart" data-item="Buttery Giggle Croissant"><i class="bi bi-bag-plus me-1"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:13-->
+        </div>
+    </section><!--/ID:14-->
+
+    <!--ID:15--><section class="parallax-section py-5 text-white text-center" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80'); min-height: 55vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container py-5">
+            <h2 class="display-5 fw-bold mb-3">“Coffee should be fun, not fussy.”</h2>
+            <p class="lead mb-0" style="color: rgba(255,255,255,0.85);">- The Jitterbean Team, while covered in coffee grounds</p>
+        </div>
+    </section><!--/ID:15-->
+
+    <!--ID:18--><section id="gallery" class="section-padding bg-cream">
+        <div class="container">
+            <!--ID:16--><div class="text-center mb-5">
+                <p class="text-brand fw-bold text-uppercase mb-2">Gallery</p>
+                <h2 class="fw-bold">Smiles & Stains</h2>
+                <p class="text-brown mx-auto" style="max-width: 600px;">A peek behind the counters, cups, and occasional chaos. Click any photo to enlarge the joy.</p>
+            </div><!--/ID:16-->
+            <!--ID:17--><div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Cozy coffee shop interior with warm lighting" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1200&q=80" data-title="Our cozy corner" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Coffee+Shop';">
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Coffee cup surrounded by beans" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1200&q=80" data-title="Bean there, done that" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Beans';">
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Barista pouring coffee" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80" data-title="Pour decisions only" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Pouring';">
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Latte art in a ceramic cup" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=80" data-title="Latte love" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Latte+Art';">
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Coffee beans and scoop" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80" data-title="Fresh beans, whole beans" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Beans+Scoop';">
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Espresso shot in a small glass" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-full="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=1200&q=80" data-title="The good stuff" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Espresso';">
+                </div>
+            </div><!--/ID:17-->
+        </div>
+    </section><!--/ID:18-->
+
+    <!--ID:21--><section id="testimonials" class="section-padding bg-soft">
+        <div class="container">
+            <!--ID:19--><div class="text-center mb-5">
+                <p class="text-brand fw-bold text-uppercase mb-2">Happy Sippers</p>
+                <h2 class="fw-bold">What the Bean Team Says</h2>
+            </div><!--/ID:19-->
+            <!--ID:20--><div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card testimonial-card p-4 border-0">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-brown mb-3">“I asked for a latte and got a tiny piece of art and a dad joke. 10/10 would snort-laugh again.”</p>
+                        <p class="fw-bold mb-0">- Milo P.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card testimonial-card p-4 border-0">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="text-brown mb-3">“The cold brew is so smooth I forgave them for naming it after a penguin's handshake. I don't even know what that means.”</p>
+                        <p class="fw-bold mb-0">- Aurelia K.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card testimonial-card p-4 border-0">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-brown mb-3">“My croissant giggled, my coffee winked, and my morning got 200% better. Highly recommend the chaos.”</p>
+                        <p class="fw-bold mb-0">- Theo B.</p>
+                    </div>
+                </div>
+            </div><!--/ID:20-->
+        </div>
+    </section><!--/ID:21-->
+
+    <!--ID:22--><section id="contact" class="section-padding bg-cream">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <p class="text-brand fw-bold text-uppercase mb-2">Stay Jittery</p>
+                    <h2 class="fw-bold mb-3">Get a Free Smile With Every Email</h2>
+                    <p class="text-brown mb-4">Sign up for jokes, secret menus, and the occasional coffee-covered behind-the-scenes video.</p>
+                    <form id="newsletterForm" class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <input type="email" class="form-control" id="emailInput" placeholder="you@example.com" aria-label="Email address" required>
+                        <button type="submit" class="btn btn-brand px-4 py-2 flex-shrink-0">Send Smiles</button>
+                    </form>
+                    <div id="newsletterSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                        🎉 You're on the list! Check your inbox for a high-five.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/ID:22-->
+
+    <!--ID:26--><footer class="footer">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <!--ID:23--><div class="col-md-4 text-center text-md-start">
+                    <a class="text-white fw-bold fs-4 font-head text-decoration-none d-inline-flex align-items-center gap-2" href="#">
+                        <i class="bi bi-cup-hot-fill text-brand"></i> Jitterbean
+                    </a>
+                    <p class="small mt-2 mb-0" style="color: rgba(255,255,255,0.6);">Small-batch. Big smiles. Sip, smile, repeat.</p>
+                </div><!--/ID:23-->
+                <!--ID:24--><div class="col-md-4 text-center">
+                    <span class="small">&copy; 2026 Jitterbean Coffee Co.</span>
+                    <span class="small mx-2">|</span>
+                    <button type="button" class="btn btn-link p-0 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#privacyModal" style="color: rgba(255,255,255,0.8);">Privacy</button>
+                    <span class="small mx-2">|</span>
+                    <button type="button" class="btn btn-link p-0 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#cookieModal" style="color: rgba(255,255,255,0.8);">Cookies</button>
+                </div><!--/ID:24-->
+                <!--ID:25--><div class="col-md-4 d-flex justify-content-center justify-content-md-end gap-2">
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                </div><!--/ID:25-->
+            </div>
+        </div>
+    </footer><!--/ID:26-->
+
+    <!-- Lightbox Modal -->
+    <!--ID:29--><div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark">
+                <!--ID:27--><div class="modal-header border-0">
+                    <h5 class="modal-title text-white" id="lightboxModalLabel">Image</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:27-->
+                <!--ID:28--><div class="modal-body text-center p-0">
+                    <img src="" id="lightboxImage" class="img-fluid w-100" alt="Gallery preview" style="max-height: 80vh; object-fit: contain;" onerror="this.onerror=null;this.src='https://placehold.co/1200x800?text=Image+Not+Found';">
+                </div><!--/ID:28-->
+            </div>
+        </div>
+    </div><!--/ID:29-->
+
+    <!-- Cookie notice modal -->
+    <!--ID:33--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!--ID:30--><div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel">Cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:30-->
+                <!--ID:31--><div class="modal-body">
+                    <p class="small text-secondary mb-2">We use only necessary cookies to make this site work (functional / localStorage for your preferences). No tracking or marketing cookies are used. If embedded content (maps, video, analytics) is added later, it may set its own cookies - see Privacy for details.</p>
+                    <p class="small text-secondary mb-0">You can change your choice anytime via the Cookies link in the footer.</p>
+                </div><!--/ID:31-->
+                <!--ID:32--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" id="cookieReject" data-bs-dismiss="modal">Reject</button>
+                    <button type="button" class="btn btn-brand btn-sm" id="cookieAccept">Accept</button>
+                </div><!--/ID:32-->
+            </div>
+        </div>
+    </div><!--/ID:33-->
+
+    <!-- Privacy statement modal -->
+    <!--ID:37--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!--ID:34--><div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy statement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><!--/ID:34-->
+                <!--ID:35--><div class="modal-body small">
+                    <p><strong>Data controller:</strong> Jitterbean Coffee Co.</p>
+                    <p><strong>What we collect:</strong> only data you provide (e.g. via forms) and standard server logs (IP, user agent) for security. No data is sold.</p>
+                    <p><strong>Purpose & legal basis:</strong> to operate and secure the website (legitimate interest / contract) and to respond to your requests (consent).</p>
+                    <p><strong>Retention:</strong> server logs are kept briefly, form data only as needed to handle your request.</p>
+                    <p><strong>Your rights:</strong> you may request access, correction or deletion of your data. Contact us via the site.</p>
+                    <p class="mb-0 text-secondary">This is a fictional demo template - adapt this text to your actual processing if used in production.</p>
+                </div><!--/ID:35-->
+                <!--ID:36--><div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div><!--/ID:36-->
+            </div>
+        </div>
+    </div><!--/ID:37-->
+
+    <!--ID:38--><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><!--/ID:38-->
+    <!--ID:39--><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cookie consent handling
+            try {
+                if (!localStorage.getItem('cookieConsent')) {
+                    var cookieEl = document.getElementById('cookieModal');
+                    if (cookieEl && window.bootstrap) {
+                        new bootstrap.Modal(cookieEl).show();
+                    }
+                }
+            } catch(e) {}
+
+            var acceptBtn = document.getElementById('cookieAccept');
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'accepted'); } catch(e) {}
+                    var m = document.getElementById('cookieModal');
+                    if (m && window.bootstrap) {
+                        var inst = bootstrap.Modal.getInstance(m);
+                        if (inst) inst.hide();
+                    }
+                });
+            }
+
+            var rejectBtn = document.getElementById('cookieReject');
+            if (rejectBtn) {
+                rejectBtn.addEventListener('click', function() {
+                    try { localStorage.setItem('cookieConsent', 'rejected'); } catch(e) {}
+                });
+            }
+
+            // Navbar scroll background
+            var nav = document.getElementById('mainNav');
+            function updateNav() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+
+            // Add to cart micro-interaction
+            document.querySelectorAll('.add-to-cart').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    if (btn.classList.contains('added')) return;
+                    var originalText = btn.textContent;
+                    btn.textContent = 'Added! ✓';
+                    btn.classList.add('added');
+                    setTimeout(function() {
+                        btn.textContent = originalText;
+                        btn.classList.remove('added');
+                    }, 1500);
+                });
+            });
+
+            // Gallery lightbox
+            var lightboxModal = document.getElementById('lightboxModal');
+            var lightboxImage = document.getElementById('lightboxImage');
+            var lightboxLabel = document.getElementById('lightboxModalLabel');
+
+            document.querySelectorAll('.gallery-img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    var fullSrc = img.getAttribute('data-full');
+                    var title = img.getAttribute('data-title') || 'Gallery image';
+                    if (lightboxImage) {
+                        lightboxImage.src = fullSrc;
+                    }
+                    if (lightboxLabel) {
+                        lightboxLabel.textContent = title;
+                    }
+                });
+            });
+
+            if (lightboxModal && lightboxImage) {
+                lightboxModal.addEventListener('hide.bs.modal', function() {
+                    lightboxImage.src = '';
+                });
+            }
+
+            // Newsletter form
+            var form = document.getElementById('newsletterForm');
+            var successAlert = document.getElementById('newsletterSuccess');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var emailInput = document.getElementById('emailInput');
+                    if (emailInput && emailInput.value.trim() !== '') {
+                        if (successAlert) {
+                            successAlert.classList.remove('d-none');
+                            setTimeout(function() {
+                                successAlert.classList.add('d-none');
+                            }, 4000);
+                        }
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+    </script><!--/ID:39-->
+</body>
+</html>
