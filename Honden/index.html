@@ -1,0 +1,1385 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Hond – alles over rassen, verzorging, voeding en opvoeding</title>
+<meta name="description" content="Alles over de hond: rassen, verzorging, voeding, opvoeding, gezondheid en een fotogalerij. Praktische gids voor (toekomstige) hondenbaasjes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<!--ID:1--><style>
+  :root{
+    --accent:#b4451f;
+    --accent-dark:#8f3517;
+    --accent-soft:#fdeee6;
+    --ink:#1f2733;
+    --muted:#5a6472;
+  }
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:88px;
+  }
+  body{
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:#fffdfb;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.font-display{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:700;
+    line-height:1.15;
+    overflow-wrap:break-word;
+  }
+  h1{font-size:clamp(2rem,7.5vw,4.25rem);}
+  h2{font-size:clamp(1.6rem,4.6vw,2.6rem);}
+  h3{font-size:clamp(1.15rem,2.6vw,1.45rem);}
+  p,li{font-size:1rem;line-height:1.7;}
+  .lead{font-size:clamp(1rem,2.2vw,1.2rem);}
+
+  /* ---------- Navbar ---------- */
+  .navbar-brand .brand-mark{
+    width:38px;height:38px;border-radius:12px;
+    background:var(--accent);
+    color:#fff;display:inline-flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+  }
+  .navbar .nav-link{
+    font-weight:500;
+    color:var(--ink);
+    padding:.5rem .75rem;
+    border-radius:.5rem;
+  }
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus{
+    color:var(--accent);
+    background:var(--accent-soft);
+  }
+  .navbar-toggler{border-color:rgba(0,0,0,.12);}
+  .navbar-toggler:focus{box-shadow:0 0 0 .2rem rgba(180,69,31,.25);}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    min-height:46px;
+    padding:.65rem 1.35rem;
+    border-radius:999px;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+  }
+  .btn-accent{
+    background:var(--accent);
+    border:1px solid var(--accent);
+    color:#fff;
+  }
+  .btn-accent:hover,.btn-accent:focus{
+    background:var(--accent-dark);
+    border-color:var(--accent-dark);
+    color:#fff;
+  }
+  .btn-outline-light-2{
+    border:1px solid rgba(255,255,255,.7);
+    color:#fff;
+    background:transparent;
+  }
+  .btn-outline-light-2:hover,.btn-outline-light-2:focus{
+    background:#fff;color:var(--ink);border-color:#fff;
+  }
+  .btn-outline-accent{
+    border:1px solid var(--accent);
+    color:var(--accent);
+    background:transparent;
+  }
+  .btn-outline-accent:hover,.btn-outline-accent:focus{
+    background:var(--accent);color:#fff;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:6.5rem;
+    padding-bottom:3.5rem;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(20,24,31,.78) 0%,rgba(20,24,31,.58) 45%,rgba(20,24,31,.88) 100%);
+  }
+  .hero-badge{
+    background:rgba(255,255,255,.16);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.35);
+    font-weight:600;
+    padding:.5rem 1rem;
+  }
+  .stat-glass{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:1rem;
+    padding:1rem;
+    color:#fff;
+    height:100%;
+    backdrop-filter:blur(4px);
+  }
+  .stat-glass .stat-num{
+    font-family:'Fraunces',Georgia,serif;
+    font-size:clamp(1.35rem,4vw,1.9rem);
+    font-weight:700;
+    display:block;
+    line-height:1.1;
+  }
+  .stat-glass .stat-label{font-size:.85rem;opacity:.88;}
+
+  /* ---------- Sections ---------- */
+  .section{padding-top:clamp(3rem,7vw,5.5rem);padding-bottom:clamp(3rem,7vw,5.5rem);}
+  .section-alt{background:#fbf7f4;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.78rem;
+    font-weight:600;
+    color:var(--accent);
+  }
+  .divider{
+    width:64px;height:4px;border-radius:999px;background:var(--accent);
+  }
+
+  /* ---------- Cards ---------- */
+  .card{
+    border-radius:1rem;
+  }
+  .card-hover{
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .card-hover:hover{
+    transform:translateY(-5px);
+    box-shadow:0 .9rem 2rem rgba(31,39,51,.12)!important;
+  }
+  .img-fixed{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+  }
+  .badge-soft{
+    background:var(--accent-soft);
+    color:var(--accent-dark);
+    font-weight:600;
+    padding:.45rem .7rem;
+    border-radius:999px;
+    font-size:.75rem;
+  }
+  .icon-bubble{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+  }
+  .step-num{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--accent);color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:700;flex:0 0 auto;
+  }
+  .check-list{list-style:none;padding-left:0;margin-bottom:0;}
+  .check-list li{
+    display:flex;gap:.6rem;align-items:flex-start;
+    padding:.4rem 0;
+  }
+  .check-list i{color:var(--accent);margin-top:.25rem;}
+
+  /* ---------- Gallery ---------- */
+  .gallery-item{
+    display:block;width:100%;padding:0;border:0;background:none;
+    border-radius:1rem;overflow:hidden;
+    cursor:zoom-in;position:relative;
+  }
+  .gallery-item img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    transition:transform .45s ease;
+    display:block;
+  }
+  .gallery-item:hover img,.gallery-item:focus-visible img{transform:scale(1.06);}
+  .gallery-item:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:1080;
+    background:rgba(12,15,20,.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:1.25rem;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:100%;
+    max-height:82svh;
+    border-radius:1rem;
+    box-shadow:0 1rem 3rem rgba(0,0,0,.6);
+  }
+  .lightbox-close{
+    position:absolute;top:1rem;right:1rem;
+    width:48px;height:48px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.45);
+    background:rgba(255,255,255,.12);
+    color:#fff;font-size:1.5rem;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,.25);}
+
+  /* ---------- Accordion ---------- */
+  .accordion-button:not(.collapsed){
+    background:var(--accent-soft);
+    color:var(--accent-dark);
+  }
+  .accordion-button:focus{box-shadow:0 0 0 .2rem rgba(180,69,31,.2);}
+  .accordion-item{border-radius:.85rem!important;overflow:hidden;}
+
+  /* ---------- Footer ---------- */
+  footer{background:#1c2027;color:#cfd4db;}
+  footer a{color:#e8ebef;text-decoration:none;}
+  footer a:hover{color:#fff;text-decoration:underline;}
+  footer .footer-mark{
+    width:36px;height:36px;border-radius:11px;
+    background:var(--accent);color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+
+  /* ---------- Misc ---------- */
+  .img-cover-rounded{
+    width:100%;height:100%;min-height:260px;
+    object-fit:cover;border-radius:1rem;
+  }
+  @media (max-width:575.98px){
+    .hero{padding-top:5.5rem;}
+    .btn{width:100%;}
+    .hero .btn{width:100%;}
+  }
+/*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="De Hond – alles over rassen, verzorging, voeding en opvoeding">
+    <meta property="og:description" content="Alles over de hond: rassen, verzorging, voeding, opvoeding, gezondheid en een fotogalerij. Praktische gids voor (toekomstige) hondenbaasjes.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/ub3gjeglpg06n26y/">
+</head>
+<body id="top">
+
+<!-- ================= NAVBAR ================= -->
+<!--ID:2--><nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top py-2" aria-label="Hoofdnavigatie">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="5.4" cy="10.2" r="2.5"/>
+          <circle cx="9.5" cy="6.6" r="2.7"/>
+          <circle cx="14.5" cy="6.6" r="2.7"/>
+          <circle cx="18.6" cy="10.2" r="2.5"/>
+          <path d="M12 11.4c3.2 0 5.9 2.3 5.9 5 0 2.1-1.7 3.4-3.7 3.4-1 0-1.6-.4-2.2-.4s-1.2.4-2.2.4c-2 0-3.7-1.3-3.7-3.4 0-2.7 2.7-5 5.9-5z"/>
+        </svg>
+      </span>
+      <span>De Hond</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hoofdnav" aria-controls="hoofdnav" aria-expanded="false" aria-label="Navigatiemenu openen">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="hoofdnav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#over">Over de hond</a></li>
+        <li class="nav-item"><a class="nav-link" href="#rassen">Rassen</a></li>
+        <li class="nav-item"><a class="nav-link" href="#verzorging">Verzorging</a></li>
+        <li class="nav-item"><a class="nav-link" href="#voeding">Voeding</a></li>
+        <li class="nav-item"><a class="nav-link" href="#opvoeding">Opvoeding</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gezondheid">Gezondheid</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galerij">Galerij</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a class="btn btn-accent w-100" href="#contact">Neem contact op</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!--/ID:2-->
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <img class="hero-bg"
+       src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1800&q=70"
+       alt="Puppy van een golden retriever kijkt nieuwsgierig in de camera"
+       onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondhero/1800/1100';">
+  <!--ID:3--><div class="hero-overlay" aria-hidden="true"></div><!--/ID:3-->
+
+  <div class="container position-relative" style="z-index:2;">
+    <!--ID:4--><div class="row">
+      <div class="col-lg-9 col-xl-8">
+        <span class="badge rounded-pill hero-badge mb-3">
+          <i class="bi bi-heart-fill me-1" aria-hidden="true"></i> De trouwste metgezel van de mens
+        </span>
+        <h1 class="text-white mb-3">Alles over de hond</h1>
+        <p class="lead text-white mb-4" style="opacity:.9;">
+          Van puppytijd tot senior: rassen, verzorging, voeding, opvoeding en gezondheid.
+          Een warme en praktische gids voor iedereen die het beste uit het leven met een hond wil halen.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a href="#rassen" class="btn btn-accent">
+            <i class="bi bi-search" aria-hidden="true"></i> Ontdek de rassen
+          </a>
+          <a href="#verzorging" class="btn btn-outline-light-2">
+            <i class="bi bi-clipboard2-pulse" aria-hidden="true"></i> Verzorgingstips
+          </a>
+        </div>
+      </div>
+    </div><!--/ID:4-->
+
+    <div class="row g-3 mt-4">
+      <!--ID:5--><div class="col-6 col-lg-3">
+        <div class="stat-glass">
+          <span class="stat-num">350+</span>
+          <span class="stat-label">erkende rassen wereldwijd</span>
+        </div>
+      </div><!--/ID:5-->
+      <!--ID:6--><div class="col-6 col-lg-3">
+        <div class="stat-glass">
+          <span class="stat-num">15.000 jaar</span>
+          <span class="stat-label">samen met de mens</span>
+        </div>
+      </div><!--/ID:6-->
+      <!--ID:7--><div class="col-6 col-lg-3">
+        <div class="stat-glass">
+          <span class="stat-num">12 – 15 jaar</span>
+          <span class="stat-label">gemiddelde levensduur</span>
+        </div>
+      </div><!--/ID:7-->
+      <!--ID:8--><div class="col-6 col-lg-3">
+        <div class="stat-glass">
+          <span class="stat-num">4 – 14 uur</span>
+          <span class="stat-label">slaap per dag nodig</span>
+        </div>
+      </div><!--/ID:8-->
+    </div>
+  </div>
+</header>
+
+<!-- ================= OVER DE HOND ================= -->
+<!--ID:11--><section id="over" class="section">
+  <div class="container">
+    <div class="row align-items-center g-4 g-lg-5">
+      <!--ID:9--><div class="col-lg-6">
+        <img class="img-cover-rounded shadow-sm"
+             src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=70"
+             alt="Blije hond met uitgestoken tong ligt in het gras"
+             loading="lazy"
+             style="height:420px;"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondover/1000/800';">
+      </div><!--/ID:9-->
+      <!--ID:10--><div class="col-lg-6">
+        <p class="eyebrow mb-2">Over de hond</p>
+        <h2 class="mb-3">Van wolf tot huisvriend</h2>
+        <div class="divider mb-4"></div>
+        <p class="text-body-secondary mb-3">
+          De hond (<em>Canis lupus familiaris</em>) stamt af van de wolf en is waarschijnlijk het oudste
+          huisdier van de mens. Duizenden jaren van selectie hebben gezorgd voor een enorme verscheidenheid:
+          van de kleine chihuahua tot de imposante sint-bernard.
+        </p>
+        <p class="text-body-secondary mb-4">
+          Wat alle honden gemeen hebben, is hun sociale karakter. Honden zijn echte familiedieren: ze lezen
+          onze lichaamstaal, bouwen routines op en bloeien op bij duidelijke grenzen, voldoende beweging en
+          veel gezelschap.
+        </p>
+        <ul class="check-list">
+          <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span><strong>Sociaal:</strong> honden leven graag in een groep en hechten zich sterk aan hun mensen.</span></li>
+          <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span><strong>Slim:</strong> met geduld, beloning en herhaling leren ze verrassend veel.</span></li>
+          <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span><strong>Gezondheidswinst:</strong> een hond zorgt voor beweging, frisse lucht en gezelschap.</span></li>
+        </ul>
+      </div><!--/ID:10-->
+    </div>
+  </div>
+</section><!--/ID:11-->
+
+<!-- ================= RASSEN ================= -->
+<!--ID:14--><section id="rassen" class="section section-alt">
+  <div class="container">
+    <!--ID:12--><div class="text-center mb-5">
+      <p class="eyebrow mb-2">Rassen</p>
+      <h2 class="mb-3">Welke hond past bij jou?</h2>
+      <div class="divider mx-auto mb-3"></div>
+      <p class="text-body-secondary mx-auto" style="max-width:720px;">
+        Elke hond heeft zijn eigen karakter, formaat en beweegbehoefte. Hieronder een greep uit de
+        populairste en meest geliefde rassen. Kijk verder dan het uiterlijk: energie, vacht en
+        opvoedbaarheid bepalen of jullie echt een match zijn.
+      </p>
+    </div><!--/ID:12-->
+
+    <!--ID:13--><div class="row g-4">
+      <!-- Labrador -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=70"
+               alt="Labrador retriever met vriendelijke blik"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras1/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Labrador Retriever</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Vriendelijk, leergierig en dol op water. De ideale gezinshond voor actieve mensen met
+              ruimte voor wandelingen en spel.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: groot</span>
+              <span class="badge-soft">Energie: hoog</span>
+              <span class="badge-soft">Vacht: kort</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Border Collie -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?auto=format&fit=crop&w=900&q=70"
+               alt="Border collie met intense, oplettende blik"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras2/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Border Collie</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Extreem slim en werklustig. Vraagt veel beweging én denkwerk. Echt een hond voor
+              ervaren baasjes met tijd voor sport of hersenwerk.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: middelgroot</span>
+              <span class="badge-soft">Energie: zeer hoog</span>
+              <span class="badge-soft">Vacht: lang</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Golden Retriever -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=70"
+               alt="Golden retriever zit rustig in het groen"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras3/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Golden Retriever</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Zachtaardig, geduldig en dol op mensen. Uitstekend met kinderen en een fijne
+              trainingspartner voor beginners.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: groot</span>
+              <span class="badge-soft">Energie: hoog</span>
+              <span class="badge-soft">Vacht: lang</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Duitse Herder -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=900&q=70"
+               alt="Jonge Duitse herder kijkt oplettend vooruit"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras4/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Duitse Herder</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Trouw, waaks en leergierig. Voelt zich thuis bij een duidelijke opvoeding en
+              voldoende uitdaging, zoals speuren of gehoorzaamheid.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: groot</span>
+              <span class="badge-soft">Energie: hoog</span>
+              <span class="badge-soft">Vacht: halflang</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Friese Stabij -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=70"
+               alt="Speelse hond rent door het gras"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras5/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Friese Stabij</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Een levendig Nederlands ras: waaks, slim en gehecht aan zijn gezin. Ideaal voor
+              mensen die van wandelen en samenwerken houden.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: middelgroot</span>
+              <span class="badge-soft">Energie: gemiddeld</span>
+              <span class="badge-soft">Vacht: halflang</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Franse Bulldog -->
+      <div class="col-sm-6 col-lg-4">
+        <article class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+          <img class="img-fixed"
+               src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=70"
+               alt="Franse bulldog ligt ontspannen op de bank"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondras6/900/700';">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title mb-2">Franse Bulldog</h3>
+            <p class="card-text text-body-secondary small mb-3">
+              Compact, aanhankelijk en rustig. Door de korte snuit vraagt dit ras extra aandacht
+              voor warmte, inspanning en ademhaling.
+            </p>
+            <div class="mt-auto d-flex flex-wrap gap-2">
+              <span class="badge-soft">Formaat: klein</span>
+              <span class="badge-soft">Energie: laag</span>
+              <span class="badge-soft">Vacht: kort</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div><!--/ID:13-->
+  </div>
+</section><!--/ID:14-->
+
+<!-- ================= VERZORGING ================= -->
+<!--ID:17--><section id="verzorging" class="section">
+  <div class="container">
+    <!--ID:15--><div class="text-center mb-5">
+      <p class="eyebrow mb-2">Verzorging &amp; welzijn</p>
+      <h2 class="mb-3">Dagelijkse zorg in zes pijlers</h2>
+      <div class="divider mx-auto mb-3"></div>
+      <p class="text-body-secondary mx-auto" style="max-width:720px;">
+        Een gezonde, blije hond is geen toeval: het is het resultaat van een vaste routine,
+        aandacht en preventie.
+      </p>
+    </div><!--/ID:15-->
+
+    <!--ID:16--><div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-droplet-half"></i></span>
+            <h3 class="card-title h5 mb-2">Vers water &amp; vaste maaltijden</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Geef altijd schoon drinkwater en voer op vaste tijden. Zo houd je de spijsvertering
+              rustig en zie je snel of je hond minder eet.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-lightning-charge"></i></span>
+            <h3 class="card-title h5 mb-2">Beweging &amp; spel</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Minimaal twee wandelingen per dag, plus snuffeltijd. Snuffelen is voor een hond wat
+              lezen is voor ons: het ontspant en vermoeit het hoofd.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-scissors"></i></span>
+            <h3 class="card-title h5 mb-2">Vachtverzorging</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Borstel korte vachten wekelijks, langere vachten twee tot drie keer per week.
+              Zo voorkom je klitten en controleer je meteen de huid.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-emoji-smile"></i></span>
+            <h3 class="card-title h5 mb-2">Tanden &amp; nagels</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Poets de tanden een paar keer per week met hondentandpasta. Kijk nagels na:
+              wandelaars op harde ondergrond hebben vaak minder knipbeurten nodig.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-moon-stars"></i></span>
+            <h3 class="card-title h5 mb-2">Rust &amp; een eigen plek</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Honden slapen tot 14 uur per dag. Geef een rustige mand of bench waar de hond
+              nooit gestoord wordt - ook niet door kinderen.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="card-body">
+            <span class="icon-bubble mb-3" aria-hidden="true"><i class="bi bi-heart-pulse"></i></span>
+            <h3 class="card-title h5 mb-2">Preventie bij de dierenarts</h3>
+            <p class="card-text text-body-secondary small mb-0">
+              Jaarlijkse controle, vaccinaties, ontworming en teken- en vlooienpreventie.
+              Voorkomen is bij honden bijna altijd goedkoper dan genezen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><!--/ID:16-->
+  </div>
+</section><!--/ID:17-->
+
+<!-- ================= VOEDING ================= -->
+<!--ID:20--><section id="voeding" class="section section-alt">
+  <div class="container">
+    <div class="row g-4 g-lg-5 align-items-start">
+      <!--ID:18--><div class="col-lg-5">
+        <p class="eyebrow mb-2">Voeding</p>
+        <h2 class="mb-3">Voeding per levensfase</h2>
+        <div class="divider mb-4"></div>
+        <p class="text-body-secondary">
+          De behoefte van een hond verandert met de leeftijd. Kies voeding die past bij de
+          levensfase, het gewicht en het activiteitsniveau, en weeg het voer af in plaats van
+          te gokken met een schep.
+        </p>
+        <div class="alert alert-warning border-0 rounded-4 mt-4 mb-0" role="alert">
+          <p class="fw-semibold mb-1"><i class="bi bi-exclamation-triangle-fill me-1" aria-hidden="true"></i> Let op: deze producten zijn giftig voor honden</p>
+          <p class="small mb-0">
+            Chocolade, druiven en rozijnen, ui en knoflook, avocado, alcohol, xylitol (kunstmatige
+            zoetstof) en macadamianoten. Twijfel je? Bel direct de dierenarts.
+          </p>
+        </div>
+      </div><!--/ID:18-->
+
+      <!--ID:19--><div class="col-lg-7">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="card border-0 shadow-sm card-hover">
+              <div class="card-body d-flex gap-3">
+                <span class="step-num" aria-hidden="true">1</span>
+                <div>
+                  <h3 class="h5 card-title mb-1">Puppy (0 – 12 maanden)</h3>
+                  <p class="card-text text-body-secondary small mb-0">
+                    Drie tot vier kleine maaltijden per dag met speciaal puppevoer. Bouw rustig
+                    over naar volwassenvoer rond de leeftijd die bij het formaat past.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-sm card-hover">
+              <div class="card-body d-flex gap-3">
+                <span class="step-num" aria-hidden="true">2</span>
+                <div>
+                  <h3 class="h5 card-title mb-1">Volwassen hond (1 – 7 jaar)</h3>
+                  <p class="card-text text-body-secondary small mb-0">
+                    Twee maaltijden per dag, afgestemd op gewicht en beweging. Houd het gewicht
+                    stabiel: je moet de ribben makkelijk kunnen voelen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-sm card-hover">
+              <div class="card-body d-flex gap-3">
+                <span class="step-num" aria-hidden="true">3</span>
+                <div>
+                  <h3 class="h5 card-title mb-1">Senior (7 jaar en ouder)</h3>
+                  <p class="card-text text-body-secondary small mb-0">
+                    Vaak iets minder calorieën en extra ondersteuning voor gewrichten. Laat de
+                    dierenarts meekijken bij gewichtsverlies of een tragere eetlust.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card border-0 shadow-sm card-hover">
+              <div class="card-body d-flex gap-3">
+                <span class="step-num" aria-hidden="true">4</span>
+                <div>
+                  <h3 class="h5 card-title mb-1">Snoepjes &amp; beloningen</h3>
+                  <p class="card-text text-body-secondary small mb-0">
+                    Reken maximaal 10% van de dagelijkse energie uit snoepjes. Kleine stukjes
+                    werken beter dan grote brokken - je beloont vaker en effectiever.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--/ID:19-->
+    </div>
+  </div>
+</section><!--/ID:20-->
+
+<!-- ================= OPVOEDING ================= -->
+<!--ID:23--><section id="opvoeding" class="section">
+  <div class="container">
+    <div class="row g-4 g-lg-5 align-items-center">
+      <!--ID:21--><div class="col-lg-6 order-lg-2">
+        <img class="img-cover-rounded shadow-sm"
+             src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=1200&q=70"
+             alt="Baasje traint een hond met een beloning tijdens een wandeling"
+             loading="lazy"
+             style="height:440px;"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondtrain/1000/900';">
+      </div><!--/ID:21-->
+      <!--ID:22--><div class="col-lg-6 order-lg-1">
+        <p class="eyebrow mb-2">Opvoeding &amp; training</p>
+        <h2 class="mb-3">Vijf stappen naar een goed opgevoede hond</h2>
+        <div class="divider mb-4"></div>
+        <ul class="check-list">
+          <li>
+            <i class="bi bi-1-circle-fill" aria-hidden="true"></i>
+            <span><strong>Socialiseer vroeg.</strong> Laat een puppy tussen 8 en 16 weken kennismaken met
+            mensen, kinderen, geluiden, verkeer en andere honden - rustig en positief.</span>
+          </li>
+          <li>
+            <i class="bi bi-2-circle-fill" aria-hidden="true"></i>
+            <span><strong>Beloon het gedrag dat je wíl.</strong> Een snoepje, speeltje of vriendelijk
+            "yes!" binnen één seconde na het gedrag leert een hond het snelst.</span>
+          </li>
+          <li>
+            <i class="bi bi-3-circle-fill" aria-hidden="true"></i>
+            <span><strong>Houd sessies kort.</strong> Drie keer vijf minuten per dag werkt beter dan
+            één lange training. Eindig altijd met een succesmoment.</span>
+          </li>
+          <li>
+            <i class="bi bi-4-circle-fill" aria-hidden="true"></i>
+            <span><strong>Wees voorspelbaar.</strong> Vaste commando's, vaste regels en vaste tijden
+            geven een hond houvast en vertrouwen.</span>
+          </li>
+          <li>
+            <i class="bi bi-5-circle-fill" aria-hidden="true"></i>
+            <span><strong>Blijf geduldig.</strong> Verandering kost weken, niet dagen. Straffen leert
+            een hond angst, geen gedrag - negeren en omleiden werkt beter.</span>
+          </li>
+        </ul>
+      </div><!--/ID:22-->
+    </div>
+  </div>
+</section><!--/ID:23-->
+
+<!-- ================= GEZONDHEID ================= -->
+<!--ID:26--><section id="gezondheid" class="section section-alt">
+  <div class="container">
+    <!--ID:24--><div class="text-center mb-5">
+      <p class="eyebrow mb-2">Gezondheid</p>
+      <h2 class="mb-3">Een gezonde hond herken je hieraan</h2>
+      <div class="divider mx-auto mb-3"></div>
+      <p class="text-body-secondary mx-auto" style="max-width:720px;">
+        Kleine signalen vertellen veel. Ken het normale gedrag en de normale lichaamsfuncties van
+        jouw hond, zodat je afwijkingen vroeg opmerkt.
+      </p>
+    </div><!--/ID:24-->
+
+    <!--ID:25--><div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="h5 mb-3"><i class="bi bi-check2-square me-2" style="color:var(--accent);" aria-hidden="true"></i>Dit is normaal</h3>
+            <ul class="check-list">
+              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Helder, glanzend oog zonder veel slijm of roodheid.</span></li>
+              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Een droge, koele neus (wisselt per moment - een warme neus is niet meteen een probleem).</span></li>
+              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Glanzende vacht en gezonde, roze huid zonder kale plekken.</span></li>
+              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Vaste ontlasting en een stabiel eet- en drinkpatroon.</span></li>
+              <li><i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Actief en nieuwsgierig, met zin in wandelen en spel.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="h5 mb-3 text-danger"><i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>Neem contact op met de dierenarts bij</h3>
+            <ul class="check-list">
+              <li><i class="bi bi-exclamation-circle-fill text-danger" aria-hidden="true"></i><span>Meer dan 24 uur niet eten of drinken, of aanhoudend braken en diarree.</span></li>
+              <li><i class="bi bi-exclamation-circle-fill text-danger" aria-hidden="true"></i><span>Benauwdheid, piepend ademen of een blauwe tong (vooral bij kortsnuitige rassen).</span></li>
+              <li><i class="bi bi-exclamation-circle-fill text-danger" aria-hidden="true"></i><span>Maninken, stijfheid of plots niet meer willen springen en traplopen.</span></li>
+              <li><i class="bi bi-exclamation-circle-fill text-danger" aria-hidden="true"></i><span>Wonden, zwellingen, jeuk of plots haarverlies.</span></li>
+              <li><i class="bi bi-exclamation-circle-fill text-danger" aria-hidden="true"></i><span>Verwardheid, dwangmatig likken of gedragsverandering zonder duidelijke oorzaak.</span></li>
+            </ul>
+            <p class="small text-body-secondary mb-0 mt-3">
+              Deze informatie is algemeen van aard en vervangt nooit het advies van een dierenarts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><!--/ID:25-->
+  </div>
+</section><!--/ID:26-->
+
+<!-- ================= GALERIJ ================= -->
+<!--ID:29--><section id="galerij" class="section">
+  <div class="container">
+    <!--ID:27--><div class="text-center mb-5">
+      <p class="eyebrow mb-2">Galerij</p>
+      <h2 class="mb-3">Honden in al hun gedaantes</h2>
+      <div class="divider mx-auto mb-3"></div>
+      <p class="text-body-secondary mx-auto" style="max-width:640px;">
+        Klik op een foto om hem groot te bekijken.
+      </p>
+    </div><!--/ID:27-->
+
+    <!--ID:28--><div class="row g-3">
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1591160690555-5debfba289f0?auto=format&fit=crop&w=1600&q=75" data-alt="Puppy met grote ogen kijkt recht in de camera">
+          <img src="https://images.unsplash.com/photo-1591160690555-5debfba289f0?auto=format&fit=crop&w=900&q=70"
+               alt="Puppy met grote ogen kijkt recht in de camera" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal1/900/700';">
+        </button>
+      </div>
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=1600&q=75" data-alt="Hond ligt ontspannen op een houten vloer">
+          <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=900&q=70"
+               alt="Hond ligt ontspannen op een houten vloer" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal2/900/700';">
+        </button>
+      </div>
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1600&q=75" data-alt="Twee honden spelen samen in het park">
+          <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=70"
+               alt="Twee honden spelen samen in het park" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal3/900/700';">
+        </button>
+      </div>
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1600&q=75" data-alt="Hond slaapt rustig op een deken">
+          <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=900&q=70"
+               alt="Hond slaapt rustig op een deken" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal4/900/700';">
+        </button>
+      </div>
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1600&q=75" data-alt="Hond rent door een veld met hoog gras">
+          <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=70"
+               alt="Hond rent door een veld met hoog gras" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal5/900/700';">
+        </button>
+      </div>
+      <div class="col-6 col-lg-4">
+        <button type="button" class="gallery-item" data-full="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=1600&q=75" data-alt="Hond kijkt aandachtig naar de fotograaf">
+          <img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=900&q=70"
+               alt="Hond kijkt aandachtig naar de fotograaf" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/hondgal6/900/700';">
+        </button>
+      </div>
+    </div><!--/ID:28-->
+  </div>
+</section><!--/ID:29-->
+
+<!-- ================= FAQ ================= -->
+<!--ID:32--><section id="faq" class="section section-alt">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <!--ID:30--><div class="text-center mb-5">
+          <p class="eyebrow mb-2">Veelgestelde vragen</p>
+          <h2 class="mb-3">Vragen van (toekomstige) baasjes</h2>
+          <div class="divider mx-auto mb-0"></div>
+        </div><!--/ID:30-->
+
+        <!--ID:31--><div class="accordion" id="faqAccordion">
+          <div class="accordion-item border-0 shadow-sm mb-3">
+            <h3 class="accordion-header" id="faqH1">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC1" aria-expanded="false" aria-controls="faqC1">
+                Hoeveel beweging heeft mijn hond nodig?
+              </button>
+            </h3>
+            <div id="faqC1" class="accordion-collapse collapse" aria-labelledby="faqH1" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Dat verschilt sterk per ras, leeftijd en gezondheid. Reken op minimaal 30 tot 60 minuten
+                per dag voor een gemiddelde hond, en 1,5 tot 3 uur voor werkhonden en hoog-energetische
+                rassen. Verdeel de beweging over de dag en voeg snuffeltijd toe.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 shadow-sm mb-3">
+            <h3 class="accordion-header" id="faqH2">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC2" aria-expanded="false" aria-controls="faqC2">
+                Puppy of volwassen hond uit het asiel?
+              </button>
+            </h3>
+            <div id="faqC2" class="accordion-collapse collapse" aria-labelledby="faqH2" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Beide hebben voordelen. Een puppy vraagt veel tijd en begeleiding, maar groeit op met
+                jouw routines. Een volwassen hond uit het asiel heeft vaak al basiskennis en een
+                duidelijk karakter. Vraag bij adoptie altijd naar achtergrond, gezondheid en
+                socialisatie.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 shadow-sm mb-3">
+            <h3 class="accordion-header" id="faqH3">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC3" aria-expanded="false" aria-controls="faqC3">
+                Hoe lang mag een hond alleen thuis zijn?
+              </button>
+            </h3>
+            <div id="faqC3" class="accordion-collapse collapse" aria-labelledby="faqH3" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Voor de meeste honden is vier tot maximaal zes uur per dag acceptabel, mits ze
+                uitgelaten zijn en iets te doen hebben. Puppy's en oudere honden verdragen minder.
+                Bouw alleen-zijn stapsgewijs op en zorg voor een rustige plek met water.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 shadow-sm mb-3">
+            <h3 class="accordion-header" id="faqH4">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC4" aria-expanded="false" aria-controls="faqC4">
+                Welke kosten komen erbij kijken?
+              </button>
+            </h3>
+            <div id="faqC4" class="accordion-collapse collapse" aria-labelledby="faqH4" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Denk aan voeding, ontworming en vlooienpreventie, vaccinaties, de jaarlijkse
+                dierenartscontrole, hondenbelasting, verzekering, speelgoed en eventueel oppas of
+                pension. Grote rassen eten en kosten gemiddeld meer dan kleine rassen. Maak vooraf
+                een realistische maandbegroting en houd een buffer voor onverwachte zorg.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 shadow-sm mb-3">
+            <h3 class="accordion-header" id="faqH5">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC5" aria-expanded="false" aria-controls="faqC5">
+                Hoe leer ik mijn hond alleen thuis te blijven?
+              </button>
+            </h3>
+            <div id="faqC5" class="accordion-collapse collapse" aria-labelledby="faqH5" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Begin met enkele seconden, loop weg en kom terug vóór je hond onrustig wordt. Verleng
+                de tijd langzaam. Vertrek en kom terug zonder groot afscheid of overdreven begroeting.
+                Laat een kauwspeeltje achter en gebruik eventueel een camera om te kijken hoe het gaat.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border-0 shadow-sm">
+            <h3 class="accordion-header" id="faqH6">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqC6" aria-expanded="false" aria-controls="faqC6">
+                Is een hond geschikt voor een klein appartement?
+              </button>
+            </h3>
+            <div id="faqC6" class="accordion-collapse collapse" aria-labelledby="faqH6" data-bs-parent="#faqAccordion">
+              <div class="accordion-body text-body-secondary">
+                Zeker, zolang je voldoende naar buiten gaat en de hond mentaal uitdaagt. Een klein
+                huis is geen probleem; een tekort aan beweging en prikkels wel. Kies bij voorkeur een
+                ras met een gemiddelde of lagere energiebehoefte en check de regels van je
+                verhuurder of VvE.
+              </div>
+            </div>
+          </div>
+        </div><!--/ID:31-->
+      </div>
+    </div>
+  </div>
+</section><!--/ID:32-->
+
+<!-- ================= CONTACT ================= -->
+<!--ID:35--><section id="contact" class="section">
+  <div class="container">
+    <div class="row g-4 g-lg-5">
+      <!--ID:33--><div class="col-lg-5">
+        <p class="eyebrow mb-2">Contact</p>
+        <h2 class="mb-3">Een vraag over jouw hond?</h2>
+        <div class="divider mb-4"></div>
+        <p class="text-body-secondary mb-4">
+          Stuur ons een bericht met je vraag over rassen, verzorging of opvoeding. We denken graag
+          met je mee - van eerste puppykriebels tot zorg voor een senior.
+        </p>
+        <ul class="list-unstyled mb-0">
+          <li class="d-flex gap-3 mb-3">
+            <span class="icon-bubble" aria-hidden="true"><i class="bi bi-envelope"></i></span>
+            <span>
+              <strong class="d-block">E-mail</strong>
+              <span class="text-body-secondary">info@dehond-voorbeeld.nl</span>
+            </span>
+          </li>
+          <li class="d-flex gap-3 mb-3">
+            <span class="icon-bubble" aria-hidden="true"><i class="bi bi-clock"></i></span>
+            <span>
+              <strong class="d-block">Reactietijd</strong>
+              <span class="text-body-secondary">Meestal binnen twee werkdagen</span>
+            </span>
+          </li>
+          <li class="d-flex gap-3">
+            <span class="icon-bubble" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+            <span>
+              <strong class="d-block">Werkgebied</strong>
+              <span class="text-body-secondary">Nederland en België</span>
+            </span>
+          </li>
+        </ul>
+      </div><!--/ID:33-->
+
+      <!--ID:34--><div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4 p-md-5">
+            <form id="contactForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="naam" class="form-label fw-semibold">Naam</label>
+                  <input type="text" class="form-control" id="naam" name="naam" autocomplete="name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label fw-semibold">E-mailadres</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="col-12">
+                  <label for="onderwerp" class="form-label fw-semibold">Onderwerp</label>
+                  <select class="form-select" id="onderwerp" name="onderwerp">
+                    <option>Vraag over een ras</option>
+                    <option>Verzorging &amp; voeding</option>
+                    <option>Opvoeding &amp; training</option>
+                    <option>Gezondheid</option>
+                    <option>Iets anders</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="bericht" class="form-label fw-semibold">Bericht</label>
+                  <textarea class="form-control" id="bericht" name="bericht" rows="5" required></textarea>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
+                    <label class="form-check-label small text-body-secondary" for="privacyCheck">
+                      Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn bericht te beantwoorden.
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-accent">
+                    <i class="bi bi-send" aria-hidden="true"></i> Verstuur bericht
+                  </button>
+                </div>
+              </div>
+              <div id="formFeedback" class="alert alert-success border-0 rounded-4 mt-4 mb-0 d-none" role="status">
+                Bedankt voor je bericht! Dit is een demonstratieformulier - er wordt niets echt verzonden.
+              </div>
+              <div id="formError" class="alert alert-danger border-0 rounded-4 mt-4 mb-0 d-none" role="alert">
+                Vul alstublieft alle verplichte velden in en accepteer de gegevensverwerking.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!--/ID:34-->
+    </div>
+  </div>
+</section><!--/ID:35-->
+
+<!-- ================= FOOTER ================= -->
+<!--ID:38--><footer class="pt-5 pb-4">
+  <div class="container">
+    <!--ID:36--><div class="row g-4">
+      <div class="col-lg-5">
+        <a href="#top" class="d-inline-flex align-items-center gap-2 text-decoration-none mb-3">
+          <span class="footer-mark" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="5.4" cy="10.2" r="2.5"/>
+              <circle cx="9.5" cy="6.6" r="2.7"/>
+              <circle cx="14.5" cy="6.6" r="2.7"/>
+              <circle cx="18.6" cy="10.2" r="2.5"/>
+              <path d="M12 11.4c3.2 0 5.9 2.3 5.9 5 0 2.1-1.7 3.4-3.7 3.4-1 0-1.6-.4-2.2-.4s-1.2.4-2.2.4c-2 0-3.7-1.3-3.7-3.4 0-2.7 2.7-5 5.9-5z"/>
+            </svg>
+          </span>
+          <span class="fs-5 fw-bold text-white">De Hond</span>
+        </a>
+        <p class="small mb-3" style="max-width:360px;">
+          Een onafhankelijke infopagina over honden: rassen, verzorging, voeding, opvoeding en
+          gezondheid. Met liefde gemaakt voor iedereen die van honden houdt.
+        </p>
+        <p class="small mb-0" style="opacity:.75;">
+          De inhoud op deze pagina is algemeen informatief en vervangt geen advies van een dierenarts.
+        </p>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h2 class="h6 text-white text-uppercase mb-3" style="letter-spacing:.08em;">Onderwerpen</h2>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2"><a href="#over">Over de hond</a></li>
+          <li class="mb-2"><a href="#rassen">Rassen</a></li>
+          <li class="mb-2"><a href="#verzorging">Verzorging</a></li>
+          <li class="mb-2"><a href="#voeding">Voeding</a></li>
+          <li class="mb-2"><a href="#opvoeding">Opvoeding</a></li>
+          <li class="mb-2"><a href="#gezondheid">Gezondheid</a></li>
+          <li class="mb-0"><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <h2 class="h6 text-white text-uppercase mb-3" style="letter-spacing:.08em;">Contact &amp; juridisch</h2>
+        <ul class="list-unstyled small mb-3">
+          <li class="mb-2"><a href="#contact">Contactformulier</a></li>
+          <li class="mb-2"><a href="mailto:info@dehond-voorbeeld.nl">info@dehond-voorbeeld.nl</a></li>
+        </ul>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2"><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacyverklaring</a></li>
+          <li class="mb-0"><a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / cookie-instellingen</a></li>
+        </ul>
+      </div>
+    </div><!--/ID:36-->
+
+    <hr class="border-secondary my-4" style="opacity:.3;">
+    <!--ID:37--><div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small" style="opacity:.8;">
+      <span>&copy; 2026 De Hond. Alle rechten voorbehouden.</span>
+      <span>Gemaakt met aandacht voor mens en hond.</span>
+    </div><!--/ID:37-->
+  </div>
+</footer><!--/ID:38-->
+
+<!-- ================= LIGHTBOX ================= -->
+<!--ID:39--><div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Vergrote afbeelding" hidden>
+  <button type="button" class="lightbox-close" aria-label="Afbeelding sluiten">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div><!--/ID:39-->
+
+<!-- ================= COOKIEMELDING ================= -->
+<!--ID:41--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0">
+      <!--ID:40--><div class="modal-header">
+        <h2 class="modal-title h5" id="cookieModalLabel">Cookies en jouw keuze</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div><!--/ID:40-->
+      <div class="modal-body">
+        <p class="small text-body-secondary mb-2">
+          Deze website gebruikt <strong>uitsluitend functionele opslag</strong>: een klein item in de
+          localStorage van je browser om te onthouden dat je deze melding al hebt gezien
+          (&quot;cookieConsent&quot;). Er worden <strong>geen tracking-, analyse- of marketingcookies</strong>
+          geplaatst en er worden geen gegevens aan derden verkocht.
+        </p>
+        <p class="small text-body-secondary mb-2">
+          Voor de vormgeving laden we lettertypes via Google Fonts en Bootstrap via een CDN. Bij het
+          laden wordt je IP-adres technisch door die partijen verwerkt. Er worden door ons geen
+          profielen opgebouwd.
+        </p>
+        <p class="small text-body-secondary mb-0">
+          Je kunt je keuze op elk moment aanpassen via de link &quot;Cookies&quot; onderaan de pagina.
+        </p>
+      </div>
+      <div class="modal-footer flex-wrap gap-2">
+        <button type="button" class="btn btn-outline-secondary" id="cookieReject" data-bs-dismiss="modal">Weigeren</button>
+        <button type="button" class="btn btn-accent" id="cookieAccept">Accepteren</button>
+      </div>
+    </div>
+  </div>
+</div><!--/ID:41--><!--ID:42-->
+
+<!-- ================= PRIVACYVERKLARING ================= -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="privacyModalLabel">Privacyverklaring</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Verwerkingsverantwoordelijke:</strong> De Hond (informele infowebsite), te bereiken via
+          <a href="mailto:info@dehond-voorbeeld.nl">info@dehond-voorbeeld.nl</a>.</p>
+
+        <p><strong>Welke gegevens verwerken we?</strong></p>
+        <ul>
+          <li>Gegevens die je zelf invult in het contactformulier: naam, e-mailadres, onderwerp en je bericht.</li>
+          <li>Technische gegevens die een webserver standaard vastlegt voor beveiliging en foutopsporing,
+            zoals IP-adres, browsertype en tijdstip van bezoek.</li>
+          <li>Een functionele voorkeur in de localStorage van je eigen browser (of je de cookiemelding
+            hebt gezien of geaccepteerd).</li>
+        </ul>
+
+        <p><strong>Doel en rechtsgrond:</strong> we gebruiken je gegevens om je vraag te beantwoorden
+          (grondslag: jouw toestemming en de uitvoering van je verzoek) en om de website veilig en
+          technisch goed te laten werken (grondslag: gerechtvaardigd belang).</p>
+
+        <p><strong>Bewaartermijn:</strong> berichten via het contactformulier bewaren we maximaal 12 maanden
+          na afronding van het contact. Technische servergegevens worden kort bewaard, doorgaans niet
+          langer dan 30 dagen.</p>
+
+        <p><strong>Delen met derden:</strong> we verkopen of verhuren geen gegevens. Voor het laden van
+          lettertypes (Google Fonts) en het Bootstrap-framework wordt gebruikgemaakt van externe CDN's;
+          hierbij kan je IP-adres technisch worden verwerkt. Er zijn geen analysetools, advertentiepixels
+          of social-mediaknoppen die gegevens verzamelen ingebouwd.</p>
+
+        <p><strong>Jouw rechten:</strong> je hebt recht op inzage, correctie, verwijdering, beperking van de
+          verwerking, bezwaar en gegevensoverdraagbaarheid. Stuur hiervoor een e-mail naar
+          <a href="mailto:info@dehond-voorbeeld.nl">info@dehond-voorbeeld.nl</a>. Ben je het niet eens met
+          de manier waarop we met je gegevens omgaan, dan kun je een klacht indienen bij de Autoriteit
+          Persoonsgegevens.</p>
+
+        <p><strong>Beveiliging:</strong> we nemen passende technische en organisatorische maatregelen om je
+          gegevens te beschermen tegen verlies of onrechtmatige verwerking.</p>
+
+        <p class="mb-0 text-body-secondary">
+          Deze verklaring is een voorbeeldtekst bij een demonstratiewebsite. Pas de inhoud aan op je
+          eigen werkelijke gegevensverwerking voordat je de site online zet. Laatst bijgewerkt:
+          september 2026.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Sluiten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ---------- Cookiemelding: eenmalig tonen ---------- */
+  try {
+    if (!localStorage.getItem('cookieConsent')) {
+      var cookieEl = document.getElementById('cookieModal');
+      if (cookieEl && window.bootstrap) {
+        new bootstrap.Modal(cookieEl).show();
+      }
+    }
+  } catch (e) { /* localStorage niet beschikbaar */ }
+
+  function hideModal(id) {
+    var el = document.getElementById(id);
+    if (el && window.bootstrap) {
+      var inst = bootstrap.Modal.getInstance(el);
+      if (inst) inst.hide();
+    }
+  }
+
+  var acceptBtn = document.getElementById('cookieAccept');
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function () {
+      try { localStorage.setItem('cookieConsent', 'accepted'); } catch (e) {}
+      hideModal('cookieModal');
+    });
+  }
+
+  var rejectBtn = document.getElementById('cookieReject');
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', function () {
+      try { localStorage.setItem('cookieConsent', 'rejected'); } catch (e) {}
+    });
+  }
+
+  var cookieModalEl = document.getElementById('cookieModal');
+  if (cookieModalEl) {
+    cookieModalEl.addEventListener('hide.bs.modal', function () {
+      try {
+        if (!localStorage.getItem('cookieConsent')) {
+          localStorage.setItem('cookieConsent', 'dismissed');
+        }
+      } catch (e) {}
+    });
+  }
+
+  /* ---------- Lightbox voor de galerij ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var closeBtn = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+  var lastFocused = null;
+
+  function openLightbox(src, alt) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lastFocused = document.activeElement;
+    lightbox.hidden = false;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var img = item.querySelector('img');
+      var full = item.getAttribute('data-full') || (img ? img.src : '');
+      var alt = item.getAttribute('data-alt') || (img ? img.alt : '');
+      openLightbox(full, alt);
+    });
+  });
+
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeLightbox);
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+
+  /* ---------- Contactformulier (demo) ---------- */
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var feedback = document.getElementById('formFeedback');
+      var errorEl = document.getElementById('formError');
+
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        if (errorEl) errorEl.classList.remove('d-none');
+        if (feedback) feedback.classList.add('d-none');
+        return;
+      }
+      if (errorEl) errorEl.classList.add('d-none');
+      if (feedback) feedback.classList.remove('d-none');
+      form.classList.remove('was-validated');
+      form.reset();
+    });
+  }
+});
+</script>
+<!--/ID:42--></body>
+</html>
