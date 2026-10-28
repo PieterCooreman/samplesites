@@ -1,0 +1,1069 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RijKlaar | Tweedehandswagens voor starters in Lubbeek - Start met vertrouwen</title>
+    <meta name="description" content="RijKlaar in Lubbeek: tweedehandswagens voor starters tussen 18 en 30. Elke wagen grondig nagekeken, eerlijke prijzen en persoonlijke begeleiding. Bel 016 85 45 67 - start met vertrouwen.">
+    <meta name="theme-color" content="#0b2540">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!--ID:1--><style>
+        :root{
+            --rk-blue:#1259a6;
+            --rk-blue-dark:#0d4585;
+            --rk-navy:#0b2540;
+            --rk-green:#1f8a5b;
+            --rk-green-soft:#e7f3ec;
+            --rk-blue-soft:#eff6fc;
+            --rk-ink:#1c2b39;
+            --rk-muted:#5a6b7d;
+            --rk-line:#e2ebf3;
+        }
+        html{scroll-behavior:smooth;scroll-padding-top:92px;}
+        body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--rk-ink);overflow-x:hidden;}
+        h1,h2,h3,h4,h5,.display-6,.brand-name,.step-num,.price-tag{font-family:'Plus Jakarta Sans','Inter',sans-serif;letter-spacing:-.02em;}
+        .eyebrow{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--rk-green);}
+        .text-muted-rk{color:var(--rk-muted)!important;}
+
+        /* Skip link */
+        .skip-link{position:absolute;left:-999px;top:0;z-index:2000;background:#fff;padding:.6rem 1rem;border-radius:0 0 .5rem 0;box-shadow:0 4px 12px rgba(9,35,61,.2);}
+        .skip-link:focus{left:0;}
+
+        /* Topbar */
+        .topbar-rk{background:var(--rk-navy);color:#cfe0f2;font-size:.8rem;}
+        .topbar-rk a{color:#fff;text-decoration:none;font-weight:600;}
+        .topbar-rk a:hover{color:#9ec5ea;}
+
+        /* Navbar */
+        .navbar-rk{background:#fff;transition:box-shadow .25s ease;}
+        .navbar-rk.scrolled{box-shadow:0 6px 24px rgba(9,35,61,.1);}
+        .brand-name{font-weight:800;font-size:1.3rem;color:var(--rk-navy);text-decoration:none;}
+        .brand-name span{color:var(--rk-blue);}
+        .navbar-rk .nav-link{color:#33475c;font-weight:600;font-size:.95rem;margin-inline:.15rem;}
+        .navbar-rk .nav-link:hover,.navbar-rk .nav-link:focus{color:var(--rk-blue);}
+
+        /* Buttons */
+        .btn-rk{background-color:var(--rk-blue);border:1px solid var(--rk-blue);color:#fff;font-weight:600;}
+        .btn-rk:hover,.btn-rk:focus,.btn-rk:active{background-color:var(--rk-blue-dark)!important;border-color:var(--rk-blue-dark)!important;color:#fff!important;}
+        .btn-outline-rk{border:1.5px solid var(--rk-blue);color:var(--rk-blue);font-weight:600;background:transparent;}
+        .btn-outline-rk:hover,.btn-outline-rk:focus{background-color:var(--rk-blue);color:#fff!important;border-color:var(--rk-blue);}
+        .btn-white-soft{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-weight:600;}
+        .btn-white-soft:hover,.btn-white-soft:focus{background:rgba(255,255,255,.28)!important;color:#fff!important;border-color:rgba(255,255,255,.6);}
+
+        /* Hero */
+        .hero{position:relative;overflow:hidden;display:flex;align-items:center;padding:4.5rem 0 3.5rem;min-height:88vh;}
+        @supports (height:1svh){.hero{min-height:max(600px,92svh);}}
+        .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+        .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(8,32,56,.94) 0%,rgba(11,49,86,.84) 45%,rgba(11,49,86,.5) 75%,rgba(11,49,86,.28) 100%);}
+        .hero .container{position:relative;z-index:2;}
+        .hero h1{color:#fff;font-size:clamp(2.1rem,5vw + 1rem,3.9rem);line-height:1.12;font-weight:800;}
+        .hero-lead{color:#d7e6f5;font-size:clamp(1rem,.4vw + .9rem,1.22rem);}
+        .badge-hero{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;padding:.5em 1.05em;border-radius:999px;font-size:.78rem;font-weight:600;display:inline-block;}
+        .hero-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.75rem;}
+        .hero-chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#eaf3fb;border-radius:999px;padding:.45rem .95rem;font-size:.83rem;font-weight:600;display:inline-flex;align-items:center;gap:.45rem;}
+        .hero-chip i{color:#7fd6a8;}
+        .hero-card{background:#fff;border-radius:1.1rem;box-shadow:0 24px 60px rgba(4,26,48,.35);}
+
+        /* Trust strip */
+        .trust-strip{background:var(--rk-navy);color:#eaf2fa;}
+        .trust-icon{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:#8fd0ab;}
+        .trust-strip h3{font-size:.98rem;font-weight:700;color:#fff;margin-bottom:.25rem;}
+        .trust-strip p{font-size:.83rem;color:#a9c2da;margin:0;}
+
+        /* Sections */
+        .section-soft{background:var(--rk-blue-soft);}
+        .usp-band{background:linear-gradient(120deg,#e7f3ec 0%,#eff6fc 55%,#eaf3fb 100%);}
+        .usp-quote{font-size:clamp(1.4rem,2vw + .9rem,2.2rem);font-weight:800;color:var(--rk-navy);line-height:1.25;}
+
+        /* Car cards */
+        .car-card{border:1px solid var(--rk-line);border-radius:1rem;overflow:hidden;background:#fff;transition:transform .25s ease,box-shadow .25s ease;height:100%;}
+        .car-card:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(9,35,61,.14);}
+        .car-card .card-img-wrap{position:relative;}
+        .car-card img{width:100%;height:210px;object-fit:cover;display:block;}
+        .badge-checked{background:var(--rk-green);color:#fff;font-size:.72rem;font-weight:700;border-radius:999px;padding:.45em .85em;display:inline-flex;align-items:center;gap:.35rem;}
+        .price-tag{color:var(--rk-blue);font-weight:800;font-size:1.15rem;}
+        .filter-btn{border-radius:999px;border:1px solid #cfdfee;background:#fff;color:#41566b;padding:.42rem 1.05rem;font-size:.87rem;font-weight:600;transition:all .2s ease;}
+        .filter-btn:hover{border-color:var(--rk-blue);color:var(--rk-blue);}
+        .filter-btn.active{background:var(--rk-blue);border-color:var(--rk-blue);color:#fff;}
+
+        /* Checklist & steps */
+        .check-item{display:flex;gap:.8rem;align-items:flex-start;background:#fff;border:1px solid var(--rk-line);border-radius:.9rem;padding:.95rem 1.05rem;height:100%;}
+        .check-dot{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--rk-green-soft);color:var(--rk-green);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+        .step-num{width:46px;height:46px;border-radius:50%;background:var(--rk-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem;flex:0 0 auto;}
+
+        /* Over / values */
+        .value-chip{background:var(--rk-green-soft);color:#176a45;border-radius:999px;padding:.42rem .95rem;font-size:.85rem;font-weight:600;display:inline-block;margin:.15rem;}
+        .team-card img{width:100%;height:230px;object-fit:cover;object-position:center 20%;}
+
+        /* Reviews */
+        .review-card{background:#fff;border:1px solid var(--rk-line);border-radius:1rem;height:100%;transition:transform .25s ease,box-shadow .25s ease;}
+        .review-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(9,35,61,.1);}
+        .stars i{color:#f2b23e;font-size:.9rem;}
+        .avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+
+        /* Contact */
+        .contact-panel{background:linear-gradient(120deg,var(--rk-navy) 0%,#123f6d 70%,#155a86 100%);color:#fff;border-radius:1.25rem;}
+        .phone-big{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw + .8rem,2.4rem);color:#fff;text-decoration:none;letter-spacing:.01em;}
+        .phone-big:hover{color:#9ec5ea;}
+        .hours-row td{padding:.7rem .5rem;border-bottom:1px solid var(--rk-line);}
+        .hours-row.today-row{background:var(--rk-green-soft);font-weight:600;}
+        .today-badge{display:none;background:var(--rk-green);color:#fff;font-size:.68rem;font-weight:700;border-radius:999px;padding:.3em .7em;}
+        .hours-row.today-row .today-badge{display:inline-block;}
+        .map-frame iframe{width:100%;height:100%;min-height:340px;border:0;display:block;border-radius:1rem;}
+
+        /* Car page */
+        .cp-main-img{width:100%;height:min(520px,62vw);object-fit:cover;border-radius:1.1rem;background:#dfe9f2;}
+        .cp-thumb{width:86px;height:64px;object-fit:cover;border-radius:.6rem;border:2px solid transparent;cursor:pointer;padding:0;background:none;}
+        .cp-thumb.active,.cp-thumb:hover{border-color:var(--rk-blue);}
+        .spec-list dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--rk-muted);font-weight:600;margin-bottom:.1rem;}
+        .spec-list dd{margin-bottom:.8rem;font-weight:600;color:var(--rk-ink);}
+        .cp-back{color:var(--rk-blue);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;}
+        .cp-back:hover{text-decoration:underline;}
+
+        /* Footer */
+        .footer-rk{background:var(--rk-navy);color:#b9cde0;}
+        .footer-rk a{color:#d7e6f5;text-decoration:none;font-size:.92rem;}
+        .footer-rk a:hover{color:#fff;text-decoration:underline;}
+        .footer-rk h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:1rem;}
+
+        /* Sticky mobile call bar */
+        .rk-callbar{position:fixed;left:0;right:0;bottom:0;z-index:1040;background:#fff;padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(9,35,61,.18);transform:translateY(115%);transition:transform .3s ease;}
+        .rk-callbar.show{transform:translateY(0);}
+        body.callbar-visible{padding-bottom:78px;}
+
+        @media (max-width:991.98px){
+            .hero{min-height:auto;padding-top:3.5rem;}
+        }
+        @media (prefers-reduced-motion:reduce){
+            html{scroll-behavior:auto;}
+            .car-card,.review-card,.rk-callbar{transition:none;}
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RijKlaar | Tweedehandswagens voor starters in Lubbeek - Start met vertrouwen">
+    <meta property="og:description" content="RijKlaar in Lubbeek: tweedehandswagens voor starters tussen 18 en 30. Elke wagen grondig nagekeken, eerlijke prijzen en persoonlijke begeleiding. Bel 016 85 45 67 - start met vertrouwen.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/1gaufhuhq1ywg5y4/">
+</head>
+<body>
+
+<a class="skip-link" href="#aanbod">Direct naar het aanbod</a>
+
+<!-- Topbar -->
+<!--ID:2--><div class="topbar-rk py-2 d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center gap-2">
+        <span><i class="bi bi-geo-alt me-1"></i>Diestsesteenweg 125 · 3210 Lubbeek</span>
+        <span class="d-none d-lg-inline"><i class="bi bi-clock me-1"></i>Ma–vr 09:00–18:00 · Za 10:00–17:00 · Zo gesloten</span>
+        <a href="tel:+3216854567"><i class="bi bi-telephone-fill me-1"></i>016 85 45 67</a>
+    </div>
+</div><!--/ID:2-->
+
+<!-- Navbar -->
+<!--ID:3--><nav id="mainNav" class="navbar navbar-expand-lg sticky-top navbar-rk py-2" aria-label="Hoofdnavigatie">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 me-auto me-lg-3" href="#home" aria-label="RijKlaar - naar de homepage">
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="44" height="44" rx="12" fill="#1259a6"/>
+                <circle cx="24" cy="24" r="13" stroke="#ffffff" stroke-width="3.2"/>
+                <circle cx="24" cy="24" r="4.2" fill="#ffffff"/>
+                <path d="M24 11v9M12.6 29l8-4.5M35.4 29l-8-4.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+            </svg>
+            <span class="brand-name">Rij<span>Klaar</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Menu openen of sluiten">
+            <i class="bi bi-list fs-1 text-dark"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navCollapse">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#aanbod">Aanbod</a></li>
+                <li class="nav-item"><a class="nav-link" href="#waarom">Waarom RijKlaar</a></li>
+                <li class="nav-item"><a class="nav-link" href="#over">Over ons</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+3216854567" class="btn btn-rk px-3 d-inline-flex align-items-center gap-2 mt-2 mt-lg-0">
+                <i class="bi bi-telephone-fill" aria-hidden="true"></i><span>016 85 45 67</span>
+            </a>
+        </div>
+    </div>
+</nav><!--/ID:3-->
+
+<!-- ======================= HOOFDSITE ======================= -->
+<div id="mainContent">
+
+    <!-- Hero / Homepage -->
+    <header class="hero" id="home">
+        <img class="hero-img" src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=70" alt="Jonge bestuurder achter het stuur van zijn eerste wagen" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/0b2540/ffffff?text=RijKlaar';">
+        <!--ID:4--><div class="hero-overlay" aria-hidden="true"></div><!--/ID:4-->
+        <!--ID:7--><div class="container">
+            <div class="row g-5 align-items-center">
+                <!--ID:5--><div class="col-lg-7">
+                    <span class="badge-hero mb-3"><i class="bi bi-car-front me-1" aria-hidden="true"></i>Tweedehandswagens voor starters · Lubbeek</span>
+                    <h1 class="mb-3">Je eerste wagen? Dat moet vooral goed voelen.</h1>
+                    <p class="hero-lead mb-4">RijKlaar helpt jongeren tussen 18 en 30 hun eerste wagen te kopen met een gerust hart. Grondig nagekeken, eerlijk geprijsd en persoonlijk begeleid - <strong class="text-white">start met vertrouwen.</strong></p>
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <a href="tel:+3216854567" class="btn btn-rk btn-lg px-4 d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel nu · 016 85 45 67
+                        </a>
+                        <a href="#aanbod" class="btn btn-white-soft btn-lg px-4 d-inline-flex align-items-center justify-content-center gap-2">
+                            Bekijk het aanbod<i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="hero-chips">
+                        <span class="hero-chip"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Elke wagen grondig nagekeken</span>
+                        <span class="hero-chip"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Eerlijke prijzen &amp; duidelijke afspraken</span>
+                        <span class="hero-chip"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Persoonlijke begeleiding</span>
+                    </div>
+                </div><!--/ID:5-->
+                <!--ID:6--><div class="col-lg-5">
+                    <div class="hero-card p-4 p-md-4 mx-auto lg-mx-0" style="max-width:380px;">
+                        <h2 class="h5 fw-bold mb-2 text-dark"><i class="bi bi-lightning-charge-fill text-warning me-1" aria-hidden="true"></i>Snel een vraag?</h2>
+                        <p class="text-muted-rk small mb-3">Bel ons tijdens de openingsuren en we denken eerlijk mee. Geen verkooppraatjes, wel een goed gevoel.</p>
+                        <a href="tel:+3216854567" class="phone-big d-block mb-2"><i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>016 85 45 67</a>
+                        <p class="small text-muted-rk mb-0"><i class="bi bi-clock me-1" aria-hidden="true"></i>Vandaag geopend · Ma–vr tot 18:00, za tot 17:00</p>
+                    </div>
+                </div><!--/ID:6-->
+            </div>
+        </div><!--/ID:7-->
+    </header>
+
+    <!-- Trust strip -->
+    <!--ID:12--><section class="trust-strip py-4" aria-label="Onze beloftes">
+        <div class="container">
+            <div class="row g-4 text-center text-lg-start">
+                <!--ID:8--><div class="col-6 col-lg-3">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                        <div class="trust-icon"><i class="bi bi-clipboard2-check" aria-hidden="true"></i></div>
+                        <div><h3>Grondige controle</h3><p>Elke wagen wordt nagekeken vóór verkoop.</p></div>
+                    </div>
+                </div><!--/ID:8-->
+                <!--ID:9--><div class="col-6 col-lg-3">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                        <div class="trust-icon"><i class="bi bi-currency-euro" aria-hidden="true"></i></div>
+                        <div><h3>Eerlijke prijzen</h3><p>Duidelijke afspraken, geen verrassingen.</p></div>
+                    </div>
+                </div><!--/ID:9-->
+                <!--ID:10--><div class="col-6 col-lg-3">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                        <div class="trust-icon"><i class="bi bi-people" aria-hidden="true"></i></div>
+                        <div><h3>Persoonlijke begeleiding</h3><p>We denken mee bij je eerste keuze.</p></div>
+                    </div>
+                </div><!--/ID:10-->
+                <!--ID:11--><div class="col-6 col-lg-3">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
+                        <div class="trust-icon"><i class="bi bi-house-heart" aria-hidden="true"></i></div>
+                        <div><h3>Familiezaak in Lubbeek</h3><p>Warm en betrouwbaar, al sinds 2015.</p></div>
+                    </div>
+                </div><!--/ID:11-->
+            </div>
+        </div>
+    </section><!--/ID:12-->
+
+    <!-- Centrale boodschap -->
+    <!--ID:15--><section class="py-5" aria-labelledby="boodschap-titel">
+        <div class="container py-3">
+            <div class="row g-5 align-items-center">
+                <!--ID:13--><div class="col-lg-5 order-lg-2">
+                    <img src="https://images.unsplash.com/photo-1471479917133-0bf4a2461881?auto=format&fit=crop&w=1000&q=70" alt="Een eerste wagen op de open weg, klaar om te vertrekken" class="img-fluid rounded-4 shadow-sm w-100" style="height:380px;object-fit:cover;" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x760?text=RijKlaar';">
+                </div><!--/ID:13-->
+                <!--ID:14--><div class="col-lg-7 order-lg-1">
+                    <span class="eyebrow mb-2 d-block">Waarom we het anders doen</span>
+                    <h2 id="boodschap-titel" class="fw-bold mb-4" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Een grote stap? Dan nemen we die samen.</h2>
+                    <p class="mb-3" style="font-size:1.05rem;">Een eerste wagen kopen is een grote stap. Je wilt een wagen die betrouwbaar is, binnen je budget past en waar je met een goed gevoel mee kunt vertrekken.</p>
+                    <p class="mb-3" style="font-size:1.05rem;">Daarom doet RijKlaar het anders. <strong>Geen verkooppraatjes</strong>, maar eerlijk advies, betrouwbare wagens en duidelijke communicatie.</p>
+                    <p class="mb-4" style="font-size:1.05rem;">Elke wagen wordt grondig nagekeken vóór verkoop zodat klanten met vertrouwen kunnen vertrekken.</p>
+                    <a href="tel:+3216854567" class="btn btn-rk px-4 d-inline-flex align-items-center gap-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel even · 016 85 45 67</a>
+                </div><!--/ID:14-->
+            </div>
+        </div>
+    </section><!--/ID:15-->
+
+    <!-- USP band -->
+    <!--ID:16--><section class="usp-band py-5" aria-labelledby="usp-titel">
+        <div class="container text-center py-3">
+            <span class="eyebrow mb-2 d-block">Onze belofte</span>
+            <p id="usp-titel" class="usp-quote mx-auto mb-3" style="max-width:850px;">“Hier koop je je eerste wagen met een gerust hart.”</p>
+            <p class="text-muted-rk mx-auto mb-4" style="max-width:620px;">Van het eerste belletje tot de sleuteloverdracht: we begeleiden je eerlijk en persoonlijk, stap voor stap.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="tel:+3216854567" class="btn btn-rk btn-lg px-4 d-inline-flex align-items-center gap-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel nu · 016 85 45 67</a>
+                <a href="#waarom" class="btn btn-outline-rk btn-lg px-4">Lees waarom wij anders zijn</a>
+            </div>
+        </div>
+    </section><!--/ID:16-->
+
+    <!-- Aanbod -->
+    <!--ID:20--><section id="aanbod" class="py-5 section-soft" aria-labelledby="aanbod-titel">
+        <div class="container py-3">
+            <!--ID:17--><div class="row align-items-end g-3 mb-4">
+                <div class="col-lg-7">
+                    <span class="eyebrow mb-2 d-block">Aanbod</span>
+                    <h2 id="aanbod-titel" class="fw-bold mb-2" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Ons huidige aanbod</h2>
+                    <p class="text-muted-rk mb-0">Elke wagen is nagekeken, geprijsd en klaar om te vertrekken. Zie je iets leuks? Bel gerust even - we houden hem voor je.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="d-flex flex-wrap gap-2 justify-content-lg-end" role="group" aria-label="Filter wagens op brandstof">
+                        <button type="button" class="filter-btn active" data-filter="alle">Alle</button>
+                        <button type="button" class="filter-btn" data-filter="Benzine">Benzine</button>
+                        <button type="button" class="filter-btn" data-filter="Hybride">Hybride</button>
+                        <button type="button" class="filter-btn" data-filter="Diesel">Diesel</button>
+                    </div>
+                </div>
+            </div><!--/ID:17-->
+
+            <p id="carCount" class="small text-muted-rk mb-3" aria-live="polite"></p>
+            <!--ID:18--><div id="carGrid" class="row g-4"></div><!--/ID:18-->
+
+            <!--ID:19--><div class="card border-0 shadow-sm mt-5 rounded-4">
+                <div class="card-body p-4 p-md-4 text-center bg-white">
+                    <h3 class="h5 fw-bold mb-2">Niet helemaal wat je zocht?</h3>
+                    <p class="text-muted-rk mb-3 mx-auto" style="max-width:560px;">Vertel ons je budget en waar je naar op zoek bent. We vinden samen de juiste wagen - of we zeggen eerlijk dat een andere keuze beter past.</p>
+                    <a href="tel:+3216854567" class="btn btn-rk px-4 d-inline-flex align-items-center gap-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel 016 85 45 67</a>
+                </div>
+            </div><!--/ID:19-->
+        </div>
+    </section><!--/ID:20-->
+
+    <!-- Waarom RijKlaar -->
+    <!--ID:25--><section id="waarom" class="py-5" aria-labelledby="waarom-titel">
+        <div class="container py-3">
+            <!--ID:21--><div class="text-center mb-5">
+                <span class="eyebrow mb-2 d-block">Waarom RijKlaar</span>
+                <h2 id="waarom-titel" class="fw-bold mb-2" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Drie beloftes die we aan elke klant maken</h2>
+                <p class="text-muted-rk mx-auto" style="max-width:640px;">Omdat het om je eerste wagen gaat, nemen we onze tijd. Dit mag je van ons verwachten.</p>
+            </div><!--/ID:21-->
+
+            <!--ID:22--><div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+                            <div class="trust-icon mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-clipboard2-check" aria-hidden="true"></i></div>
+                            <h3 class="h5 fw-bold mb-2">Grondig nagekeken</h3>
+                            <p class="text-muted-rk small mb-0">Vóór verkoop doorloopt elke wagen een uitgebreide technische controle. Wat we zien, vertellen we je eerlijk - ook als het minder is dan verwacht.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+                            <div class="trust-icon mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-receipt" aria-hidden="true"></i></div>
+                            <h3 class="h5 fw-bold mb-2">Eerlijke prijzen &amp; duidelijke afspraken</h3>
+                            <p class="text-muted-rk small mb-0">Geen kleine lettertjes en geen druk. Je weet vooraf precies wat de wagen kost en wat er nog bij komt.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+                            <div class="trust-icon mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-compass" aria-hidden="true"></i></div>
+                            <h3 class="h5 fw-bold mb-2">Persoonlijke begeleiding</h3>
+                            <p class="text-muted-rk small mb-0">Van budget tot verzekering: we denken mee, ook als je nog twijfelt tussen twee wagens. Je bent hier nooit “te jong”.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:22-->
+
+            <!--ID:23--><div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-5">
+                    <h3 class="fw-bold mb-3" style="font-size:1.4rem;">De RijKlaar-controle vóór verkoop</h3>
+                    <p class="text-muted-rk mb-3">Voordat een wagen op de site verschijnt, checkt onze garage hem punt voor punt. Zo vertrek je met een wagen waar je op kunt vertrouwen - en weten we precies wat we je vertellen.</p>
+                    <a href="#contact" class="btn btn-outline-rk px-4">Kom langs en bekijk het zelf</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">Motor &amp; versnelling</strong><small class="text-muted-rk">Getest op de testbank en in het verkeer.</small></div></div></div>
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">Remmen &amp; ophanging</strong><small class="text-muted-rk">Veiligheid staat altijd bovenaan.</small></div></div></div>
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">Banden</strong><small class="text-muted-rk">Profiel en leeftijd gecontroleerd.</small></div></div></div>
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">Carrosserie &amp; lakwerk</strong><small class="text-muted-rk">Eerlijk verteld wat er is.</small></div></div></div>
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">Elektronica &amp; verlichting</strong><small class="text-muted-rk">Alles getest, van licht tot infotainment.</small></div></div></div>
+                        <div class="col-sm-6"><div class="check-item"><span class="check-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong class="d-block small">APK up-to-date</strong><small class="text-muted-rk">Geldige keuring bij verkoop.</small></div></div></div>
+                    </div>
+                </div>
+            </div><!--/ID:23-->
+
+            <h3 class="fw-bold mb-4 text-center" style="font-size:1.4rem;">Zo verloopt het</h3>
+            <!--ID:24--><div class="row g-4">
+                <div class="col-md-6 col-xl-3">
+                    <div class="d-flex gap-3 h-100">
+                        <span class="step-num" aria-hidden="true">1</span>
+                        <div><h4 class="h6 fw-bold mb-1"><i class="bi bi-telephone-fill text-primary me-1" aria-hidden="true"></i>Bel even</h4><p class="small text-muted-rk mb-0">Vertel ons je budget en waar je naar op zoek bent. We denken eerlijk mee.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="d-flex gap-3 h-100">
+                        <span class="step-num" aria-hidden="true">2</span>
+                        <div><h4 class="h6 fw-bold mb-1"><i class="bi bi-car-front text-primary me-1" aria-hidden="true"></i>Kom langs</h4><p class="small text-muted-rk mb-0">Je bekijkt de wagens, stelt vragen en maakt een testrit. Geen haast - wel koffie.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="d-flex gap-3 h-100">
+                        <span class="step-num" aria-hidden="true">3</span>
+                        <div><h4 class="h6 fw-bold mb-1"><i class="bi bi-file-earmark-check text-primary me-1" aria-hidden="true"></i>Duidelijke afspraken</h4><p class="small text-muted-rk mb-0">We leggen alles uit: prijs, garantie, APK. Pas als je het goed voelt, ga je akkoord.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="d-flex gap-3 h-100">
+                        <span class="step-num" aria-hidden="true">4</span>
+                        <div><h4 class="h6 fw-bold mb-1"><i class="bi bi-patch-check text-primary me-1" aria-hidden="true"></i>Vertrek met gerust hart</h4><p class="small text-muted-rk mb-0">Je krijgt de sleutels van een wagen die nagekeken is en waar je op kunt vertrouwen.</p></div>
+                    </div>
+                </div>
+            </div><!--/ID:24-->
+        </div>
+    </section><!--/ID:25-->
+
+    <!-- Over RijKlaar -->
+    <!--ID:28--><section id="over" class="py-5 section-soft" aria-labelledby="over-titel">
+        <div class="container py-3">
+            <!--ID:26--><div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-7">
+                    <span class="eyebrow mb-2 d-block">Over RijKlaar</span>
+                    <h2 id="over-titel" class="fw-bold mb-3" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Een familiezaak in het hart van Vlaams-Brabant</h2>
+                    <p class="mb-3">RijKlaar startte in 2015 als kleine gezinszaak aan de Diestsesteenweg in Lubbeek. Wat begon met een paar wagens en veel enthousiasme, groeide uit tot een vertrouwde plek voor honderden starters.</p>
+                    <p class="mb-4">Onze klanten zijn vaak jong: het is hun eerste wagen, soms hun eerste grote aankoop. Daarom behandelen we elke verkoop alsof het om ons eigen gezin gaat - met eerlijk advies, duidelijke afspraken en een portie warmte.</p>
+                    <div class="d-flex flex-wrap" aria-label="Onze waarden">
+                        <span class="value-chip">Warm</span><span class="value-chip">Familiaal</span><span class="value-chip">Betrouwbaar</span><span class="value-chip">Vriendelijk</span><span class="value-chip">Eerlijk</span><span class="value-chip">Toegankelijk</span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=70" alt="Wagens van RijKlaar op de verkoopplaats in Lubbeek (foto ter illustratie)" class="img-fluid rounded-4 shadow-sm w-100" style="height:380px;object-fit:cover;" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x760?text=RijKlaar+Lubbeek';">
+                </div>
+            </div><!--/ID:26-->
+
+            <h3 class="fw-bold mb-4 text-center" style="font-size:1.4rem;">Maak kennis met het team</h3>
+            <!--ID:27--><div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 team-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=70" alt="Portret van Jens, oprichter en garage van RijKlaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500/1259a6/ffffff?text=Jens';">
+                        <div class="card-body p-3 text-center">
+                            <h4 class="h6 fw-bold mb-0">Jens Van den Broeck</h4>
+                            <p class="small text-muted-rk mb-0">Oprichter &amp; garage</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 team-card">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=70" alt="Portret van Lotte, verkoop en begeleiding bij RijKlaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500/1f8a5b/ffffff?text=Lotte';">
+                        <div class="card-body p-3 text-center">
+                            <h4 class="h6 fw-bold mb-0">Lotte Van den Broeck</h4>
+                            <p class="small text-muted-rk mb-0">Verkoop &amp; begeleiding</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 team-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=70" alt="Portret van Samir, technische controle bij RijKlaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500/0b2540/ffffff?text=Samir';">
+                        <div class="card-body p-3 text-center">
+                            <h4 class="h6 fw-bold mb-0">Samir El Amrani</h4>
+                            <p class="small text-muted-rk mb-0">Technische controle</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:27-->
+        </div>
+    </section><!--/ID:28-->
+
+    <!-- Reviews -->
+    <!--ID:31--><section id="reviews" class="py-5" aria-labelledby="reviews-titel">
+        <div class="container py-3">
+            <!--ID:29--><div class="text-center mb-4">
+                <span class="eyebrow mb-2 d-block">Reviews</span>
+                <h2 id="reviews-titel" class="fw-bold mb-2" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Wat starters zeggen</h2>
+                <div class="d-inline-flex align-items-center gap-3 bg-white border rounded-pill px-4 py-2 shadow-sm flex-wrap justify-content-center">
+                    <span class="stars" aria-hidden="true"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                    <strong class="mb-0">4,9 / 5</strong>
+                    <span class="small text-muted-rk mb-0">· 87 reviews · meer dan 100 starters vertrokken met een gerust hart</span>
+                </div>
+            </div><!--/ID:29-->
+
+            <!--ID:30--><div class="row g-4">
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="5 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p class="small mb-3">“Ik was zenuwachtig voor mijn eerste aankoop, maar ze hebben alles rustig uitgelegd. Geen druk, wel eerlijk advies. De wagen is top!”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Lotte+V&background=1259a6&color=fff&size=88" alt="Profielfoto van Lotte, 21 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=L';">
+                            <div><strong class="small d-block mb-0">Lotte, 21</strong><span class="text-muted-rk small">Kocht: Ford Fiesta</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="5 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p class="small mb-3">“De wagen was netjes nagekeken en er waren geen verrassingen achteraf. Je merkt meteen dat het een familiezaak is.”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Thomas+D&background=1f8a5b&color=fff&size=88" alt="Profielfoto van Thomas, 24 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=T';">
+                            <div><strong class="small d-block mb-0">Thomas, 24</strong><span class="text-muted-rk small">Kocht: VW Golf</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="5 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p class="small mb-3">“Binnen mijn budget gevonden en alles duidelijk uitgelegd. Ik voelde me bij hen nooit ‘te jong’.”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Emma+P&background=0b2540&color=fff&size=88" alt="Profielfoto van Emma, 19 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=E';">
+                            <div><strong class="small d-block mb-0">Emma, 19</strong><span class="text-muted-rk small">Kocht: Dacia Duster</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="4 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></div>
+                        <p class="small mb-3">“Eerlijke prijs, duidelijke afspraken en een testrit zonder haast. Zo moet het.”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Milan+V&background=1259a6&color=fff&size=88" alt="Profielfoto van Milan, 27 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=M';">
+                            <div><strong class="small d-block mb-0">Milan, 27</strong><span class="text-muted-rk small">Kocht: Peugeot 208</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="5 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p class="small mb-3">“Ze hebben me eerlijk verteld dat de wagen die ik wilde iets duurder was dan gedacht, en een alternatief voorgesteld. Dat heb ik gewaardeerd.”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Sofie+M&background=1f8a5b&color=fff&size=88" alt="Profielfoto van Sofie, 23 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=S';">
+                            <div><strong class="small d-block mb-0">Sofie, 23</strong><span class="text-muted-rk small">Kocht: Toyota Yaris Hybrid</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="review-card p-4 d-flex flex-column">
+                        <div class="stars mb-2" aria-label="5 op 5 sterren"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                        <p class="small mb-3">“Van bellen tot sleuteloverdracht alles vlot verlopen. Vriendelijk team dat echt meedenkt.”</p>
+                        <div class="mt-auto d-flex align-items-center gap-3 border-top pt-3">
+                            <img class="avatar" src="https://ui-avatars.com/api/?name=Bram+K&background=0b2540&color=fff&size=88" alt="Profielfoto van Bram, 29 jaar" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/88x88?text=B';">
+                            <div><strong class="small d-block mb-0">Bram, 29</strong><span class="text-muted-rk small">Kocht: Opel Corsa F</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:30-->
+        </div>
+    </section><!--/ID:31-->
+
+    <!-- Contact -->
+    <!--ID:35--><section id="contact" class="py-5 section-soft" aria-labelledby="contact-titel">
+        <div class="container py-3">
+            <!--ID:32--><div class="contact-panel p-4 p-md-5 mb-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-7">
+                        <span class="eyebrow mb-2 d-block" style="color:#8fd0ab;">Contact</span>
+                        <h2 id="contact-titel" class="fw-bold mb-3 text-white" style="font-size:clamp(1.6rem,2vw + 1rem,2.4rem);">Bel gerust even</h2>
+                        <p class="mb-0" style="color:#cfe0f2;max-width:520px;">Het snelst ben je aan de telefoon. We denken eerlijk mee, beantwoorden al je vragen en houden wagens voor je. Geen druk - wel een goed gevoel.</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end">
+                        <a href="tel:+3216854567" class="phone-big d-inline-flex align-items-center gap-2 mb-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>016 85 45 67</a>
+                        <p class="small mb-0" style="color:#cfe0f2;"><i class="bi bi-clock me-1" aria-hidden="true"></i>Ma–vr 09:00–18:00 · Za 10:00–17:00</p>
+                    </div>
+                </div>
+            </div><!--/ID:32-->
+
+            <!--ID:33--><div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 bg-white">
+                        <div class="card-body p-4 text-center">
+                            <div class="trust-icon mx-auto mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-telephone-fill" aria-hidden="true"></i></div>
+                            <h3 class="h6 fw-bold mb-1">Telefoon</h3>
+                            <a href="tel:+3216854567" class="fw-semibold text-decoration-none d-block mb-1">016 85 45 67</a>
+                            <p class="small text-muted-rk mb-2">Het snelst ben je aan de telefoon.</p>
+                            <a href="tel:+3216854567" class="btn btn-rk btn-sm px-3"><i class="bi bi-telephone-fill me-1" aria-hidden="true"></i>Bel nu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 bg-white">
+                        <div class="card-body p-4 text-center">
+                            <div class="trust-icon mx-auto mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-envelope-at" aria-hidden="true"></i></div>
+                            <h3 class="h6 fw-bold mb-1">E-mail</h3>
+                            <a href="mailto:info@rijklaar.be" class="fw-semibold text-decoration-none d-block mb-1">info@rijklaar.be</a>
+                            <p class="small text-muted-rk mb-2">We antwoorden binnen één werkdag.</p>
+                            <a href="mailto:info@rijklaar.be" class="btn btn-outline-rk btn-sm px-3"><i class="bi bi-envelope me-1" aria-hidden="true"></i>Mail ons</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 bg-white">
+                        <div class="card-body p-4 text-center">
+                            <div class="trust-icon mx-auto mb-3" style="background:var(--rk-blue-soft);color:var(--rk-blue);"><i class="bi bi-geo-alt" aria-hidden="true"></i></div>
+                            <h3 class="h6 fw-bold mb-1">Adres</h3>
+                            <p class="small text-muted-rk mb-1">Diestsesteenweg 125<br>3210 Lubbeek, België</p>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=Diestsesteenweg%20125%2C%203210%20Lubbeek" target="_blank" rel="noopener" class="btn btn-outline-rk btn-sm px-3"><i class="bi bi-signpost-2 me-1" aria-hidden="true"></i>Route plannen</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/ID:33-->
+
+            <!--ID:34--><div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 bg-white">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-3"><i class="bi bi-clock me-2 text-primary" aria-hidden="true"></i>Openingsuren</h3>
+                            <table class="w-100 small mb-0" aria-label="Openingsuren van RijKlaar">
+                                <tbody>
+                                    <tr class="hours-row" data-days="1,2,3,4,5"><td>Maandag – vrijdag</td><td class="text-end fw-semibold d-inline-flex justify-content-end align-items-center gap-2">09:00 – 18:00 <span class="today-badge">vandaag</span></td></tr>
+                                    <tr class="hours-row" data-days="6"><td>Zaterdag</td><td class="text-end fw-semibold d-inline-flex justify-content-end align-items-center gap-2">10:00 – 17:00 <span class="today-badge">vandaag</span></td></tr>
+                                    <tr class="hours-row" data-days="0"><td>Zondag</td><td class="text-end text-muted-rk d-inline-flex justify-content-end align-items-center gap-2">Gesloten <span class="today-badge">vandaag</span></td></tr>
+                                </tbody>
+                            </table>
+                            <p class="small text-muted-rk mt-3 mb-0"><i class="bi bi-info-circle me-1" aria-hidden="true"></i>Buiten de openingsuren? Laat een berichtje achter via e-mail - we bellen je terug.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="map-frame h-100 rounded-4 overflow-hidden shadow-sm bg-white d-flex align-items-center justify-content-center" style="min-height:340px;">
+                        <iframe title="Kaart: RijKlaar, Diestsesteenweg 125, 3210 Lubbeek" src="https://www.openstreetmap.org/export/embed.html?bbox=4.5680%2C50.8590%2C4.5980%2C50.8730&amp;layer=mapnik&amp;marker=50.8660%2C4.5830" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div><!--/ID:34-->
+        </div>
+    </section><!--/ID:35-->
+
+</div><!-- /mainContent -->
+
+<!-- ======================= WAGENPAGINA (dynamisch) ======================= -->
+<!--ID:39--><section id="carPage" class="py-4 py-md-5 d-none" aria-labelledby="cpTitle">
+    <div class="container py-3">
+        <a href="#aanbod" class="cp-back mb-4"><i class="bi bi-arrow-left" aria-hidden="true"></i>Terug naar het aanbod</a>
+        <!--ID:36--><div class="row g-4 g-lg-5">
+            <div class="col-lg-7">
+                <img id="cpMainImg" class="cp-main-img mb-3" src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=70" alt="Wagen in het aanbod van RijKlaar" onerror="this.onerror=null;this.src='https://placehold.co/1200x640/0b2540/ffffff?text=RijKlaar+Wagen';">
+                <div id="cpThumbs" class="d-flex gap-2 flex-wrap" role="group" aria-label="Galerij van de wagen"></div>
+            </div>
+            <div class="col-lg-5">
+                <span class="badge-checked mb-3"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Nagekeken vóór verkoop</span>
+                <h2 id="cpTitle" class="fw-bold mb-1" style="font-size:clamp(1.5rem,2vw + 1rem,2.2rem);">Wagen</h2>
+                <p id="cpSub" class="text-muted-rk mb-3"></p>
+                <div class="d-flex align-items-baseline gap-3 flex-wrap mb-4">
+                    <span id="cpPrice" class="price-tag" style="font-size:1.9rem;"></span>
+                    <span class="small text-muted-rk">incl. BTW · onderhanden tot verkoop</span>
+                </div>
+                <dl id="cpSpecs" class="spec-list row g-2 mb-4"></dl>
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-3 p-md-4">
+                    <h3 class="h6 fw-bold mb-2"><i class="bi bi-lightning-charge-fill text-warning me-1" aria-hidden="true"></i>Interesse in deze wagen?</h3>
+                    <p class="small text-muted-rk mb-3">Bel ons tijdens de openingsuren - we houden de wagen voor je en beantwoorden al je vragen. Geen druk, wel eerlijk advies.</p>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="tel:+3216854567" class="btn btn-rk px-4 d-inline-flex align-items-center justify-content-center gap-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel over deze wagen · 016 85 45 67</a>
+                        <a href="mailto:info@rijklaar.be?subject=Interesse%20in%20wagen%20(RijKlaar)" class="btn btn-outline-rk px-4 d-inline-flex align-items-center justify-content-center gap-2"><i class="bi bi-envelope" aria-hidden="true"></i>info@rijklaar.be</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ID:36-->
+
+        <!--ID:37--><div class="row g-5 mt-4">
+            <div class="col-lg-7">
+                <h3 class="fw-bold mb-3" style="font-size:1.3rem;">Over deze wagen</h3>
+                <p id="cpDesc" class="text-muted-rk"></p>
+                <h3 class="fw-bold mt-4 mb-3" style="font-size:1.3rem;">Uitrusting</h3>
+                <div id="cpUitrusting" class="row g-2"></div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-4 h-100">
+                    <h3 class="fw-bold mb-3" style="font-size:1.2rem;"><i class="bi bi-shield-check text-success me-2" aria-hidden="true"></i>Wat je krijgt bij elke RijKlaar-wagen</h3>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="d-flex gap-2 mb-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>Uitgebreide technische controle vóór verkoop</li>
+                        <li class="d-flex gap-2 mb-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>APK up-to-date bij verkoop</li>
+                        <li class="d-flex gap-2 mb-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>Garantie op motor &amp; versnelling</li>
+                        <li class="d-flex gap-2 mb-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>Volledige servicehistorie</li>
+                        <li class="d-flex gap-2 mb-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>Banden gecontroleerd (profiel &amp; leeftijd)</li>
+                        <li class="d-flex gap-2"><span class="check-dot" style="width:26px;height:26px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span>Eerlijke prijs - wat je ziet, is wat je krijgt</li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--/ID:37-->
+
+        <!--ID:38--><div class="contact-panel p-4 p-md-5 mt-5 text-center">
+            <h3 class="fw-bold text-white mb-2" style="font-size:1.4rem;">Zit je er nog over te twijfelen? Bel even - we denken eerlijk mee.</h3>
+            <p class="mb-4" style="color:#cfe0f2;max-width:560px;margin-inline:auto;">Ma–vr 09:00–18:00 · Za 10:00–17:00</p>
+            <a href="tel:+3216854567" class="btn btn-rk btn-lg px-5 d-inline-flex align-items-center gap-2"><i class="bi bi-telephone-fill" aria-hidden="true"></i>Bel nu · 016 85 45 67</a>
+        </div><!--/ID:38-->
+    </div>
+</section><!--/ID:39--><!-- /carPage -->
+
+<!-- Footer -->
+<!--ID:41--><footer class="footer-rk pt-5 pb-4">
+    <div class="container">
+        <!--ID:40--><div class="row g-4 mb-4">
+            <div class="col-lg-4">
+                <a href="#home" class="d-inline-flex align-items-center gap-2 mb-3 text-decoration-none" aria-label="RijKlaar - naar de homepage">
+                    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <rect x="2" y="2" width="44" height="44" rx="12" fill="#1259a6"/>
+                        <circle cx="24" cy="24" r="13" stroke="#ffffff" stroke-width="3.2"/>
+                        <circle cx="24" cy="24" r="4.2" fill="#ffffff"/>
+                        <path d="M24 11v9M12.6 29l8-4.5M35.4 29l-8-4.5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="brand-name" style="color:#fff;">Rij<span style="color:#7fb3e0;">Klaar</span></span>
+                </a>
+                <p class="small mb-1 fw-semibold text-white">Start met vertrouwen.</p>
+                <p class="small mb-0" style="max-width:280px;">Tweedehandswagens voor starters tussen 18 en 30. Grondig nagekeken, eerlijk geprijsd, persoonlijk begeleid.</p>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h3>Navigatie</h3>
+                <ul class="list-unstyled small d-grid gap-2 mb-0">
+                    <li><a href="#aanbod">Aanbod</a></li>
+                    <li><a href="#waarom">Waarom RijKlaar</a></li>
+                    <li><a href="#over">Over ons</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-3">
+                <h3>Contact</h3>
+                <ul class="list-unstyled small d-grid gap-2 mb-0">
+                    <li><a href="tel:+3216854567"><i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>016 85 45 67</a></li>
+                    <li><a href="mailto:info@rijklaar.be"><i class="bi bi-envelope me-2" aria-hidden="true"></i>info@rijklaar.be</a></li>
+                    <li><span><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Diestsesteenweg 125, 3210 Lubbeek</span></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h3>Openingsuren</h3>
+                <ul class="list-unstyled small d-grid gap-2 mb-0">
+                    <li>Maandag – vrijdag: 09:00 – 18:00</li>
+                    <li>Zaterdag: 10:00 – 17:00</li>
+                    <li>Zondag: gesloten</li>
+                </ul>
+            </div>
+        </div><!--/ID:40-->
+        <div class="border-top pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small">
+            <span>&copy; <span id="yearNow">2026</span> RijKlaar · Alle rechten voorbehouden</span>
+            <span class="d-inline-flex gap-3 flex-wrap">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal">Cookies / Cookie-instellingen</a>
+            </span>
+        </div>
+    </div>
+</footer><!--/ID:41--><!--ID:42-->
+
+<!-- Sticky belknop (mobiel) -->
+<div class="rk-callbar d-md-none" id="callbar">
+    <a href="tel:+3216854567" class="btn btn-rk w-100 fw-semibold py-2"><i class="bi bi-telephone-fill me-2" aria-hidden="true"></i>Bel nu · 016 85 45 67</a>
+</div>
+
+<!-- Cookie modal -->
+<div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cookieModalLabel"><i class="bi bi-cookie me-2 text-primary" aria-hidden="true"></i>Cookies &amp; lokale opslag</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+            </div>
+            <div class="modal-body">
+                <p class="small text-secondary mb-3">Wij gebruiken alleen functionele cookies en lokale opslag om deze website te laten werken. Concreet:</p>
+                <ul class="small list-unstyled d-grid gap-2 mb-3">
+                    <li><i class="bi bi-check-circle-fill text-success me-1" aria-hidden="true"></i><strong>Functioneel / localStorage:</strong> onthoudt je cookiekeuze zodat we je niet opnieuw vragen.</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-1" aria-hidden="true"></i><strong>Ingebouwde kaart (OpenStreetMap):</strong> kan bij het laden van de kaart eigen cookies plaatsen.</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-1" aria-hidden="true"></i><strong>Webfonts &amp; Bootstrap via CDN:</strong> worden geladen vanaf externe servers; wij gebruiken geen tracking.</li>
+                </ul>
+                <p class="small mb-0"><strong>Er worden géén tracking- of marketingcookies gebruikt.</strong> Je keuze kun je op elk moment aanpassen via de link “Cookies” in de footer.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" id="cookieReject">Afwijzen</button>
+                <button type="button" class="btn btn-rk btn-sm" id="cookieAccept">Accepteren</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Privacy modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="privacyModalLabel"><i class="bi bi-shield-lock me-2 text-primary" aria-hidden="true"></i>Privacyverklaring</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+            </div>
+            <div class="modal-body small">
+                <p><strong>Verantwoordelijke:</strong> RijKlaar, Diestsesteenweg 125, 3210 Lubbeek - <a href="mailto:info@rijklaar.be">info@rijklaar.be</a>.</p>
+                <p><strong>Wat we verzamelen:</strong> deze website gebruikt geen formulieren en geen accounts. We verzamelen alleen technische gegevens (serverlogs zoals IP-adres en browser) voor veiligheid en prestaties, plus je cookiekeuze in de lokale opslag van je eigen browser.</p>
+                <p><strong>Doel &amp; rechtsgrond:</strong> de website laten werken en beveiligen (legitiem belang). Eventuele contacten per telefoon of e-mail verwerken we zolang nodig voor de afhandeling van jouw vraag (toestemming / contract).</p>
+                <p><strong>Bewaring:</strong> serverlogs worden kort bewaard; e-mails zolang nodig om je vraag te beantwoorden.</p>
+                <p><strong>Deling:</strong> we verkopen of delen geen gegevens met derden, tenzij wettelijk verplicht.</p>
+                <p class="mb-0"><strong>Jouw rechten:</strong> je hebt recht op inzage, rectificatie en verwijdering van je gegevens. Mail hiervoor naar <a href="mailto:info@rijklaar.be">info@rijklaar.be</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Sluiten</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+    'use strict';
+
+    /* ---------- Data: wagens ---------- */
+    var IMG_INTERIOR = "https://images.unsplash.com/photo-1502877338535-766e14522c42?auto=format&fit=crop&w=900&q=70";
+    var IMG_ROAD     = "https://images.unsplash.com/photo-1471479917133-0bf4a2461881?auto=format&fit=crop&w=900&q=70";
+    var FALLBACK_CAR = "https://placehold.co/900x600/0b2540/ffffff?text=RijKlaar+Wagen";
+
+    var CARS = [
+        { slug:"volkswagen-golf-7", naam:"Volkswagen Golf 7", sub:"1.0 TSI Style · 2018", jaar:2018, km:98450, brandstof:"Benzine", versnelling:"Manueel · 6 versnellingen", pk:110, kleur:"Blauw metallic", eigenaars:2, prijs:11490,
+          img:"https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"Een betrouwbare allrounder die perfect is voor je eerste wagen: ruim, zuinig en makkelijk te rijden. Deze Golf is netjes onderhouden met volledige servicehistorie bij de dealer.",
+          uitrusting:["Climate control","Apple CarPlay & Android Auto","Cruise control","Parkeersensoren achter","LED-dagrijverlichting","17-inch lichtmetalen velgen","Regensensor","Start/stop-systeem"] },
+        { slug:"ford-fiesta-10", naam:"Ford Fiesta", sub:"1.0 EcoBoost Trend · 2019", jaar:2019, km:76300, brandstof:"Benzine", versnelling:"Manueel · 5 versnellingen", pk:100, kleur:"Rood metallic", eigenaars:1, prijs:9950,
+          img:"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"Compact, wendbaar en ideaal om door de stad te manoeuvreren. Een budgetvriendelijke keuze voor wie zijn eerste kilometers maakt - zonder in te leveren op veiligheid.",
+          uitrusting:["Airco","Bluetooth & USB-audio","Parkeercamera","Lichtmetalen velgen","Start/stop-systeem","ISOFIX-bevestigingen","Dagschakelaar","Centrale vergrendeling"] },
+        { slug:"peugeot-208", naam:"Peugeot 208", sub:"1.2 PureTech Allure · 2020", jaar:2020, km:64120, brandstof:"Benzine", versnelling:"Automatisch · EAT6", pk:100, kleur:"Zwart", eigenaars:1, prijs:12750,
+          img:"https://images.unsplash.com/photo-1583121274602-3e2820c69887?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"Stijlvol Frans design met een soepele automaat - handig in het stadsverkeer. Deze 208 is recent nagekeken en klaar voor een nieuwe eigenaar.",
+          uitrusting:["Automatische airco","Touchscreen met CarPlay","Parkeersensoren vóór & achter","LED-verlichting","16-inch lichtmetalen velgen","Cruise control","Regensensor","Startknop"] },
+        { slug:"renault-clio-v", naam:"Renault Clio V", sub:"1.0 TCe Intens · 2019", jaar:2019, km:88900, brandstof:"Benzine", versnelling:"Manueel · 5 versnellingen", pk:66, kleur:"Grijs metallic", eigenaars:2, prijs:8490,
+          img:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"De Clio is een van de meest verkochte wagens in België - niet zonder reden. Eerlijk geprijsd, netjes onderhouden en klaar om te vertrekken.",
+          uitrusting:["Airco","Bluetooth-audio","Centrale vergrendeling met afstandsbediening","Lichtmetalen velgen","Start/stop-systeem","ISOFIX-bevestigingen","Dagschakelaar","Verwarmde voorruit"] },
+        { slug:"toyota-yaris-hybrid", naam:"Toyota Yaris Hybrid", sub:"1.5 Hybrid Active · 2018", jaar:2018, km:112600, brandstof:"Hybride", versnelling:"Automatisch · e-CVT", pk:116, kleur:"Zilver metallic", eigenaars:1, prijs:13950,
+          img:"https://images.unsplash.com/photo-1503376782337-be0d4f2a2190?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"In de stad bijna de helft aan brandstof besparen? Met deze hybride lukt dat. Betrouwbaar Japans werk dat jaren meegaat - ideaal voor wie veel pendelt.",
+          uitrusting:["Automatische airco","Toyota Safety Sense (adaptieve cruise)","Apple CarPlay & Android Auto","Parkeersensoren vóór & achter","LED-verlichting","16-inch lichtmetalen velgen","Start/stop-systeem","Regensensor"] },
+        { slug:"opel-corsa-f", naam:"Opel Corsa F", sub:"1.5D Edition · 2021", jaar:2021, km:52300, brandstof:"Diesel", versnelling:"Manueel · 6 versnellingen", pk:100, kleur:"Wit", eigenaars:1, prijs:12950,
+          img:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"Ruim, modern en zuinig - de Corsa F is een populaire keuze bij starters. Deze diesel is ideaal als je ook eens op de snelweg vertrekt.",
+          uitrusting:["Automatische airco","Navigatie & CarPlay","Parkeercamera","LED-koplampen","17-inch lichtmetalen velgen","Cruise control","Regensensor","Dagschakelaar"] },
+        { slug:"skoda-fabia-tdi", naam:"Škoda Fabia", sub:"1.6 TDI Ambition · 2017", jaar:2017, km:143800, brandstof:"Diesel", versnelling:"Manueel · 5 versnellingen", pk:90, kleur:"Donkergrijs", eigenaars:2, prijs:9250,
+          img:"https://images.unsplash.com/photo-1471479917133-0bf4a2461881?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"De Fabia biedt meer ruimte dan je verwacht voor deze prijs. Zuinige diesel met een nette servicehistorie - een eerlijke keuze voor elke dag.",
+          uitrusting:["Airco","Bluetooth & USB-audio","Lichtmetalen velgen","Start/stop-systeem","Centrale vergrendeling met afstandsbediening","ISOFIX-bevestigingen","Dagschakelaar","Parkeersensoren achter"] },
+        { slug:"dacia-duster", naam:"Dacia Duster", sub:"1.0 TCe Journey · 2020", jaar:2020, km:61200, brandstof:"Benzine", versnelling:"Manueel · 5 versnellingen", pk:90, kleur:"Donkergrijs", eigenaars:1, prijs:9450,
+          img:"https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=900&q=70",
+          beschrijving:"Hoog zitten, veel ruimte en een lage aanschafprijs. De Duster is perfect als eerste wagen voor stad én weekend.",
+          uitrusting:["Automatische airco","Touchscreen met CarPlay","Parkeercamera","LED-dagrijverlichting","17-inch lichtmetalen velgen","Start/stop-systeem","ISOFIX-bevestigingen","Verhoogde zitpositie"] }
+    ];
+
+    var DEFAULT_TITLE = document.title;
+    var mainContent = document.getElementById('mainContent');
+    var carPage = document.getElementById('carPage');
+    var carOpen = false;
+
+    function fmtNum(n){ return n.toLocaleString('nl-BE'); }
+    function fmtPrice(n){ return '€' + fmtNum(n); }
+
+    /* ---------- Aanbod renderen ---------- */
+    function cardHTML(c, i){
+        return '' +
+        '<div class="col-sm-6 col-xl-3" data-brandstof="' + c.brandstof + '">' +
+            '<article class="car-card">' +
+                '<a href="#wagen-' + c.slug + '" class="card-img-wrap text-decoration-none" aria-label="Bekijk details van ' + c.naam + '">' +
+                    '<img src="' + c.img + '" alt="' + c.naam + ' in het aanbod van RijKlaar (foto ter illustratie)" loading="lazy" onerror="this.onerror=null;this.src=\'' + FALLBACK_CAR + '\';">' +
+                    '<span class="badge-checked position-absolute top-0 start-0 m-2"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Nagekeken</span>' +
+                '</a>' +
+                '<div class="card-body p-3 p-md-4">' +
+                    '<h3 class="h5 fw-bold mb-1 text-dark">' + c.naam + '</h3>' +
+                    '<p class="small text-muted-rk mb-3">' + c.jaar + ' · ' + fmtNum(c.km) + ' km · ' + c.brandstof + '</p>' +
+                    '<div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">' +
+                        '<span class="price-tag">' + fmtPrice(c.prijs) + '</span>' +
+                        '<div class="d-inline-flex gap-1">' +
+                            '<a href="#wagen-' + c.slug + '" class="btn btn-outline-rk btn-sm px-3">Details</a>' +
+                            '<a href="tel:+3216854567" class="btn btn-rk btn-sm px-3" aria-label="Bel over de ' + c.naam + '"><i class="bi bi-telephone-fill" aria-hidden="true"></i></a>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</article>' +
+        '</div>';
+    }
+
+    function renderCards(){
+        var grid = document.getElementById('carGrid');
+        var html = '';
+        for (var i=0;i<CARS.length;i++){ html += cardHTML(CARS[i], i); }
+        grid.innerHTML = html;
+        updateCount();
+    }
+
+    function updateCount(){
+        var visible = document.querySelectorAll('#carGrid > div:not(.d-none)').length;
+        var el = document.getElementById('carCount');
+        if (el) el.textContent = visible + ' wagens getoond · elke wagen nagekeken vóór verkoop';
+    }
+
+    /* ---------- Filters ---------- */
+    function initFilters(){
+        var btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(function(btn){
+            btn.addEventListener('click', function(){
+                btns.forEach(function(b){ b.classList.remove('active'); });
+                btn.classList.add('active');
+                var f = btn.getAttribute('data-filter');
+                document.querySelectorAll('#carGrid > div').forEach(function(col){
+                    if (f === 'alle' || col.getAttribute('data-brandstof') === f) { col.classList.remove('d-none'); }
+                    else { col.classList.add('d-none'); }
+                });
+                updateCount();
+            });
+        });
+    }
+
+    /* ---------- Wagenpagina ---------- */
+    function specRow(dt, dd){ return '<div class="col-6"><dt>' + dt + '</dt><dd>' + dd + '</dd></div>'; }
+
+    function renderCarPage(c){
+        document.getElementById('cpTitle').textContent = c.naam;
+        document.getElementById('cpSub').textContent = c.sub + ' · ' + fmtNum(c.km) + ' km';
+        document.getElementById('cpPrice').textContent = fmtPrice(c.prijs);
+        document.getElementById('cpDesc').textContent = c.beschrijving;
+
+        var specs = document.getElementById('cpSpecs');
+        specs.innerHTML =
+            specRow('Jaar', c.jaar) +
+            specRow('Kilometerstand', fmtNum(c.km) + ' km') +
+            specRow('Brandstof', c.brandstof) +
+            specRow('Versnellingsbak', c.versnelling) +
+            specRow('Vermogen', c.pk + ' pk') +
+            specRow('Kleur', c.kleur) +
+            specRow('Aantal eigenaars', c.eigenaars) +
+            specRow('APK', '<span class="text-success fw-bold">Up-to-date ✓</span>');
+
+        var uit = document.getElementById('cpUitrusting');
+        uit.innerHTML = c.uitrusting.map(function(u){
+            return '<div class="col-sm-6"><div class="check-item py-2 px-3"><span class="check-dot" style="width:28px;height:28px;font-size:.75rem;"><i class="bi bi-check-lg" aria-hidden="true"></i></span><span class="small">' + u + '</span></div></div>';
+        }).join('');
+
+        var gallery = [c.img, IMG_INTERIOR, IMG_ROAD];
+        var mainImg = document.getElementById('cpMainImg');
+        mainImg.src = gallery[0];
+        mainImg.alt = c.naam + ' - foto 1 (foto ter illustratie)';
+
+        var thumbs = document.getElementById('cpThumbs');
+        thumbs.innerHTML = gallery.map(function(src, i){
+            return '<button type="button" class="cp-thumb' + (i===0?' active':'') + '" data-src="' + src + '" aria-label="Foto ' + (i+1) + ' van de ' + c.naam + '">' +
+                   '<img src="' + src + '" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:.5rem;" onerror="this.onerror=null;this.src=\'https://placehold.co/200x140?text=Foto+\'+' + (i+1) + ';">' +
+                   '</button>';
+        }).join('');
+
+        document.title = c.naam + ' | RijKlaar';
+    }
+
+    function openCar(slug){
+        var c = null;
+        for (var i=0;i<CARS.length;i++){ if (CARS[i].slug === slug) { c = CARS[i]; break; } }
+        if (!c) return false;
+        renderCarPage(c);
+        mainContent.classList.add('d-none');
+        carPage.classList.remove('d-none');
+        carOpen = true;
+        window.scrollTo(0, 0);
+        return true;
+    }
+
+    function closeCar(){
+        if (!carOpen) return;
+        carPage.classList.add('d-none');
+        mainContent.classList.remove('d-none');
+        carOpen = false;
+        document.title = DEFAULT_TITLE;
+    }
+
+    function route(){
+        var h = window.location.hash || '';
+        if (h.indexOf('#wagen-') === 0) {
+            openCar(h.substring(7));
+        } else {
+            closeCar();
+        }
+    }
+
+    /* ---------- Galerij thumbs ---------- */
+    document.getElementById('cpThumbs').addEventListener('click', function(e){
+        var btn = e.target.closest('.cp-thumb');
+        if (!btn) return;
+        var mainImg = document.getElementById('cpMainImg');
+        mainImg.src = btn.getAttribute('data-src');
+        this.querySelectorAll('.cp-thumb').forEach(function(t){ t.classList.remove('active'); });
+        btn.classList.add('active');
+    });
+
+    /* ---------- Ankers: sluit wagenpagina indien open ---------- */
+    document.addEventListener('click', function(e){
+        var a = e.target.closest('a[href^="#"]:not([data-bs-toggle])');
+        if (!a) return;
+        if (carOpen) {
+            e.preventDefault();
+            closeCar();
+            var targetId = a.getAttribute('href').substring(1);
+            var target = document.getElementById(targetId);
+            history.replaceState(null, '', target ? '#' + targetId : window.location.pathname);
+            requestAnimationFrame(function(){
+                if (target) { target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+                else { window.scrollTo(0, 0); }
+            });
+        }
+        // Sluit mobiel menu na navigatie
+        var collapse = document.getElementById('navCollapse');
+        if (collapse && !collapse.classList.contains('show') === false) {}
+        if (window.matchMedia('(max-width: 991.98px)').matches && collapse && window.bootstrap) {
+            try { bootstrap.Collapse.getOrCreateInstance(collapse, { toggle:false }).hide(); } catch(err){}
+        }
+    });
+
+    /* ---------- Openingsuren: vandaag markeren ---------- */
+    function initHours(){
+        var day = new Date().getDay(); // 0 = zondag
+        document.querySelectorAll('.hours-row').forEach(function(row){
+            var days = (row.getAttribute('data-days') || '').split(',');
+            if (days.indexOf(String(day)) !== -1) { row.classList.add('today-row'); }
+        });
+    }
+
+    /* ---------- Scroll: navbar schaduw + sticky belknop ---------- */
+    function initScroll(){
+        var nav = document.getElementById('mainNav');
+        var bar = document.getElementById('callbar');
+        function onScroll(){
+            if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+            if (bar) {
+                var show = window.scrollY > 480;
+                bar.classList.toggle('show', show);
+                document.body.classList.toggle('callbar-visible', show && window.matchMedia('(max-width:767.98px)').matches);
+            }
+        }
+        window.addEventListener('scroll', onScroll, { passive:true });
+        onScroll();
+    }
+
+    /* ---------- Cookie-toestemming (één keer via localStorage) ---------- */
+    function initCookies(){
+        var modalEl = document.getElementById('cookieModal');
+        try {
+            if (!localStorage.getItem('cookieConsent') && modalEl && window.bootstrap) {
+                new bootstrap.Modal(modalEl).show();
+            }
+        } catch(e){}
+
+        var acc = document.getElementById('cookieAccept');
+        if (acc) acc.addEventListener('click', function(){
+            try { localStorage.setItem('cookieConsent','accepted'); } catch(e){}
+            if (modalEl && window.bootstrap) { var inst = bootstrap.Modal.getInstance(modalEl); if (inst) inst.hide(); }
+        });
+        var rej = document.getElementById('cookieReject');
+        if (rej) rej.addEventListener('click', function(){
+            try { localStorage.setItem('cookieConsent','rejected'); } catch(e){}
+        });
+        if (modalEl) modalEl.addEventListener('hidden.bs.modal', function(){
+            try { if (!localStorage.getItem('cookieConsent')) localStorage.setItem('cookieConsent','dismissed'); } catch(e){}
+        });
+    }
+
+    /* ---------- Init ---------- */
+    document.addEventListener('DOMContentLoaded', function(){
+        renderCards();
+        initFilters();
+        initHours();
+        initScroll();
+        initCookies();
+        var y = document.getElementById('yearNow');
+        if (y) y.textContent = String(new Date().getFullYear());
+        window.addEventListener('hashchange', route);
+        route();
+    });
+})();
+</script>
+<!--/ID:42--></body>
+</html>
