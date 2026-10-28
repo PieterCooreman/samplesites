@@ -19,6 +19,7 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [Land Rover 2](https://pietercooreman.github.io/samplesites/LandRover2/index.html) | https://pietercooreman.github.io/samplesites/LandRover2/index.html |
 | [Leuven](https://pietercooreman.github.io/samplesites/Leuven/index.html) | https://pietercooreman.github.io/samplesites/Leuven/index.html |
 | [Leuven 2](https://pietercooreman.github.io/samplesites/Leuven2/index.html) | https://pietercooreman.github.io/samplesites/Leuven2/index.html |
+| [Leuven 3](https://pietercooreman.github.io/samplesites/Leuven3/index.html) | https://pietercooreman.github.io/samplesites/Leuven3/index.html |
 | [Newspaper AI](https://pietercooreman.github.io/samplesites/NewspaperAI/index.html) | https://pietercooreman.github.io/samplesites/NewspaperAI/index.html |
 | [Quiet Spaces](https://pietercooreman.github.io/samplesites/QuietSpaces/index.html) | https://pietercooreman.github.io/samplesites/QuietSpaces/index.html |
 | [Steam & Bean](https://pietercooreman.github.io/samplesites/SteamBean/index.html) | https://pietercooreman.github.io/samplesites/SteamBean/index.html |
