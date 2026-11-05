@@ -22,6 +22,7 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [Leuven 3](https://pietercooreman.github.io/samplesites/Leuven3/index.html) | https://pietercooreman.github.io/samplesites/Leuven3/index.html |
 | [Newspaper AI](https://pietercooreman.github.io/samplesites/NewspaperAI/index.html) | https://pietercooreman.github.io/samplesites/NewspaperAI/index.html |
 | [Quiet Spaces](https://pietercooreman.github.io/samplesites/QuietSpaces/index.html) | https://pietercooreman.github.io/samplesites/QuietSpaces/index.html |
+| [Suzuki Samurai](https://pietercooreman.github.io/samplesites/Samurai/index.html) | https://pietercooreman.github.io/samplesites/Samurai/index.html |
 | [Steam & Bean](https://pietercooreman.github.io/samplesites/SteamBean/index.html) | https://pietercooreman.github.io/samplesites/SteamBean/index.html |
 | [Studio Marchetti](https://pietercooreman.github.io/samplesites/StudioMarchetti/index.html) | https://pietercooreman.github.io/samplesites/StudioMarchetti/index.html |
 | [Wild Australia](https://pietercooreman.github.io/samplesites/WildAustralia/index.html) | https://pietercooreman.github.io/samplesites/WildAustralia/index.html |
