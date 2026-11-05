@@ -1,0 +1,668 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durbuy – De kleinste stad ter wereld | Belgische Ardennen</title>
+    <meta name="description" content="Ontdek Durbuy in de Belgische Ardennen: 'de kleinste stad ter wereld'. Geschiedenis, bezienswaardigheden, activiteiten aan de Ourthe, Wéris, eten & drinken en praktische reistips.">
+    <meta name="theme-color" content="#12352a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!--ID:1--><style>
+        :root{
+            --pine:#1e4d3b;
+            --pine-deep:#12352a;
+            --moss:#3f7a5c;
+            --gold:#c9862f;
+            --gold-soft:#e6b45f;
+            --gold-deep:#9a6215;
+            --cream:#faf6ee;
+            --ink:#26302b;
+            --muted:#5d6a61;
+        }
+        html{scroll-behavior:smooth; scroll-padding-top:84px;}
+        body{font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--ink); background:#fff; overflow-x:hidden;}
+        h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif; font-weight:600; overflow-wrap:break-word;}
+        img{max-width:100%; height:auto;}
+        .skip-link{position:absolute; left:-999px; top:0; z-index:2000; background:var(--gold); color:#20180a; padding:.6rem 1rem; border-radius:0 0 .5rem 0; font-weight:600;}
+        .skip-link:focus{left:0;}
+
+        /* ---------- Navbar ---------- */
+        #mainNav{background:transparent; transition:background .3s ease, box-shadow .3s ease; padding-top:.4rem; padding-bottom:.4rem;}
+        #mainNav.navbar-scrolled{background:rgba(18,53,42,.97); box-shadow:0 2px 18px rgba(0,0,0,.28);}
+        #mainNav .navbar-brand{color:#fff; font-size:1.4rem; letter-spacing:.02em;}
+        #mainNav .nav-link{color:rgba(255,255,255,.85); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; padding:.45rem .65rem !important;}
+        #mainNav .nav-link:hover,#mainNav .nav-link:focus{color:#fff;}
+        #mainNav .navbar-toggler{border-color:rgba(255,255,255,.35);}
+        #mainNav .navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,.9)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");}
+        @media (max-width: 991.98px){
+            #mainNav .navbar-collapse{background:rgba(18,53,42,.97); border-radius:.8rem; padding:1rem 1.1rem; margin-top:.6rem;}
+            #mainNav .nav-link{padding:.6rem .4rem !important; font-size:.85rem;}
+        }
+
+        /* ---------- Hero ---------- */
+        .hero{position:relative; min-height:100vh; min-height:100svh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; overflow:hidden;}
+        .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+        .hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,38,29,.78) 0%, rgba(14,38,29,.5) 55%, rgba(14,38,29,.82) 100%);}
+        .hero-content{position:relative; z-index:2; padding-top:clamp(6rem,16vh,9rem); padding-bottom:5rem;}
+        .hero h1{font-size:clamp(3.2rem,12vw,7rem); font-weight:700; line-height:1; margin-bottom:1rem; letter-spacing:.01em;}
+        .hero .lead{font-size:clamp(1.05rem,2.6vw,1.45rem); color:#e9f0ea; max-width:46rem; margin-inline:auto;}
+        .hero-eyebrow{text-transform:uppercase; letter-spacing:.28em; font-size:.78rem; font-weight:700; color:var(--gold-soft); margin-bottom:1.1rem;}
+        .btn{min-height:44px; border-radius:.6rem; font-weight:600; transition:all .25s ease;}
+        .btn-gold{background:var(--gold); border:1px solid var(--gold); color:#20180a;}
+        .btn-gold:hover,.btn-gold:focus{background:#b0742a; border-color:#b0742a; color:#fff;}
+        .btn-pine{background:var(--pine); border:1px solid var(--pine); color:#fff;}
+        .btn-pine:hover,.btn-pine:focus{background:#153a2c; border-color:#153a2c; color:#fff;}
+        .btn-ghost-light{background:transparent; border:1px solid rgba(255,255,255,.6); color:#fff;}
+        .btn-ghost-light:hover,.btn-ghost-light:focus{background:rgba(255,255,255,.14); color:#fff;}
+        .hero-scroll{position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:2; color:rgba(255,255,255,.75); font-size:1.6rem; animation:bob 2.2s ease-in-out infinite;}
+        @keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,9px);}}
+
+        /* ---------- Sections ---------- */
+        .section{padding-block:clamp(3.5rem,8vw,6rem);}
+        .bg-cream{background:var(--cream);}
+        .section-dark{background:var(--pine-deep); color:#e9f0ea;}
+        .section-dark p{color:#c2d1c6;}
+        .eyebrow{display:inline-block; text-transform:uppercase; letter-spacing:.2em; font-size:.78rem; font-weight:700; color:var(--gold-deep); margin-bottom:.9rem;}
+        .section-dark .eyebrow{color:var(--gold-soft);}
+        .section-head h2{font-size:clamp(1.9rem,5vw,3rem); line-height:1.15; margin-bottom:1rem;}
+        .figcap{font-size:.8rem; color:var(--muted); font-style:italic; margin-top:.6rem;}
+        .section-dark .figcap{color:#9fb4a7;}
+
+        /* ---------- Cards & images ---------- */
+        .tcard{background:#fff; border-radius:.9rem; box-shadow:0 6px 18px rgba(30,77,59,.08); border:1px solid rgba(30,77,59,.07);}
+        .card-hover{transition:transform .25s ease, box-shadow .25s ease;}
+        .card-hover:hover{transform:translateY(-5px); box-shadow:0 16px 34px rgba(30,77,59,.16);}
+        .img-zoom{overflow:hidden; border-radius:.9rem .9rem 0 0;}
+        .img-zoom img{width:100%; height:clamp(170px,24vw,235px); object-fit:cover; display:block; transition:transform .6s ease;}
+        .card-hover:hover .img-zoom img{transform:scale(1.06);}
+        .img-frame{border-radius:.9rem; overflow:hidden; box-shadow:0 14px 32px rgba(18,53,42,.18); background:#dfe7e1;}
+        .img-frame img{width:100%; height:clamp(210px,30vw,320px); object-fit:cover; display:block;}
+        .act-icon{flex:0 0 auto; width:52px; height:52px; border-radius:50%; background:rgba(30,77,59,.1); color:var(--pine); display:flex; align-items:center; justify-content:center; font-size:1.4rem;}
+        .act-icon.gold{background:rgba(201,134,47,.14); color:var(--gold-deep);}
+        .section-dark .act-icon{background:rgba(255,255,255,.1); color:var(--gold-soft);}
+
+        /* ---------- Stats ---------- */
+        .stat-num{font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(1.6rem,3.4vw,2.4rem); font-weight:700; color:var(--pine); line-height:1;}
+        .stat-label{font-size:.78rem; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); margin-top:.45rem;}
+
+        /* ---------- Timeline ---------- */
+        .timeline{list-style:none; border-left:2px solid rgba(255,255,255,.18); margin-left:.6rem; padding:0 0 0 0;}
+        .tl-item{position:relative; padding:0 0 2.4rem 2rem;}
+        .tl-item:last-child{padding-bottom:.2rem;}
+        .tl-item::before{content:""; position:absolute; left:-8px; top:.35rem; width:14px; height:14px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 5px rgba(201,134,47,.22);}
+        .tl-year{display:inline-block; border:1px solid var(--gold-soft); color:var(--gold-soft); padding:.22rem .85rem; border-radius:999px; letter-spacing:.1em; text-transform:uppercase; font-size:.72rem; font-weight:700;}
+        .tl-item h3{color:#fff; font-size:clamp(1.25rem,2.6vw,1.6rem); margin-top:.7rem;}
+
+        /* ---------- Wéris panel ---------- */
+        .weris-panel{background:var(--pine-deep); color:#e9f0ea; box-shadow:0 18px 40px rgba(18,53,42,.3);}
+        .badge-gold{display:inline-flex; align-items:center; gap:.5rem; background:rgba(230,180,95,.14); color:var(--gold-soft); border:1px solid rgba(230,180,95,.45); padding:.55rem 1.1rem; border-radius:999px; font-size:.8rem; letter-spacing:.06em; font-weight:600;}
+        .weris-panel hr{border-color:rgba(255,255,255,.15);}
+
+        /* ---------- Note & CTA ---------- */
+        .alert-note{background:#fbf1dd; border:1px solid #ecd9ae; border-left:4px solid var(--gold); color:#4a3d26;}
+        .cta-band{background:linear-gradient(135deg,var(--pine) 0%,var(--pine-deep) 100%);}
+
+        /* ---------- Gallery & lightbox ---------- */
+        .gal-item{position:relative; display:block; width:100%; border:0; padding:0; margin:0; border-radius:.8rem; overflow:hidden; cursor:pointer; background:#dfe7e1; box-shadow:0 6px 16px rgba(30,77,59,.1);}
+        .gal-item img{width:100%; height:clamp(140px,22vw,210px); object-fit:cover; display:block; transition:transform .5s ease;}
+        .gal-item:hover img,.gal-item:focus-visible img{transform:scale(1.07);}
+        .gal-item::after{content:"\F586"; font-family:'bootstrap-icons'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem; background:rgba(14,38,29,.45); opacity:0; transition:opacity .3s ease;}
+        .gal-item:hover::after,.gal-item:focus-visible::after{opacity:1;}
+        .gal-label{position:absolute; left:0; right:0; bottom:0; padding:.5rem .8rem; font-size:.75rem; color:#fff; background:linear-gradient(transparent, rgba(14,38,29,.85)); text-align:left; z-index:1;}
+        .lightbox{position:fixed; inset:0; z-index:1090; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1rem; background:rgba(10,22,16,.94); opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
+        .lightbox.open{opacity:1; visibility:visible;}
+        .lightbox img{max-width:min(1100px,94vw); max-height:76vh; width:auto; height:auto; object-fit:contain; border-radius:.6rem; box-shadow:0 20px 60px rgba(0,0,0,.5);}
+        .lb-cap{color:#cfe0d5; font-size:.9rem; margin-top:1rem; text-align:center;}
+        .lb-btn{position:absolute; display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:50%; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.08); color:#fff; font-size:1.3rem; transition:background .2s ease;}
+        .lb-btn:hover{background:rgba(255,255,255,.2);}
+        .lb-close{top:1rem; right:1rem;}
+        .lb-prev{left:.8rem; top:50%; transform:translateY(-50%);}
+        .lb-next{right:.8rem; top:50%; transform:translateY(-50%);}
+
+        /* ---------- Footer ---------- */
+        .footer-dark{background:#0d271e; color:#cfe0d5;}
+        .footer-dark a{color:#e9f0ea; text-decoration:none; font-weight:600;}
+        .footer-dark a:hover{color:var(--gold-soft);}
+        .footer-dark hr{border-color:rgba(255,255,255,.14);}
+
+        /* ---------- Modals ---------- */
+        .modal-content{border-radius:.9rem; border:0;}
+
+        /* ---------- Reveal animation ---------- */
+        .js .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+        .js .reveal.in{opacity:1; transform:none;}
+        @media (prefers-reduced-motion: reduce){
+            html{scroll-behavior:auto;}
+            .js .reveal{opacity:1; transform:none; transition:none;}
+            .hero-scroll{animation:none;}
+            .card-hover,.img-zoom img,.gal-item img{transition:none;}
+        }
+    /*autonome-guard*/
+/* responsive safety net, keep - prevents mobile horizontal overflow */
+html{scroll-padding-top:84px;}
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;}
+img,video,iframe{max-width:100%;height:auto;}
+h1,h2,h3,h4,.display-1,.display-2,.display-3,.display-4,.display-5,.display-6{overflow-wrap:break-word;}
+</style><!--/ID:1-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Durbuy – De kleinste stad ter wereld | Belgische Ardennen">
+    <meta property="og:description" content="Ontdek Durbuy in de Belgische Ardennen: 'de kleinste stad ter wereld'. Geschiedenis, bezienswaardigheden, activiteiten aan de Ourthe, Wéris, eten & drinken en praktische reistips.">
+    <meta property="og:url" content="https://autonome.quickersite.com/sites/tp230zymbo0zk107/">
+    <meta property="og:image" content="https://autonome.quickersite.com/sites/tp230zymbo0zk107/img/2026-11-03T18-52-41_michael-maga-ao-n6VdPO3csOo-unsplash.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://autonome.quickersite.com/sites/tp230zymbo0zk107/img/2026-11-03T18-52-41_michael-maga-ao-n6VdPO3csOo-unsplash.jpg">
+</head>
+<body id="top">
+    <a class="skip-link" href="#main">Naar inhoud springen</a>
+
+    <!-- ============ NAVBAR ============ -->
+    <!--ID:2--><nav id="mainNav" class="navbar navbar-expand-lg fixed-top" aria-label="Hoofdnavigatie">
+        <div class="container">
+            <a class="navbar-brand serif fw-bold" href="#top"><i class="bi bi-castle me-2" aria-hidden="true"></i>Durbuy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Navigatie openen">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#geschiedenis">Geschiedenis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bezienswaardigheden">Bezienswaardigheden</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#activiteiten">Activiteiten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#weris">Wéris</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#eten">Eten &amp; drinken</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#evenementen">Evenementen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#praktisch">Praktisch</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galerij">Galerij</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!--/ID:2-->
+
+    <!-- ============ HERO ============ -->
+    <!--ID:3--><header class="hero">
+        <img class="hero-bg" src="img/2026-11-03T18-52-41_michael-maga-ao-n6VdPO3csOo-unsplash.jpg" alt="Luchtfoto van het historische stadje met kasteel, omringd door groen bos." onerror="this.onerror=null;this.src='https://placehold.co/1600x900?text=Durbuy';">
+        <div class="container hero-content">
+            <p class="hero-eyebrow mb-3">Belgische Ardennen · Provincie Luxemburg (Wallonië)</p>
+            <h1>Durbuy</h1>
+            <p class="lead mx-auto">&ldquo;De kleinste stad ter wereld&rdquo; - een middeleeuws juweel ingeklemd tussen de Ourthe en steile kalkrotsen.</p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center mt-4">
+                <a href="#ligging" class="btn btn-gold px-4">Ontdek Durbuy</a>
+                <a href="#praktisch" class="btn btn-ghost-light px-4">Praktische info</a>
+            </div>
+        </div>
+        <a href="#ligging" class="hero-scroll" aria-label="Scroll naar beneden"><i class="bi bi-chevron-double-down"></i></a>
+    </header><!--/ID:3-->
+
+    <main id="main">
+        <!-- ============ LIGGING ============ -->
+        <!--ID:6--><section id="ligging" class="section bg-cream">
+            <div class="container">
+                <!--ID:4--><div class="row g-5 align-items-center">
+                    <div class="col-lg-6 reveal">
+                        <span class="eyebrow">Ligging &amp; situering</span>
+                        <h2 class="section-head h2" style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15;">Aan de Ourthe, tussen rots en rivier</h2>
+                        <p class="mb-4">Durbuy ligt in de Belgische Ardennen, in het noorden van de provincie Luxemburg (Wallonië), aan de Ourthe. De historische kern is ingeklemd tussen de rivier en steile kalkrotsen - een ligging die al eeuwenlang reizigers trekt.</p>
+                        <p class="mb-0">Sinds de gemeentefusie van 1977 omvat Durbuy ook de dorpen Barvaux-sur-Ourthe, Bomal, Bohon, Tohogne en Wéris. Samen tellen ze zo&rsquo;n 11.000 inwoners, terwijl in het oude centrum slechts enkele honderden mensen wonen.</p>
+                    </div>
+                    <div class="col-lg-6 reveal">
+                        <figure class="mb-0">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-41_unnamed3.webp" alt="Kasteel boven een meanderende rivier met parkland onder een heldere lucht." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x650?text=Durbuy';"></div>
+                            <figcaption class="figcap">Het kasteel boven de Ourthe - het iconische silhouet van Durbuy.</figcaption>
+                        </figure>
+                    </div>
+                </div><!--/ID:4-->
+                <!--ID:5--><div class="row g-4 mt-5 pt-4 border-top reveal">
+                    <div class="col-6 col-lg-3"><div class="stat-num">1331</div><div class="stat-label">jaar van de stadsrechten</div></div>
+                    <div class="col-6 col-lg-3"><div class="stat-num">&plusmn;11.000</div><div class="stat-label">inwoners in de gemeente</div></div>
+                    <div class="col-6 col-lg-3"><div class="stat-num">5</div><div class="stat-label">dorpen bij de fusie van 1977</div></div>
+                    <div class="col-6 col-lg-3"><div class="stat-num" style="font-size:clamp(1.2rem,2.6vw,1.8rem);">Enkele honderden</div><div class="stat-label">wonen in het oude centrum</div></div>
+                </div><!--/ID:5-->
+            </div>
+        </section><!--/ID:6-->
+
+        <!-- ============ GESCHIEDENIS ============ -->
+        <!--ID:9--><section id="geschiedenis" class="section section-dark">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <!--ID:7--><div class="col-lg-5 reveal">
+                        <span class="eyebrow">Geschiedenis</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15; color:#fff;">Van rotsversterking tot toeristische parel</h2>
+                        <p class="mb-4">Durbuy&rsquo;s verhaal begint op een rots boven de Ourthe en eindigt in het bruisende stadje van vandaag.</p>
+                        <figure class="mb-0">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-41_unnamed2.webp" alt="Kasteltorens boven een dorp, genesteld tussen groene heuvels." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x650?text=Durbuy';"></div>
+                            <figcaption class="figcap">De kasteltorens boven het dorp, omringd door de Ardense heuvels.</figcaption>
+                        </figure>
+                    </div><!--/ID:7-->
+                    <!--ID:8--><div class="col-lg-7 reveal">
+                        <ol class="timeline mb-0">
+                            <li class="tl-item">
+                                <span class="tl-year">Middeleeuwen</span>
+                                <h3>Een versterking op de rots</h3>
+                                <p class="mb-0">De plaats ontstond rond een versterking op een rots boven de Ourthe en was een belangrijke doorgang over de rivier.</p>
+                            </li>
+                            <li class="tl-item">
+                                <span class="tl-year">1331</span>
+                                <h3>Stadsrechten van Jan de Blinde</h3>
+                                <p class="mb-0">Jan de Blinde, graaf van Luxemburg en koning van Bohemen, verleende Durbuy stadsrechten. Daarop is de bekende bewering gebaseerd dat Durbuy de kleinste stad ter wereld is: een historisch stadsprivilege en toeristisch label - geen offici&euml;le titel in een lijstje van kleinste steden.</p>
+                            </li>
+                            <li class="tl-item">
+                                <span class="tl-year">Latere eeuwen</span>
+                                <h3>De graven d&rsquo;Ursel</h3>
+                                <p class="mb-0">De heerlijkheid kwam via verschillende adellijke families uiteindelijk in handen van de graven d&rsquo;Ursel, die het kasteel nog steeds bezitten.</p>
+                            </li>
+                            <li class="tl-item">
+                                <span class="tl-year">20e eeuw</span>
+                                <h3>Toeristische ontwikkeling</h3>
+                                <p class="mb-0">Durbuy groeide uit van een rustig stadje tot een belangrijke toeristische trekpleister, met veel horeca en gerestaureerde panden.</p>
+                            </li>
+                        </ol>
+                    </div><!--/ID:8-->
+                </div>
+            </div>
+        </section><!--/ID:9-->
+
+        <!-- ============ BEZIENSWAARDIGHEDEN ============ -->
+        <!--ID:13--><section id="bezienswaardigheden" class="section">
+            <div class="container">
+                <!--ID:10--><div class="section-head reveal">
+                    <span class="eyebrow">Bezienswaardigheden</span>
+                    <h2>Het historische centrum</h2>
+                    <p class="mb-0">Het grotendeels autovrije hart van Durbuy is in een kwartier te doorlopen. Oude kalkstenen huizen, winkeltjes en terrasjes - dit zijn de plekken die je niet mag missen.</p>
+                </div><!--/ID:10-->
+                <!--ID:11--><div class="row g-4">
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 d-flex flex-column overflow-hidden">
+                            <div class="img-zoom"><img src="img/2026-11-03T18-52-41_unnamed.webp" alt="Stenen kasteltorens boven een plein met grasvelden." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500?text=Kasteel';"></div>
+                            <div class="p-4">
+                                <h3 class="fs-5 mb-2">Kasteel van de graven d&rsquo;Ursel</h3>
+                                <p class="small text-secondary mb-0">Het kasteel domineert het stadje vanaf zijn rots. De oorsprong gaat terug tot de middeleeuwen, het huidige uitzicht stamt vooral uit latere eeuwen. Het is privébezit en meestal niet te bezoeken.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 d-flex flex-column overflow-hidden">
+                            <div class="img-zoom"><img src="img/2026-11-03T18-52-40_marcovitjz-P7p-Fpr2hlk-unsplash.jpg" alt="Steeg van stenen met kasteltoren en rood winkelschildje." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500?text=Straatjes';"></div>
+                            <div class="p-4">
+                                <h3 class="fs-5 mb-2">Smalle straatjes &amp; kasseien</h3>
+                                <p class="small text-secondary mb-0">Het centrum is grotendeels autovrij: smalle kasseistroken tussen oude kalkstenen huizen, met winkeltjes en terrasjes om rustig te dwalen.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 d-flex flex-column overflow-hidden">
+                            <div class="img-zoom"><img src="img/2026-11-03T18-52-41_unnamed1.webp" alt="Aangelegde tuin met waterlopen en roodbruine struiken naast een stenen gebouw." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x500?text=Topiarietuin';"></div>
+                            <div class="p-4">
+                                <h3 class="fs-5 mb-2">Parc des Topiaires</h3>
+                                <p class="small text-secondary mb-0">Een tuin met honderden gesnoeide buxusfiguren - de ene abstract, de andere figuratief. Een van de bekendste attracties van Durbuy.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div><!--/ID:11-->
+                <!--ID:12--><div class="row g-4 mt-1">
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 p-4 d-flex flex-column">
+                            <div class="act-icon gold mb-3"><i class="bi bi-basket" aria-hidden="true"></i></div>
+                            <h3 class="fs-5 mb-2">Halle aux Blés</h3>
+                            <p class="small text-secondary mb-0">De oude korenhal: een houten overdekte markthal uit de zeventiende eeuw en een van de meest karakteristieke gebouwen van het stadje.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 p-4 d-flex flex-column">
+                            <div class="act-icon gold mb-3"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
+                            <h3 class="fs-5 mb-2">Place aux Foires</h3>
+                            <p class="small text-secondary mb-0">Het centrale plein waar het meeste leven zit - terrasjes, marktgevoel en het kasteel als achtergrond.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 reveal">
+                        <article class="tcard card-hover h-100 p-4 d-flex flex-column">
+                            <div class="act-icon gold mb-3"><i class="bi bi-church" aria-hidden="true"></i></div>
+                            <h3 class="fs-5 mb-2">Sint-Nicolaaskerk</h3>
+                            <p class="small text-secondary mb-0">De oude kerk aan de rand van het centrum, een rustig baken in het drukke stadje.</p>
+                        </article>
+                    </div>
+                </div><!--/ID:12-->
+            </div>
+        </section><!--/ID:13-->
+
+        <!-- ============ ACTIVITEITEN ============ -->
+        <!--ID:16--><section id="activiteiten" class="section bg-cream">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <!--ID:14--><div class="col-lg-5 reveal">
+                        <span class="eyebrow">Natuur &amp; activiteiten</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15;">Actief in de Ardennen</h2>
+                        <p class="mb-4">De omgeving staat bekend om actieve vakanties. Van de rivier tot de kalkrotsen - er is voor elk wat wils.</p>
+                        <figure class="mb-0">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-41_unnamed5.webp" alt="Stenen kasteel op een heuvel boven een kalme rivier met groene oever." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x650?text=Vallei';"></div>
+                            <figcaption class="figcap">Uitzicht over de vallei: groene hellingen boven een kalme rivier.</figcaption>
+                        </figure>
+                    </div><!--/ID:14-->
+                    <!--ID:15--><div class="col-lg-7 reveal">
+                        <div class="row g-4">
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-water" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Kajakken &amp; kano&euml;n</h3><p class="small text-secondary mb-0">Paddle over de Ourthe door het groene dal.</p></div></article></div>
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-bicycle" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Wandelen &amp; fietsen</h3><p class="small text-secondary mb-0">Veel bewegwijzerde routes en uitkijkpunten over de vallei.</p></div></article></div>
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-mountain" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Klimmen &amp; via ferrata</h3><p class="small text-secondary mb-0">Klimrotsen en een via ferrata in de kalkrotsen.</p></div></article></div>
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-person-running" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Adventure Valley</h3><p class="small text-secondary mb-0">Klimparcours, zipline en speeltuinen voor gezinnen.</p></div></article></div>
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-puzzle" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Labyrinthen &amp; kinderattracties</h3><p class="small text-secondary mb-0">Onder meer rond Barvaux-sur-Ourthe.</p></div></article></div>
+                            <div class="col-sm-6"><article class="tcard card-hover p-4 h-100 d-flex gap-3 align-items-start"><span class="act-icon"><i class="bi bi-binoculars" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Grotten van Hotton</h3><p class="small text-secondary mb-0">In de buurt liggen onder meer de grotten van Hotton.</p></div></article></div>
+                        </div>
+                    </div><!--/ID:15-->
+                </div>
+            </div>
+        </section><!--/ID:16-->
+
+        <!-- ============ WÉRIS ============ -->
+        <!--ID:19--><section id="weris" class="section">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <!--ID:17--><div class="col-lg-7 reveal">
+                        <span class="eyebrow">Wéris &amp; de megalieten</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15;">Een van de belangrijkste megalietensites van België</h2>
+                        <p class="mb-4">Het dorp Wéris, deel van de gemeente Durbuy, herbergt dolmens en menhirs uit het neolithicum - een van de belangrijkste megalietensites van het land.</p>
+                        <p class="mb-0">Wéris staat bovendien bekend als een van de &ldquo;Mooiste dorpen van Walloni&euml;&rdquo;. Een interessante aanvulling als je meer wilt zien dan het stadje zelf.</p>
+                    </div><!--/ID:17-->
+                    <!--ID:18--><div class="col-lg-5 reveal">
+                        <aside class="weris-panel rounded-4 p-4 p-md-5 h-100 d-flex flex-column justify-content-center">
+                            <span class="badge-gold mb-4"><i class="bi bi-award" aria-hidden="true"></i> Mooiste dorpen van Walloni&euml;</span>
+                            <div class="d-flex gap-3 mb-4">
+                                <span class="act-icon"><i class="bi bi-bricks" aria-hidden="true"></i></span>
+                                <div><h3 class="fs-6 text-white mb-1">Megalieten uit het neolithicum</h3><p class="small mb-0" style="color:#c2d1c6;">Wéris telt dolmens en menhirs - duizenden jaren oude getuigen van de eerste landbouwers.</p></div>
+                            </div>
+                            <hr>
+                            <p class="small mb-0">Een rustige, authentieke aanvulling op het toeristische stadje - ideaal voor een wandeling of een tweede dag in de streek.</p>
+                        </aside>
+                    </div><!--/ID:18-->
+                </div>
+            </div>
+        </section><!--/ID:19-->
+
+        <!-- ============ ETEN & DRINKEN ============ -->
+        <!--ID:22--><section id="eten" class="section bg-cream">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <!--ID:20--><div class="col-lg-6 reveal">
+                        <span class="eyebrow">Eten &amp; drinken</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15;">Ardense smaken</h2>
+                        <p class="mb-4">De streek staat bekend om zijn specialiteiten - van de slager tot het brouwhuis.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex gap-3 align-items-start mb-4"><span class="act-icon gold"><i class="bi bi-basket3" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Ardense ham &amp; paté</h3><p class="small text-secondary mb-0">Het visitekaartje van de streek, in talloze brasserieën en restaurants.</p></div></li>
+                            <li class="d-flex gap-3 align-items-start mb-4"><span class="act-icon gold"><i class="bi bi-tree" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Wild, zoals everzwijn</h3><p class="small text-secondary mb-0">Vooral in het najaar op de kaart.</p></div></li>
+                            <li class="d-flex gap-3 align-items-start mb-4"><span class="act-icon gold"><i class="bi bi-beer" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Streekbieren &amp; artisanale producten</h3><p class="small text-secondary mb-0">Lokale brouwerijen en ambachtelijke makers.</p></div></li>
+                            <li class="d-flex gap-3 align-items-start mb-0"><span class="act-icon gold"><i class="bi bi-cake2" aria-hidden="true"></i></span><div><h3 class="fs-6 mb-1">Chocolade &amp; gebak</h3><p class="small text-secondary mb-0">In de vele kleine winkeltjes van het centrum.</p></div></li>
+                        </ul>
+                        <p class="mb-0">Er zijn zowel eenvoudige brasserie&euml;n als gastronomische restaurants, en talloze hotels en gîtes.</p>
+                    </div><!--/ID:20-->
+                    <!--ID:21--><div class="col-lg-6 reveal">
+                        <figure class="mb-4">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-40_120814_m_04.jpg" alt="Cafétafeltjes onder een boom op een kasseistraat." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Café';"></div>
+                            <figcaption class="figcap">Terrasjes op de kasseistraat - tijd voor een koffie of een pint.</figcaption>
+                        </figure>
+                        <figure class="mb-0">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-40_niels-bosman-U6cPvzKb3eI-unsplash.jpg" alt="Bezoekers bij een klimopmuur en Victoria-schild in een zonnige binnenplaats." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Binnenplaats';"></div>
+                            <figcaption class="figcap">Bezoekers genieten in een zonnige binnenplaats met klimopmuur.</figcaption>
+                        </figure>
+                    </div><!--/ID:21-->
+                </div>
+            </div>
+        </section><!--/ID:22-->
+
+        <!-- ============ EVENEMENTEN ============ -->
+        <!--ID:25--><section id="evenementen" class="section section-dark">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <!--ID:23--><div class="col-lg-6 reveal">
+                        <figure class="mb-0 order-2 order-lg-1">
+                            <div class="img-frame"><img src="img/2026-11-03T18-52-41_unnamed4.webp" alt="Verlichte rivierkade 's nachts met lichtslingers en wandelaars." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x650?text=Nacht';"></div>
+                            <figcaption class="figcap">De rivierkade bij nacht, versierd met lichtslingers.</figcaption>
+                        </figure>
+                    </div><!--/ID:23-->
+                    <!--ID:24--><div class="col-lg-6 reveal order-1 order-lg-2">
+                        <span class="eyebrow">Evenementen</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15; color:#fff;">Sfeer het hele jaar door</h2>
+                        <p class="mb-4">Durbuy organiseert in de loop van het jaar verschillende evenementen. Bekend is de kerstmarkt, met lichtslingers en gezellige marktkraampjes die het oude centrum veranderen.</p>
+                        <p class="mb-4">Ook zijn er andere seizoensgebonden activiteiten. De data en het programma wijzigen jaarlijks - check v&oacute;&ouml;r je gaat de website van de toeristische dienst.</p>
+                        <div class="d-flex gap-3 align-items-center p-3 rounded-4" style="background:rgba(255,255,255,.07);">
+                            <span class="act-icon"><i class="bi bi-snow" aria-hidden="true"></i></span>
+                            <p class="mb-0 small" style="color:#cfe0d5;"><strong class="text-white">Tip:</strong> december is de maand van de kerstsfeer - maar controleer altijd de actuele data.</p>
+                        </div>
+                    </div><!--/ID:24-->
+                </div>
+            </div>
+        </section><!--/ID:25-->
+
+        <!-- ============ PRAKTISCH ============ -->
+        <!--ID:29--><section id="praktisch" class="section">
+            <div class="container">
+                <!--ID:26--><div class="section-head reveal">
+                    <span class="eyebrow">Praktisch</span>
+                    <h2>Goed om te weten</h2>
+                    <p class="mb-0">Alles wat je moet weten v&oacute;&ouml;r vertrek.</p>
+                </div><!--/ID:26-->
+                <!--ID:27--><div class="row g-4">
+                    <div class="col-md-6 col-lg-3 reveal"><article class="tcard card-hover p-4 h-100 d-flex flex-column"><span class="act-icon gold mb-3"><i class="bi bi-sun" aria-hidden="true"></i></span><h3 class="fs-6 mb-2">Beste periode</h3><p class="small text-secondary mb-0">Lente tot herfst voor buitenactiviteiten; december voor de sfeer van de kerstperiode.</p></article></div>
+                    <div class="col-md-6 col-lg-3 reveal"><article class="tcard card-hover p-4 h-100 d-flex flex-column"><span class="act-icon gold mb-3"><i class="bi bi-clock" aria-hidden="true"></i></span><h3 class="fs-6 mb-2">Duur van een bezoek</h3><p class="small text-secondary mb-0">Het stadje zelf is in een halve dag te zien; met activiteiten en omgeving vul je makkelijk een weekend of langer.</p></article></div>
+                    <div class="col-md-6 col-lg-3 reveal"><article class="tcard card-hover p-4 h-100 d-flex flex-column"><span class="act-icon gold mb-3"><i class="bi bi-car-front" aria-hidden="true"></i></span><h3 class="fs-6 mb-2">Parkeren</h3><p class="small text-secondary mb-0">Auto&rsquo;s staan meestal buiten het centrum, op de parkings.</p></article></div>
+                    <div class="col-md-6 col-lg-3 reveal"><article class="tcard card-hover p-4 h-100 d-flex flex-column"><span class="act-icon gold mb-3"><i class="bi bi-people-fill" aria-hidden="true"></i></span><h3 class="fs-6 mb-2">Drukte</h3><p class="small text-secondary mb-0">In de zomer, tijdens weekends en vakanties kan het erg druk zijn. Overweeg een bezoek buiten het hoogseizoen.</p></article></div>
+                </div><!--/ID:27-->
+                <!--ID:28--><div class="alert-note d-flex gap-3 p-4 rounded-4 mt-5 reveal">
+                    <i class="bi bi-exclamation-triangle fs-3" style="color:var(--gold-deep);" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="fs-5 mb-2">Eerlijk gezegd</h3>
+                        <p class="mb-0 small">Durbuy is zeer toeristisch ingesteld, wat zorgt voor drukte en hogere prijzen. Sommigen vinden het daardoor wat &ldquo;decor&rdquo; aanvoelen, terwijl anderen het net charmant vinden. Wie authenticiteit zoekt, vindt die vaak in de kleinere dorpen rond Durbuy en in de natuur eromheen.</p>
+                    </div>
+                </div><!--/ID:28-->
+            </div>
+        </section><!--/ID:29-->
+
+        <!-- ============ CTA ============ -->
+        <!--ID:30--><section class="section cta-band text-center">
+            <div class="container reveal">
+                <h2 style="font-size:clamp(1.9rem,5vw,3rem); line-height:1.15; color:#fff;">Klaar voor een bezoek aan Durbuy?</h2>
+                <p class="mx-auto mb-4" style="max-width:38rem; color:#c2d1c6;">De data en het programma wijzigen jaarlijks - check v&oacute;&ouml;r vertrek de website van de toeristische dienst.</p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="https://www.durbuy.be" target="_blank" rel="noopener" class="btn btn-gold px-4"><i class="bi bi-calendar-event me-2" aria-hidden="true"></i>Toeristische dienst</a>
+                    <a href="#galerij" class="btn btn-ghost-light px-4">Bekijk de galerij</a>
+                </div>
+            </div>
+        </section><!--/ID:30-->
+
+        <!-- ============ GALERIJ ============ -->
+        <!--ID:31--><section id="galerij" class="section bg-cream">
+            <div class="container">
+                <div class="section-head text-center reveal" style="margin-inline:auto;">
+                    <span class="eyebrow">Galerij</span>
+                    <h2>Durbuy in beeld</h2>
+                    <p class="mb-0 mx-auto" style="max-width:36rem;">Een selectie foto&rsquo;s van het stadje en zijn omgeving - klik op een foto om te vergroten.</p>
+                </div>
+                <ul class="list-unstyled row g-4 mt-1 mb-0">
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_michael-maga-ao-n6VdPO3csOo-unsplash.jpg" data-cap="Luchtfoto van het stadje met kasteel, omringd door bos" aria-label="Foto vergroten: luchtfoto van het stadje"><img src="img/2026-11-03T18-52-41_michael-maga-ao-n6VdPO3csOo-unsplash.jpg" alt="Luchtfoto van het historische stadje met kasteel, omringd door groen bos." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Luchtfoto</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed.webp" data-cap="Kasteel boven het plein met grasvelden" aria-label="Foto vergroten: kasteel boven het plein"><img src="img/2026-11-03T18-52-41_unnamed.webp" alt="Stenen kasteltorens boven een plein met grasvelden." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Kasteel &amp; plein</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-40_marcovitjz-P7p-Fpr2hlk-unsplash.jpg" data-cap="Steeg van stenen met kasteltoren en rood schildje" aria-label="Foto vergroten: steensteeg met kasteltoren"><img src="img/2026-11-03T18-52-40_marcovitjz-P7p-Fpr2hlk-unsplash.jpg" alt="Steeg van stenen met kasteltoren en rood winkelschildje." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Straatjes</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed1.webp" data-cap="Topiarietuin met waterlopen en struiken" aria-label="Foto vergroten: topiarietuin"><img src="img/2026-11-03T18-52-41_unnamed1.webp" alt="Aangelegde tuin met waterlopen en roodbruine struiken naast een stenen gebouw." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Topiarietuin</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed2.webp" data-cap="Kasteltorens boven het dorp, tussen groene heuvels" aria-label="Foto vergroten: torens boven het dorp"><img src="img/2026-11-03T18-52-41_unnamed2.webp" alt="Kasteltorens boven een dorp, genesteld tussen groene heuvels." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Torens boven het dorp</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed3.webp" data-cap="Kasteel boven de Ourthe met parkland" aria-label="Foto vergroten: kasteel boven de rivier"><img src="img/2026-11-03T18-52-41_unnamed3.webp" alt="Kasteel boven een meanderende rivier met parkland onder een heldere lucht." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Boven de Ourthe</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-40_120814_m_04.jpg" data-cap="Cafétafeltjes onder een boom op de kasseien" aria-label="Foto vergroten: café op de kasseistraat"><img src="img/2026-11-03T18-52-40_120814_m_04.jpg" alt="Cafétafeltjes onder een boom op een kasseistraat." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Café op de kasseien</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-40_niels-bosman-U6cPvzKb3eI-unsplash.jpg" data-cap="Zonnige binnenplaats met klimopmuur en Victoria-schild" aria-label="Foto vergroten: zonnige binnenplaats"><img src="img/2026-11-03T18-52-40_niels-bosman-U6cPvzKb3eI-unsplash.jpg" alt="Bezoekers bij een klimopmuur en Victoria-schild in een zonnige binnenplaats." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Zonnige binnenplaats</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed4.webp" data-cap="Rivierkade bij nacht met lichtslingers" aria-label="Foto vergroten: rivierkade bij nacht"><img src="img/2026-11-03T18-52-41_unnamed4.webp" alt="Verlichte rivierkade 's nachts met lichtslingers en wandelaars." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Rivierkade bij nacht</span></button></li>
+                    <li class="col-6 col-md-4 col-lg-3 reveal"><button type="button" class="gal-item" data-full="img/2026-11-03T18-52-41_unnamed5.webp" data-cap="Kasteel op een heuvel boven een kalme rivier" aria-label="Foto vergroten: kasteel aan de rivier"><img src="img/2026-11-03T18-52-41_unnamed5.webp" alt="Stenen kasteel op een heuvel boven een kalme rivier met groene oever." loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525?text=Durbuy';"><span class="gal-label">Kasteel aan de rivier</span></button></li>
+                </ul>
+            </div>
+        </section><!--/ID:31-->
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <!--ID:34--><footer class="footer-dark pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <!--ID:32--><div class="col-md-6">
+                    <div class="serif fs-4 fw-bold text-white mb-2"><i class="bi bi-castle me-2" aria-hidden="true"></i>Durbuy</div>
+                    <p class="small mb-0" style="color:#9fb4a7;">De kleinste stad ter wereld - een middeleeuws juweel in de Belgische Ardennen, aan de Ourthe.</p>
+                </div><!--/ID:32-->
+                <!--ID:33--><div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-wrap gap-3 justify-content-md-end">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal"><i class="bi bi-shield-lock me-1" aria-hidden="true"></i>Privacy statement</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#cookieModal"><i class="bi bi-cookie me-1" aria-hidden="true"></i>Cookies &amp; voorkeuren</a>
+                    </div>
+                </div><!--/ID:33-->
+            </div>
+            <hr class="my-4">
+            <p class="small mb-0 text-center" style="color:#9fb4a7;">&copy; 2026 Durbuy · Belgische Ardennen, Walloni&euml;</p>
+        </div>
+    </footer><!--/ID:34-->
+
+    <!-- ============ LIGHTBOX ============ -->
+    <!--ID:35--><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerij vergroot weergeven">
+        <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Sluiten"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Vorige foto"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
+        <img id="lbImg" src="" alt="">
+        <p class="lb-cap mb-0" id="lbCap"></p>
+        <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Volgende foto"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+    </div><!--/ID:35-->
+
+    <!-- ============ COOKIE MODAL ============ -->
+    <!--ID:39--><div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!--ID:36--><div class="modal-header">
+                    <h5 class="modal-title serif" id="cookieModalLabel"><i class="bi bi-cookie me-2" style="color:var(--gold-deep);" aria-hidden="true"></i>Cookies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+                </div><!--/ID:36-->
+                <!--ID:37--><div class="modal-body">
+                    <p class="small mb-3">Deze website gebruikt uitsluitend <strong>functionele cookies en lokale opslag (localStorage)</strong> om uw voorkeur voor deze melding te onthouden, zodat we hem niet opnieuw tonen. Er worden <strong>geen tracking- of marketingcookies</strong> geplaatst.</p>
+                    <p class="small text-secondary mb-0">Let op: de website laadt lettertypes via Google Fonts en frameworkbestanden (Bootstrap) via een CDN. Bij het laden daarvan kunnen door de aanbieder beperkte gegevens, zoals uw IP-adres, verwerkt worden.</p>
+                </div><!--/ID:37-->
+                <!--ID:38--><div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary px-4" id="cookieReject" data-bs-dismiss="modal">Weigeren</button>
+                    <button type="button" class="btn btn-pine px-4" id="cookieAccept">Accepteren</button>
+                </div><!--/ID:38-->
+            </div>
+        </div>
+    </div><!--/ID:39-->
+
+    <!-- ============ PRIVACY MODAL ============ -->
+    <!--ID:41--><div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <!--ID:40--><div class="modal-header">
+                    <h5 class="modal-title serif" id="privacyModalLabel"><i class="bi bi-shield-lock me-2" style="color:var(--gold-deep);" aria-hidden="true"></i>Privacy statement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sluiten"></button>
+                </div><!--/ID:40-->
+                <div class="modal-body small">
+                    <p><strong>Verantwoordelijke:</strong> de exploitant van deze website (hierna &ldquo;wij&rdquo;) is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit statement.</p>
+                    <p><strong>Wat we verzamelen:</strong> alleen gegevens die u zelf aan ons doorgeeft (bijvoorbeeld via contactformulieren) en standaard serverlogs (IP-adres, browser, tijdstip) voor beveiliging en stabiliteit. We verkopen of delen geen persoonsgegevens met derden.</p>
+                    <p><strong>Doel &amp; grondslag:</strong> de website exploiteren en beveiligen (wettig belang), uw verzoeken afhandelen (toestemming/overeenkomst) en - indien u toestemt - uw cookievoorkeur onthouden via lokale opslag (toestemming).</p>
+                    <p><strong>Bewaring:</strong> serverlogs worden kort bewaard; formuliergegevens alleen zolang nodig om uw verzoek te behandelen.</p>
+                    <p><strong>Uw rechten:</strong> u heeft recht op inzage, rectificatie, verwijdering en bezwaar. Neem contact met ons op via de toeristische dienst van Durbuy (zie www.durbuy.be).</p>
+                    <p class="text-secondary mb-0">Vragen over deze verwerking? Stuur een bericht via de website of de toeristische dienst.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Sluiten</button>
+                </div>
+            </div>
+        </div>
+    </div><!--/ID:41--><!--ID:42-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.documentElement.classList.add('js');
+    (function(){
+        /* ---------- Cookie consent (once via localStorage) ---------- */
+        var cm = document.getElementById('cookieModal');
+        function setConsent(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} }
+        document.addEventListener('DOMContentLoaded', function(){
+            try{
+                if(!localStorage.getItem('cookieConsent') && window.bootstrap && cm){
+                    new bootstrap.Modal(cm).show();
+                }
+            }catch(e){}
+        });
+        var acc = document.getElementById('cookieAccept');
+        if(acc) acc.addEventListener('click', function(){
+            setConsent('accepted');
+            try{ var m = bootstrap.Modal.getInstance(cm); if(m) m.hide(); }catch(e){}
+        });
+        var rej = document.getElementById('cookieReject');
+        if(rej) rej.addEventListener('click', function(){ setConsent('rejected'); });
+        if(cm) cm.addEventListener('hidden.bs.modal', function(){
+            try{ if(!localStorage.getItem('cookieConsent')) setConsent('dismissed'); }catch(e){}
+        });
+
+        /* ---------- Navbar scroll state ---------- */
+        var nav = document.getElementById('mainNav');
+        function onScroll(){ nav.classList.toggle('navbar-scrolled', window.scrollY > 40); }
+        window.addEventListener('scroll', onScroll, {passive:true});
+        onScroll();
+
+        /* ---------- Close mobile nav after link click ---------- */
+        var collapseEl = nav.querySelector('.navbar-collapse');
+        nav.querySelectorAll('.nav-link').forEach(function(link){
+            link.addEventListener('click', function(){
+                if(collapseEl.classList.contains('show')){
+                    var c = bootstrap.Collapse.getInstance(collapseEl);
+                    if(c) c.hide();
+                }
+            });
+        });
+
+        /* ---------- Reveal on scroll ---------- */
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var reveals = document.querySelectorAll('.reveal');
+        if(reduce || !('IntersectionObserver' in window)){
+            reveals.forEach(function(el){ el.classList.add('in'); });
+        }else{
+            var io = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){
+                    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+            reveals.forEach(function(el){ io.observe(el); });
+        }
+
+        /* ---------- Gallery lightbox ---------- */
+        var lb = document.getElementById('lightbox');
+        var lbImg = document.getElementById('lbImg');
+        var lbCap = document.getElementById('lbCap');
+        var items = Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
+        var photos = items.map(function(btn){
+            var im = btn.querySelector('img');
+            return { src: btn.getAttribute('data-full') || im.src, alt: im.alt, cap: btn.getAttribute('data-cap') || '' };
+        });
+        var idx = 0, lastTrigger = null;
+
+        function render(){
+            var p = photos[idx];
+            lbImg.src = p.src;
+            lbImg.alt = p.alt;
+            lbCap.textContent = (idx + 1) + ' / ' + photos.length + (p.cap ? ' - ' + p.cap : '');
+        }
+        function openLb(i){
+            idx = i; render();
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('lbClose').focus();
+        }
+        function closeLb(){
+            lb.classList.remove('open');
+            document.body.style.overflow = '';
+            if(lastTrigger) lastTrigger.focus();
+        }
+        items.forEach(function(btn, i){
+            btn.addEventListener('click', function(){ lastTrigger = btn; openLb(i); });
+        });
+        document.getElementById('lbClose').addEventListener('click', closeLb);
+        document.getElementById('lbPrev').addEventListener('click', function(){ idx = (idx - 1 + photos.length) % photos.length; render(); });
+        document.getElementById('lbNext').addEventListener('click', function(){ idx = (idx + 1) % photos.length; render(); });
+        lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+        document.addEventListener('keydown', function(e){
+            if(!lb.classList.contains('open')) return;
+            if(e.key === 'Escape') closeLb();
+            else if(e.key === 'ArrowLeft'){ idx = (idx - 1 + photos.length) % photos.length; render(); }
+            else if(e.key === 'ArrowRight'){ idx = (idx + 1) % photos.length; render(); }
+        });
+    })();
+    </script>
+<!--/ID:42--></body>
+</html>
