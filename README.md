@@ -18,6 +18,7 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [Jitterbean](https://pietercooreman.github.io/samplesites/Jitterbean/index.html) | https://pietercooreman.github.io/samplesites/Jitterbean/index.html |
 | [Land Rover](https://pietercooreman.github.io/samplesites/LandRover/index.html) | https://pietercooreman.github.io/samplesites/LandRover/index.html |
 | [Land Rover 2](https://pietercooreman.github.io/samplesites/LandRover2/index.html) | https://pietercooreman.github.io/samplesites/LandRover2/index.html |
+| [Lego](https://pietercooreman.github.io/samplesites/Lego/index.html) | https://pietercooreman.github.io/samplesites/Lego/index.html |
 | [Leuven](https://pietercooreman.github.io/samplesites/Leuven/index.html) | https://pietercooreman.github.io/samplesites/Leuven/index.html |
 | [Leuven 2](https://pietercooreman.github.io/samplesites/Leuven2/index.html) | https://pietercooreman.github.io/samplesites/Leuven2/index.html |
 | [Leuven 3](https://pietercooreman.github.io/samplesites/Leuven3/index.html) | https://pietercooreman.github.io/samplesites/Leuven3/index.html |
