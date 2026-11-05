@@ -9,7 +9,7 @@ Demo sites, rechtstreeks aanklikbaar via GitHub Pages.
 | [AusTravel](https://pietercooreman.github.io/samplesites/AusTravel/index.html) | https://pietercooreman.github.io/samplesites/AusTravel/index.html |
 | [Cotswolds](https://pietercooreman.github.io/samplesites/Cotswolds/index.html) | https://pietercooreman.github.io/samplesites/Cotswolds/index.html |
 | [Durbuy](https://pietercooreman.github.io/samplesites/Durbuy/index.html) | https://pietercooreman.github.io/samplesites/Durbuy/index.html |
-| [Durbuy 4](https://pietercooreman.github.io/samplesites/Durbuy 4/index.html) | https://pietercooreman.github.io/samplesites/Durbuy 4/index.html |
+| [Durbuy 4](https://pietercooreman.github.io/samplesites/Durbuy%204/index.html) | https://pietercooreman.github.io/samplesites/Durbuy%204/index.html |
 | [Ella Langley](https://pietercooreman.github.io/samplesites/EllaLangley/index.html) | https://pietercooreman.github.io/samplesites/EllaLangley/index.html |
 | [Ferrari](https://pietercooreman.github.io/samplesites/Ferrari/index.html) | https://pietercooreman.github.io/samplesites/Ferrari/index.html |
 | [Ferrari 2](https://pietercooreman.github.io/samplesites/Ferrari2/index.html) | https://pietercooreman.github.io/samplesites/Ferrari2/index.html |
